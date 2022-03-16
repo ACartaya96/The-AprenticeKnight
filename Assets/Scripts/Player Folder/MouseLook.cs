@@ -8,6 +8,7 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private Transform PlayerRb;
     [SerializeField] private float Sensitivity;
     private Vector2 PlayerMouseInput;
+    private Vector2 PlayerControllerInput;
     private float xRotation;
 
     void Start()
@@ -22,14 +23,17 @@ public class MouseLook : MonoBehaviour
     private void CameraMovement() 
     {
         // grab mouse input
-        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-
+        PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"),(Input.GetAxis("Mouse Y"))); 
+        PlayerControllerInput = new Vector2(Input.GetAxis("ControllerHorizontal"),(Input.GetAxis("ControllerVertical")));
+    
         //mutilply sens and look rotation
         xRotation -= PlayerMouseInput.y * Sensitivity;
+        xRotation -= PlayerControllerInput.y * Sensitivity;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         //rotation of camera and body
         PlayerRb.Rotate(0f, PlayerMouseInput.x * Sensitivity, 0f);
+        PlayerRb.Rotate(0f, PlayerControllerInput.x * Sensitivity, 0f);
         PlayerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }
