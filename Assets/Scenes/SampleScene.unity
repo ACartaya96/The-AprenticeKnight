@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 233897243}
   - component: {fileID: 233897247}
   - component: {fileID: 233897248}
+  - component: {fileID: 233897249}
   m_Layer: 7
   m_Name: Bob
   m_TagString: Untagged
@@ -213,13 +214,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233897242}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -4.79, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &233897247
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -248,7 +249,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5da276f87a8294db541e8ceb2c4551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   maxHealth: 100
+--- !u!114 &233897249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233897242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3968c2edaceee3e4d8cb6952f3e8b004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 20
+  angle: 160
+  heightCap: 4
+  playerRef: {fileID: 450250138}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 8
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  canSeePlayer: 0
+  canHearPlayer: 0
 --- !u!1 &450250138
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,14 +386,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450250138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.926, z: 0}
+  m_LocalPosition: {x: 0.58, y: 0.926, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 526667030}
   - {fileID: 451018545}
   - {fileID: 923207626}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &450250144
 MonoBehaviour:
@@ -420,6 +445,7 @@ MonoBehaviour:
   AttackPoint: {fileID: 923207626}
   attackDamage: 40
   attackRange: 0.5
+  attackRate: 3
   EnemiesLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -470,7 +496,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 450250143}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526667029
 GameObject:
@@ -499,11 +525,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526667029}
   m_LocalRotation: {x: 0.040941272, y: -0, z: -0, w: 0.99916154}
-  m_LocalPosition: {x: 0, y: 1.079, z: -2.529}
+  m_LocalPosition: {x: 0.58, y: 2.005, z: -5.173}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 450250143}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 4.693, y: 0, z: 0}
 --- !u!81 &526667031
 AudioListener:
@@ -563,7 +589,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526667029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54c925fef686cb04dbcadd875aacc2f5, type: 3}
   m_Name: 
@@ -692,7 +718,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 450250143}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017892006
 GameObject:
