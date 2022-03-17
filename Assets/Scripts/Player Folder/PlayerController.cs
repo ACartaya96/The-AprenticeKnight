@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float  Speed = 250f;
     
     private Vector3 PlayerMovementInput;
+
+    
     
 
     // Start is called before the first frame update
@@ -22,6 +24,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+
+        if (Input.GetButtonDown("Fire2"))
+            FireSpell();
     }
     private void PlayerMovement()
     {
@@ -29,5 +34,10 @@ public class PlayerController : MonoBehaviour
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * Speed;
         rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
+    }
+
+    public void FireSpell()
+    {
+
     }
 }
