@@ -22,7 +22,7 @@ public class MagicSystem : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         aimAction = playerInput.actions["Aim"];
-        castAcion = playerInput.actions["SpellCast"];
+        castAcion = playerInput.actions["Spell Cast"];
         spellList.Add(new Fireball());
         currentSpell = spellList[0];
     }
