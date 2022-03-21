@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    AnimationHandler animationHandler;
+    /*AnimationHandler animationHandler;
     WeaponSlotManager weaponSlotManager;
     InputHandler inputHandler;
     PlayerInput playerInput;
@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnEnable()
     {
-                castAction.performed += _ => Cast();
+            castAction.performed += _ => Cast();
         
     }
     private void OnDisable()
@@ -64,6 +64,25 @@ public class PlayerAttack : MonoBehaviour
             fireball.GetComponent<Rigidbody>().velocity = (destination - castPoint.position).normalized * fireball.GetComponent<Fireball>().speed;
         
         }
-    }
-    //public string lastAttack;
+    }*/
+//public string lastAttack;
+
+AnimationHandler animationHandler;
+
+
+private void Awake()
+{
+    animationHandler = GetComponent<AnimationHandler>();
+
+}
+public void HandleLightAttack(WeaponItem weapon)
+{
+        animationHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
+}
+
+public void HandleHeavyAttack(WeaponItem weapon)
+{
+        animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
+}
+
 }

@@ -16,3 +16,6 @@ MonoBehaviour:
   itemName: Xander's Staff
   modelPrefab: {fileID: 4184256260896462084, guid: 35429db8427fc47419676f406b07d86c, type: 3}
   isUnarmed: 0
+  OH_Light_Attack_1: OH_Light_Attack_01
+  OH_Heavy_Attack_1: OH_Heavy_Attack_01
+  meleeDamage: 20

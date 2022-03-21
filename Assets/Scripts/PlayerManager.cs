@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Player Flags")]
     public bool isInteracting;
+    [Space]
     public bool isInAir;
     public bool isGrounded;
 
@@ -26,32 +27,31 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         isInteracting = anim.GetBool("isInteracting");
+        anim.SetBool("isInAir", isInAir);
         
-        Debug.Log("PlayerManager: " + inputHandler.rollflag.ToString());
     }
 
     private void FixedUpdate()
     {
-
-
-      
+              
         inputHandler.TickInput();
         playerController.HandleMovement();
         playerController.HandleRollingandSprinting();
         playerController.HandleFalling(playerController.moveDirection);
-        playerController.HandleJump();
+        playerController.HandleJumping();
     }
 
     private void LateUpdate()
     {
         inputHandler.rollflag = false;
+        inputHandler.a_Input = false;
+        inputHandler.rb_Input = false;
+        inputHandler.rt_Input = false;
+        
         if(isInAir)
         {
             playerController.InAirTimer = playerController.InAirTimer + Time.deltaTime;
         }
-        if(!isGrounded)
-        {
-            inputHandler.jumpflag = false;
-        }
+
     }
 }

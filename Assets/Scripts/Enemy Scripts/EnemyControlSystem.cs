@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyControlSystem : MonoBehaviour
+public class EnemyControlSystem : MonoBehaviour, IDamage
 {
     NavMeshAgent navMeshAgent;
     FieldofView fov;
@@ -50,8 +50,10 @@ public class EnemyControlSystem : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log(damage.ToString());
+       
         currentHealth -= damage;
+
+        Debug.Log("Enemy HP: " + currentHealth.ToString());
         //animator.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
@@ -66,11 +68,10 @@ public class EnemyControlSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        IDamage damageable = other.GetComponent<IDamage>();
+        if (damageable != null)
         {
-            PlayerController player = other.GetComponent<PlayerController>();
-            player.rb.AddForce(player.moveDirection * -100f, ForceMode.Impulse);
-            player.TakeDamage(damage);
+            damageable.TakeDamage(damage);
         }
     }
 

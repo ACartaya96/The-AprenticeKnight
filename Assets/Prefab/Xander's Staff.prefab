@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2339928304051623613}
-  m_LocalRotation: {x: 0.40637916, y: -0.11821354, z: 0.09532401, w: 0.9009966}
-  m_LocalPosition: {x: 0.0016, y: -0.00197, z: -0.00185}
-  m_LocalScale: {x: 0.075995885, y: 0.075995885, z: 0.075995885}
+  m_LocalRotation: {x: -0.33767214, y: 0.29813457, z: 0.6286306, w: 0.6339692}
+  m_LocalPosition: {x: 0.0546, y: 0.0029, z: 0.0039}
+  m_LocalScale: {x: 1.2608502, y: 1.2608502, z: 1.2608502}
   m_Children:
   - {fileID: 3085067382707541112}
   m_Father: {fileID: 8604043453078290637}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 49.01, y: -11.926, z: 6.627}
+  m_LocalEulerAnglesHint: {x: -53.416, y: -4.477, z: 91.769}
 --- !u!1 &2421684105270595266
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 3085067382707541112}
   - component: {fileID: 2125566967436958685}
   - component: {fileID: 4223092962888953623}
+  - component: {fileID: 3499904527300755610}
+  - component: {fileID: 5887355538156811802}
   m_Layer: 0
   m_Name: Xander's Staff
   m_TagString: Untagged
@@ -112,6 +114,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3499904527300755610
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421684105270595266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.015, y: 0.034579094, z: 0.015}
+  m_Center: {x: 0.00000013935708, y: 0.065206654, z: 0.00000007967089}
+--- !u!114 &5887355538156811802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421684105270595266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edd6618c41f87b4fa5eb6132cabea20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponItem: {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
 --- !u!1 &4184256260896462084
 GameObject:
   m_ObjectHideFlags: 0

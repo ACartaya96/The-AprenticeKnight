@@ -12,11 +12,16 @@ public class InputHandler : MonoBehaviour
 
     public bool b_Input;
     public bool a_Input;
+    public bool rb_Input;
+    public bool rt_Input;
     public bool rollflag;
     public bool jumpflag;
-    
+
 
     PlayerInput playerInput;
+    PlayerAttack playerAttack;
+    PlayerInventory playerInventory;
+
     [HideInInspector]
     public InputAction moveAction;
     [HideInInspector]
@@ -29,6 +34,8 @@ public class InputHandler : MonoBehaviour
     public InputAction castAction;
     [HideInInspector]
     public InputAction rollAction;
+    [HideInInspector]
+    public InputAction lightAtkAction;
 
 
     Vector2 movementInput;
@@ -38,20 +45,27 @@ public class InputHandler : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerAttack = GetComponentInChildren<PlayerAttack>();
+        playerInventory = GetComponent<PlayerInventory>();
+
         moveAction = playerInput.actions["Movement"];
         lookAction = playerInput.actions["Look"];
         jumpAction = playerInput.actions["Jump"];
-        aimAction = playerInput.actions["Aim"];
         castAction = playerInput.actions["Spell Cast"];
         rollAction = playerInput.actions["Roll"];
+        lightAtkAction = playerInput.actions["Light Attack"];
     }
-    public void OnEnable()
+    private void OnEnable()
     {
 
         moveAction.performed += _ => movementInput = moveAction.ReadValue<Vector2>();
         lookAction.performed += _ => cameraInput = lookAction.ReadValue<Vector2>();
-        jumpAction.performed += _ => a_Input = true;
-        jumpAction.canceled += _ => a_Input = false;
+        //jumpAction.performed += _ => a_Input = true;
+        //jumpAction.canceled += _ => a_Input = false;
+        //lightAtkAction.performed += _ => rb_Input = true;
+        //lightAtkAction.canceled += _ => rb_Input = false;
+        //castAction.performed += _ => rt_Input = true;
+        //castAction.canceled += _ => rt_Input = false;
 
         //rollAction.performed += _ => HandleRollinput(); 
 
@@ -61,8 +75,12 @@ public class InputHandler : MonoBehaviour
     {
         moveAction.performed -= _ => movementInput = moveAction.ReadValue<Vector2>();
         lookAction.performed -= _ => cameraInput = lookAction.ReadValue<Vector2>();
-        jumpAction.performed -= _ => a_Input = true;
-        jumpAction.performed -= _ => a_Input = false;
+        //jumpAction.performed -= _ => a_Input = true;
+        //jumpAction.performed -= _ => a_Input = false;
+        //lightAtkAction.performed -= _ => rb_Input = true;
+       // lightAtkAction.canceled -= _ => rb_Input = false;
+        //castAction.performed -= _ => rt_Input = true;
+        //castAction.canceled -= _ => rt_Input = false;
         //rollAction.performed -= _ => HandleRollinput();
     }
 
@@ -71,6 +89,7 @@ public class InputHandler : MonoBehaviour
         MoveInput();
         HandleRollinput();
         HandleJumpInput();
+        HandleAttackInput();
     }
 
     private void MoveInput()
@@ -78,32 +97,54 @@ public class InputHandler : MonoBehaviour
         horizontal = movementInput.x;
         vertical = movementInput.y;
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
-   
+
         mouseX = cameraInput.x;
         mouseY = cameraInput.y;
     }
 
-    public void HandleRollinput()
+   private void HandleRollinput()
     {
         if (rollAction.IsPressed())
             b_Input = true;
         else
             b_Input = false;
-  
 
-        if(b_Input)
-            rollflag = true;      
+
+        if (b_Input)
+            rollflag = true;
     }
 
-    public void HandleJumpInput()
-    { 
-        if (a_Input)
-            jumpflag = true;
-
-    }
-
-    private void JumpAction_performed(InputAction.CallbackContext obj)
+    private void HandleJumpInput()
     {
-        throw new System.NotImplementedException();
+        if (jumpAction.IsPressed())
+            a_Input = true;
+
     }
+
+    private void HandleAttackInput()
+    {
+        if (lightAtkAction.IsPressed())
+            rb_Input = true;
+        
+        if (castAction.IsPressed())
+            rt_Input = true;
+
+        if (rb_Input)
+        {
+            Debug.Log("Light Attack Pressed");
+            playerAttack.HandleLightAttack(playerInventory.rightWeapon);
+
+        }
+         
+        if (rt_Input)
+        {
+            Debug.Log("Heavy Attack Pressed");
+            playerAttack.HandleHeavyAttack(playerInventory.rightWeapon);
+        }
+
+
+
+
+    }
+
 }

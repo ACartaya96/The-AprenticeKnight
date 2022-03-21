@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -116,14 +118,14 @@ public class PlayerController : MonoBehaviour
     float movementSpeed = 5;
     [SerializeField]
     float rotationSpeed = 10;
-    [SerializeField]
-    float maxHealth = 100;
+    [Space]
     [SerializeField]
     float fallSpeed = 45f;
     [SerializeField]
     float jumpHeight = 50;
 
-    float currentHealth;
+    bool jumpForceApplied;
+  
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -132,13 +134,28 @@ public class PlayerController : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         cameraObject = Camera.main.transform;
         myTransform = transform;
-        currentHealth = maxHealth;
+        ignoreforGrounCheck = ~ignoreforGrounCheck;
         animationHandler.Initialize();
 
         playerManager.isGrounded = true;
     }
 
-  
+    /*private void FixedUpdate()
+    {
+        if (jumpForceApplied)
+        {
+            StartCoroutine(JumpCo());
+            rb.AddForce(transform.up * jumpHeight);
+
+        }
+    }
+    private IEnumerator JumpCo()
+    {
+        yield return new WaitForSeconds(0.35f);
+        jumpForceApplied = false;
+    }*/
+
+
     #region Movement
     Vector3 normalVector;
     Vector3 targetPosition;
@@ -194,10 +211,8 @@ public class PlayerController : MonoBehaviour
         if (animationHandler.anim.GetBool("isInteracting") == true)
             return;
 
-        Debug.Log(inputHandler.rollflag.ToString());
         if(inputHandler.rollflag)
         {
-            Debug.Log("Still Rolling!");
             moveDirection = cameraObject.forward * inputHandler.vertical;
             moveDirection += cameraObject.right * inputHandler.horizontal;
 
@@ -215,14 +230,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void HandleJump()
+    public void HandleJumping()
     {
-        if (animationHandler.anim.GetBool("isInteracting") == true)
+        if (animationHandler.anim.GetBool("isInteracting"))
             return;
-        if(inputHandler.jumpflag && playerManager.isGrounded)
+
+        if (inputHandler.a_Input)
         {
-            //animationHandler.PlayTargetAnimation("Jump", true);
-            rb.AddForce(Vector3.up * jumpHeight);
+            if(inputHandler.moveAmount > 0)
+            {
+                moveDirection = cameraObject.forward * inputHandler.vertical;
+                moveDirection = cameraObject.right * inputHandler.horizontal;
+                animationHandler.PlayTargetAnimation("Jump", true);
+                moveDirection.y = 0;
+                Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                myTransform.rotation = jumpRotation;
+                jumpForceApplied = true;
+            }
         }
     }
     #endregion
@@ -235,7 +259,7 @@ public class PlayerController : MonoBehaviour
         Vector3 origin = myTransform.position;
         origin.y += groundDetectionRayStartPoint;
 
-        if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f, ignoreforGrounCheck)) ;
+        if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f)) ;
         {
             moveDirection = Vector3.zero;
         }
@@ -243,7 +267,7 @@ public class PlayerController : MonoBehaviour
         {
             
                 rb.AddForce(-Vector3.up * fallSpeed);
-                rb.AddForce(moveDirection * fallSpeed / 10f);
+                rb.AddForce(moveDirection * fallSpeed / 8f);
         }
 
         Vector3 dir = moveDirection;
@@ -264,11 +288,11 @@ public class PlayerController : MonoBehaviour
             {
                 if(InAirTimer > 0.5f)
                 {
-                   // animationHandler.PlayTargetAnimation("Land", true);
+                   animationHandler.PlayTargetAnimation("Land", true);
                 }
                 else
                 {
-                    animationHandler.PlayTargetAnimation("LocoMotion", false);
+                    animationHandler.PlayTargetAnimation("Empty", false);
                 }
 
                 playerManager.isInAir = false;
@@ -294,18 +318,16 @@ public class PlayerController : MonoBehaviour
                 playerManager.isInAir = true;
             }
 
-            if(playerManager.isGrounded)
-            {
+           
                 if(playerManager.isInteracting || inputHandler.moveAmount > 0)
                 {
-                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
+                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime/0.1f);
                 }
                 else
                 {
                     myTransform.position = targetPosition;
                 }
             }
-        }
     }
 
     /*public void DoJump()
@@ -315,21 +337,4 @@ public class PlayerController : MonoBehaviour
     }*/
     #endregion
 
-
-    public void TakeDamage(float damage)
-    {
-        Debug.Log(damage.ToString());
-        currentHealth -= damage;
-        Debug.Log("Health: " + currentHealth.ToString());
-        //animator.SetTrigger("Hurt");
-        if (currentHealth <= 0)
-        {
-            Defeated();
-        }
-    }
-
-    private void Defeated()
-    {
-        Destroy(gameObject);
-    }
 }
