@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 8271766778624554319}
   - component: {fileID: 8271766778624554321}
   - component: {fileID: 8271766778624554318}
-  - component: {fileID: 8271766778624554316}
   m_Layer: 0
   m_Name: FollowCamera
   m_TagString: Untagged
@@ -234,33 +233,3 @@ MonoBehaviour:
   PlayerIndex: -1
   XYAxis: {fileID: 2158996719640372879, guid: ead60480692ca9a4ab52ffb6067c5de3, type: 3}
   ZAxis: {fileID: 0}
---- !u!114 &8271766778624554316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8271766778624554317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CollideAgainst:
-    serializedVersion: 2
-    m_Bits: 0
-  m_IgnoreTag: Player
-  m_TransparentLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_MinimumDistanceFromTarget: 0.1
-  m_AvoidObstacles: 1
-  m_DistanceLimit: 0
-  m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.1
-  m_Strategy: 1
-  m_MaximumEffort: 4
-  m_SmoothingTime: 0
-  m_Damping: 0
-  m_DampingWhenOccluded: 0
-  m_OptimalTargetDistance: 0

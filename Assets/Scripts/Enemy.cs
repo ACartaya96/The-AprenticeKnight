@@ -5,16 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public Animator animator;
-    public int maxHealth = 100;
-    int currentHealth;
+    public float maxHealth = 100;
+    float currentHealth;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
     }
-    public void TakeDamage(int Damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= Damage;
+        currentHealth -= damage;
         //animator.SetTrigger("Hurt");
         if(currentHealth <= 0)
         {

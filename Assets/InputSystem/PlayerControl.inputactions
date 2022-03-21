@@ -20,14 +20,14 @@
                     "id": "a0e74309-3251-4ee5-9251-3326fafb081d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold,Tap",
-                    "initialStateCheck": false
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Movement",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "c7c73d34-c6fd-4891-bdc9-066b8c3e6a63",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -39,12 +39,21 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Aim",
                     "type": "Button",
                     "id": "e97d51a1-b0cc-4e6f-9dee-baa644055817",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Roll",
+                    "type": "Button",
+                    "id": "4cc83906-d897-471a-bf1f-41304e0bc5d4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -76,7 +85,18 @@
                 },
                 {
                     "name": "",
-                    "id": "2bd2cce0-89d3-43a3-8255-f0f97d4e0869",
+                    "id": "4ed1e4a9-fd86-4b3e-a723-5ead1dfab6c2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Spell Cast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23fe43e6-0ccc-41e4-be66-45045e5466e2",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
@@ -84,39 +104,6 @@
                     "action": "Spell Cast",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Rmb + Lmb",
-                    "id": "ed60fcf3-b043-4f3d-b996-1c10f6b8bda6",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Spell Cast",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "e907557d-cbf0-42e4-8603-a8c13d3f3172",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KBM",
-                    "action": "Spell Cast",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "7105bc89-ca31-4222-b161-1f9833af41aa",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KBM",
-                    "action": "Spell Cast",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "WASD",
@@ -225,6 +212,28 @@
                     "processors": "",
                     "groups": "KBM",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b1c98b3-8a46-400a-abf8-99d396f56584",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e1c90df-a6e6-47d6-a3fe-85603aa95f0b",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Roll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

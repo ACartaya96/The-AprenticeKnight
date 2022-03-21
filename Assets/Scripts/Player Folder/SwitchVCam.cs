@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Cinemachine;
 using System;
 
@@ -12,6 +13,8 @@ public class SwitchVCam : MonoBehaviour
     [SerializeField]
     private int priorityBoostAmount = 10;
 
+    [SerializeField] private Image aimReticle;
+
     private CinemachineVirtualCamera virtualCamera;
     private InputAction aimAction;
 
@@ -19,6 +22,7 @@ public class SwitchVCam : MonoBehaviour
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
         aimAction = playerInput.actions["Aim"];
+        aimReticle.enabled = false;
     }
 
     private void OnEnable()
@@ -36,10 +40,12 @@ public class SwitchVCam : MonoBehaviour
     private void StartAim()
     {
         virtualCamera.Priority += priorityBoostAmount;
+        aimReticle.enabled = true;
     }
 
     private void CancelAim()
     {
         virtualCamera.Priority = 9;
+        aimReticle.enabled = false;
     }
 }

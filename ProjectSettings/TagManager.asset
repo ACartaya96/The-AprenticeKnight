@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,6 @@ TagManager:
   - Enemies
   - PostProccessing
   - Environment
-  - 
-  - 
   - 
   - 
   - 

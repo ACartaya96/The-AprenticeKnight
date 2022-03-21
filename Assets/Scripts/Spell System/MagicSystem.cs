@@ -6,32 +6,34 @@ using UnityEngine.InputSystem;
 public class MagicSystem : MonoBehaviour
 {
     // Start is called before the first frame update
-    Spell currentSpell;
-    List<Spell> spellList;
+    GameObject currentSpell;
+    [SerializeField]List<GameObject> spellList;
     private int spellslot = 0;
 
     InputAction aimAction;
     InputAction castAcion;
 
     private PlayerInput playerInput;
+    PlayerController Player;
 
     [SerializeField] private int maxSpellSlots = 5;
 
 
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+        Player = GetComponent<PlayerController>();
+        playerInput = Player.GetComponent<PlayerInput>();
         aimAction = playerInput.actions["Aim"];
         castAcion = playerInput.actions["Spell Cast"];
-        spellList.Add(new Fireball());
         currentSpell = spellList[0];
     }
     // Update is called once per frame
     void Update()
     {
-        if(aimAction.IsPressed())
+       /* if(aimAction.IsPressed())
         {
-            //Instantiate();
-        }
+            Instantiate(currentSpell.gameObject, Player.GetCastPoint.position, Player.GetCastPoint.rotation);
+            
+        }*/
     }
 }

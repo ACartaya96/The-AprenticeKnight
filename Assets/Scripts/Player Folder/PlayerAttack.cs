@@ -1,52 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Animator animator;
-    public Transform AttackPoint;
-    [Space]
-    public int attackDamage = 40;
-    public float attackRange = 0.5f;
-    [Space]
-    public float attackRate = 3f;
-    float nextAttackTime = 0f;
-    [Space]
-    public LayerMask EnemiesLayer;
-    // Update is called once per frame
-    void Update()
+    AnimationHandler animationHandler;
+    WeaponSlotManager weaponSlotManager;
+    InputHandler inputHandler;
+    PlayerInput playerInput;
+    InputAction aimAction;
+    InputAction castAction;
+    public Camera cam;
+
+    [SerializeField]
+    GameObject spellPrefab;
+
+    Vector3 destination;
+    public Transform castPoint;
+    private Transform cameraTransform;
+
+    private void Awake()
     {
-        if(Time.time >= nextAttackTime)
-        {
-            if(Input.GetButton("Fire1"))
-            {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
-        }
+        animationHandler = GetComponent<AnimationHandler>();
+        weaponSlotManager = GetComponent<WeaponSlotManager>();
+        playerInput = GetComponentInParent<PlayerInput>();
+        cameraTransform = Camera.main.transform;
+        inputHandler = GetComponentInParent<InputHandler>();
+        aimAction = playerInput.actions["Aim"];
+        castAction = playerInput.actions["Spell Cast"];
+
     }
 
-    void Attack()
+    private void OnEnable()
     {
-        //play an attack animation
-        //animator.SetTrigger("Attack")
+                castAction.performed += _ => Cast();
+        
+    }
+    private void OnDisable()
+    {
+            castAction.performed -= _ => Cast();
+    }
+    private void FixedUpdate()
+    {
 
-        //Detect enemies in range of attack
-        Collider[] hitEnemies = Physics.OverlapSphere(AttackPoint.position, attackRange, EnemiesLayer);
+    }
 
-        //Damage them
-        foreach (Collider enemy in hitEnemies)
+    private void Cast()
+    {
+        Debug.Log("I am trying to cast");
+        Ray ray = cam.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+            destination = hit.point;
+        else
+            destination = ray.GetPoint(1000);
+
+        if (aimAction.IsPressed())
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            var fireball = Instantiate(spellPrefab, castPoint.position, Quaternion.identity) as GameObject;
+            Fireball fireballController = spellPrefab.GetComponent<Fireball>();
+            fireball.GetComponent<Rigidbody>().velocity = (destination - castPoint.position).normalized * fireball.GetComponent<Fireball>().speed;
+        
         }
     }
-    void onDrawGizmosSelected()
-    {
-        if(AttackPoint == null)
-        {
-            return;
-        }
-        Gizmos.DrawWireSphere(AttackPoint.position, attackRange);
-    }
+    //public string lastAttack;
 }

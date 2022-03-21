@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Spell : MagicSystem
 {
-    private BasicObjectInformation objectInfo;
+   /* private BasicObjectInformation objectInfo;
     private List<SpellBehaviors> behaviors;
     private bool requiresTarget;
     private bool canCastOnSelf;
@@ -43,11 +43,10 @@ public class Spell : MagicSystem
         canCastOnSelf = false;
     }
 
-    public Spell(BasicObjectInformation aBasicInfo, List<SpellBehaviors> abehaviors, bool arequireTarget, float acooldown, GameObject aSpellPrefab)
+    public Spell(BasicObjectInformation aBasicInfo, bool arequireTarget, float acooldown, GameObject aSpellPrefab)
     {
         objectInfo = aBasicInfo;
         behaviors = new List<SpellBehaviors>();
-        behaviors = abehaviors;
         cooldown = acooldown;
         requiresTarget = arequireTarget;
         canCastOnSelf = false;
@@ -73,7 +72,7 @@ public class Spell : MagicSystem
     public void UseSpell()
     {
 
-    }
+    }*/
 
 
 }
