@@ -18,6 +18,8 @@ public class InputHandler : MonoBehaviour
     public bool rollflag;
     public bool jumpflag;
     public bool comboflag;
+    public bool rbflag;
+    public bool rtflag;
  
 
 
@@ -120,6 +122,7 @@ public class InputHandler : MonoBehaviour
     private void HandleAttackInput()
     {
 
+        
 
         if (rb_Input)
         {
@@ -128,16 +131,8 @@ public class InputHandler : MonoBehaviour
          
         if (rt_Input)
         {
-            if (playerManager.canDoCombo)
-            {
-                comboflag = true;
-                playerAttack.HeavyHandleWeaponCombo(playerInventory.rightWeapon);
-                comboflag = false;
-            }
-            else
-            {
-                playerAttack.HandleHeavyAttack(playerInventory.rightWeapon);
-            }
+            playerAttack.HandleRTAction();
+            
         }
 
 

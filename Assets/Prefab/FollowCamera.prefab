@@ -66,8 +66,8 @@ MonoBehaviour:
   m_YDamping: 1
   m_ZDamping: 2
   m_TargetMovementOnly: 1
-  m_ScreenX: 0.34999996
-  m_ScreenY: 0.71
+  m_ScreenX: 0.276
+  m_ScreenY: 0.898
   m_CameraDistance: 5.64
   m_DeadZoneWidth: 0.041
   m_DeadZoneHeight: 0.077
@@ -111,8 +111,8 @@ MonoBehaviour:
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -70
-    m_MaxValue: 70
+    m_MinValue: -50
+    m_MaxValue: 50
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0

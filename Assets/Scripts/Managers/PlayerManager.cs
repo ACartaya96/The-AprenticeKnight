@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     public bool isInAir;
     public bool isGrounded;
     public bool canDoCombo;
+    public bool isFiringSpell;
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class PlayerManager : MonoBehaviour
        
         isInteracting = anim.GetBool("isInteracting");
         canDoCombo = anim.GetBool("canDoCombo");
+        isFiringSpell = anim.GetBool("isFiringSpell");
         anim.SetBool("isInAir", isInAir);
         inputHandler.TickInput();
         playerController.HandleJumping();
@@ -51,6 +54,8 @@ public class PlayerManager : MonoBehaviour
         inputHandler.rb_Input = false;
         inputHandler.rt_Input = false;
         inputHandler.rj_Input = false;
+        inputHandler.rbflag = false;
+        inputHandler.rtflag = false;
         
         if(isInAir)
         {

@@ -8,6 +8,9 @@ public class WeaponItem : Item
     public GameObject modelPrefab;
     public bool isUnarmed;
 
+    [Header("Cast Point")]
+    
+
     [Header("One Hand Attack Melee Animations")]
     public string OH_Light_Attack_1;
     public string OH_Light_Attack_2;

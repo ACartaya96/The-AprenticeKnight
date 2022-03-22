@@ -6,6 +6,7 @@ public class DamageCollider : MonoBehaviour
 {
     Collider damageCollider;
     [SerializeField] WeaponItem weaponItem;
+    [SerializeField] ProjectileSpell projectileSpell;
     private void Awake()
     {
         damageCollider = GetComponent<Collider>();
@@ -28,7 +29,10 @@ public class DamageCollider : MonoBehaviour
         IDamage damageable = other.GetComponent<IDamage>();
         if(damageable != null)
         {
-            damageable.TakeDamage(weaponItem.meleeDamage);
+            if(weaponItem !=null)
+                damageable.TakeDamage(weaponItem.meleeDamage);
+            else if(projectileSpell != null)
+                damageable.TakeDamage(projectileSpell.baseDamage);
         }
     }
 }

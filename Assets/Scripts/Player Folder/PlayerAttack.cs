@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     AnimationHandler animationHandler;
     InputHandler inputHandler;
     PlayerManager playerManager;
+    WeaponSlotManager weaponSlotManager;
     PlayerStats playerStats;
     PlayerInventory playerInventory;
     public string lastAttack;
@@ -20,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
         playerManager = GetComponentInParent<PlayerManager>();
         playerStats = GetComponentInParent<PlayerStats>();
         playerInventory = GetComponentInParent<PlayerInventory>();
+        weaponSlotManager = GetComponentInParent<WeaponSlotManager>();
         inputHandler = GetComponentInParent<InputHandler>();
 
     }
@@ -74,6 +76,23 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void HandleRTAction()
+    {
+        if (playerManager.canDoCombo)
+        {
+
+            inputHandler.comboflag = true;
+            HeavyHandleWeaponCombo(playerInventory.rightWeapon);
+            inputHandler.comboflag = false;
+        }
+        else
+        {
+            if (animationHandler.anim.GetBool("isInteracting"))
+                return;
+            HandleHeavyAttack(playerInventory.rightWeapon);
+        }
+    }
+
     private void PerformRBMeleeAction()
     {
         if (playerManager.canDoCombo)
@@ -84,6 +103,9 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
+            if (animationHandler.anim.GetBool("isInteracting"))
+                return;
+
             HandleLightAttack(playerInventory.rightWeapon);
         }
     }
@@ -95,13 +117,15 @@ public class PlayerAttack : MonoBehaviour
             if (playerStats.currentMana < playerInventory.currentSpell.cost)
                 animationHandler.PlayTargetAnimation("Out Of Mana", true);
             else
-                playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats);
+                playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager);
         }
     }
 
     private void SuccessfullyCastSpell()
     {
-        playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats);
+        playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager);
+        animationHandler.anim.SetBool("isFiringSpell", true);
+        
     }
     #endregion
 }

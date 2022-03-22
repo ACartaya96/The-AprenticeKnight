@@ -9,6 +9,8 @@ public class SpellItem : Item
     public GameObject spellCastFx;
     public string spellAnimation;
 
+   
+
     [Header("Mana Cost")]
     public float cost;
 
@@ -24,12 +26,12 @@ public class SpellItem : Item
     [TextArea]
     public string spellDescription;
 
-    public virtual void AttemptToCastSpell(AnimationHandler animationHandler, PlayerStats playerStats)
+    public virtual void AttemptToCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot)
     {
         Debug.Log("You attemp to cast a spell!");
     }
 
-    public virtual void SuccessfullyCastSpell(AnimationHandler animationHandler,PlayerStats playerStats)
+    public virtual void SuccessfullyCastSpell(AnimationHandler animationHandler,PlayerStats playerStats, WeaponSlotManager weaponSlot)
     {
         Debug.Log("You successfully cast a spell!");
     }
