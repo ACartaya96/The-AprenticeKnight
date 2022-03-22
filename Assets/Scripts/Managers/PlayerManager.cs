@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     public bool isGrounded;
     public bool canDoCombo;
     public bool isFiringSpell;
+    public bool isInvincible;
  
 
     // Start is called before the first frame update

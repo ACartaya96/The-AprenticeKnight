@@ -17,10 +17,14 @@ public class ProjectileSpell : SpellItem
     public float projectileMass = 1;
 
     Rigidbody rb;
-    PlayerController playerController;
+   
     Camera cam;
+
+
+ 
     private void OnEnable()
     {
+       
         cam = Camera.main;
     }
     
@@ -35,14 +39,21 @@ public class ProjectileSpell : SpellItem
     public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot)
     {
         GameObject instantiateSpellFX = Instantiate(spellCastFx, weaponSlot.transform);
+        Debug.Log(instantiateSpellFX.transform.position.ToString());
         //spelldamageCollider
         Vector3 aimSpot = cam.transform.position;
         aimSpot += cam.transform.forward * 50.0f;
         instantiateSpellFX.transform.LookAt(aimSpot);
-        rb.AddForce(instantiateSpellFX.transform.forward * projectileForwardVelocity);
-        rb.AddForce(instantiateSpellFX.transform.up * projectileUpwardVelocity);
+
+     
+        instantiateSpellFX.GetComponent<Rigidbody>().AddForce(instantiateSpellFX.transform.forward * projectileForwardVelocity);
+        instantiateSpellFX.GetComponent<Rigidbody>().AddForce(instantiateSpellFX.transform.up * projectileUpwardVelocity);
+        Debug.Log(instantiateSpellFX.transform.position.ToString());
         rb.useGravity = isEffecteByGravity;
         rb.mass = projectileMass;
         instantiateSpellFX.transform.parent = null;
+
+
+        playerStats.UseMana(cost);
     }
 }

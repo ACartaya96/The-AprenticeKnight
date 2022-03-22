@@ -13,12 +13,14 @@ public class PlayerStats : MonoBehaviour, IDamage
 
     public HealthBar healthBar;
     public ManaBar manaBar;
+    PlayerManager playerManager;
     AnimationHandler animationHandler;
     public PlayerController playerController;
 
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
+        playerManager = GetComponent<PlayerManager>();
         animationHandler = GetComponentInChildren<AnimationHandler>();
         maxHealth = SetMaxHealthFromHealthLevel();
         maxMana = SetMaxManafromManaLevel();
@@ -41,11 +43,13 @@ public class PlayerStats : MonoBehaviour, IDamage
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        healthBar.SetCurrentHealth(currentHealth);
-        playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
-        //animationHandler.PlayTargetAnimation("Damage", true);
-
+        if (playerManager.isInvincible)
+        {
+            currentHealth -= damage;
+            healthBar.SetCurrentHealth(currentHealth);
+            playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
+            //animationHandler.PlayTargetAnimation("Damage", true);
+        }
         if(currentHealth <= 0)
         {
             currentHealth = 0;

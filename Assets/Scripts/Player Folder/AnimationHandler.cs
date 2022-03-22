@@ -102,6 +102,16 @@ public class AnimationHandler : MonoBehaviour
     {
         anim.SetBool("canDoCombo", false);
     }
+
+    public void EnableIvincibility()
+    {
+        playerManager.isInvincible = true;
+    }
+
+    public void DisableInvicibility()
+    {
+        playerManager.isInvincible = false;
+    }
     private void OnAnimatorMove()
     {
         if (playerManager.isInteracting == false)
