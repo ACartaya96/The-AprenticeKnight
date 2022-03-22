@@ -277,40 +277,43 @@ public class PlayerController : MonoBehaviour
         targetPosition = myTransform.position;
 
         Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededTobeginFall, Color.red, 0.1f, false);
-        if(Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededTobeginFall, ignoreforGrounCheck))
-        {
+        if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededTobeginFall, ignoreforGrounCheck))
+        { 
             normalVector = hit.normal;
             Vector3 tp = hit.point;
             playerManager.isGrounded = true;
             targetPosition.y = tp.y;
 
-            if(playerManager.isInAir)
+            
+
+            if (playerManager.isInAir)
             {
-                if(InAirTimer > 0.5f)
+                if (InAirTimer > 0.5f)
                 {
-                   animationHandler.PlayTargetAnimation("Land", true);
+                    animationHandler.PlayTargetAnimation("Land", true);
                 }
                 else
                 {
                     animationHandler.PlayTargetAnimation("Empty", false);
+                    InAirTimer = 0;
                 }
 
                 playerManager.isInAir = false;
-                InAirTimer = 0;
+                
             }
         }
         else
         {
-            if(playerManager.isGrounded)
+            if (playerManager.isGrounded)
             {
                 playerManager.isGrounded = false;
             }
 
-            if(playerManager.isInAir == false)
+            if (playerManager.isInAir == false)
             {
-                if(!playerManager.isInteracting)
+                if (playerManager.isInteracting == false)
                 {
-                   animationHandler.PlayTargetAnimation("Falling", true);
+                    animationHandler.PlayTargetAnimation("Falling", true);
                 }
 
                 Vector3 vel = rb.velocity;
@@ -319,8 +322,8 @@ public class PlayerController : MonoBehaviour
                 playerManager.isInAir = true;
             }
 
-           
-                if(playerManager.isInteracting || inputHandler.moveAmount > 0)
+        }  
+                if(playerManager.isInteracting || inputHandler.moveAmount > -1)
                 {
                     myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime/0.1f);
                 }
@@ -328,7 +331,7 @@ public class PlayerController : MonoBehaviour
                 {
                     myTransform.position = targetPosition;
                 }
-            }
+         
     }
 
     /*public void DoJump()

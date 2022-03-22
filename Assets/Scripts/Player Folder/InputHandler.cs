@@ -14,9 +14,11 @@ public class InputHandler : MonoBehaviour
     public bool a_Input;
     public bool rb_Input;
     public bool rt_Input;
+    public bool rj_Input;
     public bool rollflag;
     public bool jumpflag;
     public bool comboflag;
+ 
 
 
     PlayerInput playerInput;
@@ -56,6 +58,7 @@ public class InputHandler : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         castAction = playerInput.actions["Spell Cast"];
         rollAction = playerInput.actions["Roll"];
+        aimAction = playerInput.actions["Aim"];
         lightAtkAction = playerInput.actions["Light Attack"];
     }
     private void OnEnable()
@@ -67,6 +70,8 @@ public class InputHandler : MonoBehaviour
         jumpAction.started += _ => a_Input = true;
         lightAtkAction.started += _ => rb_Input = true;
         castAction.started += _ => rt_Input = true;
+        aimAction.started += _ => rj_Input = true;
+        
         //lightAtkAction.canceled += _ => rb_Input = false;
         //castAction.performed += _ => rt_Input = true;
         //castAction.canceled += _ => rt_Input = false;
@@ -83,13 +88,13 @@ public class InputHandler : MonoBehaviour
         jumpAction.started -= _ => a_Input = true;
         lightAtkAction.started -= _ => rb_Input = true;
         castAction.started -= _ => rt_Input = true;
+        aimAction.started -= _ => rj_Input = true;
     }
 
     public void TickInput()
     {
         MoveInput();
         HandleRollinput();
-        HandleJumpInput();
         HandleAttackInput();
     }
 
@@ -111,10 +116,6 @@ public class InputHandler : MonoBehaviour
   
     }
 
-    private void HandleJumpInput()
-    {
-        
-    }
 
     private void HandleAttackInput()
     {

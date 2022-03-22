@@ -12,7 +12,7 @@ public class EnemyChaseState : EnemyBaseState
         player = GameObject.FindGameObjectWithTag("Player");
         fov = enemy.GetComponent<FieldofView>();
         navMeshAgent = enemy.GetComponent<NavMeshAgent>();
-        enemy.animator.SetBool("CanSeePlayer", true);
+        //enemy.animator.SetBool("CanSeePlayer", true);
     }
     public override void UpdateState(EnemyControlSystem enemy)
     {

@@ -31,18 +31,16 @@ public class PlayerManager : MonoBehaviour
         isInteracting = anim.GetBool("isInteracting");
         canDoCombo = anim.GetBool("canDoCombo");
         anim.SetBool("isInAir", isInAir);
-
         inputHandler.TickInput();
-        playerController.HandleMovement();
-        playerController.HandleRollingandSprinting();
-        playerController.HandleFalling(playerController.moveDirection);
         playerController.HandleJumping();
+        playerController.HandleRollingandSprinting();
+
     }
 
     private void FixedUpdate()
     {
-              
-        
+        playerController.HandleMovement();
+        playerController.HandleFalling(playerController.moveDirection);
     }
 
     private void LateUpdate()
@@ -52,6 +50,7 @@ public class PlayerManager : MonoBehaviour
         inputHandler.a_Input = false;
         inputHandler.rb_Input = false;
         inputHandler.rt_Input = false;
+        inputHandler.rj_Input = false;
         
         if(isInAir)
         {
