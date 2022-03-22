@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bb72348ef06b7438271ec3a6084540, type: 3}
+  m_Name: Staff
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Xander's Staff
+  modelPrefab: {fileID: 4184256260896462084, guid: 35429db8427fc47419676f406b07d86c, type: 3}
+  isUnarmed: 0
+  OH_Light_Attack_1: OH_Light_Attack_01
+  OH_Heavy_Attack_1: OH_Heavy_Attack_01
+  meleeDamage: 20
