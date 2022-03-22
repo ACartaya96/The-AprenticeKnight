@@ -9,7 +9,6 @@ public class DamageCollider : MonoBehaviour
     private void Awake()
     {
         damageCollider = GetComponent<Collider>();
-        weaponItem = GetComponent<WeaponItem>();
         damageCollider.gameObject.SetActive(true);
         damageCollider.isTrigger = true;
         damageCollider.enabled = false;

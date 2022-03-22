@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673156233}
-  m_LocalRotation: {x: -0.738326, y: -0.65525436, z: -0.063691154, w: 0.14649199}
-  m_LocalPosition: {x: -0.0016, y: -0.0009, z: 0.0012}
-  m_LocalScale: {x: 15.813995, y: 15.813995, z: 15.813995}
+  m_LocalRotation: {x: 0.12675147, y: -0.11683865, z: 0.97613, w: 0.13211003}
+  m_LocalPosition: {x: -0.00098, y: -0.00349, z: 0.00107}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 580082746529878129}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -195.164, y: 192.967, z: -13.682007}
 --- !u!1 &6484437163773127881
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,9 +73,10 @@ GameObject:
   - component: {fileID: 6484437164508098209}
   - component: {fileID: 3450393495883008552}
   - component: {fileID: 8546372329055698785}
-  - component: {fileID: 6484437164508098212}
   - component: {fileID: 4956094458106564611}
   - component: {fileID: 863827251150413355}
+  - component: {fileID: 6484437164508098212}
+  - component: {fileID: 1075866346}
   m_Layer: 3
   m_Name: Player 2
   m_TagString: Player
@@ -119,8 +120,11 @@ MonoBehaviour:
   mouseY: 0
   b_Input: 0
   a_Input: 0
+  rb_Input: 0
+  rt_Input: 0
   rollflag: 0
   jumpflag: 0
+  comboflag: 0
   moveAction:
     m_Name: Move
     m_Type: 0
@@ -175,6 +179,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  lightAtkAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &6484437164508098209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,17 +206,16 @@ MonoBehaviour:
   rb: {fileID: 0}
   normalCamera: {fileID: 0}
   groundDetectionRayStartPoint: 0.5
-  minimumDistanceNeededTobeginFall: 1
-  groundDirectionRayDistance: 0.2
+  minimumDistanceNeededTobeginFall: 1.75
+  groundDirectionRayDistance: 0
   ignoreforGrounCheck:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 959
   InAirTimer: 0
   movementSpeed: 5
   rotationSpeed: 5
-  maxHealth: 100
-  fallSpeed: 45
-  jumpHeight: 20
+  fallSpeed: 80
+  jumpHeight: 100
 --- !u!114 &3450393495883008552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +231,7 @@ MonoBehaviour:
   isInteracting: 0
   isInAir: 0
   isGrounded: 0
+  canDoCombo: 0
 --- !u!114 &8546372329055698785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +246,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightWeapon: {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
   leftWeapone: {fileID: 11400000, guid: e926b540e4bdd9942b2d38649c5de9bf, type: 2}
+  currentSpell: {fileID: 11400000, guid: 1077d5d4f3bf12c46bca7c3d2b942bc3, type: 2}
+--- !u!54 &4956094458106564611
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484437164508098202}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &863827251150413355
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484437164508098202}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.29
+  m_Height: 1.8927577
+  m_Direction: 1
+  m_Center: {x: 0.120000005, y: -0.1263789, z: 0}
 --- !u!114 &6484437164508098212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,36 +307,23 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!54 &4956094458106564611
-Rigidbody:
+--- !u!114 &1075866346
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6484437164508098202}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!136 &863827251150413355
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484437164508098202}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.29
-  m_Height: 1.89
-  m_Direction: 1
-  m_Center: {x: 0.14, y: 0.10087335, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da03c52c5600c34cbd26950b5ef45fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  currentMana: 0
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!1 &6484437165453616476
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af6cdae3d91c88143bb5833cebfad635, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.923
+      value: -1.087
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af6cdae3d91c88143bb5833cebfad635, type: 3}
       propertyPath: m_LocalPosition.z
@@ -459,9 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d5177cf2c149e40b399361eb26cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  spellPrefab: {fileID: 2793912979628174686, guid: 863019b0ff0c2064488b63a8e42c7055, type: 3}
-  castPoint: {fileID: 6484437163773127882}
+  lastAttack: 
 --- !u!114 &9159600092017271874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +522,22 @@ MonoBehaviour:
   isRightHandSlot: 0
   currentWeapon: {fileID: 0}
 --- !u!114 &5632637183636941840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619638694391556275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4924c9c79c18340bff3c0cf505f570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 5441780132013832826}
+  isLeftHandSlot: 0
+  isRightHandSlot: 1
+  currentWeapon: {fileID: 0}
+--- !u!114 &1342571372
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

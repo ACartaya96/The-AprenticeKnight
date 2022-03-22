@@ -21,8 +21,7 @@ public class EnemyPatrolState : EnemyBaseState
         fov = enemy.GetComponent<FieldofView>();
         randomSpot = Random.Range(0, enemy.movePoints.Length);
 
-        enemy.animator.SetBool("isSearching", false);
-        enemy.animator.SetBool("CanSeePlayer", false);
+        
 
         countdown = startTime;
     }

@@ -140,12 +140,12 @@ public class PlayerController : MonoBehaviour
         playerManager.isGrounded = true;
     }
 
-    /*private void FixedUpdate()
+    private void Update()
     {
         if (jumpForceApplied)
         {
             StartCoroutine(JumpCo());
-            rb.AddForce(transform.up * jumpHeight);
+            rb.AddForce(moveDirection * movementSpeed + transform.up * jumpHeight);
 
         }
     }
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.35f);
         jumpForceApplied = false;
-    }*/
+    }
 
 
     #region Movement
@@ -161,11 +161,11 @@ public class PlayerController : MonoBehaviour
     Vector3 targetPosition;
     public void HandleMovement()
     {
-        /*if (inputHandler.rollflag)
+        if (inputHandler.rollflag)
             return;
 
         if (playerManager.isInteracting)
-            return;*/
+            return;
 
         moveDirection = cameraObject.forward * inputHandler.vertical;
         moveDirection += cameraObject.right * inputHandler.horizontal;
@@ -206,9 +206,9 @@ public class PlayerController : MonoBehaviour
         myTransform.rotation = targetRotation;
 
     }
-    public void HandleRollingandSprinting()
+    public void HandleRollingandSprinting( )
     {
-        if (animationHandler.anim.GetBool("isInteracting") == true)
+        if (animationHandler.anim.GetBool("isInteracting"))
             return;
 
         if(inputHandler.rollflag)
@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
             if(inputHandler.moveAmount > 0)
             {
                 moveDirection = cameraObject.forward * inputHandler.vertical;
-                moveDirection = cameraObject.right * inputHandler.horizontal;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
                 animationHandler.PlayTargetAnimation("Jump", true);
                 moveDirection.y = 0;
                 Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
         Vector3 origin = myTransform.position;
         origin.y += groundDetectionRayStartPoint;
 
-        if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f)) ;
+        if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f)) 
         {
             moveDirection = Vector3.zero;
         }
@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour
         {
             
                 rb.AddForce(-Vector3.up * fallSpeed);
-                rb.AddForce(moveDirection * fallSpeed / 8f);
+                rb.AddForce(moveDirection * fallSpeed / 10f);
         }
 
         Vector3 dir = moveDirection;
@@ -277,39 +277,43 @@ public class PlayerController : MonoBehaviour
         targetPosition = myTransform.position;
 
         Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededTobeginFall, Color.red, 0.1f, false);
-        if(Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededTobeginFall, ignoreforGrounCheck))
-        {
+        if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededTobeginFall, ignoreforGrounCheck))
+        { 
             normalVector = hit.normal;
             Vector3 tp = hit.point;
             playerManager.isGrounded = true;
             targetPosition.y = tp.y;
 
-            if(playerManager.isInAir)
+            
+
+            if (playerManager.isInAir)
             {
-                if(InAirTimer > 0.5f)
+                if (InAirTimer > 0.5f)
                 {
-                   animationHandler.PlayTargetAnimation("Land", true);
+                    animationHandler.PlayTargetAnimation("Land", true);
                 }
                 else
                 {
                     animationHandler.PlayTargetAnimation("Empty", false);
+                    InAirTimer = 0;
                 }
 
                 playerManager.isInAir = false;
+                
             }
         }
         else
         {
-            if(playerManager.isGrounded)
+            if (playerManager.isGrounded)
             {
                 playerManager.isGrounded = false;
             }
 
-            if(playerManager.isInAir == false)
+            if (playerManager.isInAir == false)
             {
-                if(!playerManager.isInteracting)
+                if (playerManager.isInteracting == false)
                 {
-                   //animationHandler.PlayTargetAnimation("Falling", true);
+                    animationHandler.PlayTargetAnimation("Falling", true);
                 }
 
                 Vector3 vel = rb.velocity;
@@ -318,8 +322,8 @@ public class PlayerController : MonoBehaviour
                 playerManager.isInAir = true;
             }
 
-           
-                if(playerManager.isInteracting || inputHandler.moveAmount > 0)
+        }  
+                if(playerManager.isInteracting || inputHandler.moveAmount > -1)
                 {
                     myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime/0.1f);
                 }
@@ -327,7 +331,7 @@ public class PlayerController : MonoBehaviour
                 {
                     myTransform.position = targetPosition;
                 }
-            }
+         
     }
 
     /*public void DoJump()

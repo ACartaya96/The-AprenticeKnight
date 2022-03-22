@@ -8,37 +8,67 @@ using System;
 
 public class SwitchVCam : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerInput playerInput;
+    public InputHandler inputHandler;
     [SerializeField]
     private int priorityBoostAmount = 10;
+
+    [SerializeField] private float maxLockOnDistance = 30;
 
     [SerializeField] private Image aimReticle;
 
     private CinemachineVirtualCamera virtualCamera;
-    private InputAction aimAction;
+    PlayerManager playerManager;
+
+    bool lockedOn;
 
     private void Awake()
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        aimAction = playerInput.actions["Aim"];
+        lockedOn = true;
+       
         aimReticle.enabled = false;
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        aimAction.performed += _ => StartAim();
-        aimAction.canceled += _ => CancelAim();
+        float shortestDistance = Mathf.Infinity;
+        Collider[] colliders = Physics.OverlapSphere(virtualCamera.Follow.position, 26);
+
+        foreach(Collider collider in colliders)
+        {
+            EnemyControlSystem enemy = collider.GetComponent<EnemyControlSystem>();
+
+            if(enemy != null)
+            {
+                Vector3 lockTargetDirection = enemy.transform.position - virtualCamera.Follow.position;
+                float distanceFromTarget = Vector3.Distance(virtualCamera.Follow.position, enemy.transform.position);
+                float viewableAngle = Vector3.Angle(lockTargetDirection, virtualCamera.transform.forward);
+                if(enemy.transform.root != virtualCamera.Follow.root && viewableAngle > -50 && viewableAngle < 50 
+                    && distanceFromTarget <= maxLockOnDistance)
+                {
+                    virtualCamera.LookAt = enemy.transform;
+                    if (inputHandler.rj_Input)
+                        lockedOn = !lockedOn;
+                    if (lockedOn == false)
+                    {
+                        
+                        StartAim();
+                      
+                    }
+                   else
+                    {
+                        CancelAim();
+                    }
+                    
+                }
+            }
+        }
     }
 
-    private void OnDisable()
-    {
-        aimAction.performed -= _ => StartAim();
-        aimAction.canceled -= _ => CancelAim();
-    }
 
     private void StartAim()
     {
+
         virtualCamera.Priority += priorityBoostAmount;
         aimReticle.enabled = true;
     }

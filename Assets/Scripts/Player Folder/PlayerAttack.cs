@@ -5,84 +5,103 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    /*AnimationHandler animationHandler;
-    WeaponSlotManager weaponSlotManager;
+
+    AnimationHandler animationHandler;
     InputHandler inputHandler;
-    PlayerInput playerInput;
-    InputAction aimAction;
-    InputAction castAction;
-    public Camera cam;
+    PlayerManager playerManager;
+    PlayerStats playerStats;
+    PlayerInventory playerInventory;
+    public string lastAttack;
 
-    [SerializeField]
-    GameObject spellPrefab;
-
-    Vector3 destination;
-    public Transform castPoint;
-    private Transform cameraTransform;
 
     private void Awake()
     {
         animationHandler = GetComponent<AnimationHandler>();
-        weaponSlotManager = GetComponent<WeaponSlotManager>();
-        playerInput = GetComponentInParent<PlayerInput>();
-        cameraTransform = Camera.main.transform;
+        playerManager = GetComponentInParent<PlayerManager>();
+        playerStats = GetComponentInParent<PlayerStats>();
+        playerInventory = GetComponentInParent<PlayerInventory>();
         inputHandler = GetComponentInParent<InputHandler>();
-        aimAction = playerInput.actions["Aim"];
-        castAction = playerInput.actions["Spell Cast"];
 
     }
-
-    private void OnEnable()
+    
+    public void LightHandleWeaponCombo(WeaponItem weapon)
     {
-            castAction.performed += _ => Cast();
-        
-    }
-    private void OnDisable()
-    {
-            castAction.performed -= _ => Cast();
-    }
-    private void FixedUpdate()
-    {
-
-    }
-
-    private void Cast()
-    {
-        Debug.Log("I am trying to cast");
-        Ray ray = cam.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0));
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-            destination = hit.point;
-        else
-            destination = ray.GetPoint(1000);
-
-        if (aimAction.IsPressed())
+        if (inputHandler.comboflag)
         {
-            var fireball = Instantiate(spellPrefab, castPoint.position, Quaternion.identity) as GameObject;
-            Fireball fireballController = spellPrefab.GetComponent<Fireball>();
-            fireball.GetComponent<Rigidbody>().velocity = (destination - castPoint.position).normalized * fireball.GetComponent<Fireball>().speed;
-        
+            animationHandler.anim.SetBool("canDoCombo", false);
+
+            if (lastAttack == weapon.OH_Light_Attack_1)
+            {
+                animationHandler.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+            }
         }
-    }*/
-//public string lastAttack;
+    }
 
-AnimationHandler animationHandler;
-
-
-private void Awake()
-{
-    animationHandler = GetComponent<AnimationHandler>();
-
-}
-public void HandleLightAttack(WeaponItem weapon)
-{
+    public void HeavyHandleWeaponCombo(WeaponItem weapon)
+    {
+        if (inputHandler.comboflag)
+        {
+            animationHandler.anim.SetBool("canDoCombo", false);
+            if (lastAttack == weapon.OH_Heavy_Attack_1)
+            {
+                animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_2, true);
+            }
+        }
+    }
+    public void HandleLightAttack(WeaponItem weapon)
+    {
         animationHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
-}
+        lastAttack = weapon.OH_Light_Attack_1;
+            
+    }
 
-public void HandleHeavyAttack(WeaponItem weapon)
-{
+    public void HandleHeavyAttack(WeaponItem weapon)
+    {
         animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
-}
+        lastAttack = weapon.OH_Heavy_Attack_1;
+    }
 
+    #region Input Actions
+    public void HandleRBAction()
+    {
+        if (playerInventory.rightWeapon.weaponType is WeaponItem.WeaponType.Melee)
+        {
+            PerformRBMeleeAction();
+        }
+        else if (playerInventory.rightWeapon.weaponType is WeaponItem.WeaponType.Spellcasting)
+        {
+            PerformRBSpellAction();
+        }
+    }
+
+    private void PerformRBMeleeAction()
+    {
+        if (playerManager.canDoCombo)
+        {
+            inputHandler.comboflag = true;
+            LightHandleWeaponCombo(playerInventory.rightWeapon);
+            inputHandler.comboflag = false;
+        }
+        else
+        {
+            HandleLightAttack(playerInventory.rightWeapon);
+        }
+    }
+
+    private void PerformRBSpellAction()
+    {
+        if(playerInventory.currentSpell != null)
+        {
+            if (playerStats.currentMana < playerInventory.currentSpell.cost)
+                animationHandler.PlayTargetAnimation("Out Of Mana", true);
+            else
+                playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats);
+        }
+    }
+
+    private void SuccessfullyCastSpell()
+    {
+        playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats);
+    }
+    #endregion
 }

@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     [Space]
     public bool isInAir;
     public bool isGrounded;
+    public bool canDoCombo;
 
     // Start is called before the first frame update
     void Start()
@@ -26,27 +27,30 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         isInteracting = anim.GetBool("isInteracting");
+        canDoCombo = anim.GetBool("canDoCombo");
         anim.SetBool("isInAir", isInAir);
-        
+        inputHandler.TickInput();
+        playerController.HandleJumping();
+        playerController.HandleRollingandSprinting();
+
     }
 
     private void FixedUpdate()
     {
-              
-        inputHandler.TickInput();
         playerController.HandleMovement();
-        playerController.HandleRollingandSprinting();
         playerController.HandleFalling(playerController.moveDirection);
-        playerController.HandleJumping();
     }
 
     private void LateUpdate()
     {
         inputHandler.rollflag = false;
+        inputHandler.b_Input = false;
         inputHandler.a_Input = false;
         inputHandler.rb_Input = false;
         inputHandler.rt_Input = false;
+        inputHandler.rj_Input = false;
         
         if(isInAir)
         {

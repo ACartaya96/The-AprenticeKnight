@@ -8,15 +8,19 @@ public class ManaBar : MonoBehaviour
 
     public Slider slider;
 
-    public void setMaxMana(float Mana)
+    private void Start()
     {
-        slider.maxValue= Mana;
-        slider.value = Mana;
+        slider = GetComponent<Slider>();
+    }
+    public void setMaxMana(float maxMana)
+    {
+        slider.maxValue= maxMana;
+        slider.value = maxMana;
     }
 
-    public void SetMana(float Mana)
+    public void SetCurrentMana(float currentMana)
     {
-        slider.value = Mana;
+        slider.value = currentMana;
     }
     
 }
