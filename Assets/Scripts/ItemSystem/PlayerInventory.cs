@@ -8,6 +8,7 @@ public class PlayerInventory : MonoBehaviour
 
     public WeaponItem rightWeapon;
     public WeaponItem leftWeapone;
+    public SpellItem currentSpell;
 
     private void Awake()
     {

@@ -140,12 +140,12 @@ public class PlayerController : MonoBehaviour
         playerManager.isGrounded = true;
     }
 
-    /*private void FixedUpdate()
+    private void Update()
     {
         if (jumpForceApplied)
         {
             StartCoroutine(JumpCo());
-            rb.AddForce(transform.up * jumpHeight);
+            rb.AddForce(moveDirection * movementSpeed + transform.up * jumpHeight);
 
         }
     }
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.35f);
         jumpForceApplied = false;
-    }*/
+    }
 
 
     #region Movement
@@ -161,11 +161,11 @@ public class PlayerController : MonoBehaviour
     Vector3 targetPosition;
     public void HandleMovement()
     {
-        /*if (inputHandler.rollflag)
+        if (inputHandler.rollflag)
             return;
 
         if (playerManager.isInteracting)
-            return;*/
+            return;
 
         moveDirection = cameraObject.forward * inputHandler.vertical;
         moveDirection += cameraObject.right * inputHandler.horizontal;
@@ -206,9 +206,9 @@ public class PlayerController : MonoBehaviour
         myTransform.rotation = targetRotation;
 
     }
-    public void HandleRollingandSprinting()
+    public void HandleRollingandSprinting( )
     {
-        if (animationHandler.anim.GetBool("isInteracting") == true)
+        if (animationHandler.anim.GetBool("isInteracting"))
             return;
 
         if(inputHandler.rollflag)
@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
             if(inputHandler.moveAmount > 0)
             {
                 moveDirection = cameraObject.forward * inputHandler.vertical;
-                moveDirection = cameraObject.right * inputHandler.horizontal;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
                 animationHandler.PlayTargetAnimation("Jump", true);
                 moveDirection.y = 0;
                 Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
         Vector3 origin = myTransform.position;
         origin.y += groundDetectionRayStartPoint;
 
-        if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f)) ;
+        if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f)) 
         {
             moveDirection = Vector3.zero;
         }
@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour
         {
             
                 rb.AddForce(-Vector3.up * fallSpeed);
-                rb.AddForce(moveDirection * fallSpeed / 8f);
+                rb.AddForce(moveDirection * fallSpeed / 10f);
         }
 
         Vector3 dir = moveDirection;
@@ -296,6 +296,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 playerManager.isInAir = false;
+                InAirTimer = 0;
             }
         }
         else
@@ -309,7 +310,7 @@ public class PlayerController : MonoBehaviour
             {
                 if(!playerManager.isInteracting)
                 {
-                   //animationHandler.PlayTargetAnimation("Falling", true);
+                   animationHandler.PlayTargetAnimation("Falling", true);
                 }
 
                 Vector3 vel = rb.velocity;

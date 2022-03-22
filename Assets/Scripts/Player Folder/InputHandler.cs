@@ -16,11 +16,13 @@ public class InputHandler : MonoBehaviour
     public bool rt_Input;
     public bool rollflag;
     public bool jumpflag;
+    public bool comboflag;
 
 
     PlayerInput playerInput;
     PlayerAttack playerAttack;
     PlayerInventory playerInventory;
+    PlayerManager playerManager;
 
     [HideInInspector]
     public InputAction moveAction;
@@ -47,6 +49,7 @@ public class InputHandler : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerAttack = GetComponentInChildren<PlayerAttack>();
         playerInventory = GetComponent<PlayerInventory>();
+        playerManager = GetComponent<PlayerManager>();
 
         moveAction = playerInput.actions["Movement"];
         lookAction = playerInput.actions["Look"];
@@ -60,9 +63,10 @@ public class InputHandler : MonoBehaviour
 
         moveAction.performed += _ => movementInput = moveAction.ReadValue<Vector2>();
         lookAction.performed += _ => cameraInput = lookAction.ReadValue<Vector2>();
-        //jumpAction.performed += _ => a_Input = true;
-        //jumpAction.canceled += _ => a_Input = false;
-        //lightAtkAction.performed += _ => rb_Input = true;
+        rollAction.started += _ => b_Input = true;
+        jumpAction.started += _ => a_Input = true;
+        lightAtkAction.started += _ => rb_Input = true;
+        castAction.started += _ => rt_Input = true;
         //lightAtkAction.canceled += _ => rb_Input = false;
         //castAction.performed += _ => rt_Input = true;
         //castAction.canceled += _ => rt_Input = false;
@@ -75,13 +79,10 @@ public class InputHandler : MonoBehaviour
     {
         moveAction.performed -= _ => movementInput = moveAction.ReadValue<Vector2>();
         lookAction.performed -= _ => cameraInput = lookAction.ReadValue<Vector2>();
-        //jumpAction.performed -= _ => a_Input = true;
-        //jumpAction.performed -= _ => a_Input = false;
-        //lightAtkAction.performed -= _ => rb_Input = true;
-       // lightAtkAction.canceled -= _ => rb_Input = false;
-        //castAction.performed -= _ => rt_Input = true;
-        //castAction.canceled -= _ => rt_Input = false;
-        //rollAction.performed -= _ => HandleRollinput();
+        rollAction.started -= _ => b_Input = true;
+        jumpAction.started -= _ => a_Input = true;
+        lightAtkAction.started -= _ => rb_Input = true;
+        castAction.started -= _ => rt_Input = true;
     }
 
     public void TickInput()
@@ -104,42 +105,38 @@ public class InputHandler : MonoBehaviour
 
    private void HandleRollinput()
     {
-        if (rollAction.IsPressed())
-            b_Input = true;
-        else
-            b_Input = false;
-
-
+       
         if (b_Input)
             rollflag = true;
+  
     }
 
     private void HandleJumpInput()
     {
-        if (jumpAction.IsPressed())
-            a_Input = true;
-
+        
     }
 
     private void HandleAttackInput()
     {
-        if (lightAtkAction.IsPressed())
-            rb_Input = true;
-        
-        if (castAction.IsPressed())
-            rt_Input = true;
+
 
         if (rb_Input)
         {
-            Debug.Log("Light Attack Pressed");
-            playerAttack.HandleLightAttack(playerInventory.rightWeapon);
-
+            playerAttack.HandleRBAction();
         }
          
         if (rt_Input)
         {
-            Debug.Log("Heavy Attack Pressed");
-            playerAttack.HandleHeavyAttack(playerInventory.rightWeapon);
+            if (playerManager.canDoCombo)
+            {
+                comboflag = true;
+                playerAttack.HeavyHandleWeaponCombo(playerInventory.rightWeapon);
+                comboflag = false;
+            }
+            else
+            {
+                playerAttack.HandleHeavyAttack(playerInventory.rightWeapon);
+            }
         }
 
 

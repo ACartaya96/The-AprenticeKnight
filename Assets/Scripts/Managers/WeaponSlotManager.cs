@@ -39,7 +39,7 @@ public class WeaponSlotManager : MonoBehaviour
             LoadRightWeaponDamageCollider();
         }
     }
-    #region Wepaon's Damage Collider
+    #region Weapon's Damage Collider
     private void LoadLeftWeaponDamageCollider()
     {
         leftDamageCollider = leftHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
@@ -47,7 +47,7 @@ public class WeaponSlotManager : MonoBehaviour
 
     private void LoadRightWeaponDamageCollider()
     {
-        leftDamageCollider = rightHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
+        rightDamageCollider = rightHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
     }
 
     public void OpenRightDamageCollider()
