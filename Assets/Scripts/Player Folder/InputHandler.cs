@@ -10,23 +10,34 @@ public class InputHandler : MonoBehaviour
     public float mouseX;
     public float mouseY;
 
+    [Header("Face Buttons")]
     public bool b_Input;
     public bool a_Input;
+
+    [Header("Trigger & Shoulders")]
     public bool rb_Input;
     public bool rt_Input;
+
+    [Header("Sticks")]
+    public bool right_Stick_Right;
+    public bool right_Stick_Left;
     public bool rj_Input;
+
     public bool rollflag;
     public bool jumpflag;
     public bool comboflag;
+    public bool lockedOnflag;
     public bool rbflag;
     public bool rtflag;
- 
+
+
 
 
     PlayerInput playerInput;
     PlayerAttack playerAttack;
     PlayerInventory playerInventory;
     PlayerManager playerManager;
+    PlayerTargetDetection playerTarget;
 
     [HideInInspector]
     public InputAction moveAction;
@@ -42,18 +53,23 @@ public class InputHandler : MonoBehaviour
     public InputAction rollAction;
     [HideInInspector]
     public InputAction lightAtkAction;
+    [HideInInspector]
+    public InputAction rLockOnAction;
+    [HideInInspector]
+    public InputAction lLockOnAction;
 
 
     Vector2 movementInput;
     Vector2 cameraInput;
 
-
+    #region Instantiate Inputs
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerAttack = GetComponentInChildren<PlayerAttack>();
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
+        playerTarget = GetComponent<PlayerTargetDetection>();
 
         moveAction = playerInput.actions["Movement"];
         lookAction = playerInput.actions["Look"];
@@ -62,6 +78,8 @@ public class InputHandler : MonoBehaviour
         rollAction = playerInput.actions["Roll"];
         aimAction = playerInput.actions["Aim"];
         lightAtkAction = playerInput.actions["Light Attack"];
+        rLockOnAction = playerInput.actions["Lock On Target Right"];
+        lLockOnAction = playerInput.actions["Lock On Target Left"];
     }
     private void OnEnable()
     {
@@ -72,13 +90,11 @@ public class InputHandler : MonoBehaviour
         jumpAction.started += _ => a_Input = true;
         lightAtkAction.started += _ => rb_Input = true;
         castAction.started += _ => rt_Input = true;
-        aimAction.started += _ => rj_Input = true;
+        aimAction.performed += _ => rj_Input = true;
+        lLockOnAction.performed += _ => right_Stick_Left = true;
+        rLockOnAction.performed += _ => right_Stick_Right = true;
         
-        //lightAtkAction.canceled += _ => rb_Input = false;
-        //castAction.performed += _ => rt_Input = true;
-        //castAction.canceled += _ => rt_Input = false;
-
-        //rollAction.performed += _ => HandleRollinput(); 
+   
 
     }
 
@@ -90,16 +106,20 @@ public class InputHandler : MonoBehaviour
         jumpAction.started -= _ => a_Input = true;
         lightAtkAction.started -= _ => rb_Input = true;
         castAction.started -= _ => rt_Input = true;
-        aimAction.started -= _ => rj_Input = true;
-    }
+        aimAction.performed -= _ => rj_Input = true;
+        lLockOnAction.performed -= _ => right_Stick_Left = true;
+        rLockOnAction.performed -= _ => right_Stick_Right = true;
 
+    }
+    #endregion
     public void TickInput()
     {
         MoveInput();
         HandleRollinput();
         HandleAttackInput();
+        HandleLockOnInput();
     }
-
+    #region HandleInputs
     private void MoveInput()
     {
         horizontal = movementInput.x;
@@ -139,5 +159,49 @@ public class InputHandler : MonoBehaviour
 
 
     }
+
+    private void HandleLockOnInput()
+    {
+        if(rj_Input && !lockedOnflag)
+        {
+            rj_Input = false;
+            
+            
+            playerTarget.HandleLockOn();
+            if(playerTarget.nearestLockOnTarget != null)
+            {
+                lockedOnflag = true;
+                playerManager.currentLockedOnTarget = playerTarget.nearestLockOnTarget;
+            }
+        }
+        else if(rj_Input && lockedOnflag)
+        {
+            rj_Input = false;
+            lockedOnflag = false;
+            playerTarget.ClearLockOnTarget();
+        }
+
+        if(lockedOnflag && right_Stick_Left)
+        {
+            right_Stick_Left = false;
+            playerTarget.HandleLockOn();
+            if(playerTarget.leftLockOnTarget != null)
+            {
+                playerManager.currentLockedOnTarget = playerTarget.leftLockOnTarget;
+            }
+        }
+
+
+        if (lockedOnflag && right_Stick_Right)
+        {
+            right_Stick_Right = false;
+            playerTarget.HandleLockOn();
+            if (playerTarget.rightLockOnTarget != null)
+            {
+                playerManager.currentLockedOnTarget = playerTarget.rightLockOnTarget;
+            }
+        }
+    }
+    #endregion
 
 }

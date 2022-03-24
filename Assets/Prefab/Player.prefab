@@ -69,14 +69,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7895330105454119041}
+  - component: {fileID: 1985739175826959414}
   - component: {fileID: 7579415351473070812}
   - component: {fileID: 7895330105454119103}
-  - component: {fileID: 1985739175826959414}
   - component: {fileID: 4825133672401557887}
+  - component: {fileID: 3777536955105053940}
   - component: {fileID: 8118605286248003101}
   - component: {fileID: 4580283511252826165}
   - component: {fileID: 7895330105454119098}
-  - component: {fileID: 3777536955105053940}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -101,6 +101,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985739175826959414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895330105454119044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7443e6737a0ec740886211531b46110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFiringSpell: 0
+  cameraTarget: {fileID: 0}
+  LockedOntarget: {fileID: 0}
+  isInteracting: 0
+  isInAir: 0
+  isGrounded: 0
+  canDoCombo: 0
+  lockedOn: 0
+  isInvincible: 0
 --- !u!114 &7579415351473070812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,24 +238,9 @@ MonoBehaviour:
   InAirTimer: 0
   movementSpeed: 8
   rotationSpeed: 5
+  rollVelocity: 50
   fallSpeed: 800
   jumpHeight: 60
---- !u!114 &1985739175826959414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7895330105454119044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7443e6737a0ec740886211531b46110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteracting: 0
-  isInAir: 0
-  isGrounded: 0
-  canDoCombo: 0
 --- !u!114 &4825133672401557887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +256,23 @@ MonoBehaviour:
   rightWeapon: {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
   leftWeapone: {fileID: 11400000, guid: e926b540e4bdd9942b2d38649c5de9bf, type: 2}
   currentSpell: {fileID: 11400000, guid: f4614df9a627a51409861118a5a1077a, type: 2}
+--- !u!114 &3777536955105053940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895330105454119044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da03c52c5600c34cbd26950b5ef45fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  currentMana: 0
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!54 &8118605286248003101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -310,23 +333,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3777536955105053940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7895330105454119044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da03c52c5600c34cbd26950b5ef45fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  currentMana: 0
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  playerController: {fileID: 0}
 --- !u!1 &7895330106222774999
 GameObject:
   m_ObjectHideFlags: 0

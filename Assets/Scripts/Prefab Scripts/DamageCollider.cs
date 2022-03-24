@@ -26,13 +26,23 @@ public class DamageCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IDamage damageable = other.GetComponent<IDamage>();
-        if(damageable != null)
+        
+        if(other != null)
         {
-            if(weaponItem !=null)
-                damageable.TakeDamage(weaponItem.meleeDamage);
-            else if(projectileSpell != null)
-                damageable.TakeDamage(projectileSpell.baseDamage);
+            IDamage damageable = other.GetComponent<IDamage>();
+            if (weaponItem != null)
+            {
+                if (damageable != null)
+                    damageable.TakeDamage(weaponItem.meleeDamage);
+            }
+            else if (projectileSpell != null)
+            {
+                if (damageable != null)
+                {
+                    damageable.TakeDamage(projectileSpell.baseDamage);
+                }
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -123,7 +123,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void SuccessfullyCastSpell()
     {
-        playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager);
+        playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager);
         animationHandler.anim.SetBool("isFiringSpell", true);
         
     }

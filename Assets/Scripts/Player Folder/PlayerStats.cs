@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour, IDamage
 
     public void TakeDamage(float damage)
     {
-        if (playerManager.isInvincible)
+        if (!playerManager.isInvincible)
         {
             currentHealth -= damage;
             healthBar.SetCurrentHealth(currentHealth);

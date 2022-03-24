@@ -118,6 +118,8 @@ public class PlayerController : MonoBehaviour
     float movementSpeed = 5;
     [SerializeField]
     float rotationSpeed = 10;
+    [SerializeField]
+    float rollVelocity = 50;
     [Space]
     [SerializeField]
     float fallSpeed = 45f;
@@ -140,18 +142,19 @@ public class PlayerController : MonoBehaviour
         playerManager.isGrounded = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (jumpForceApplied)
         {
             StartCoroutine(JumpCo());
-            rb.AddForce(moveDirection * movementSpeed + transform.up * jumpHeight);
+            rb.AddForce(myTransform.up * jumpHeight);
+            rb.AddForce(myTransform.forward * jumpHeight * 2);
 
         }
     }
     private IEnumerator JumpCo()
     {
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(1f);
         jumpForceApplied = false;
     }
 
@@ -191,20 +194,36 @@ public class PlayerController : MonoBehaviour
         Vector3 targetDir = Vector3.zero;
         float moveOverride = inputHandler.moveAmount;
 
-        targetDir = cameraObject.forward * inputHandler.vertical;
-        targetDir += cameraObject.right * inputHandler.horizontal;
+        if(inputHandler.lockedOnflag == false)
+        {
+            targetDir = cameraObject.forward * inputHandler.vertical;
+            targetDir += cameraObject.right * inputHandler.horizontal;
 
-        targetDir.Normalize();
-        targetDir.y = 0;
+            targetDir.Normalize();
+            targetDir.y = 0;
 
-        if (targetDir == Vector3.zero)
-            targetDir = myTransform.forward;
 
-        Quaternion tr = Quaternion.LookRotation(targetDir);
-        Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * Time.deltaTime);
+            if (targetDir == Vector3.zero)
+                targetDir = myTransform.forward;
 
-        myTransform.rotation = targetRotation;
+            Quaternion tr = Quaternion.LookRotation(targetDir);
+            Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * Time.deltaTime);
 
+            myTransform.rotation = targetRotation;
+
+        }
+        else
+        {
+            float velocity = 0;
+
+            targetDir = playerManager.currentLockedOnTarget.position - myTransform.position;
+            targetDir.Normalize();
+            targetDir.y = 0;
+            myTransform.rotation = Quaternion.LookRotation(targetDir);
+    
+        }
+       
+          
     }
     public void HandleRollingandSprinting( )
     {
@@ -215,24 +234,29 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection = cameraObject.forward * inputHandler.vertical;
             moveDirection += cameraObject.right * inputHandler.horizontal;
-
-            if(inputHandler.moveAmount > 0)
+            rb.AddForce(moveDirection * rollVelocity * Time.deltaTime, ForceMode.Impulse);
+            if (inputHandler.moveAmount > 0)
             {
                 animationHandler.PlayTargetAnimation("Rolling", true);
                 moveDirection.y = 0;
                 Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                 myTransform.rotation = rollRotation;
+                
             }
            /* else 
             {
                 animationHandler.PlayTargetAnimation("Backstep", true);
             }*/
+
         }
     }
 
     public void HandleJumping()
     {
         if (animationHandler.anim.GetBool("isInteracting"))
+            return;
+
+        if (animationHandler.anim.GetBool("isInAir"))
             return;
 
         if (inputHandler.a_Input)
