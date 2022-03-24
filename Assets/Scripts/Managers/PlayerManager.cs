@@ -11,8 +11,7 @@ public class PlayerManager : CharacterManager
 
     [Header("References")]
     public Transform cameraTarget;
-    [HideInInspector]
-    public Transform currentLockedOnTarget;
+    
 
     [Header("Player Flags")]
     public bool isInteracting;
@@ -49,17 +48,29 @@ public class PlayerManager : CharacterManager
         playerController.HandleRollingandSprinting();
         playerController.HandleJumping();
 
+        if (isInteracting && inputHandler.lockedOnflag)
+        {
+            SwitchVCam.instance.vcam.m_RecenterToTargetHeading.m_enabled = false; 
+        }
+        else
+        {
+            SwitchVCam.instance.vcam.m_RecenterToTargetHeading.m_enabled = true;
+
+        }
+
     }
 
     private void FixedUpdate()
     {
         playerController.HandleMovement();
         playerController.HandleFalling(playerController.moveDirection);
-        
     }
 
     private void LateUpdate()
     {
+
+        
+
         inputHandler.rollflag = false;
         inputHandler.b_Input = false;
         inputHandler.a_Input = false;
@@ -68,7 +79,7 @@ public class PlayerManager : CharacterManager
         inputHandler.rbflag = false;
         inputHandler.rtflag = false;
         
-        if(currentLockedOnTarget == null)
+        if(playerTarget.currentLockedOnTarget == null)
         {
             inputHandler.lockedOnflag = false;
         }
@@ -78,5 +89,10 @@ public class PlayerManager : CharacterManager
             playerController.InAirTimer = playerController.InAirTimer + Time.deltaTime;
         }
 
+
+        
+
+
     }
+
 }

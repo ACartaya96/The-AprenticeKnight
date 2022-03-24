@@ -38,6 +38,7 @@ public class InputHandler : MonoBehaviour
     PlayerInventory playerInventory;
     PlayerManager playerManager;
     PlayerTargetDetection playerTarget;
+    PlayerController playerController;
 
     [HideInInspector]
     public InputAction moveAction;
@@ -70,6 +71,7 @@ public class InputHandler : MonoBehaviour
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
         playerTarget = GetComponent<PlayerTargetDetection>();
+        playerController = GetComponent<PlayerController>();
 
         moveAction = playerInput.actions["Movement"];
         lookAction = playerInput.actions["Look"];
@@ -114,13 +116,13 @@ public class InputHandler : MonoBehaviour
     #endregion
     public void TickInput()
     {
-        MoveInput();
+        HandleMoveInput();
         HandleRollinput();
         HandleAttackInput();
         HandleLockOnInput();
     }
     #region HandleInputs
-    private void MoveInput()
+    private void HandleMoveInput()
     {
         horizontal = movementInput.x;
         vertical = movementInput.y;
@@ -146,11 +148,15 @@ public class InputHandler : MonoBehaviour
 
         if (rb_Input)
         {
+            if(lockedOnflag)
+                playerController.HandleRotation();
             playerAttack.HandleRBAction();
         }
          
         if (rt_Input)
         {
+            if (lockedOnflag)
+                playerController.HandleRotation();
             playerAttack.HandleRTAction();
             
         }
@@ -171,7 +177,7 @@ public class InputHandler : MonoBehaviour
             if(playerTarget.nearestLockOnTarget != null)
             {
                 lockedOnflag = true;
-                playerManager.currentLockedOnTarget = playerTarget.nearestLockOnTarget;
+                playerTarget.currentLockedOnTarget = playerTarget.nearestLockOnTarget;
             }
         }
         else if(rj_Input && lockedOnflag)
@@ -187,7 +193,7 @@ public class InputHandler : MonoBehaviour
             playerTarget.HandleLockOn();
             if(playerTarget.leftLockOnTarget != null)
             {
-                playerManager.currentLockedOnTarget = playerTarget.leftLockOnTarget;
+                playerTarget.currentLockedOnTarget = playerTarget.leftLockOnTarget;
             }
         }
 
@@ -198,7 +204,8 @@ public class InputHandler : MonoBehaviour
             playerTarget.HandleLockOn();
             if (playerTarget.rightLockOnTarget != null)
             {
-                playerManager.currentLockedOnTarget = playerTarget.rightLockOnTarget;
+                playerTarget.currentLockedOnTarget = playerTarget.rightLockOnTarget;
+                
             }
         }
     }

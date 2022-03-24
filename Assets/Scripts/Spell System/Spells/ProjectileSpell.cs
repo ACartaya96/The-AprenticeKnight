@@ -37,7 +37,8 @@ public class ProjectileSpell : SpellItem
         animationHandler.PlayTargetAnimation(spellAnimation, true);
     }
 
-    public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot,PlayerManager playerManager)
+    public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot,
+        PlayerManager playerManager, PlayerTargetDetection playerTarget)
     {
         GameObject instantiateSpellFX = Instantiate(spellCastFx, weaponSlot.rightHandSlot.transform.position, weaponSlot.rightHandSlot.transform.rotation);
         Destroy(instantiateSpellFX, 8f);
@@ -52,14 +53,22 @@ public class ProjectileSpell : SpellItem
         DamageCollider damageCollider = instantiateSpellFX.GetComponent<DamageCollider>();
         damageCollider.EnableDamageCollider();
 
-       
-        Vector3 aimSpot = cam.transform.position;
-        aimSpot += cam.transform.forward * 50;
-        instantiateSpellFX.transform.LookAt(aimSpot);
+      
+           Vector3 aimSpot = cam.transform.position;
+           aimSpot += cam.transform.forward * 50;
+           instantiateSpellFX.transform.LookAt(aimSpot);
+        
+            
        
 
         rb.AddForce(instantiateSpellFX.transform.forward * projectileForwardVelocity );
         rb.AddForce(instantiateSpellFX.transform.up * projectileUpwardVelocity);
+
+        if(playerTarget.currentLockedOnTarget != null)
+        {
+            instantiateSpellFX.transform.position = Vector3.MoveTowards(instantiateSpellFX.transform.position, playerTarget.currentLockedOnTarget.transform.position, projectileForwardVelocity * Time.deltaTime);
+            
+        }
        
         
         Debug.Log(instantiateSpellFX.transform.position.ToString());

@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     WeaponSlotManager weaponSlotManager;
     PlayerStats playerStats;
     PlayerInventory playerInventory;
+    PlayerTargetDetection playerTarget;
     public string lastAttack;
 
 
@@ -21,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
         playerManager = GetComponentInParent<PlayerManager>();
         playerStats = GetComponentInParent<PlayerStats>();
         playerInventory = GetComponentInParent<PlayerInventory>();
+        playerTarget = GetComponentInParent<PlayerTargetDetection>();
         weaponSlotManager = GetComponentInParent<WeaponSlotManager>();
         inputHandler = GetComponentInParent<InputHandler>();
 
@@ -123,7 +125,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void SuccessfullyCastSpell()
     {
-        playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager);
+        playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget);
         animationHandler.anim.SetBool("isFiringSpell", true);
         
     }

@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
     Transform cameraObject;
     InputHandler inputHandler;
     PlayerManager playerManager;
+    PlayerTargetDetection playerTarget;
     public Vector3 moveDirection;
 
     [HideInInspector]
@@ -127,8 +128,13 @@ public class PlayerController : MonoBehaviour
     float jumpUpwardVelocity = 50;
     [SerializeField]
     float jumpForwardVelocity = 50;
+    [SerializeField]
+    float rollUpwardVelocity = 50;
+    [SerializeField]
+    float rollForwardVelocity = 50;
 
-    bool jumpForceApplied;
+    public bool jumpForceApplied;
+    public bool rollForceApplied;
   
     void Start()
     {
@@ -136,6 +142,7 @@ public class PlayerController : MonoBehaviour
         inputHandler = GetComponent<InputHandler>();
         animationHandler = GetComponentInChildren<AnimationHandler>();
         playerManager = GetComponent<PlayerManager>();
+        playerTarget = GetComponent<PlayerTargetDetection>();
         cameraObject = Camera.main.transform;
         myTransform = transform;
         ignoreforGrounCheck = ~ignoreforGrounCheck;
@@ -146,18 +153,32 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if (jumpForceApplied)
         {
             StartCoroutine(JumpCo());
             rb.AddForce(myTransform.up * jumpUpwardVelocity);
             rb.AddForce(myTransform.forward * jumpForwardVelocity);
+        }
+        else if(rollForceApplied)
+        {
+            StartCoroutine(RollCo());
+            rb.AddForce(myTransform.up * rollUpwardVelocity);
+            rb.AddForce(myTransform.forward * rollForwardVelocity);
             
         }
     }
     private IEnumerator JumpCo()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         jumpForceApplied = false;
+        
+    }
+
+    private IEnumerator RollCo()
+    {
+        yield return new WaitForSeconds(0.55f);
+        rollForceApplied = false;
     }
 
 
@@ -184,8 +205,16 @@ public class PlayerController : MonoBehaviour
         Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
         rb.velocity = projectedVelocity;
 
-        animationHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0);
+        if(inputHandler.lockedOnflag)
+        {
+            animationHandler.UpdateAnimatorValues(inputHandler.vertical, inputHandler.horizontal);
+        }
+        else
+        {
+            animationHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0);
+        }
 
+       
         if (animationHandler.canRotate)
         {
             HandleRotation();
@@ -193,11 +222,44 @@ public class PlayerController : MonoBehaviour
     }
     public void HandleRotation()
     {
-        Vector3 targetDir = Vector3.zero;
-        float moveOverride = inputHandler.moveAmount;
-
-        if(inputHandler.lockedOnflag == false)
+       
+        if(inputHandler.lockedOnflag)
         {
+            if(inputHandler.rollflag)
+            {
+
+                Vector3 targetDirection = Vector3.zero;
+                targetDirection = cameraObject.transform.forward * inputHandler.vertical;
+                targetDirection += cameraObject.transform.right * inputHandler.horizontal;
+                targetDirection.y = 0;
+
+                if (targetDirection == Vector3.zero)
+                    targetDirection = transform.forward;
+
+
+                Quaternion tr = Quaternion.LookRotation(targetDirection);
+                Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * Time.deltaTime);
+
+                myTransform.rotation = targetRotation;
+            }
+            else
+            {
+                Vector3 rotationDirection = moveDirection;
+                rotationDirection = playerTarget.currentLockedOnTarget.transform.position - myTransform.position;
+                rotationDirection.y = 0;
+                rotationDirection.Normalize();
+
+                Quaternion tr = Quaternion.LookRotation(rotationDirection);
+                Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * Time.deltaTime);
+
+                myTransform.rotation = targetRotation;
+            }
+        }
+        else
+        {
+            Vector3 targetDir = Vector3.zero;
+            float moveOverride = inputHandler.moveAmount;
+
             targetDir = cameraObject.forward * inputHandler.vertical;
             targetDir += cameraObject.right * inputHandler.horizontal;
 
@@ -214,18 +276,8 @@ public class PlayerController : MonoBehaviour
             myTransform.rotation = targetRotation;
 
         }
-        else
-        {
-            float velocity = 0;
 
-            targetDir = playerManager.currentLockedOnTarget.position - myTransform.position;
-            targetDir.Normalize();
-            targetDir.y = 0;
-            myTransform.rotation = Quaternion.LookRotation(targetDir);
-    
-        }
-       
-          
+
     }
     public void HandleRollingandSprinting( )
     {
@@ -237,13 +289,14 @@ public class PlayerController : MonoBehaviour
             moveDirection = cameraObject.forward * inputHandler.vertical;
             moveDirection += cameraObject.right * inputHandler.horizontal;
             rb.AddForce(moveDirection * rollVelocity * Time.deltaTime, ForceMode.Impulse);
+            rollForceApplied = true;
             if (inputHandler.moveAmount > 0)
             {
                 animationHandler.PlayTargetAnimation("Rolling", true);
                 moveDirection.y = 0;
                 Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                 myTransform.rotation = rollRotation;
-                
+                 
             }
            /* else 
             {

@@ -31,7 +31,8 @@ public class SpellItem : Item
         Debug.Log("You attemp to cast a spell!");
     }
 
-    public virtual void SuccessfullyCastSpell(AnimationHandler animationHandler,PlayerStats playerStats, WeaponSlotManager weaponSlot, PlayerManager playerManager)
+    public virtual void SuccessfullyCastSpell(AnimationHandler animationHandler,PlayerStats playerStats, 
+        WeaponSlotManager weaponSlot, PlayerManager playerManager, PlayerTargetDetection playerTarget)
     {
         Debug.Log("You successfully cast a spell!");
     }

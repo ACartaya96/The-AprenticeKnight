@@ -15,7 +15,7 @@ public class HealingSpell : SpellItem
         Debug.Log("Attempt to Cast Spell");
     }
 
-    public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot, PlayerManager playerManager)
+    public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot, PlayerManager playerManager,PlayerTargetDetection playerTarget)
     {
         GameObject istantiatedSpellFX = Instantiate(spellCastFx, weaponSlot.rightHandSlot.transform.root);
         playerStats.HealPlayer(healAmount);

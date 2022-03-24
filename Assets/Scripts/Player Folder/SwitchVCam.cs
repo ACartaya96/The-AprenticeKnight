@@ -6,31 +6,31 @@ using UnityEngine.UI;
 using Cinemachine;
 using System;
 
-public class SwitchVCam:MonoBehaviour
+public class SwitchVCam : MonoBehaviour
 {
     public static SwitchVCam instance;
 
     [SerializeField]
     private int priorityBoostAmount = 10;
 
-    
+
 
     [SerializeField] private Image aimReticle;
 
-    private CinemachineFreeLook vcam;
- 
+    public CinemachineFreeLook vcam;
+
     private void Awake()
     {
         vcam = GetComponent<CinemachineFreeLook>();
 
-        if(instance != null && instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this);
             return;
         }
 
         instance = this;
-       
+        vcam.m_RecenterToTargetHeading.m_enabled = false;
         aimReticle.enabled = false;
     }
 
@@ -47,4 +47,5 @@ public class SwitchVCam:MonoBehaviour
         vcam.Priority = 9;
         aimReticle.enabled = false;
     }
-}
+
+}   
