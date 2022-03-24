@@ -901,14 +901,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 959
   InAirTimer: 0
-  movementSpeed: 8
-  rotationSpeed: 5
+  movementSpeed: 5
+  rotationSpeed: 20
   rollVelocity: 50
   fallSpeed: 800
   jumpUpwardVelocity: 900
   jumpForwardVelocity: 100
-  rollUpwardVelocity: 50
-  rollForwardVelocity: 200
+  rollUpwardVelocity: 100
+  rollForwardVelocity: 150
+  jumpForceApplied: 0
+  rollForceApplied: 0
 --- !u!114 &4825133672401557887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,19 +1082,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9952529
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.0973223
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1100,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 11.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
