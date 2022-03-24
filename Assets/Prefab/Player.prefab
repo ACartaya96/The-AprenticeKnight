@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7895330104545821506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.522, z: 0}
+  m_LocalPosition: {x: 0, y: 0.985, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7895330105454119041}
@@ -74,9 +74,11 @@ GameObject:
   - component: {fileID: 7895330105454119103}
   - component: {fileID: 4825133672401557887}
   - component: {fileID: 3777536955105053940}
+  - component: {fileID: 4955046931365529689}
   - component: {fileID: 8118605286248003101}
   - component: {fileID: 4580283511252826165}
   - component: {fileID: 7895330105454119098}
+  - component: {fileID: 470054299}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -114,13 +116,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFiringSpell: 0
+  LockOnTransform: {fileID: 7895330104545821507}
   cameraTarget: {fileID: 0}
-  LockedOntarget: {fileID: 0}
+  currentLockedOnTarget: {fileID: 0}
   isInteracting: 0
   isInAir: 0
   isGrounded: 0
   canDoCombo: 0
-  lockedOn: 0
   isInvincible: 0
 --- !u!114 &7579415351473070812
 MonoBehaviour:
@@ -143,10 +145,13 @@ MonoBehaviour:
   a_Input: 0
   rb_Input: 0
   rt_Input: 0
+  right_Stick_Right: 0
+  right_Stick_Left: 0
   rj_Input: 0
   rollflag: 0
   jumpflag: 0
   comboflag: 0
+  lockedOnflag: 0
   rbflag: 0
   rtflag: 0
   moveAction:
@@ -204,6 +209,24 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   lightAtkAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rLockOnAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  lLockOnAction:
     m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
@@ -273,6 +296,23 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   playerController: {fileID: 0}
+--- !u!114 &4955046931365529689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895330105454119044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf1ceafb2e0a284582d897d7e7c1c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLockOnDistance: 30
+  nearestLockOnTarget: {fileID: 0}
+  targetTransform: {fileID: 7895330105454119041}
+  leftLockOnTarget: {fileID: 0}
+  rightLockOnTarget: {fileID: 0}
 --- !u!54 &8118605286248003101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -333,6 +373,23 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &470054299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895330105454119044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf1ceafb2e0a284582d897d7e7c1c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLockOnDistance: 30
+  nearestLockOnTarget: {fileID: 0}
+  targetTransform: {fileID: 7895330105454119041}
+  leftLockOnTarget: {fileID: 0}
+  rightLockOnTarget: {fileID: 0}
 --- !u!1 &7895330106222774999
 GameObject:
   m_ObjectHideFlags: 0

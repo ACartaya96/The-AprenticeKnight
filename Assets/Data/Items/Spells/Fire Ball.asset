@@ -21,7 +21,7 @@ MonoBehaviour:
   type: 1
   spellDescription: A fiery projetile that burns both foe and tree alike;
   baseDamage: 50
-  projectileForwardVelocity: 800
-  projectileUpwardVelocity: 350
+  projectileForwardVelocity: 900
+  projectileUpwardVelocity: 150
   isEffecteByGravity: 1
   projectileMass: 1

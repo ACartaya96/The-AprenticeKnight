@@ -74,20 +74,7 @@ public class PlayerTargetDetection : MonoBehaviour
 
                     availableTargets.Add(character);
                     Debug.Log(availableTargets.ToString());
-                    /*if (inputHandler.rj_Input)
-                        playerManager.lockedOn = !playerManager.lockedOn;
-
-                    if (playerManager.lockedOn == false)
-                    {
-                        playerManager.LockedOntarget = character.transform;
-                        playerManager.cameraTarget = playerManager.LockedOntarget;
-                        SwitchVCam.instance.StartAim();
-                    }
-                    else
-                    {
-                        SwitchVCam.instance.CancelAim();
-                        playerManager.cameraTarget = originalPosition;   
-                    }*/
+            
 
                 }
             }

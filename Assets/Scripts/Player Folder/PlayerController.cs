@@ -124,7 +124,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float fallSpeed = 45f;
     [SerializeField]
-    float jumpHeight = 50;
+    float jumpUpwardVelocity = 50;
+    [SerializeField]
+    float jumpForwardVelocity = 50;
 
     bool jumpForceApplied;
   
@@ -147,14 +149,14 @@ public class PlayerController : MonoBehaviour
         if (jumpForceApplied)
         {
             StartCoroutine(JumpCo());
-            rb.AddForce(myTransform.up * jumpHeight);
-            rb.AddForce(myTransform.forward * jumpHeight * 2);
-
+            rb.AddForce(myTransform.up * jumpUpwardVelocity);
+            rb.AddForce(myTransform.forward * jumpForwardVelocity);
+            
         }
     }
     private IEnumerator JumpCo()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         jumpForceApplied = false;
     }
 
