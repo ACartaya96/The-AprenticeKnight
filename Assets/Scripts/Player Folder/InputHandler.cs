@@ -149,14 +149,19 @@ public class InputHandler : MonoBehaviour
         if (rb_Input)
         {
             if(lockedOnflag)
+            {
                 playerController.HandleRotation();
+            }
+               
             playerAttack.HandleRBAction();
         }
          
         if (rt_Input)
         {
             if (lockedOnflag)
+            {
                 playerController.HandleRotation();
+            }
             playerAttack.HandleRTAction();
             
         }

@@ -116,6 +116,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if(playerInventory.currentSpell != null)
         {
+            if (animationHandler.anim.GetBool("isInteracting"))
+                return;
+
             if (playerStats.currentMana < playerInventory.currentSpell.cost)
                 animationHandler.PlayTargetAnimation("Out Of Mana", true);
             else

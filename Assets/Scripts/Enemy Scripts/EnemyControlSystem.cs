@@ -8,6 +8,8 @@ public class EnemyControlSystem : MonoBehaviour, IDamage
     NavMeshAgent navMeshAgent;
     FieldofView fov;
     BoxCollider box;
+    SpellType damageType;
+
     public Animator animator;
     //public Transform switchPos;
     RigidbodyConstraints rb;
@@ -52,6 +54,7 @@ public class EnemyControlSystem : MonoBehaviour, IDamage
     {
        
         currentHealth -= damage;
+         
 
         Debug.Log("Enemy HP: " + currentHealth.ToString());
         //animator.SetTrigger("Hurt");

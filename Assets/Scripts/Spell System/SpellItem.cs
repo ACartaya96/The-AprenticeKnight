@@ -2,7 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum SpellType
+{
+    Physical,
+    Magical,
+    Fire,
+    Ice,
+    Lightning,
+    Air,
+    Poison,
+    Light,
+    Dark,
+    Blood
+}
 public class SpellItem : Item
 {
     public GameObject spellWarmUpFX;
@@ -16,11 +28,7 @@ public class SpellItem : Item
 
     [Header(("Spell Type"))]
     public SpellType type;
-    public enum SpellType
-    {
-       Melee,
-       Sorcery
-    }
+
 
     [Header("Spell Description")]
     [TextArea]

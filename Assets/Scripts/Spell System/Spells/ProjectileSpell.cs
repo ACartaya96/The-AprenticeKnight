@@ -53,23 +53,36 @@ public class ProjectileSpell : SpellItem
         DamageCollider damageCollider = instantiateSpellFX.GetComponent<DamageCollider>();
         damageCollider.EnableDamageCollider();
 
-      
-           Vector3 aimSpot = cam.transform.position;
-           aimSpot += cam.transform.forward * 50;
-           instantiateSpellFX.transform.LookAt(aimSpot);
-        
+
+
+
+        if (playerTarget.currentLockedOnTarget != null)
+        {
+            Vector3 dir = playerTarget.currentLockedOnTarget.position - instantiateSpellFX.transform.position;
             
-       
+            dir.Normalize();
+
+            Quaternion tr = Quaternion.LookRotation(dir);
+            Quaternion targetRotation = Quaternion.Slerp(instantiateSpellFX.transform.rotation, tr, projectileForwardVelocity * Time.deltaTime);
+            instantiateSpellFX.transform.rotation = targetRotation;
+            instantiateSpellFX.transform.position = Vector3.MoveTowards(instantiateSpellFX.transform.position, playerTarget.currentLockedOnTarget.transform.position, projectileForwardVelocity * Time.deltaTime/5f);
+
+        }
+        else
+        {
+            Vector3 aimSpot = cam.transform.position;
+            aimSpot += cam.transform.forward * 50;
+            instantiateSpellFX.transform.LookAt(aimSpot);
+
+        }
+
+
+
+
 
         rb.AddForce(instantiateSpellFX.transform.forward * projectileForwardVelocity );
         rb.AddForce(instantiateSpellFX.transform.up * projectileUpwardVelocity);
 
-        if(playerTarget.currentLockedOnTarget != null)
-        {
-            instantiateSpellFX.transform.position = Vector3.MoveTowards(instantiateSpellFX.transform.position, playerTarget.currentLockedOnTarget.transform.position, projectileForwardVelocity * Time.deltaTime);
-            
-        }
-       
         
         Debug.Log(instantiateSpellFX.transform.position.ToString());
         rb.useGravity = isEffecteByGravity;
