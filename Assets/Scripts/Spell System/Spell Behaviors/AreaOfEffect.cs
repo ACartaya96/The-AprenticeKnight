@@ -4,60 +4,61 @@ using UnityEngine;
 using System.Diagnostics;
 using Sirenix.OdinInspector;
 
-
-[RequireComponent(typeof(SphereCollider))]
-[CreateAssetMenu(fileName = "AOE", menuName = "Spells/Spell Behaviors/AOE")]
-public class AreaOfEffect : SpellBehaviors
+namespace TAK
 {
-    public string spName = "Area of Effect";
-    public string spDescription = "An area of damage.";
-   
-
-    //private const Sprite icon = Resources.Load();
-    [VerticalGroup("Effect Modifires")]
-    [LabelWidth(75)]
-    [Range(1, 10)]
-    public float areaRadius; //radius of sphere collider
-    [VerticalGroup("Effect Modifires")]
-    [LabelWidth(75)]
-    [Range(1,10)]
-    public float effectDuration; //how long the effect lasts
-    [VerticalGroup("Effect Modifires")]
-    [LabelWidth(75)]
-  
-    public bool isOccupied;
-    public float dotTick;
-    private float tick;
-
-    List<CharacterManager> availableTargets = new List<CharacterManager>();
-    public Stopwatch durationTimer = new Stopwatch();
-    LayerMask obstructionMask;
-
-    
-   
-    public override void PerformSpellBehavior(SpellItem spellBase)
+    [RequireComponent(typeof(SphereCollider))]
+    [CreateAssetMenu(fileName = "AOE", menuName = "Spells/Spell Behaviors/AOE")]
+    public class AreaOfEffect : SpellBehaviors
     {
-        Instantiate(AOECastFx, spellBase.spellLastPos, Quaternion.identity);
-        
-        AoE(spellBase);
-    }
-    private void AoE(SpellItem spellBase)
-    {
-        durationTimer.Start();
+        public string spName = "Area of Effect";
+        public string spDescription = "An area of damage.";
 
-        while (durationTimer.Elapsed.TotalSeconds <= effectDuration)
+
+        //private const Sprite icon = Resources.Load();
+        [VerticalGroup("Effect Modifires")]
+        [LabelWidth(75)]
+        [Range(1, 10)]
+        public float areaRadius; //radius of sphere collider
+        [VerticalGroup("Effect Modifires")]
+        [LabelWidth(75)]
+        [Range(1, 10)]
+        public float effectDuration; //how long the effect lasts
+        [VerticalGroup("Effect Modifires")]
+        [LabelWidth(75)]
+
+        public bool isOccupied;
+        public float dotTick;
+        private float tick;
+
+        List<CharacterManager> availableTargets = new List<CharacterManager>();
+        public Stopwatch durationTimer = new Stopwatch();
+        LayerMask obstructionMask;
+
+
+
+        public override void PerformSpellBehavior(SpellItem spellBase)
         {
-            Collider[] colliders = Physics.OverlapSphere(spellBase.spellLastPos, areaRadius);
+            Instantiate(AOECastFx, spellBase.spellLastPos, Quaternion.identity);
 
-            foreach(Collider collider in colliders)
+            AoE(spellBase);
+        }
+        private void AoE(SpellItem spellBase)
+        {
+            durationTimer.Start();
+
+            while (durationTimer.Elapsed.TotalSeconds <= effectDuration)
             {
+                Collider[] colliders = Physics.OverlapSphere(spellBase.spellLastPos, areaRadius);
+
+                foreach (Collider collider in colliders)
+                {
                     CharacterManager character = collider.GetComponent<CharacterManager>();
 
-                    if(character != null)
+                    if (character != null)
                     {
-                 
+
                         float distanceFromTarget = Vector3.Distance(spellBase.spellLastPos, character.transform.position);
-                    
+
                         RaycastHit hit;
 
                         if (distanceFromTarget <= areaRadius)
@@ -66,7 +67,7 @@ public class AreaOfEffect : SpellBehaviors
                             UnityEngine.Debug.DrawLine(spellBase.spellLastPos, character.LockOnTransform.position);
                             if (Physics.Linecast(spellBase.spellLastPos, character.LockOnTransform.position, out hit, obstructionMask))
                             {
-                            
+
                             }
                             else
                             {
@@ -74,39 +75,40 @@ public class AreaOfEffect : SpellBehaviors
                             }
                         }
                     }
-            }
-
-          
-            SpellEffectType type = spellBase.type;
-
-            if (tick == 0)
-            {
-                foreach (CharacterManager availableTarget in availableTargets)
-                {
-                    switch (type)
-                    {
-                        case SpellEffectType.Damage:
-                            IDamage damageable = availableTarget.GetComponent<IDamage>();
-                            if (damageable != null)
-                            {
-                                damageable.TakeDamage(spellBase.baseValue/2);
-                            }
-                            break;
-                    }
                 }
 
-                tick = dotTick;
-            }
-            else
-            {
-                dotTick -= 1 * Time.deltaTime;
-            }
-          
-        }
-        durationTimer.Reset();
 
-        Destroy(this);
-            
+                SpellEffectType type = spellBase.type;
+
+                if (tick == 0)
+                {
+                    foreach (CharacterManager availableTarget in availableTargets)
+                    {
+                        switch (type)
+                        {
+                            case SpellEffectType.Damage:
+                                IDamage damageable = availableTarget.GetComponent<IDamage>();
+                                if (damageable != null)
+                                {
+                                    damageable.TakeDamage(spellBase.baseValue / 2, "Damage");
+                                }
+                                break;
+                        }
+                    }
+
+                    tick = dotTick;
+                }
+                else
+                {
+                    dotTick -= 1 * Time.deltaTime;
+                }
+
+            }
+            durationTimer.Reset();
+
+            Destroy(this);
+
+        }
     }
 }
 

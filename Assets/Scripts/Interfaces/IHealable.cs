@@ -1,7 +1,11 @@
 
 using UnityEngine;
 
-public interface IHealable
+
+namespace TAK
 {
-   void ApplyHeal();    
+    public interface IHealable
+    {
+        void ApplyHeal();
+    }
 }

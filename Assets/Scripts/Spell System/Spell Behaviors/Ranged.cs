@@ -1,55 +1,57 @@
 using System.Collections;
 using UnityEngine;
 
-
-[CreateAssetMenu(fileName = "Ranged", menuName = "Spells/Spell Behaviors/Ranged")]
-public class Ranged : SpellBehaviors
+namespace TAK
 {
-    private const string spName = "Ranged";
-    private const string spDescription = "A ranged attack.";
-   
-    //private const Sprite icon = Resources.Load();
-
-    private float minDistance;
-    private float maxDistance;
-    private bool isRandomOn;
-    private float lifeTime;
-
-    /*public Ranged(float minDist, float maxDist, bool isRandom) : base( new BasicObjectInformation(spName, spDescription), startTime)
+    [CreateAssetMenu(fileName = "Ranged", menuName = "Spells/Spell Behaviors/Ranged")]
+    public class Ranged : SpellBehaviors
     {
-        minDistance = minDist;
-        maxDistance = maxDist;
-        isRandomOn = isRandom;
-    }*/
+        private const string spName = "Ranged";
+        private const string spDescription = "A ranged attack.";
 
-    /*public override void PerformSpellBehavior(GameObject playerObject,GameObject objectHit)
-    {
-        lifeTime = isRandomOn ? Random.Range(minDistance, maxDistance) : maxDistance;
-        //StartCoroutine(CheckDistance(playerObject.transform.position));
-    }
+        //private const Sprite icon = Resources.Load();
 
-    private IEnumerator CheckDistance(Vector3 StartPosition)
-    {
-        float tempdistance = 0;
-        while (tempdistance < lifeTime)
+        private float minDistance;
+        private float maxDistance;
+        private bool isRandomOn;
+        private float lifeTime;
+
+        /*public Ranged(float minDist, float maxDist, bool isRandom) : base( new BasicObjectInformation(spName, spDescription), startTime)
         {
-            //tempdistance = Vector3.Distance(StartPosition, this.transform.position);
+            minDistance = minDist;
+            maxDistance = maxDist;
+            isRandomOn = isRandom;
+        }*/
+
+        /*public override void PerformSpellBehavior(GameObject playerObject,GameObject objectHit)
+        {
+            lifeTime = isRandomOn ? Random.Range(minDistance, maxDistance) : maxDistance;
+            //StartCoroutine(CheckDistance(playerObject.transform.position));
         }
 
-       // Destroy(this.gameObject);
-        yield return null;
+        private IEnumerator CheckDistance(Vector3 StartPosition)
+        {
+            float tempdistance = 0;
+            while (tempdistance < lifeTime)
+            {
+                //tempdistance = Vector3.Distance(StartPosition, this.transform.position);
+            }
+
+           // Destroy(this.gameObject);
+            yield return null;
+
+        }
+
+        public float MinDistance
+        {
+            get { return minDistance; }
+        }
+
+        public float MaxDistance
+        {
+            get { return maxDistance; }
+        }*/
+
 
     }
-
-    public float MinDistance
-    {
-        get { return minDistance; }
-    }
-
-    public float MaxDistance
-    {
-        get { return maxDistance; }
-    }*/
-
-
 }

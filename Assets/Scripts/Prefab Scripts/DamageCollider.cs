@@ -2,48 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageCollider : MonoBehaviour
+namespace TAK
 {
-    Collider damageCollider;
-    [SerializeField] WeaponItem weaponItem;
-   
-    
-    [HideInInspector]
-    public Vector3 projectileLastPos;
-
-    public bool enableOnStartUp;
-    private void Awake()
+    public class DamageCollider : MonoBehaviour
     {
-        damageCollider = GetComponent<Collider>();
-        damageCollider.gameObject.SetActive(true);
-        damageCollider.isTrigger = true;
-        damageCollider.enabled = enableOnStartUp;
-    
-    }
+        Collider damageCollider;
+       
+        [SerializeField] WeaponItem weaponItem;
 
-    public void EnableDamageCollider()
-    {
-        damageCollider.enabled = true;
-    }
-    public void DisableDamageCollider()
-    {
-        damageCollider.enabled = false;
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
+        [HideInInspector]
+        public Vector3 projectileLastPos;
 
-        if (other != null)
+        public bool enableOnStartUp;
+        private void Awake()
         {
-            
-            IDamage damageable = other.GetComponent<IDamage>();
-            if (weaponItem != null)
-            {
-                if (damageable != null)
-                    damageable.TakeDamage(weaponItem.meleeDamage);
-            }
-            
+            damageCollider = GetComponent<Collider>();
+            damageCollider.gameObject.SetActive(true);
+            damageCollider.isTrigger = true;
+            damageCollider.enabled = enableOnStartUp;
+
         }
-   
+
+        public void EnableDamageCollider()
+        {
+            damageCollider.enabled = true;
+        }
+        public void DisableDamageCollider()
+        {
+            damageCollider.enabled = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            IDamage damageable = other.GetComponentInChildren<IDamage>();
+            CharacterManager character = other.GetComponentInChildren<CharacterManager>();
+            Debug.Log(character.name.ToString());
+            BlockingColllider block = other.GetComponentInChildren<BlockingColllider>();
+            if (other != null)
+            {   
+                if (weaponItem != null)
+                {
+                    if(character.isBlocking  && block != null)
+                    {
+                        Debug.Log(character.name.ToString() + " Blocked");
+                        float physicalDamageAfterBlock = weaponItem.baseDamage - (weaponItem.baseDamage * block.blockingPhysicalDamageAbsorption) / 100;
+                        if (damageable != null)
+                            damageable.TakeDamage(physicalDamageAfterBlock, "Blocked");
+                    }
+                    else
+                    {
+                        Debug.Log(character.name.ToString() + " Got Hit");
+                        if (damageable != null)
+                            damageable.TakeDamage(weaponItem.baseDamage, "Damage");
+                    }
+                    
+                }
+
+            }
+
+        }
     }
 }

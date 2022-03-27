@@ -2,69 +2,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSlotManager : MonoBehaviour
+namespace TAK
 {
-    public WeaponHolderSlot leftHandSlot;
-    public WeaponHolderSlot rightHandSlot;
-
-    DamageCollider leftDamageCollider;
-    DamageCollider rightDamageCollider;
-
-    private void Awake()
+    public class WeaponSlotManager : MonoBehaviour
     {
-        WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
-        foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
+        public WeaponHolderSlot leftHandSlot;
+        public WeaponHolderSlot rightHandSlot;
+
+        DamageCollider leftDamageCollider;
+        DamageCollider rightDamageCollider;
+
+        private void Awake()
         {
-            if(weaponSlot.isLeftHandSlot)
+            WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
+            foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
             {
-                leftHandSlot = weaponSlot;
+                if (weaponSlot.isLeftHandSlot)
+                {
+                    leftHandSlot = weaponSlot;
+                }
+                else if (weaponSlot.isRightHandSlot)
+                {
+                    rightHandSlot = weaponSlot;
+                }
             }
-            else if(weaponSlot.isRightHandSlot)
+        }
+
+        public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
+        {
+            if (isLeft)
             {
-                rightHandSlot = weaponSlot;
+                leftHandSlot.LoadWeaponModel(weaponItem);
+                LoadLeftWeaponDamageCollider();
+            }
+            else
+            {
+                rightHandSlot.LoadWeaponModel(weaponItem);
+                LoadRightWeaponDamageCollider();
             }
         }
-    }
-
-    public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
-    {
-        if(isLeft)
+        #region Weapon's Damage Collider
+        private void LoadLeftWeaponDamageCollider()
         {
-            leftHandSlot.LoadWeaponModel(weaponItem);
-            LoadLeftWeaponDamageCollider();
+            leftDamageCollider = leftHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
         }
-        else
+
+        private void LoadRightWeaponDamageCollider()
         {
-            rightHandSlot.LoadWeaponModel(weaponItem);
-            LoadRightWeaponDamageCollider();
+            rightDamageCollider = rightHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
         }
-    }
-    #region Weapon's Damage Collider
-    private void LoadLeftWeaponDamageCollider()
-    {
-        leftDamageCollider = leftHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
-    }
 
-    private void LoadRightWeaponDamageCollider()
-    {
-        rightDamageCollider = rightHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
+        public void OpenRightDamageCollider()
+        {
+            rightDamageCollider.EnableDamageCollider();
+        }
+        public void OpenLeftDamageCollider()
+        {
+            leftDamageCollider.EnableDamageCollider();
+        }
+        public void CloseRightDamageCollider()
+        {
+            rightDamageCollider.DisableDamageCollider();
+        }
+        public void CloseLeftDamageCollider()
+        {
+            leftDamageCollider.DisableDamageCollider();
+        }
+        #endregion
     }
-
-    public void OpenRightDamageCollider()
-    {
-        rightDamageCollider.EnableDamageCollider();
-    }
-    public void OpenLeftDamageCollider()
-    {
-        leftDamageCollider.EnableDamageCollider();
-    }
-    public void CloseRightDamageCollider()
-    {
-        rightDamageCollider.DisableDamageCollider();
-    }
-    public void CloseLeftDamageCollider()
-    {
-        leftDamageCollider.DisableDamageCollider();
-    }
-    #endregion
 }

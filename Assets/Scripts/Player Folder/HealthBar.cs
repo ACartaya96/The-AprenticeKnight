@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+namespace TAK
 {
-
-    public Slider slider;
-   
-    private void Start()
+    public class HealthBar : MonoBehaviour
     {
-        slider = GetComponent<Slider>();
+
+        public Slider slider;
+
+        private void Awake()
+        {
+            slider = GetComponent<Slider>();
+
+        }
+        public void setMaxHealth(float maxHealth)
+        {
+            slider.maxValue = maxHealth;
+            slider.value = maxHealth;
+        }
+
+        public void SetCurrentHealth(float currentHealth)
+        {
+            slider.value = currentHealth;
+        }
 
     }
-    public void setMaxHealth(float maxHealth)
-    {
-        slider.maxValue= maxHealth;
-        slider.value = maxHealth;
-    }
-
-    public void SetCurrentHealth(float currentHealth)
-    {
-        slider.value = currentHealth;
-    }
-    
 }

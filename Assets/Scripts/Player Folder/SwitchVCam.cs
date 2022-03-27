@@ -6,46 +6,49 @@ using UnityEngine.UI;
 using Cinemachine;
 using System;
 
-public class SwitchVCam : MonoBehaviour
+namespace TAK
 {
-    public static SwitchVCam instance;
-
-    [SerializeField]
-    private int priorityBoostAmount = 10;
-
-
-
-    [SerializeField] private Image aimReticle;
-
-    public CinemachineFreeLook vcam;
-
-    private void Awake()
+    public class SwitchVCam : MonoBehaviour
     {
-        vcam = GetComponent<CinemachineFreeLook>();
+        public static SwitchVCam instance;
 
-        if (instance != null && instance != this)
+        [SerializeField]
+        private int priorityBoostAmount = 10;
+
+
+
+        [SerializeField] private Image aimReticle;
+
+        public CinemachineFreeLook vcam;
+
+        private void Awake()
         {
-            Destroy(this);
-            return;
+            vcam = GetComponent<CinemachineFreeLook>();
+
+            if (instance != null && instance != this)
+            {
+                Destroy(this);
+                return;
+            }
+
+            instance = this;
+            vcam.m_RecenterToTargetHeading.m_enabled = false;
+            aimReticle.enabled = false;
         }
 
-        instance = this;
-        vcam.m_RecenterToTargetHeading.m_enabled = false;
-        aimReticle.enabled = false;
+
+        public void StartAim(Transform target)
+        {
+            vcam.LookAt = target;
+            vcam.Priority = priorityBoostAmount;
+            aimReticle.enabled = true;
+        }
+
+        public void CancelAim()
+        {
+            vcam.Priority = 9;
+            aimReticle.enabled = false;
+        }
+
     }
-
-
-    public void StartAim(Transform target)
-    {
-        vcam.LookAt = target;
-        vcam.Priority = priorityBoostAmount;
-        aimReticle.enabled = true;
-    }
-
-    public void CancelAim()
-    {
-        vcam.Priority = 9;
-        aimReticle.enabled = false;
-    }
-
-}   
+}

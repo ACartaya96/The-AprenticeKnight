@@ -1,5 +1,10 @@
 using UnityEngine;
-public interface IInteractable
+
+
+namespace TAK
 {
-    void Interact();
+    public interface IInteractable
+    {
+        void Interact();
+    }
 }

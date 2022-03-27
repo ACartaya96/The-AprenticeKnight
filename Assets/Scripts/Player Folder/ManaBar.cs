@@ -3,25 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ManaBar : MonoBehaviour
+namespace TAK
 {
-
-    public Slider slider;
-
-    private void Start()
+    public class ManaBar : MonoBehaviour
     {
-        slider = GetComponent<Slider>();
-    }
-    public void setMaxMana(float maxMana)
-    {
-        slider.maxValue= maxMana;
-        slider.value = maxMana;
-    }
 
-    public void SetCurrentMana(float currentMana)
-    {
-        slider.value = currentMana;
+        public Slider slider;
+        Canvas canvas;
+        RectTransform rectTransform;
+        private void Awake()
+        {
+            slider = GetComponent<Slider>();
+            rectTransform = GetComponent<RectTransform>();
+        }
+        public void setMaxMana(float maxMana)
+        {
+            slider.maxValue = maxMana;
+            slider.value = maxMana;
+            rectTransform.localScale = new Vector3(maxMana / 100, rectTransform.localScale.y, 0);
+            rectTransform.anchorMax = new Vector3(maxMana / (maxMana * 0.6f), rectTransform.anchorMax.y, 0);
+        }
+
+        public void SetCurrentMana(float currentMana)
+        {
+            slider.value = currentMana;
+        }
+
     }
-    
 }
 

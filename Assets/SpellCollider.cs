@@ -3,30 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class SpellCollider : DamageCollider
+
+namespace TAK
 {
-    
-
-    [InlineEditor]
-    public SpellItem spell;
-
-    Rigidbody rb;
-    // Start is called before the first frame update
-    private void Awake()
+    public class SpellCollider : DamageCollider
     {
-        rb = GetComponent<Rigidbody>();
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        IDamage damageable = other.GetComponent<IDamage>();
-       
+
+        [InlineEditor]
+        public SpellItem spell;
+
+        Rigidbody rb;
+        // Start is called before the first frame update
+        private void Awake()
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            IDamage damageable = other.GetComponent<IDamage>();
+
             if (damageable != null)
             {
-                damageable.TakeDamage(spell.baseValue);
+                damageable.TakeDamage(spell.baseValue, "Damage");
                 projectileLastPos = transform.position;
             }
             Destroy(gameObject);
-       
+
+        }
     }
 }

@@ -3,59 +3,62 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyPatrolState : EnemyBaseState
+namespace TAK
 {
-    public float speed;
-
-    
-    private NavMeshAgent navMeshAgent;
-    FieldofView fov;
-    public int randomSpot;
-
-    public int startTime = 3;
-    public float countdown;
-
-    public override void EnterState(EnemyControlSystem enemy)
+    public class EnemyPatrolState : EnemyBaseState
     {
-        navMeshAgent = enemy.GetComponent<NavMeshAgent>();
-        fov = enemy.GetComponent<FieldofView>();
-        randomSpot = Random.Range(0, enemy.movePoints.Length);
+        public float speed;
 
-        
 
-        countdown = startTime;
-    }
-    public override void UpdateState(EnemyControlSystem enemy)
-    {
-        if (fov.canSeePlayer)
+        private NavMeshAgent navMeshAgent;
+        FieldofView fov;
+        public int randomSpot;
+
+        public int startTime = 3;
+        public float countdown;
+
+        public override void EnterState(EnemyControlSystem enemy)
         {
-            Debug.Log(enemy.name + ": 8108 has been detected");
-           
-            enemy.SwitchState(enemy.ChaseState);
+            navMeshAgent = enemy.GetComponent<NavMeshAgent>();
+            fov = enemy.GetComponent<FieldofView>();
+            randomSpot = Random.Range(0, enemy.movePoints.Length);
+
+
+
+            countdown = startTime;
         }
-        navMeshAgent.destination = enemy.movePoints[randomSpot].position;
-        Pathfinding(enemy);
-    }
-    public override void OnCollisionEnter(EnemyControlSystem enemy)
-    {
-
-    }
-
-    void Pathfinding(EnemyControlSystem enemy)
-    {
-        if (navMeshAgent.remainingDistance <= 0)
+        public override void UpdateState(EnemyControlSystem enemy)
         {
-           
-            countdown -= Time.deltaTime;
-            if (countdown <= 0)
+            if (fov.canSeePlayer)
             {
-                
-                randomSpot = Random.Range(0, enemy.movePoints.Length);
-                
-                countdown = startTime;
-            }
-         
-        }
-    }
+                Debug.Log(enemy.name + ": 8108 has been detected");
 
+                enemy.SwitchState(enemy.ChaseState);
+            }
+            navMeshAgent.destination = enemy.movePoints[randomSpot].position;
+            Pathfinding(enemy);
+        }
+        public override void OnCollisionEnter(EnemyControlSystem enemy)
+        {
+
+        }
+
+        void Pathfinding(EnemyControlSystem enemy)
+        {
+            if (navMeshAgent.remainingDistance <= 0)
+            {
+
+                countdown -= Time.deltaTime;
+                if (countdown <= 0)
+                {
+
+                    randomSpot = Random.Range(0, enemy.movePoints.Length);
+
+                    countdown = startTime;
+                }
+
+            }
+        }
+
+    }
 }

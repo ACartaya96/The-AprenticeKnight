@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyAfterCastingSpell : MonoBehaviour
+namespace TAK
 {
-    PlayerManager playerManager;
-
-    private void Awake()
+    public class DestroyAfterCastingSpell : MonoBehaviour
     {
-        playerManager = GetComponentInParent<PlayerManager>();
+        PlayerManager playerManager;
 
-    }
-    private void Update()
-    {
-        if(playerManager.isFiringSpell)
+        private void Awake()
         {
-            Destroy(gameObject);
-        }
-    }
+            playerManager = GetComponentInParent<PlayerManager>();
 
+        }
+        private void Update()
+        {
+            if (playerManager.isFiringSpell)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+    }
 }
