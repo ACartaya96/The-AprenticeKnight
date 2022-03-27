@@ -11,14 +11,14 @@ public class DamageCollider : MonoBehaviour
     [HideInInspector]
     public Vector3 projectileLastPos;
 
-    public bool hitSomething;
+    public bool enableOnStartUp;
     private void Awake()
     {
         damageCollider = GetComponent<Collider>();
         damageCollider.gameObject.SetActive(true);
         damageCollider.isTrigger = true;
-        damageCollider.enabled = false;
-        hitSomething = false;
+        damageCollider.enabled = enableOnStartUp;
+    
     }
 
     public void EnableDamageCollider()
@@ -32,7 +32,7 @@ public class DamageCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        hitSomething = true;
+
         if (other != null)
         {
             

@@ -69,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
     public void HandleRBAction()
     {
         WeaponType type = playerInventory.rightWeapon.weaponType;
+
         switch(type)
         {
             case WeaponType.Weapon:
@@ -82,6 +83,7 @@ public class PlayerAttack : MonoBehaviour
             case WeaponType.Shield:
             PerformRBBlockAction();
             break;
+
         }
     }
 

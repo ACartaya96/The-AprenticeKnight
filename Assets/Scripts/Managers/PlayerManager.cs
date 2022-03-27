@@ -29,7 +29,7 @@ public class PlayerManager : CharacterManager
         inputHandler = GetComponent<InputHandler>();
         playerController = GetComponentInParent<PlayerController>();
         playerTarget = GetComponent<PlayerTargetDetection>();
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
 
     
     }

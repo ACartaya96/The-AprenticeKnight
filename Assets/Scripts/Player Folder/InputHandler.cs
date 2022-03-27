@@ -71,7 +71,7 @@ public class InputHandler : MonoBehaviour
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
         playerTarget = GetComponent<PlayerTargetDetection>();
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponentInParent<PlayerController>();
 
         moveAction = playerInput.actions["Movement"];
         lookAction = playerInput.actions["Look"];

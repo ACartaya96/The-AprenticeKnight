@@ -50,9 +50,9 @@ public class ProjectileSpell : SpellItem
         //spelldamageCollider
 
 
-        DamageCollider damageCollider = instantiateSpellFX.GetComponent<DamageCollider>();
-        damageCollider.EnableDamageCollider();
-        spellLastPos = damageCollider.projectileLastPos;
+        //DamageCollider spellCollider = instantiateSpellFX.GetComponent<DamageCollider>();
+       // spellCollider.EnableDamageCollider();
+        //spellLastPos = spellCollider.projectileLastPos;
         //Set Physics
         rb = instantiateSpellFX.GetComponent<Rigidbody>();
 
@@ -61,21 +61,24 @@ public class ProjectileSpell : SpellItem
 
         if (playerTarget.currentLockedOnTarget != null)
         {
-            Vector3 dir = playerTarget.currentLockedOnTarget.position - instantiateSpellFX.transform.position;
+            /*Vector3 dir = playerTarget.currentLockedOnTarget.position - instantiateSpellFX.transform.position;
             
             dir.Normalize();
 
             Quaternion tr = Quaternion.LookRotation(dir);
             Quaternion targetRotation = Quaternion.Slerp(instantiateSpellFX.transform.rotation, tr, projectileForwardVelocity * Time.deltaTime);
             instantiateSpellFX.transform.rotation = targetRotation;
-            instantiateSpellFX.transform.position = Vector3.MoveTowards(instantiateSpellFX.transform.position, playerTarget.currentLockedOnTarget.transform.position, projectileForwardVelocity * Time.deltaTime/5f);
+            instantiateSpellFX.transform.position = Vector3.MoveTowards(instantiateSpellFX.transform.position, playerTarget.currentLockedOnTarget.transform.position, projectileForwardVelocity * Time.deltaTime/5f);*/
+            instantiateSpellFX.transform.LookAt(playerTarget.currentLockedOnTarget);
 
         }
         else
         {
-            Vector3 aimSpot = cam.transform.position;
-            aimSpot += cam.transform.forward * 50;
-            instantiateSpellFX.transform.LookAt(aimSpot);
+            /*Vector3 aimSpot = cam.transform.position;
+             aimSpot += cam.transform.forward * 50;
+             instantiateSpellFX.transform.LookAt(aimSpot);*/
+
+            instantiateSpellFX.transform.rotation = Quaternion.Euler(cam.transform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
 
         }
 
