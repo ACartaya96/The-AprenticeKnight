@@ -27,7 +27,7 @@ public class PlayerManager : CharacterManager
     void Start()
     {
         inputHandler = GetComponent<InputHandler>();
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponentInParent<PlayerController>();
         playerTarget = GetComponent<PlayerTargetDetection>();
         anim = GetComponentInChildren<Animator>();
 

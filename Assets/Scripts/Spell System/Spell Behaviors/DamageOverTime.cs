@@ -2,6 +2,7 @@ using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "DOT", menuName = "Spells/Spell Behaviors/DOT")]
 public class DamageOverTime : SpellBehaviors
 {
     private const string spName = "Damage Over Time";
@@ -16,16 +17,16 @@ public class DamageOverTime : SpellBehaviors
     private float dotTick;
 
 
-    public DamageOverTime(float ed, float bed, float dtd) : base(new BasicObjectInformation(spName, spDescription), startTime)
+    /*public DamageOverTime(float ed, float bed, float dtd) : base(new BasicObjectInformation(spName, spDescription), startTime)
     {
         effectDuration = ed;
         baseEffectDamage = bed;
         dotTick = dtd;
-    }
+    }*/
 
-    public override void PerformSpellBehavior(GameObject playerObject, GameObject objectHit)
+    public override void PerformSpellBehavior(SpellItem spellBase)
     {
-        StartCoroutine(DoT());
+        //StartCoroutine(DoT());
     }
 
     private IEnumerator DoT()

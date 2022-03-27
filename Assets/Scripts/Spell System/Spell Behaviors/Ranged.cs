@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
+
+[CreateAssetMenu(fileName = "Ranged", menuName = "Spells/Spell Behaviors/Ranged")]
 public class Ranged : SpellBehaviors
 {
     private const string spName = "Ranged";
     private const string spDescription = "A ranged attack.";
-    private const BehaviorStartTimes startTime = BehaviorStartTimes.Beggining;
+   
     //private const Sprite icon = Resources.Load();
 
     private float minDistance;
@@ -13,17 +15,17 @@ public class Ranged : SpellBehaviors
     private bool isRandomOn;
     private float lifeTime;
 
-    public Ranged(float minDist, float maxDist, bool isRandom) : base( new BasicObjectInformation(spName, spDescription), startTime)
+    /*public Ranged(float minDist, float maxDist, bool isRandom) : base( new BasicObjectInformation(spName, spDescription), startTime)
     {
         minDistance = minDist;
         maxDistance = maxDist;
         isRandomOn = isRandom;
-    }
+    }*/
 
-    public override void PerformSpellBehavior(GameObject playerObject,GameObject objectHit)
+    /*public override void PerformSpellBehavior(GameObject playerObject,GameObject objectHit)
     {
         lifeTime = isRandomOn ? Random.Range(minDistance, maxDistance) : maxDistance;
-        StartCoroutine(CheckDistance(playerObject.transform.position));
+        //StartCoroutine(CheckDistance(playerObject.transform.position));
     }
 
     private IEnumerator CheckDistance(Vector3 StartPosition)
@@ -31,10 +33,10 @@ public class Ranged : SpellBehaviors
         float tempdistance = 0;
         while (tempdistance < lifeTime)
         {
-            tempdistance = Vector3.Distance(StartPosition, this.transform.position);
+            //tempdistance = Vector3.Distance(StartPosition, this.transform.position);
         }
 
-        Destroy(this.gameObject);
+       // Destroy(this.gameObject);
         yield return null;
 
     }
@@ -47,7 +49,7 @@ public class Ranged : SpellBehaviors
     public float MaxDistance
     {
         get { return maxDistance; }
-    }
+    }*/
 
 
 }

@@ -66,8 +66,8 @@ public class InputHandler : MonoBehaviour
     #region Instantiate Inputs
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
-        playerAttack = GetComponentInChildren<PlayerAttack>();
+        playerInput = GetComponentInParent<PlayerInput>();
+        playerAttack = GetComponent<PlayerAttack>();
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
         playerTarget = GetComponent<PlayerTargetDetection>();

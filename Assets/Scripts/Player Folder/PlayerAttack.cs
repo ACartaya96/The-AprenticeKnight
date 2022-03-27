@@ -19,12 +19,12 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         animationHandler = GetComponent<AnimationHandler>();
-        playerManager = GetComponentInParent<PlayerManager>();
-        playerStats = GetComponentInParent<PlayerStats>();
-        playerInventory = GetComponentInParent<PlayerInventory>();
-        playerTarget = GetComponentInParent<PlayerTargetDetection>();
-        weaponSlotManager = GetComponentInParent<WeaponSlotManager>();
-        inputHandler = GetComponentInParent<InputHandler>();
+        playerManager = GetComponent<PlayerManager>();
+        playerStats = GetComponent<PlayerStats>();
+        playerInventory = GetComponent<PlayerInventory>();
+        playerTarget = GetComponent<PlayerTargetDetection>();
+        weaponSlotManager = GetComponent<WeaponSlotManager>();
+        inputHandler = GetComponent<InputHandler>();
 
     }
     
@@ -68,33 +68,25 @@ public class PlayerAttack : MonoBehaviour
     #region Input Actions
     public void HandleRBAction()
     {
-        if (playerInventory.rightWeapon.weaponType is WeaponItem.WeaponType.Melee)
+        WeaponType type = playerInventory.rightWeapon.weaponType;
+        switch(type)
         {
+            case WeaponType.Weapon:
             PerformRBMeleeAction();
-        }
-        else if (playerInventory.rightWeapon.weaponType is WeaponItem.WeaponType.Spellcasting)
-        {
+            break;
+
+            case WeaponType.Staff:
             PerformRBSpellAction();
+            break;
+
+            case WeaponType.Shield:
+            PerformRBBlockAction();
+            break;
         }
     }
 
-    public void HandleRTAction()
-    {
-        if (playerManager.canDoCombo)
-        {
 
-            inputHandler.comboflag = true;
-            HeavyHandleWeaponCombo(playerInventory.rightWeapon);
-            inputHandler.comboflag = false;
-        }
-        else
-        {
-            if (animationHandler.anim.GetBool("isInteracting"))
-                return;
-            HandleHeavyAttack(playerInventory.rightWeapon);
-        }
-    }
-
+    #region RB Actions
     private void PerformRBMeleeAction()
     {
         if (playerManager.canDoCombo)
@@ -125,12 +117,34 @@ public class PlayerAttack : MonoBehaviour
                 playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager);
         }
     }
-
     private void SuccessfullyCastSpell()
     {
         playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget);
         animationHandler.anim.SetBool("isFiringSpell", true);
-        
+
+    }
+    private void PerformRBBlockAction()
+    {
+
     }
     #endregion
+
+    #endregion
+
+    public void HandleRTAction()
+    {
+        if (playerManager.canDoCombo)
+        {
+
+            inputHandler.comboflag = true;
+            HeavyHandleWeaponCombo(playerInventory.rightWeapon);
+            inputHandler.comboflag = false;
+        }
+        else
+        {
+            if (animationHandler.anim.GetBool("isInteracting"))
+                return;
+            HandleHeavyAttack(playerInventory.rightWeapon);
+        }
+    }
 }

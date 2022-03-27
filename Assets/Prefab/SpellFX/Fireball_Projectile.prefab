@@ -4934,7 +4934,7 @@ GameObject:
   - component: {fileID: 2793912979628174658}
   - component: {fileID: 2793912979628174659}
   - component: {fileID: 8271301309049300516}
-  - component: {fileID: -1895923205346398002}
+  - component: {fileID: -8695800522832940494}
   m_Layer: 0
   m_Name: Fireball_Projectile
   m_TagString: Projectile
@@ -5036,7 +5036,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-1895923205346398002
+--- !u!114 &-8695800522832940494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5045,11 +5045,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2793912979628174686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0edd6618c41f87b4fa5eb6132cabea20, type: 3}
+  m_Script: {fileID: 11500000, guid: f9940e7d728126445a0e26d7609915e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponItem: {fileID: 0}
-  projectileSpell: {fileID: 11400000, guid: f4614df9a627a51409861118a5a1077a, type: 2}
+  projectileSpell: {fileID: 0}
+  projectileLastPos: {x: 0, y: 0, z: 0}
+  hitSomething: 0
+  spell: {fileID: 11400000, guid: f4614df9a627a51409861118a5a1077a, type: 2}
 --- !u!1 &8058679040116278792
 GameObject:
   m_ObjectHideFlags: 0

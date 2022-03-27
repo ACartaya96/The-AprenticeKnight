@@ -8,7 +8,7 @@ public class EnemyControlSystem : MonoBehaviour, IDamage
     NavMeshAgent navMeshAgent;
     FieldofView fov;
     BoxCollider box;
-    SpellType damageType;
+    SpellClassType damageType;
 
     public Animator animator;
     //public Transform switchPos;

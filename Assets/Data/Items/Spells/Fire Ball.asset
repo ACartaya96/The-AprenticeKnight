@@ -14,12 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Fire Ball
-  spellWarmUpFX: {fileID: 2921885721892408272, guid: c8e8c085de92a6e41b631dbf70d277b3, type: 3}
-  spellCastFx: {fileID: 2793912979628174686, guid: 863019b0ff0c2064488b63a8e42c7055, type: 3}
+  spellWarmUpFX: {fileID: 1363784577269114, guid: 55bcbfa42bc30bd4bbd9f68d7a289ab4, type: 3}
+  spellCastFx: {fileID: 1363784577269114, guid: 12586896450c4d74ea83c9b147254024, type: 3}
   spellAnimation: Projectile_Start
   cost: 12
-  type: 2
+  baseValue: 50
+  element: 2
+  type: 0
   spellDescription: A fiery projetile that burns both foe and tree alike;
+  spellEffects: []
+  spellLastPos: {x: 0, y: 0, z: 0}
   baseDamage: 50
   projectileForwardVelocity: 900
   projectileUpwardVelocity: 150

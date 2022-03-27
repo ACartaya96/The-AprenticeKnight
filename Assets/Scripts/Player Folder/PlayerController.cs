@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody), typeof(PlayerInput))]
+
 public class PlayerController : MonoBehaviour
 {
     /*#region Old Code
@@ -139,10 +139,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        inputHandler = GetComponent<InputHandler>();
+        inputHandler = GetComponentInChildren<InputHandler>();
         animationHandler = GetComponentInChildren<AnimationHandler>();
-        playerManager = GetComponent<PlayerManager>();
-        playerTarget = GetComponent<PlayerTargetDetection>();
+        playerManager = GetComponentInChildren<PlayerManager>();
+        playerTarget = GetComponentInChildren<PlayerTargetDetection>();
         cameraObject = Camera.main.transform;
         myTransform = transform;
         ignoreforGrounCheck = ~ignoreforGrounCheck;

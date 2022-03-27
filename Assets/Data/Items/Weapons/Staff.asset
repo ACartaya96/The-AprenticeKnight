@@ -21,4 +21,4 @@ MonoBehaviour:
   OH_Heavy_Attack_1: OH_Heavy_Attack_01
   OH_Heavy_Attack_2: OH_Heavy_Attack_02
   meleeDamage: 20
-  weaponType: 1
+  weaponType: 2

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Slow", menuName = "Spells/Spell Behaviors/Slow")]
 public class Slow : SpellBehaviors
 {
     private const string spName = "Slow";
@@ -16,17 +17,17 @@ public class Slow : SpellBehaviors
     private float dotTick;
 
 
-    public Slow( float ed, float sp) : base(new BasicObjectInformation(spName, spDescription), startTime)
+    /*public Slow( float ed, float sp) : base(new BasicObjectInformation(spName, spDescription), startTime)
     {
         effectDuration = ed;
         slowPercent = sp;
-    }
+    }*/
 
-    public override void PerformSpellBehavior(GameObject playerObject, GameObject objectHit)
+    public override void PerformSpellBehavior(SpellItem spellBases)
     {
        
 
-        StartCoroutine(SlowMovement(objectHit));
+        //StartCoroutine(SlowMovement(objectHit));
     }
 
     private IEnumerator SlowMovement(GameObject objectHit)

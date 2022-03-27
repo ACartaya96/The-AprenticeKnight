@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponType {Weapon, Shield, Staff}
+
 [CreateAssetMenu(menuName = "Items/WeaponItem")]
 public class WeaponItem : Item
 {
@@ -22,10 +24,6 @@ public class WeaponItem : Item
 
     [Header("Weapon Type")]
     public WeaponType weaponType;
-    public enum WeaponType
-    { 
-        Melee,
-        Spellcasting
-    }
+  
 
 }

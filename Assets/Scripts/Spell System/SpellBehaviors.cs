@@ -1,26 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class SpellBehaviors : MagicSystem
+public enum BehaviorStartTimes
+{
+    Beggining,
+    Middle,
+    End
+}
+
+public class SpellBehaviors : ScriptableObject
 {
     private BasicObjectInformation objectInfo;
-    private BehaviorStartTimes startTime;
+    public BehaviorStartTimes startTime;
 
-    public SpellBehaviors(BasicObjectInformation basicInfo, BehaviorStartTimes sTime)
+    [HorizontalGroup("Game Data", 75)]
+    [PreviewField(75)]
+    public GameObject AOECastFx;
+
+    /*public SpellBehaviors(BasicObjectInformation basicInfo, BehaviorStartTimes sTime)
     {
         objectInfo = basicInfo;
         startTime = sTime;
-    }
-    public enum BehaviorStartTimes
-    {
-        Beggining,
-        Middle,
-        End
-    }
+    }*/
 
     //Object not position
-    public virtual void PerformSpellBehavior(GameObject playerObject,GameObject objectHit)
+    public virtual void PerformSpellBehavior(SpellItem spellBase)
     {
         Debug.LogWarning("NEEDS A BEHAVIOR");
     }

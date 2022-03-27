@@ -16,6 +16,9 @@ public class ProjectileSpell : SpellItem
     public bool isEffecteByGravity;
     public float projectileMass = 1;
 
+    
+ 
+
     Rigidbody rb;
    
     Camera cam;
@@ -26,6 +29,7 @@ public class ProjectileSpell : SpellItem
     {
        
         cam = Camera.main;
+        baseValue = baseDamage;
         
     }
     
@@ -45,13 +49,12 @@ public class ProjectileSpell : SpellItem
         Debug.Log(instantiateSpellFX.transform.position.ToString());
         //spelldamageCollider
 
-  
 
-        //Set Physics
-        rb = instantiateSpellFX.GetComponent<Rigidbody>();
-        
         DamageCollider damageCollider = instantiateSpellFX.GetComponent<DamageCollider>();
         damageCollider.EnableDamageCollider();
+        spellLastPos = damageCollider.projectileLastPos;
+        //Set Physics
+        rb = instantiateSpellFX.GetComponent<Rigidbody>();
 
 
 
@@ -76,10 +79,6 @@ public class ProjectileSpell : SpellItem
 
         }
 
-
-
-
-
         rb.AddForce(instantiateSpellFX.transform.forward * projectileForwardVelocity );
         rb.AddForce(instantiateSpellFX.transform.up * projectileUpwardVelocity);
 
@@ -90,9 +89,17 @@ public class ProjectileSpell : SpellItem
         instantiateSpellFX.transform.parent = null;
 
         //Damage and Cost
-        
-
         playerStats.UseMana(cost);
+
+
+        /*if (instantiateSpellFX.gameObject == null)
+        {
+            foreach (SpellBehaviors behavior in spellEffects)
+            {
+                Debug.Log(behavior.name.ToString());
+                behavior.PerformSpellBehavior(this);
+            }
+        }*/
     }
 
 }
