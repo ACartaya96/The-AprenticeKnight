@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 805ee78330ef8a343b576d41b3a50fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFiringSpell: 0
   LockOnTransform: {fileID: 1393373299}
+  isFiringSpell: 0
   isBlocking: 0
 --- !u!1001 &2821151260111474649
 PrefabInstance:

@@ -773,7 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7895330104545821507}
   m_Layer: 3
-  m_Name: Shoulders
+  m_Name: Lock On Transform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,7 +809,6 @@ GameObject:
   - component: {fileID: 5621488566775531059}
   - component: {fileID: 4448861447454883399}
   - component: {fileID: 322893149511375353}
-  - component: {fileID: 313869224249841903}
   - component: {fileID: 6691331601999871824}
   - component: {fileID: 1709380465902666690}
   m_Layer: 3
@@ -1073,8 +1072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7443e6737a0ec740886211531b46110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFiringSpell: 0
   LockOnTransform: {fileID: 7895330104545821507}
+  isFiringSpell: 0
   isBlocking: 0
   cameraTarget: {fileID: 0}
   isInteracting: 0
@@ -1100,20 +1099,6 @@ MonoBehaviour:
   manaBar: {fileID: 622696161}
   playerLevel: 5
   playerController: {fileID: 0}
---- !u!114 &313869224249841903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7895330105454119044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62dc9555f8098e348b255ae02d425ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandSlot: {fileID: 0}
-  rightHandSlot: {fileID: 0}
 --- !u!114 &6691331601999871824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,6 +1295,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastAttack: 
+--- !u!114 &1722724035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690506132095679012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62dc9555f8098e348b255ae02d425ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandSlot: {fileID: 0}
+  rightHandSlot: {fileID: 0}
 --- !u!114 &1007965942160655407
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -220,5 +220,6 @@ namespace TAK
                 HandleHeavyAttack(playerInventory.rightWeapon);
             }
         }
+
     }
 }

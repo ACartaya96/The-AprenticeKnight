@@ -16,9 +16,10 @@ MonoBehaviour:
   itemName: Pole Arm
   modelPrefab: {fileID: 0}
   isUnarmed: 0
+  baseDamage: 50
+  physicalDamageAbsorption: 0
   OH_Light_Attack_1: 
   OH_Light_Attack_2: 
   OH_Heavy_Attack_1: 
   OH_Heavy_Attack_2: 
-  meleeDamage: 0
   weaponType: 0

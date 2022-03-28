@@ -35,20 +35,23 @@ namespace TAK
 
         private void OnTriggerEnter(Collider other)
         {
-            IDamage damageable = other.GetComponentInChildren<IDamage>();
-            CharacterManager character = other.GetComponentInChildren<CharacterManager>();
-            Debug.Log(character.name.ToString());
+            IDamage damageable = other.GetComponent<IDamage>();
+            CharacterManager character = other.GetComponentInParent<CharacterManager>();
+          
             BlockingColllider block = other.GetComponentInChildren<BlockingColllider>();
             if (other != null)
             {   
                 if (weaponItem != null)
                 {
-                    if(character.isBlocking  && block != null)
+                    if(character.isBlocking )
                     {
-                        Debug.Log(character.name.ToString() + " Blocked");
-                        float physicalDamageAfterBlock = weaponItem.baseDamage - (weaponItem.baseDamage * block.blockingPhysicalDamageAbsorption) / 100;
-                        if (damageable != null)
-                            damageable.TakeDamage(physicalDamageAfterBlock, "Blocked");
+                        if (block != null)
+                        {
+                            Debug.Log(character.name.ToString() + " Blocked");
+                            float physicalDamageAfterBlock = weaponItem.baseDamage - (weaponItem.baseDamage * block.blockingPhysicalDamageAbsorption) / 100;
+                            if (damageable != null)
+                                damageable.TakeDamage(physicalDamageAfterBlock, "Blocked");
+                        }
                     }
                     else
                     {

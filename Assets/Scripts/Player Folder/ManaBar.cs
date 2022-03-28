@@ -20,8 +20,8 @@ namespace TAK
         {
             slider.maxValue = maxMana;
             slider.value = maxMana;
-            rectTransform.localScale = new Vector3(maxMana / 100, rectTransform.localScale.y, 0);
-            rectTransform.anchorMax = new Vector3(maxMana / (maxMana * 0.6f), rectTransform.anchorMax.y, 0);
+            //rectTransform.localScale = new Vector3(maxMana / 100, rectTransform.localScale.y, 0);
+            rectTransform.anchorMax = new Vector3(rectTransform.anchorMax.x + (maxMana/2000), rectTransform.anchorMax.y, 0);
         }
 
         public void SetCurrentMana(float currentMana)

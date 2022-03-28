@@ -68,7 +68,7 @@ namespace TAK
             {
                 CharacterManager character = collider.GetComponent<CharacterManager>();
 
-                Debug.Log(character.name.ToString());
+                
 
                 if (character != null)
                 {

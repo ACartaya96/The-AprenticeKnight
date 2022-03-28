@@ -6,8 +6,8 @@ namespace TAK
 {
     public class PlayerStats : MonoBehaviour, IDamage
     {
-        private int healthLevel = 10;
-        private int manaLevel = 10;
+        [SerializeField] private int healthLevel = 10;
+        [SerializeField] private int manaLevel = 10;
         public float maxHealth { get; private set; }
         public float currentHealth;
         public float maxMana { get; private set; }
@@ -35,12 +35,13 @@ namespace TAK
 
         private float SetMaxHealthFromHealthLevel()
         {
-            maxHealth = healthLevel * 10 * playerLevel;
+            
+            maxHealth = (healthLevel * 30);
             return maxHealth;
         }
         private float SetMaxManafromManaLevel()
         {
-            maxMana = manaLevel * 5 * playerLevel;
+            maxMana = manaLevel * 5;
             return maxMana;
         }
 
