@@ -10,13 +10,15 @@ namespace TAK
         EnemyManager enemyManager;
         FieldofView fov;
         EnemyAnimationHandler enemyAnimationHandler;
-        NavMeshAgent navMeshAgent;
+       public NavMeshAgent navMeshAgent;
 
         public float distanceFromTarget;
         public float stoppingDistance = 1;
         public float rotationSpeed = 25;
 
         public Rigidbody rb;
+
+        public float speed = 8;
 
         private void Awake()
         {
@@ -37,26 +39,33 @@ namespace TAK
         public void HandleMoveToTarget()//target can mean waypoints or player
         {
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
-            distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.LockOnTransform.position, transform.position);
+            distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
             float viewAngle = Vector3.Angle(targetDirection, transform.forward);
 
             //If we are performing action(ex. Attack,Dodge,Spell,etc.) we turn of navmesh so that
             //the enemy can rotate towards its target with out worry of pathfinding.
             if(enemyManager.isPerformingAction)
             {
-                //enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
                 navMeshAgent.enabled = false;
             }
             else
             {
                 if(distanceFromTarget > stoppingDistance)
                 {
-                    //enemyAnimationHandler.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                    enemyAnimationHandler.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+                    targetDirection.Normalize();
+                    targetDirection.y = 0;
+
+                    targetDirection *= speed;
+
+                    Vector3 projectedVelocity = Vector3.ProjectOnPlane(targetDirection, Vector3.up);
+                    rb.velocity = projectedVelocity;
 
                 }
                 else if(distanceFromTarget <= stoppingDistance)
                 {
-                    //enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                    enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
                 }
                
             }
@@ -71,7 +80,7 @@ namespace TAK
             //Rotate Manually
             if(enemyManager.isPerformingAction)
             {
-                Vector3 direction = enemyManager.currentTarget.LockOnTransform.position - transform.position;
+                Vector3 direction = enemyManager.currentTarget.transform.position - transform.position;
                 direction.y = 0;
                 direction.Normalize();
 
