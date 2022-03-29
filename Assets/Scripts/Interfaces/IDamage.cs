@@ -1,7 +1,10 @@
-
 using UnityEngine;
 
-public interface IDamage
+
+namespace TAK
 {
-    void TakeDamage(float damage);
+    public interface IDamage
+    {
+        void TakeDamage(float damage, string damageAnimation);
+    }
 }

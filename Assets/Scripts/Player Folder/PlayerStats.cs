@@ -2,82 +2,89 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour, IDamage
+namespace TAK
 {
-    private int healthLevel = 10;
-    private int manaLevel = 10;
-    public float maxHealth { get; private set; }
-    public float currentHealth; 
-    public float maxMana { get; private set; }
-    public float currentMana;
-
-    public HealthBar healthBar;
-    public ManaBar manaBar;
-    PlayerManager playerManager;
-    AnimationHandler animationHandler;
-    public PlayerController playerController;
-
-    private void Start()
+    public class PlayerStats : MonoBehaviour, IDamage
     {
-        playerController = GetComponent<PlayerController>();
-        playerManager = GetComponent<PlayerManager>();
-        animationHandler = GetComponentInChildren<AnimationHandler>();
-        maxHealth = SetMaxHealthFromHealthLevel();
-        maxMana = SetMaxManafromManaLevel();
-        currentHealth = maxHealth;
-        currentMana = maxMana;
-        healthBar.setMaxHealth(maxHealth);
-        manaBar.setMaxMana(maxMana);
-    }
+        [SerializeField] private int healthLevel = 10;
+        [SerializeField] private int manaLevel = 10;
+        public float maxHealth { get; private set; }
+        public float currentHealth;
+        public float maxMana { get; private set; }
+        public float currentMana;
 
-    private float SetMaxHealthFromHealthLevel()
-    {
-        maxHealth = healthLevel * 10;
-        return maxHealth;
-    }
-    private float SetMaxManafromManaLevel()
-    {
-        maxMana = manaLevel * 5;
-        return maxMana;
-    }
+        public HealthBar healthBar;
+        public ManaBar manaBar;
+        public int playerLevel;
+        PlayerManager playerManager;
+        AnimationHandler animationHandler;
+        public PlayerController playerController;
 
-    public void TakeDamage(float damage)
-    {
-        if (!playerManager.isInvincible)
+        private void Start()
         {
-            currentHealth -= damage;
-            healthBar.SetCurrentHealth(currentHealth);
-            playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
-            //animationHandler.PlayTargetAnimation("Damage", true);
-        }
-        if(currentHealth <= 0)
-        {
-            currentHealth = 0;
-            animationHandler.PlayTargetAnimation("Dying", true);
-        }
-    }
-
-    public void HealPlayer(float heal)
-    {
-        currentHealth = currentHealth + heal;
-
-        if (currentHealth > maxHealth)
+            playerController = GetComponent<PlayerController>();
+            playerManager = GetComponent<PlayerManager>();
+            animationHandler = GetComponentInChildren<AnimationHandler>();
+            maxHealth = SetMaxHealthFromHealthLevel();
+            maxMana = SetMaxManafromManaLevel();
             currentHealth = maxHealth;
-
-        healthBar.SetCurrentHealth(currentHealth);
-    }
-
-    public void UseMana(float manaCost)
-    {
-        Debug.Log("Mana Cost: " + manaCost.ToString());
-        currentMana -= manaCost;
-        manaBar.SetCurrentMana(currentMana);
-
-        if (currentMana < 0)
-        {
-            currentMana = 0;
+            currentMana = maxMana;
+            healthBar.setMaxHealth(maxHealth);
+            manaBar.setMaxMana(maxMana);
         }
-        Debug.Log("CurrentMana: " + currentMana.ToString());
-       
+
+        private float SetMaxHealthFromHealthLevel()
+        {
+            
+            maxHealth = (healthLevel * 30);
+            return maxHealth;
+        }
+        private float SetMaxManafromManaLevel()
+        {
+            maxMana = manaLevel * 5;
+            return maxMana;
+        }
+
+        public void TakeDamage(float damage, string damageAnimation)
+        {
+            if (!playerManager.isInvincible)
+            {
+                Debug.Log("Xander Takes " + damage.ToString() + " Damage");
+                currentHealth -= damage;
+                healthBar.SetCurrentHealth(currentHealth);
+                Debug.Log("Xander HP: " + currentHealth.ToString());
+                //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
+                animationHandler.PlayTargetAnimation(damageAnimation, true);
+            }
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                animationHandler.PlayTargetAnimation("Dying", true);
+            }
+        }
+
+        public void HealPlayer(float heal)
+        {
+            currentHealth = currentHealth + heal;
+
+            if (currentHealth > maxHealth)
+                currentHealth = maxHealth;
+
+            healthBar.SetCurrentHealth(currentHealth);
+        }
+
+        public void UseMana(float manaCost)
+        {
+            Debug.Log("Mana Cost: " + manaCost.ToString());
+            currentMana -= manaCost;
+            manaBar.SetCurrentMana(currentMana);
+
+            if (currentMana < 0)
+            {
+                currentMana = 0;
+            }
+            Debug.Log("CurrentMana: " + currentMana.ToString());
+
+        }
     }
 }
