@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroy_Bramble : MonoBehaviour, IDamage 
+namespace TAK
 {
-    private void Awake()
+
+
+    public class Destroy_Bramble : MonoBehaviour, IDamage
     {
+        private void Awake()
+        {
+
+        }
+
+        public void TakeDamage(float damage, string damageAnimation)
+        {
+            Destroy(gameObject);
+        }
 
     }
-
-    public void TakeDamage(float damage)
-    {
-        Destroy(gameObject);
-    }
-
 }
