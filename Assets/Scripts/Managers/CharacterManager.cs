@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterManager : MonoBehaviour
+namespace TAK
 {
-    
-    public bool isFiringSpell;
-    public Transform LockOnTransform;
-    // Start is called before the first frame update
-    void Start()
+    public class CharacterManager : MonoBehaviour
     {
-     
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         
+        public Transform LockOnTransform;
+
+        [Header("Combat Flags")]
+        public bool isFiringSpell;
+        public bool isBlocking;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

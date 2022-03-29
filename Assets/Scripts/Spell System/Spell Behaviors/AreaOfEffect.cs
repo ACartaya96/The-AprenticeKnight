@@ -1,72 +1,165 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
+using Sirenix.OdinInspector;
 
-
-[RequireComponent(typeof(SphereCollider))]
-public class AreaOfEffect : SpellBehaviors
+namespace TAK
 {
-    private const string spName = "Area of Effect";
-    private const string spDescription = "An area of damage.";
-    private const BehaviorStartTimes startTime = BehaviorStartTimes.End; //on impact
-    //private const Sprite icon = Resources.Load();
-
-    private float areaRadius; //radius of sphere collider
-    private float effectDuration; //how long the effect lasts
-    private Stopwatch durationTimer = new Stopwatch();
-    private float baseEffectDamage;
-    private bool isOccupied;
-    private float dotTick;
-
-
-    public AreaOfEffect(float ar, float ed, float bed) : base(new BasicObjectInformation(spName, spDescription), startTime)
+    [RequireComponent(typeof(SphereCollider))]
+    [CreateAssetMenu(fileName = "AOE", menuName = "Spells/Spell Behaviors/AOE")]
+    public class AreaOfEffect : SpellBehaviors
     {
-        areaRadius = ar;
-        effectDuration = ed;
-        baseEffectDamage = bed;
-    }
+        public string spName = "Area of Effect";
+        public string spDescription = "An area of damage.";
 
-    public override void PerformSpellBehavior(GameObject playerObject, GameObject objectHit)
-    {
-        SphereCollider collider = this.gameObject.GetComponent<SphereCollider>();
-   
-        collider.radius = areaRadius;
-        collider.isTrigger = true;
 
-        StartCoroutine(AoE());
-    }
+        //private const Sprite icon = Resources.Load();
+        [VerticalGroup("Effect Modifires")]
+        [LabelWidth(75)]
+        [Range(1, 10)]
+        public float areaRadius; //radius of sphere collider
+        [VerticalGroup("Effect Modifires")]
+        [LabelWidth(75)]
+        [Range(1, 10)]
+        public float effectDuration; //how long the effect lasts
+        [VerticalGroup("Effect Modifires")]
+        [LabelWidth(75)]
 
-    private IEnumerator AoE()
-    {
-        durationTimer.Start(); //turns on time
+        public bool isOccupied;
+        public float dotTick;
+        private float tick;
 
-        while (durationTimer.Elapsed.TotalSeconds <= effectDuration)
+        List<CharacterManager> availableTargets = new List<CharacterManager>();
+        public Stopwatch durationTimer = new Stopwatch();
+        LayerMask obstructionMask;
+
+
+
+        public override void PerformSpellBehavior(SpellItem spellBase)
         {
-            if(isOccupied)
-            {
-                //OnDamage(list<targets>, baseDamage);
-            }
+            Instantiate(AOECastFx, spellBase.spellLastPos, Quaternion.identity);
 
-            yield return new WaitForSeconds(dotTick);
+            AoE(spellBase);
         }
+        private void AoE(SpellItem spellBase)
+        {
+            durationTimer.Start();
 
-        durationTimer.Stop();
-        durationTimer.Reset();
-        yield return null;
+            while (durationTimer.Elapsed.TotalSeconds <= effectDuration)
+            {
+                Collider[] colliders = Physics.OverlapSphere(spellBase.spellLastPos, areaRadius);
+
+                foreach (Collider collider in colliders)
+                {
+                    CharacterManager character = collider.GetComponent<CharacterManager>();
+
+                    if (character != null)
+                    {
+
+                        float distanceFromTarget = Vector3.Distance(spellBase.spellLastPos, character.transform.position);
+
+                        RaycastHit hit;
+
+                        if (distanceFromTarget <= areaRadius)
+                        {
+
+                            UnityEngine.Debug.DrawLine(spellBase.spellLastPos, character.LockOnTransform.position);
+                            if (Physics.Linecast(spellBase.spellLastPos, character.LockOnTransform.position, out hit, obstructionMask))
+                            {
+
+                            }
+                            else
+                            {
+                                availableTargets.Add(character);
+                            }
+                        }
+                    }
+                }
+
+
+                SpellEffectType type = spellBase.type;
+
+                if (tick == 0)
+                {
+                    foreach (CharacterManager availableTarget in availableTargets)
+                    {
+                        switch (type)
+                        {
+                            case SpellEffectType.Damage:
+                                IDamage damageable = availableTarget.GetComponent<IDamage>();
+                                if (damageable != null)
+                                {
+                                    damageable.TakeDamage(spellBase.baseValue / 2, "Damage");
+                                }
+                                break;
+                        }
+                    }
+
+                    tick = dotTick;
+                }
+                else
+                {
+                    dotTick -= 1 * Time.deltaTime;
+                }
+
+            }
+            durationTimer.Reset();
+
+            Destroy(this);
+
+        }
     }
+}
 
-    private void OnTriggerEnter(Collider other)
+/*public AreaOfEffect(float ar, float ed, float bed) : base(new BasicObjectInformation(spName, spDescription), startTime)
+{
+    areaRadius = ar;
+    effectDuration = ed;
+    baseEffectDamage = bed;
+}
+
+public override void PerformSpellBehavior(GameObject playerObject, GameObject objectHit)
+{
+   //SphereCollider collider = this.gameObject.GetComponent<SphereCollider>();
+
+    //collider.radius = areaRadius;
+    //collider.isTrigger = true;
+
+    //StartCoroutine(AoE());
+}
+
+private IEnumerator AoE()
+{
+    durationTimer.Start(); //turns on time
+
+    while (durationTimer.Elapsed.TotalSeconds <= effectDuration)
     {
         if(isOccupied)
         {
-            //do damge here
+            //OnDamage(list<targets>, baseDamage);
         }
-        else
-            isOccupied = true;
+
+        yield return new WaitForSeconds(dotTick);
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        isOccupied = false;
-    }
+    durationTimer.Stop();
+    durationTimer.Reset();
+    yield return null;
 }
+
+private void OnTriggerEnter(Collider other)
+{
+    if(isOccupied)
+    {
+        //do damge here
+    }
+    else
+        isOccupied = true;
+}
+
+private void OnTriggerExit(Collider other)
+{
+    isOccupied = false;
+}
+}*/

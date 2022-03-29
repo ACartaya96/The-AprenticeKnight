@@ -1,37 +1,40 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyChaseState : EnemyBaseState
+namespace TAK
 {
-    private NavMeshAgent navMeshAgent;
-    FieldofView fov;
-    GameObject player;
-    
-    public override void EnterState(EnemyControlSystem enemy)
+    public class EnemyChaseState : EnemyBaseState
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        fov = enemy.GetComponent<FieldofView>();
-        navMeshAgent = enemy.GetComponent<NavMeshAgent>();
-        //enemy.animator.SetBool("CanSeePlayer", true);
-    }
-    public override void UpdateState(EnemyControlSystem enemy)
-    {
-        if (!fov.canSeePlayer)
+        private NavMeshAgent navMeshAgent;
+        FieldofView fov;
+        GameObject player;
+
+        public override void EnterState(EnemyControlSystem enemy)
         {
-            enemy.playerLastPos.position = player.transform.position;
-            navMeshAgent.destination = enemy.playerLastPos.position;
-            Debug.Log(enemy.name + ": Lost Sight of 8108 sweeping the area");
-            
-            
-            enemy.SwitchState(enemy.SearchState);
+            player = GameObject.FindGameObjectWithTag("Player");
+            fov = enemy.GetComponent<FieldofView>();
+            navMeshAgent = enemy.GetComponent<NavMeshAgent>();
+            //enemy.animator.SetBool("CanSeePlayer", true);
         }
-        Vector3.ClampMagnitude(navMeshAgent.destination, 3);
-        navMeshAgent.destination = player.transform.position;
-            
+        public override void UpdateState(EnemyControlSystem enemy)
+        {
+            if (!fov.canSeePlayer)
+            {
+                enemy.playerLastPos.position = player.transform.position;
+                navMeshAgent.destination = enemy.playerLastPos.position;
+                Debug.Log(enemy.name + ": Lost Sight of 8108 sweeping the area");
 
-    }
-    public override void OnCollisionEnter(EnemyControlSystem enemy)
-    {
 
+                enemy.SwitchState(enemy.SearchState);
+            }
+            Vector3.ClampMagnitude(navMeshAgent.destination, 3);
+            navMeshAgent.destination = player.transform.position;
+
+
+        }
+        public override void OnCollisionEnter(EnemyControlSystem enemy)
+        {
+
+        }
     }
 }
