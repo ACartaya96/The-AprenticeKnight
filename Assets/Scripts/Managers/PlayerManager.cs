@@ -83,6 +83,10 @@ namespace TAK
             inputHandler.rt_Input = false;
             inputHandler.rbflag = false;
             inputHandler.rtflag = false;
+            inputHandler.d_Pad_Up = false;
+            inputHandler.d_Pad_Down = false;
+            inputHandler.d_Pad_Right = false;
+            inputHandler.d_Pad_Left = false;
 
             if (playerTarget.currentLockedOnTarget == null)
             {
