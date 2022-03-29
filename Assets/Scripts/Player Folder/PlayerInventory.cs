@@ -95,13 +95,12 @@ namespace TAK
 
             if (currentRightWeaponIndex > weaponInRightHandSlots.Length - 1)
             {
-                Debug.Log("I am not being ignored.");
+                
                 currentRightWeaponIndex = -1;
                 rightWeapon = unarmedWeapon;
                 weaponSlotManager.LoadWeaponOnSlot(unarmedWeapon, false);
             }
-            Debug.Log("I am being ignored.");
-
+         
         }
 
         public void ChangeLeftWeapon()

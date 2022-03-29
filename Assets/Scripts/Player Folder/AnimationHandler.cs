@@ -5,10 +5,9 @@ using UnityEngine;
 
 namespace TAK
 {
-    public class AnimationHandler : MonoBehaviour
+    public class AnimationHandler : AnimationManager
     {
         PlayerManager playerManager;
-        public Animator anim;
         InputHandler inputHandler;
         PlayerController playerController;
         int vertical;
@@ -79,13 +78,7 @@ namespace TAK
             anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
         }
 
-        public void PlayTargetAnimation(string targetAnim, bool isInteracting)
-        {
-            anim.applyRootMotion = isInteracting;
-            anim.SetBool("isInteracting", isInteracting);
-            anim.CrossFade(targetAnim, 0.2f);
-        }
-
+      
         public void CanRotate()
         {
             canRotate = true;

@@ -2,84 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FieldofView : MonoBehaviour
+
+namespace TAK
 {
-    public float radius;
-    [Range(0,360)]
-    public float angle;
-    public float heightCap = 4.0f;
-
-    public GameObject playerRef;
-
-    public LayerMask targetMask;
-    public LayerMask obstructionMask;
-
-    public bool canSeePlayer;
-    public bool canHearPlayer;
-
-    // Start is called before the first frame update
-    void Start()
+    public class FieldofView : MonoBehaviour
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(FOVRoutine());
-    }
+        public float radius;
+        [Range(0, 360)]
+        public float angle;
+        public float heightCap = 4.0f;
 
-    private IEnumerator FOVRoutine()
-    {
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
+        public Transform playerRef;
 
-        while (true)
+        EnemyManager manager;
+
+        public LayerMask targetMask;
+        public LayerMask obstructionMask;
+        [SerializeField] List<TeamID> targetID = new List<TeamID>();
+
+        public bool canSeePlayer;
+        public bool canHearPlayer;
+
+        // Start is called before the first frame update
+        void Awake()
         {
-            yield return wait;
-            FieldOFViewCheck();
+            
+            manager = GetComponent<EnemyManager>();
+           
         }
 
-        
-    }
-
-    private void FieldOFViewCheck()
-    {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-
-        if(rangeChecks.Length != 0)
+        public void FieldOFViewCheck()
         {
-            Transform target = rangeChecks[0].transform;
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            Collider[] colliders = Physics.OverlapSphere(manager.LockOnTransform.position, radius, targetMask);
             
-            if(Vector3.Angle(transform.forward, directionToTarget) < angle/2)
+            foreach(Collider collider in colliders)
             {
-                float distancetoTarget = Vector3.Distance(transform.position, target.position);
+                
+                CharacterManager character = collider.GetComponent<CharacterManager>();
 
-                if (playerRef.transform.position.y < radius / heightCap)
+                if(character != null)
                 {
-                    if (!Physics.Raycast(transform.position, directionToTarget, distancetoTarget, obstructionMask))
+                    //check Team ID
+
+                    Vector3 targetDirection = character.transform.position - transform.position;
+                   
+
+                    if(Vector3.Angle(transform.forward, targetDirection) < angle/2)
                     {
+                        manager.currentTarget = character;
+                        playerRef = character.transform;
                         canSeePlayer = true;
                     }
-                    else
-                    {
-                        canSeePlayer = false;
-                    }
                 }
-                else
-                {
-                    canSeePlayer = false;
-                }
-            }
-            else
-            {
-                canSeePlayer = false;
             }
         }
-        else if(canSeePlayer)
+               
+
+
+        
+             
+               
+
+                
+
+        public void ReportCanHear(Vector3 location, EHeardSoundCategory category, float intesity)
         {
-            canSeePlayer = false;
+            Debug.Log("Heard sound " + category + " at " + location.ToString() + " with intensity of " + intesity);
+
         }
-    }
-
-    public void ReportCanHear(Vector3 location, EHeardSoundCategory category, float intesity)
-    {
-        Debug.Log("Heard sound " + category + " at " + location.ToString() + " with intensity of " + intesity);
-
     }
 }

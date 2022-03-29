@@ -16,8 +16,6 @@ namespace TAK
 
 
         [Header("Player Flags")]
-        public bool isInteracting;
-        [Space]
         public bool isInAir;
         public bool isGrounded;
         public bool canDoCombo;
