@@ -17,6 +17,11 @@ namespace TAK
         [Header("Face Buttons")]
         public bool b_Input;
         public bool a_Input;
+        public bool d_Pad_Up;
+        public bool d_Pad_Down;
+        public bool d_Pad_Left;
+        public bool d_Pad_Right;
+
 
         [Header("Trigger & Shoulders")]
         public bool rb_Input;
@@ -69,6 +74,14 @@ namespace TAK
         public InputAction lbAction;
         [HideInInspector]
         public InputAction ltAction;
+        [HideInInspector]
+        public InputAction dUpAction;
+        [HideInInspector]
+        public InputAction dDownAction;
+        [HideInInspector]
+        public InputAction dLeftAction;
+        [HideInInspector]
+        public InputAction dRightAction;
 
 
 
@@ -97,6 +110,10 @@ namespace TAK
             lbAction = playerInput.actions["LB"];
             rLockOnAction = playerInput.actions["Lock On Target Right"];
             lLockOnAction = playerInput.actions["Lock On Target Left"];
+            dUpAction = playerInput.actions["D-Pad Up"];
+            dDownAction = playerInput.actions["D-Pad Down"];
+            dLeftAction = playerInput.actions["D-Pad Left"];
+            dRightAction = playerInput.actions["D-Pad Right"];
         }
         private void OnEnable()
         {
@@ -113,6 +130,10 @@ namespace TAK
             aimAction.performed += _ => rj_Input = true;
             lLockOnAction.performed += _ => right_Stick_Left = true;
             rLockOnAction.performed += _ => right_Stick_Right = true;
+            dUpAction.performed += _ => d_Pad_Up = true;
+            dDownAction.performed += _ => d_Pad_Down = true;
+            dLeftAction.performed += _ => d_Pad_Left = true;
+            dRightAction.performed += _ => d_Pad_Right = true;
 
 
 
@@ -132,6 +153,10 @@ namespace TAK
             aimAction.performed -= _ => rj_Input = true;
             lLockOnAction.performed -= _ => right_Stick_Left = true;
             rLockOnAction.performed -= _ => right_Stick_Right = true;
+            dUpAction.performed -= _ => d_Pad_Up = true;
+            dDownAction.performed -= _ => d_Pad_Down = true;
+            dLeftAction.performed -= _ => d_Pad_Left = true;
+            dRightAction.performed -= _ => d_Pad_Right = true;
 
         }
         #endregion
@@ -141,6 +166,7 @@ namespace TAK
             HandleRollinput();
             HandleCombatInput();
             HandleLockOnInput();
+            HandleQuickSlotInput();
         }
         #region HandleInputs
         private void HandleMoveInput()
@@ -242,6 +268,26 @@ namespace TAK
                     playerTarget.currentLockedOnTarget = playerTarget.rightLockOnTarget;
 
                 }
+            }
+        }
+
+        private void HandleQuickSlotInput()
+        {
+            if(d_Pad_Up)
+            {
+                playerInventory.ChangeSpells();
+            }
+            if(d_Pad_Down)
+            {
+
+            }
+            if(d_Pad_Left)
+            {
+                playerInventory.ChangeLeftWeapon();
+            }
+            if(d_Pad_Right)
+            {
+                playerInventory.ChangeRightWeapon();
             }
         }
         #endregion
