@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace TAK
 {
+    [CreateAssetMenu(menuName = "A.I./Enemy Actions/ States/ Attack")]
     public class AttackState : EnemyBaseState
     {
-        public override EnemyBaseState Tick(PlayerManager enemyManager, EnemyStats enemyStats, AnimationHandler enemyAnimationHandler, FieldofView fov)
+        public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
         {
             //Select One of our many Attack based on a randomness
             //if the selected attack is not able to be use, for example: the attack selected doesn't have the range or the angle to the player. Get a new attack.

@@ -38,6 +38,9 @@ namespace TAK
 
         public void HandleMoveToTarget()//target can mean waypoints or player
         {
+            if (enemyManager.isPerformingAction)
+                return;
+
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
             distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
             float viewAngle = Vector3.Angle(targetDirection, transform.forward);
@@ -48,20 +51,14 @@ namespace TAK
             {
                 enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
                 navMeshAgent.enabled = false;
+                
             }
             else
             {
                 if(distanceFromTarget > stoppingDistance)
                 {
                     enemyAnimationHandler.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
-                    targetDirection.Normalize();
-                    targetDirection.y = 0;
-
-                    targetDirection *= speed;
-
-                    Vector3 projectedVelocity = Vector3.ProjectOnPlane(targetDirection, Vector3.up);
-                    rb.velocity = projectedVelocity;
-
+                   
                 }
                 else if(distanceFromTarget <= stoppingDistance)
                 {

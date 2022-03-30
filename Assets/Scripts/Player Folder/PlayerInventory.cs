@@ -37,10 +37,11 @@ namespace TAK
 
         private void Start()
         {
-            rightWeapon = unarmedWeapon;
-            leftWeapon = unarmedWeapon;
 
-            for(int r = 0; r < weaponInRightHandSlots.Length; r++)
+            weaponSlotManager.LoadWeaponOnSlot(weaponInRightHandSlots[currentRightWeaponIndex], false);
+            weaponSlotManager.LoadWeaponOnSlot(weaponInLeftHandSlots[currentLeftWeaponIndex], true);
+
+            for (int r = 0; r < weaponInRightHandSlots.Length; r++)
             {
                 if(weaponInRightHandSlots[r] == null)
                 {
@@ -55,6 +56,10 @@ namespace TAK
                     weaponInLeftHandSlots[r] = unarmedWeapon;
                 }
             }
+            
+
+            
+           
         }
 
         public void ChangeRightWeapon()
@@ -96,9 +101,9 @@ namespace TAK
             if (currentRightWeaponIndex > weaponInRightHandSlots.Length - 1)
             {
                 
-                currentRightWeaponIndex = -1;
-                rightWeapon = unarmedWeapon;
-                weaponSlotManager.LoadWeaponOnSlot(unarmedWeapon, false);
+                currentRightWeaponIndex = 0;
+                rightWeapon = weaponInRightHandSlots[currentRightWeaponIndex];
+                weaponSlotManager.LoadWeaponOnSlot(weaponInRightHandSlots[currentRightWeaponIndex], false);
             }
          
         }
@@ -139,9 +144,9 @@ namespace TAK
 
             if (currentLeftWeaponIndex > weaponInLeftHandSlots.Length - 1)
             {
-                currentLeftWeaponIndex = -1;
-                leftWeapon = unarmedWeapon;
-                weaponSlotManager.LoadWeaponOnSlot(unarmedWeapon, true);
+                currentLeftWeaponIndex = 0;
+                leftWeapon = weaponInLeftHandSlots[currentLeftWeaponIndex]; 
+                weaponSlotManager.LoadWeaponOnSlot(weaponInLeftHandSlots[currentLeftWeaponIndex], true);
             }
 
            

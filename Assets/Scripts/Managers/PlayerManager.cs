@@ -9,6 +9,7 @@ namespace TAK
         InputHandler inputHandler;
         PlayerController playerController;
         Animator anim;
+        AnimationHandler animationHandler;
         PlayerTargetDetection playerTarget;
 
         [Header("References")]
@@ -31,6 +32,7 @@ namespace TAK
             playerController = GetComponent<PlayerController>();
             playerTarget = GetComponent<PlayerTargetDetection>();
             anim = GetComponentInChildren<Animator>();
+            animationHandler = GetComponentInChildren<AnimationHandler>();
 
 
         }
@@ -46,6 +48,7 @@ namespace TAK
             anim.SetBool("isLockedOn", inputHandler.lockedOnflag);
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isBlocking", isBlocking);
+            animationHandler.canRotate = anim.GetBool("canRotate");
             inputHandler.TickInput();
 
             playerController.HandleRollingandSprinting();
@@ -66,6 +69,7 @@ namespace TAK
         private void FixedUpdate()
         {
             playerController.HandleMovement();
+            playerController.HandleRotation();
             playerController.HandleFalling(playerController.moveDirection);
         }
 

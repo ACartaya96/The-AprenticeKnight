@@ -39669,15 +39669,22 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.13333334
+  - time: 0.16666667
+    functionName: CanRotate
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.2
     functionName: OpenRightDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.16666667
-    functionName: CloseRightDamageCollider
+  - time: 0.23333333
+    functionName: StopRotate
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -39692,6 +39699,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.53333336
     functionName: DisableCombo
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6
+    functionName: CloseRightDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
