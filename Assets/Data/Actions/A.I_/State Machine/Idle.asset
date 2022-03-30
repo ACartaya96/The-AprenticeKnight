@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Idle
   m_EditorClassIdentifier: 
   pursueTargetState: {fileID: 11400000, guid: bc37c570b5c95e346abab7b240c8b1f2, type: 2}
+  speedWalk: 4.5
+  wayPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentWayPoint: {fileID: 0}

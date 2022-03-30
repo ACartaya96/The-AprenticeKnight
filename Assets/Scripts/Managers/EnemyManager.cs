@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 namespace TAK
 {
@@ -11,15 +11,19 @@ namespace TAK
         EnemyMovement enemyMovement;
         EnemyAnimationHandler enemyAnimationHandler;
         EnemyStats enemyStats;
-
         public CharacterManager currentTarget;
+
+        public NavMeshAgent navMeshAgent;
+        public int WayPointIndex;
+        public float WaitTime;
+        public float startWaitTime =4f;
 
         public EnemyAttackAction[] enemyAttacks;
         public EnemyAttackAction currentAttack;
-
         [SerializeField] public EnemyBaseState currentState;
 
-       
+        public float distanceFromTarget;
+        public float stoppingDistance = 1;
 
         public bool isPerformingAction;
 
@@ -32,7 +36,11 @@ namespace TAK
             enemyMovement = GetComponent<EnemyMovement>();
             enemyAnimationHandler = GetComponentInChildren<EnemyAnimationHandler>();
             enemyStats = GetComponent<EnemyStats>();
-
+            navMeshAgent= GetComponent<NavMeshAgent>();
+            WayPointIndex = 0;
+            navMeshAgent.isStopped = false;
+            WaitTime = startWaitTime;
+            navMeshAgent.SetDestination(transform.position);
         }
 
         // Update is called once per frame
