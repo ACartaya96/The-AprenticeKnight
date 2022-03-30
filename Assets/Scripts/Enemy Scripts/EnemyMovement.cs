@@ -12,8 +12,7 @@ namespace TAK
         EnemyAnimationHandler enemyAnimationHandler;
        public NavMeshAgent navMeshAgent;
 
-        public float distanceFromTarget;
-        public float stoppingDistance = 1;
+
         public float rotationSpeed = 25;
 
         public Rigidbody rb;
@@ -42,7 +41,7 @@ namespace TAK
                 return;
 
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - transform.position;
-            distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
+            enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, transform.position);
             float viewAngle = Vector3.Angle(targetDirection, transform.forward);
 
             //If we are performing action(ex. Attack,Dodge,Spell,etc.) we turn of navmesh so that
@@ -55,12 +54,12 @@ namespace TAK
             }
             else
             {
-                if(distanceFromTarget > stoppingDistance)
+                if(enemyManager.distanceFromTarget > enemyManager.stoppingDistance)
                 {
                     enemyAnimationHandler.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
                    
                 }
-                else if(distanceFromTarget <= stoppingDistance)
+                else if(enemyManager.distanceFromTarget <= enemyManager.stoppingDistance)
                 {
                     enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
                 }
