@@ -4,12 +4,11 @@ using UnityEngine;
 
 namespace TAK
 {
-    public class PlayerStats : MonoBehaviour, IDamage
+    public class PlayerStats : CharacterStatsManager, IDamage
     {
-        [SerializeField] private int healthLevel = 10;
+ 
         [SerializeField] private int manaLevel = 10;
-        public float maxHealth { get; private set; }
-        public float currentHealth;
+ 
         public float maxMana { get; private set; }
         public float currentMana;
 

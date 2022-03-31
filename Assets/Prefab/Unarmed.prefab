@@ -72,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7551133775481060272}
   - component: {fileID: 6207608051748227204}
+  - component: {fileID: 3109271663007952367}
   m_Layer: 0
   m_Name: Unarmed
   m_TagString: Untagged
@@ -108,3 +109,16 @@ MonoBehaviour:
   weaponItem: {fileID: 11400000, guid: 77b1f64933efbc546a19e3ca2c3a95a0, type: 2}
   projectileLastPos: {x: 0, y: 0, z: 0}
   enableOnStartUp: 0
+--- !u!65 &3109271663007952367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772310224741849194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.9439602}
+  m_Center: {x: 0, y: 0, z: 0.5041399}

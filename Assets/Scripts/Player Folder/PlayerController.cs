@@ -8,88 +8,7 @@ namespace TAK
 {
     public class PlayerController : MonoBehaviour
     {
-        /*#region Old Code
-        private CharacterController controller;
-        private Transform cameraTransform;
-        private Rigidbody rb;
-        private PlayerInput playerInput;
-        private InputAction movementAction;
-        private InputAction jumpAction;
-        float gravityValue = -9.86f;
 
-        [SerializeField] private Transform GroundCheck;
-        [SerializeField] private LayerMask GroundLayer;
-        [SerializeField] private Transform castPoint;
-
-        [HideInInspector] public AnimationHandler animationHandler;
-        [SerializeField] private float rotationSpeed = 5f;
-
-
-
-        [Header("Movement")]
-        [SerializeField] public float maxSpeed = 5f;
-        [SerializeField] private float movementForce = 1.0f;
-        private Vector3 playerVelocity = Vector3.zero;
-
-
-        [Header("Jump")]
-        [SerializeField] private float JumpHeight = 1.0f;
-        public float fallMultiplier = 2.5f;
-        public float lowJumpMultiplier = 1.5f;
-
-
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            playerInput = GetComponent<PlayerInput>();
-            animationHandler = GetComponentInChildren<AnimationHandler>();
-            controller = GetComponent<CharacterController>();
-            cameraTransform = Camera.main.transform;
-            movementAction = playerInput.actions["Movement"];
-            jumpAction = playerInput.actions["Jump"];
-            animationHandler.Initialize();
-        }
-
-        void FixedUpdate()
-        {
-            bool groundedPlayer = controller.isGrounded;
-            if (groundedPlayer && playerVelocity.y < 0)
-            {
-                playerVelocity.y = 0;
-            }
-
-            //Movenment
-            Vector2 input = movementAction.ReadValue<Vector2>();
-            Vector3 move = new Vector3(input.x, 0, input.y);
-            move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
-            controller.Move(move * Time.deltaTime * maxSpeed);
-
-            animationHandler.UpdateAnimatorValues(input.y, 0);
-
-            if (move != Vector3.zero)
-                gameObject.transform.forward = move;
-
-
-            //Jump
-            if (jumpAction.triggered && groundedPlayer)
-            {
-                playerVelocity.y += Mathf.Sqrt(JumpHeight * -3.0f * gravityValue);
-            }
-
-            playerVelocity.y += gravityValue * Time.deltaTime;
-            controller.Move(playerVelocity * Time.deltaTime);
-
-            //Rotate towards camera direction
-            Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed);
-        }
-
-        public Transform GetCastPoint
-        {
-            get { return castPoint; }
-        }
-        #endregion*/
 
         Transform cameraObject;
         InputHandler inputHandler;
@@ -217,70 +136,72 @@ namespace TAK
             }
 
 
-            if (animationHandler.canRotate)
-            {
-                HandleRotation();
-            }
+          
         }
         public void HandleRotation()
         {
-
-            if (inputHandler.lockedOnflag)
+            if (animationHandler.canRotate)
             {
-                if (inputHandler.rollflag)
+                if (inputHandler.lockedOnflag)
                 {
+                    if (inputHandler.rollflag)
+                    {
 
-                    Vector3 targetDirection = Vector3.zero;
-                    targetDirection = cameraObject.transform.forward * inputHandler.vertical;
-                    targetDirection += cameraObject.transform.right * inputHandler.horizontal;
-                    targetDirection.y = 0;
+                        Vector3 targetDirection = Vector3.zero;
+                        targetDirection = cameraObject.transform.forward * inputHandler.vertical;
+                        targetDirection += cameraObject.transform.right * inputHandler.horizontal;
+                        targetDirection.y = 0;
 
-                    if (targetDirection == Vector3.zero)
-                        targetDirection = transform.forward;
+                        if (targetDirection == Vector3.zero)
+                            targetDirection = transform.forward;
 
 
-                    Quaternion tr = Quaternion.LookRotation(targetDirection);
-                    Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * 2 * Time.deltaTime);
+                        Quaternion tr = Quaternion.LookRotation(targetDirection);
+                        Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * 2 * Time.deltaTime);
 
-                    myTransform.rotation = targetRotation;
+                        myTransform.rotation = targetRotation;
+                    }
+                    else
+                    {
+                        Vector3 rotationDirection = moveDirection;
+                        rotationDirection = playerTarget.currentLockedOnTarget.transform.position - myTransform.position;
+                        rotationDirection.y = 0;
+                        rotationDirection.Normalize();
+
+                        Quaternion tr = Quaternion.LookRotation(rotationDirection);
+                        Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * Time.deltaTime);
+
+                        myTransform.rotation = targetRotation;
+                    }
                 }
                 else
                 {
-                    Vector3 rotationDirection = moveDirection;
-                    rotationDirection = playerTarget.currentLockedOnTarget.transform.position - myTransform.position;
-                    rotationDirection.y = 0;
-                    rotationDirection.Normalize();
+                    Vector3 targetDir = Vector3.zero;
+                    float moveOverride = inputHandler.moveAmount;
 
-                    Quaternion tr = Quaternion.LookRotation(rotationDirection);
+                    targetDir = cameraObject.forward * inputHandler.vertical;
+                    targetDir += cameraObject.right * inputHandler.horizontal;
+
+                    targetDir.Normalize();
+                    targetDir.y = 0;
+
+
+                    if (targetDir == Vector3.zero)
+                        targetDir = myTransform.forward;
+
+                    Quaternion tr = Quaternion.LookRotation(targetDir);
                     Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * Time.deltaTime);
 
                     myTransform.rotation = targetRotation;
+
                 }
-            }
-            else
-            {
-                Vector3 targetDir = Vector3.zero;
-                float moveOverride = inputHandler.moveAmount;
 
-                targetDir = cameraObject.forward * inputHandler.vertical;
-                targetDir += cameraObject.right * inputHandler.horizontal;
-
-                targetDir.Normalize();
-                targetDir.y = 0;
-
-
-                if (targetDir == Vector3.zero)
-                    targetDir = myTransform.forward;
-
-                Quaternion tr = Quaternion.LookRotation(targetDir);
-                Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rotationSpeed * Time.deltaTime);
-
-                myTransform.rotation = targetRotation;
 
             }
-
-
+           
+           
         }
+
         public void HandleRollingandSprinting()
         {
             if (animationHandler.anim.GetBool("isInteracting"))

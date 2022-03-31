@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace TAK
 {
-    public abstract class EnemyBaseState
+    public abstract class EnemyBaseState : ScriptableObject 
     {
-        public abstract void EnterState(EnemyControlSystem enemy);
-        public abstract void UpdateState(EnemyControlSystem enemy);
-        public abstract void OnCollisionEnter(EnemyControlSystem enemy);
+
+        public abstract EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov);
+        
     }
 }
