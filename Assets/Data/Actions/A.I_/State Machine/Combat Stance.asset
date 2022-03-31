@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b4b07e8f45e8f4eaf0e2d5652145fa, type: 3}
   m_Name: Combat Stance
   m_EditorClassIdentifier: 
+  attackState: {fileID: 11400000, guid: 45510962c41ab2246a8e761d2721d3fd, type: 2}
+  pursueTarget: {fileID: 11400000, guid: bc37c570b5c95e346abab7b240c8b1f2, type: 2}

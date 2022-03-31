@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c899e7052dce9f7418e9f98093198a53, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: 
+  combatStance: {fileID: 11400000, guid: d05a6721fe7f99e4189ba8a79a89fbec, type: 2}
+  enemyAttacks:
+  - {fileID: 11400000, guid: 71831ecd5a0626143aedbfd2e00f1ad6, type: 2}
+  - {fileID: 11400000, guid: 710cebd392e472744bc6fcf174e92189, type: 2}
+  currentAttack: {fileID: 0}

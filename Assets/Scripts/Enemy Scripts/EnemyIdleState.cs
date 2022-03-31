@@ -28,8 +28,8 @@ namespace TAK
             fov.FieldOFViewCheck();
 
             Vector3 targetDirection = wayPoints[enemyManager.WayPointIndex].position - enemyManager.transform.position;
-            float distanceFromTarget = Vector3.Distance(wayPoints[enemyManager.WayPointIndex].position, enemyManager.transform.position);
-           float viewAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
+            enemyManager.distanceFromTarget = Vector3.Distance(wayPoints[enemyManager.WayPointIndex].position, enemyManager.transform.position);
+            float viewAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
 
             //If we are performing action(ex. Attack,Dodge,Spell,etc.) we turn of navmesh so that
             //the enemy can rotate towards its target with out worry of pathfinding.
@@ -41,12 +41,12 @@ namespace TAK
             }
             else
             {
-                if (distanceFromTarget > enemyManager.maximumAttackRange)
+                if (enemyManager.distanceFromTarget > enemyManager.maximumAttackRange)
                 {
                     enemyAnimationHandler.anim.SetFloat("Vertical", 0.5f, 0.1f, Time.deltaTime);
 
                 }
-                else if (distanceFromTarget <= enemyManager.maximumAttackRange)
+                else if (enemyManager.distanceFromTarget <= enemyManager.maximumAttackRange)
                 {
                     enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
 
@@ -57,18 +57,21 @@ namespace TAK
             enemyManager.navMeshAgent.nextPosition = enemyManager.transform.position;
             enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
 
-            if(distanceFromTarget <= enemyManager.maximumAttackRange)
+            if(enemyManager.distanceFromTarget <= enemyManager.maximumAttackRange)
             {
                 if(enemyManager.WaitTime <= 0)
                 {
                     enemyManager.WayPointIndex = (enemyManager.WayPointIndex + 1) % wayPoints.Length;
                     currentWayPoint = wayPoints[enemyManager.WayPointIndex];
+                    enemyManager.navMeshAgent.isStopped = false;
                     enemyManager.navMeshAgent.speed = speedWalk;
+                    enemyManager.WaitTime = enemyManager.startWaitTime;
                 }
                 else
                 {
                    
                     enemyManager.navMeshAgent.speed = 0;
+                    enemyManager.navMeshAgent.isStopped = true;
                     enemyManager.WaitTime -= Time.deltaTime;
                 }
             }
