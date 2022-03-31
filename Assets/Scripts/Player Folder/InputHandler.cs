@@ -162,7 +162,7 @@ namespace TAK
             dDownAction.performed -= _ => d_Pad_Down = true;
             dLeftAction.performed -= _ => d_Pad_Left = true;
             dRightAction.performed -= _ => d_Pad_Right = true;
-            StartButton.performed += _ => start_button = true;
+            StartButton.performed -= _ => start_button = true;
 
         }
         #endregion
