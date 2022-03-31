@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f9cf5b96f36574e9c4ba16efd426f2, type: 3}
   m_Name: Pursue
   m_EditorClassIdentifier: 
+  combatStance: {fileID: 11400000, guid: d05a6721fe7f99e4189ba8a79a89fbec, type: 2}

@@ -17,7 +17,7 @@ namespace TAK
         public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
         {
             //Move its partol route
-            //playerLastPosition = Vector3.zero;
+
 
             
             //Look for a potential target
@@ -25,13 +25,22 @@ namespace TAK
             if (enemyManager.currentTarget != null)
             {
                 //Switch to a pursue target state if it finds a target
+                enemyManager.navMeshAgent.enabled = false;
                 return pursueTargetState;
             }
             else
             {
+                enemyManager.navMeshAgent.enabled = true;
                 currentWayPoint = wayPoints[enemyManager.WayPointIndex];
                 enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.transform.position , wayPoints[enemyManager.WayPointIndex].position);
+                Vector3 relativeDirection = enemyManager.transform.InverseTransformDirection(enemyManager.navMeshAgent.desiredVelocity);
+                Vector3 targetVelocity = enemyManager.rb.velocity;
+
+                enemyManager.navMeshAgent.enabled = true;
                 enemyManager.navMeshAgent.SetDestination(currentWayPoint.position);
+                enemyManager.rb.velocity = targetVelocity;
+                enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
+
                 enemyAnimationHandler.anim.SetFloat("Vertical", 0.5f, 0.1f, Time.deltaTime);
                 if(  enemyManager.distanceFromTarget <=   enemyManager.stoppingDistance)
                 {
@@ -43,8 +52,10 @@ namespace TAK
                     }
                     else
                     {
-                        enemyAnimationHandler.anim.SetFloat("Vertical", 0f, 0.1f, Time.deltaTime);
+                       
                         Stop(enemyManager);
+                        enemyAnimationHandler.anim.SetFloat("Vertical", 0f, 0.01f, Time.deltaTime);
+                        
                         enemyManager.WaitTime -= Time.deltaTime;
                     }
                     

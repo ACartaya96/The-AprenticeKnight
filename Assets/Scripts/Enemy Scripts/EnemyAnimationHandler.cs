@@ -6,20 +6,20 @@ namespace TAK
 {
     public class EnemyAnimationHandler : AnimationManager
     {
-        EnemyMovement enemyMovement;
+        EnemyManager enemyManager;
         public void Awake()
         {
             anim = GetComponent<Animator>();
-            enemyMovement = GetComponentInParent<EnemyMovement>();
+            enemyManager = GetComponentInParent<EnemyManager>();
         }
 
         private void OnAnimatorMove()
         {
-            enemyMovement.rb.drag = 0;
+            enemyManager.rb.drag = 0;
             Vector3 deltaPosition = anim.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition /Time.deltaTime;
-            enemyMovement.rb.velocity = velocity;
+            enemyManager.rb.velocity = velocity;
         }
 
     }    

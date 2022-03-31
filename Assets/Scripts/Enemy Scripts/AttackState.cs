@@ -16,43 +16,62 @@ namespace TAK
         {
 
             if (enemyManager.isPerformingAction)
-                return combatStance;
-
-            if(currentAttack != null)
             {
-                //if we are too close to the enemy to perform current attac, get new attack
-                if(enemyManager.distanceFromTarget < currentAttack.minimumDistanceToAttack)
-                {
-                    return this;
-                }
-                //if we are close enough to attack proceed to attack
-                else if( enemyManager.distanceFromTarget < currentAttack.maximumDistanceToAttack)
-                {
-                    float viewableAngle = Vector3.Angle(enemyManager.transform.forward, (enemyManager.currentTarget.transform.position - enemyManager.transform.position));
-                    //if our enemy is within our attacks viewable angle, we attack
-                    if(viewableAngle < currentAttack.angle/2)
-                    {
-                        //if the attack is viable, stop our movement and attack our target
-                        if (enemyManager.currentRecoveryTime <= 0 && enemyManager.isPerformingAction == false)
-                        {
-                            enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
-                            enemyAnimationHandler.anim.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
-                            enemyAnimationHandler.PlayTargetAnimation(currentAttack.actionAnimation, true);
-                            enemyManager.isPerformingAction = true;
-
-                            //make a cooldown variable and set it to the attacks cooldown variable ( this gives player some time to recover if not the enemy will just switch from one attack the next with no remorse)
-                            enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
-                            currentAttack = null;
-                            //return to combat stance(this is always going to be the return state)
-                            return combatStance;
-                        }
-                    }
-                }
+                return combatStance;
             }
             else
             {
-                GetNewAttack(enemyManager);
+                if (currentAttack != null)
+                {
+                    //if we are too close to the enemy to perform current attac, get new attack
+                    if (enemyManager.distanceFromTarget < currentAttack.minimumDistanceToAttack)
+                    {
+                        return this;
+                    }
+                    //if we are close enough to attack proceed to attack
+                    else if (enemyManager.distanceFromTarget < currentAttack.maximumDistanceToAttack)
+                    {
+                        float viewableAngle = Vector3.Angle(enemyManager.transform.forward, (enemyManager.currentTarget.transform.position - enemyManager.transform.position));
+                        //if our enemy is within our attacks viewable angle, we attack
+                        if (viewableAngle < currentAttack.angle / 2)
+                        {
+                            //if the attack is viable, stop our movement and attack our target
+                            if (enemyManager.currentRecoveryTime <= 0 && enemyManager.isPerformingAction == false)
+                            {
+                                enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                                enemyAnimationHandler.anim.SetFloat("Horizontal", 0, 0.1f, Time.deltaTime);
+                                enemyAnimationHandler.PlayTargetAnimation(currentAttack.actionAnimation, true);
+                                enemyManager.isPerformingAction = true;
+
+                                //make a cooldown variable and set it to the attacks cooldown variable ( this gives player some time to recover if not the enemy will just switch from one attack the next with no remorse)
+                                enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
+                                currentAttack = null;
+                                //return to combat stance(this is always going to be the return state)
+                                return combatStance;
+                            }
+                            else
+                            {
+                                return this;
+                            }
+                        }
+                        else
+                        {
+                            return combatStance;
+                        }
+                    }
+                    else
+                    {
+                        return combatStance;
+                    }
+                }
+                else
+                {
+                    GetNewAttack(enemyManager);
+                    return this;
+                }
+
             }
+           
     
         }
 

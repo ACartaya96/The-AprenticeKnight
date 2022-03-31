@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Sirenix.OdinInspector;
 
 namespace TAK
 {
@@ -13,23 +14,26 @@ namespace TAK
         EnemyStats enemyStats;
         public CharacterManager currentTarget;
 
+        [InlineEditor]
         public NavMeshAgent navMeshAgent;
         public int WayPointIndex;
         public float WaitTime;
-        public float startWaitTime =4f;
+        public float startWaitTime = 4f;
 
-        public EnemyAttackAction[] enemyAttacks;
-        public EnemyAttackAction currentAttack;
+        
+        
+        public Rigidbody rb;
+
+        [InlineEditor]
         [SerializeField] public EnemyBaseState currentState;
 
         public float distanceFromTarget;
         public float stoppingDistance = 1;
+        public float rotationSpeed = 25;
 
         public bool isPerformingAction;
 
         public float currentRecoveryTime = 0;
-        public float distanceFromTarget;
-        public float stoppingDistance = 1;
         public float maximumAttackRange = 3;
         public float minimumAttackRange = 0;
 
@@ -40,11 +44,12 @@ namespace TAK
             enemyMovement = GetComponent<EnemyMovement>();
             enemyAnimationHandler = GetComponentInChildren<EnemyAnimationHandler>();
             enemyStats = GetComponent<EnemyStats>();
-            navMeshAgent= GetComponent<NavMeshAgent>();
+            navMeshAgent= GetComponentInChildren<NavMeshAgent>();
+            rb = GetComponent<Rigidbody>();
             WayPointIndex = 0;
-            navMeshAgent.isStopped = false;
+            
             WaitTime = startWaitTime;
-            navMeshAgent.SetDestination(transform.position);
+            navMeshAgent.enabled = false; 
         }
 
         // Update is called once per frame
