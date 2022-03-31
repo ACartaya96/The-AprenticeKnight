@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TAK
 {
-    public class EnemyStats : CharacterStatsManager
+    public class EnemyStats : CharacterStatsManager, IDamage
     {
        
         //[SerializeField] private int manaLevel = 10;
@@ -16,7 +16,7 @@ namespace TAK
 
         public int enemyLevel;
 
-        public HealthBar healthBar;
+        //public HealthBar healthBar;
         //public ManaBar manaBar;
         
 
@@ -33,7 +33,7 @@ namespace TAK
            // maxMana = SetMaxManafromManaLevel();
             currentHealth = maxHealth;
            // currentMana = maxMana;
-            healthBar.setMaxHealth(maxHealth);
+            //healthBar.setMaxHealth(maxHealth);
            // manaBar.setMaxMana(maxMana);
         }
 
@@ -54,7 +54,7 @@ namespace TAK
            
                 Debug.Log("Xander Takes " + damage.ToString() + " Damage");
                 currentHealth -= damage;
-                healthBar.SetCurrentHealth(currentHealth);
+                //healthBar.SetCurrentHealth(currentHealth);
                 Debug.Log("Xander HP: " + currentHealth.ToString());
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
                 enemyAnimationHandler.PlayTargetAnimation(damageAnimation, true);
@@ -63,6 +63,7 @@ namespace TAK
             {
                 currentHealth = 0;
                 enemyAnimationHandler.PlayTargetAnimation("Dying", true);
+                Destroy(gameObject, 3f);
             }
         }
 
@@ -73,7 +74,7 @@ namespace TAK
             if (currentHealth > maxHealth)
                 currentHealth = maxHealth;
 
-            healthBar.SetCurrentHealth(currentHealth);
+            //healthBar.SetCurrentHealth(currentHealth);
         }
 
        /* public void UseMana(float manaCost)
