@@ -91,6 +91,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 2051b50761ea25f4681d7be3e5bbc436, type: 2}
+  - {fileID: 2100000, guid: d282b75ab3a43f9498ede4a6c7c87f6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -215,9 +216,17 @@ PrefabInstance:
       value: bridge_ornamental_pieces
       objectReference: {fileID: 0}
     - target: {fileID: 1927801098807167806, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927801098807167806, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2051b50761ea25f4681d7be3e5bbc436, type: 2}
+    - target: {fileID: 1927801098807167806, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d282b75ab3a43f9498ede4a6c7c87f6e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
 --- !u!4 &80135432102116047 stripped
@@ -292,6 +301,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: bridge_top_flowers
       objectReference: {fileID: 0}
+    - target: {fileID: 3205081947291821016, guid: e3fa9ae6a954eb34caf3f83b0e5da2c9, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205081947291821016, guid: e3fa9ae6a954eb34caf3f83b0e5da2c9, type: 3}
+      propertyPath: m_Materials.Array.data[42]
+      value: 
+      objectReference: {fileID: 2100000, guid: d282b75ab3a43f9498ede4a6c7c87f6e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3fa9ae6a954eb34caf3f83b0e5da2c9, type: 3}
 --- !u!4 &6338883262074572604 stripped
@@ -362,6 +379,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -253549563165404974, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -253549563165404974, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
+      propertyPath: m_Materials.Array.data[24]
+      value: 
+      objectReference: {fileID: 2100000, guid: d282b75ab3a43f9498ede4a6c7c87f6e, type: 2}
     - target: {fileID: 919132149155446097, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
       propertyPath: m_Name
       value: bridge_flowers_under
@@ -441,9 +466,17 @@ PrefabInstance:
       value: bridge_tunnel
       objectReference: {fileID: 0}
     - target: {fileID: 7596578969185963176, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7596578969185963176, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2051b50761ea25f4681d7be3e5bbc436, type: 2}
+    - target: {fileID: 7596578969185963176, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d282b75ab3a43f9498ede4a6c7c87f6e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
 --- !u!4 &7114172082773214900 stripped

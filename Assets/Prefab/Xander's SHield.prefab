@@ -113,6 +113,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ce2a8fd47709c8b49bcc120c0e882bd5, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ce2a8fd47709c8b49bcc120c0e882bd5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc5c4eeb2b1e26e49b3fc4f9225082f7, type: 2}
+    - target: {fileID: -7511558181221131132, guid: ce2a8fd47709c8b49bcc120c0e882bd5, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e98e2e8a55b42e4682a9d80ad9aee60, type: 2}
     - target: {fileID: 919132149155446097, guid: ce2a8fd47709c8b49bcc120c0e882bd5, type: 3}
       propertyPath: m_Name
       value: Xander's Shield
