@@ -192,7 +192,7 @@ MonoBehaviour:
   radius: 20
   angle: 130
   heightCap: 0
-  playerRef: {fileID: 0}
+  currentTarget: {fileID: 0}
   targetMask:
     serializedVersion: 2
     m_Bits: 8
@@ -253,19 +253,7 @@ MonoBehaviour:
   isBlocking: 0
   isInteracting: 0
   currentTarget: {fileID: 0}
-  navMeshAgent: {fileID: 0}
-  WayPointIndex: 0
-  WaitTime: 0
-  startWaitTime: 4
-  rb: {fileID: 0}
-  currentState: {fileID: 0}
-  distanceFromTarget: 0
-  stoppingDistance: 1
-  rotationSpeed: 25
   isPerformingAction: 0
-  currentRecoveryTime: 0
-  maximumAttackRange: 3
-  minimumAttackRange: 0
 --- !u!114 &2821151260174456368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,9 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62755a55e79b04943af4169de773a2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 0}
+  distanceFromTarget: 0
+  stoppingDistance: 1
+  rotationSpeed: 25
   rb: {fileID: 2821151260908791506}
-  speed: 8
 --- !u!1 &5759948890408209587
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,18 +386,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 680b23c3b8644d943bdd70e38b34802f, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 680b23c3b8644d943bdd70e38b34802f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 366170346fbcaaa479e8d6d3f988a7e4, type: 2}
-    - target: {fileID: -7511558181221131132, guid: 680b23c3b8644d943bdd70e38b34802f, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: d282b75ab3a43f9498ede4a6c7c87f6e, type: 2}
     - target: {fileID: 919132149155446097, guid: 680b23c3b8644d943bdd70e38b34802f, type: 3}
       propertyPath: m_Name
       value: Xander_Dummy_TEXTURED
@@ -457,4 +434,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1403736841}
-  canRotate: 0
