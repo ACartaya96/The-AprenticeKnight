@@ -16,6 +16,7 @@ namespace TAK
             if (enemyManager.isPerformingAction)
                return this;
 
+            enemyManager.navMeshAgent.speed = 8;
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
             enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
             float viewAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);

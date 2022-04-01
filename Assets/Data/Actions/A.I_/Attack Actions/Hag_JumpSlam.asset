@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5784102b88e4a634b8f2c7f35f904165, type: 3}
   m_Name: Hag_JumpSlam
   m_EditorClassIdentifier: 
-  actionAnimation: 
-  attackScore: 3
+  actionAnimation: Slam Jam
+  attackScore: 5
   recoveryTime: 2
-  angle: 0
+  angle: 60
   minimumDistanceToAttack: 0
-  maximumDistanceToAttack: 3
+  maximumDistanceToAttack: 4

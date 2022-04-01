@@ -81,10 +81,11 @@ namespace TAK
             inputHandler.rollflag = false;
             inputHandler.b_Input = false;
             inputHandler.a_Input = false;
-            inputHandler.rb_Input = false;
+            //inputHandler.rb_Input = false;
             inputHandler.rt_Input = false;
             inputHandler.rbflag = false;
             inputHandler.rtflag = false;
+            inputHandler.lt_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Right = false;

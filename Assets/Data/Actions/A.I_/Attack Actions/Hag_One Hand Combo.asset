@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionAnimation: OneHandAttackCombo
   attackScore: 3
-  recoveryTime: 3
+  recoveryTime: 5
   angle: 50
-  minimumDistanceToAttack: 1
+  minimumDistanceToAttack: 0
   maximumDistanceToAttack: 5

@@ -127,9 +127,11 @@ namespace TAK
             rollAction.started += _ => b_Input = true;
             jumpAction.started += _ => a_Input = true;
             rbAction.performed += _ => rb_Input = true;
+            rbAction.canceled += _ => rt_Input = false;
             lbAction.performed += _ => lb_Input = true;
             lbAction.canceled += _ => lb_Input = false;
             rtAction.performed += _ => rt_Input = true;
+       
             ltAction.performed += _ => lt_Input = true;
             aimAction.performed += _ => rj_Input = true;
             lLockOnAction.performed += _ => right_Stick_Left = true;
@@ -151,6 +153,7 @@ namespace TAK
             rollAction.started -= _ => b_Input = true;
             jumpAction.started -= _ => a_Input = true;
             rbAction.performed -= _ => rb_Input = true;
+            rbAction.canceled -= _ => rb_Input = false;
             lbAction.performed -= _ => lb_Input = true;
             lbAction.canceled -= _ => lb_Input = false;
             rtAction.performed -= _ => rt_Input = true;
@@ -208,6 +211,11 @@ namespace TAK
 
                 playerAttack.HandleRBAction();
             }
+            else if(!lb_Input && playerManager.isBlocking )
+            {
+                playerManager.isBlocking = false;
+                playerEquipment.CloseBlockingCollider();
+            }
             if (rt_Input)
             {
                 if (lockedOnflag)
@@ -222,11 +230,16 @@ namespace TAK
                
                 playerAttack.HandleLBAction();
             }
-            else
+            else if(!rb_Input && playerManager.isBlocking)
             {
                 playerManager.isBlocking = false;
                 playerEquipment.CloseBlockingCollider();  
             }
+            if(lt_Input)
+            {
+                playerAttack.HandleLTAction();
+            }
+
 
 
 

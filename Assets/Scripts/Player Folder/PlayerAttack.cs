@@ -39,9 +39,13 @@ namespace TAK
             {
                 animationHandler.anim.SetBool("canDoCombo", false);
 
-                if (lastAttack == weapon.OH_Light_Attack_1)
+                if (lastAttack == weapon.Right_Attack_1)
                 {
-                    animationHandler.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+                    animationHandler.PlayTargetAnimation(weapon.Right_Attack_2, true);
+                }
+                else if(lastAttack == weapon.Left_Attack_1)
+                {
+                    animationHandler.PlayTargetAnimation(weapon.Left_Attack_2, true);
                 }
             }
         }
@@ -57,10 +61,19 @@ namespace TAK
                 }
             }
         }
-        public void HandleLightAttack(WeaponItem weapon)
+        public void HandleRightAttack(WeaponItem weapon)
         {
-            animationHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
-            lastAttack = weapon.OH_Light_Attack_1;
+           animationHandler.PlayTargetAnimation(weapon.Right_Attack_1, true);
+                lastAttack = weapon.Right_Attack_1;
+            
+
+        }
+
+        public void HandleLeftAttack(WeaponItem weapon)
+        {
+            
+                animationHandler.PlayTargetAnimation(weapon.Left_Attack_1, true);
+                lastAttack = weapon.Left_Attack_1;
 
         }
 
@@ -68,6 +81,12 @@ namespace TAK
         {
             animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
             lastAttack = weapon.OH_Heavy_Attack_1;
+        }
+
+        public void HandleSpecialAttack(WeaponItem weapon)
+        {
+            animationHandler.PlayTargetAnimation(weapon.LT_Special_Attack, true);
+            //lastAttack = weapon.OH_Heavy_Attack_1;
         }
 
         #region Input Actions
@@ -107,8 +126,9 @@ namespace TAK
                 if (animationHandler.anim.GetBool("isInteracting"))
                     return;
 
-                HandleLightAttack(playerInventory.rightWeapon);
+                HandleRightAttack(playerInventory.rightWeapon);
             }
+            inputHandler.rb_Input = false;
         }
 
         private void PerformRBSpellAction()
@@ -123,6 +143,7 @@ namespace TAK
                 else
                     playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager);
             }
+            inputHandler.rb_Input = false;
         }
         private void SuccessfullyCastSpell()
         {
@@ -132,7 +153,15 @@ namespace TAK
         }
         private void PerformRBBlockAction()
         {
+            if (playerManager.isInteracting)
+                return;
 
+            if (playerManager.isBlocking)
+                return;
+
+            animationHandler.PlayTargetAnimation("Block Start 2", false);
+            playerEquipment.OpenBlockingCollider();
+            playerManager.isBlocking = true;
         }
         #endregion
         #region LB Actions
@@ -171,7 +200,9 @@ namespace TAK
                 if (animationHandler.anim.GetBool("isInteracting"))
                     return;
 
-                HandleLightAttack(playerInventory.leftWeapon);
+                HandleLeftAttack(playerInventory.leftWeapon);
+
+                inputHandler.lb_Input = false;
             }
         }
 
@@ -221,5 +252,21 @@ namespace TAK
             }
         }
 
+        public void HandleLTAction()
+        {
+            /*if (playerManager.canDoCombo)
+            {
+
+                inputHandler.comboflag = true;
+                HeavyHandleWeaponCombo(playerInventory.rightWeapon);
+                inputHandler.comboflag = false;
+            }*/
+            
+            
+                if (animationHandler.anim.GetBool("isInteracting"))
+                    return;
+                HandleSpecialAttack(playerInventory.leftWeapon);
+            
+        }
     }
 }

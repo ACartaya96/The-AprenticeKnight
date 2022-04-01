@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: THE BIG HAND
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: 
-  modelPrefab: {fileID: 0}
+  itemName: THE BIG HAND
+  modelPrefab: {fileID: 8943960096321276138, guid: 78c441961cb550147ade313d7d627074, type: 3}
   isUnarmed: 0
-  baseDamage: 0
-  physicalDamageAbsorption: 0
-  OH_Light_Attack_1: 
-  OH_Light_Attack_2: 
-  OH_Heavy_Attack_1: 
-  OH_Heavy_Attack_2: 
+  baseDamage: 80
+  physicalDamageAbsorption: 12
+  Right_Attack_1: OH_Light_Attack_01
+  Right_Attack_2: OH_Light_Attack_02
+  Left_Attack_1: OH_Light_Attack_01_Mirrored
+  Left_Attack_2: OH_Light_Attack_02_Mirrored
+  OH_Heavy_Attack_1: OH_Heavy_Attack_01
+  OH_Heavy_Attack_2: OH_Heavy_Attack_02
+  LT_Special_Attack: THEBIGHAND_WA
   weaponType: 0

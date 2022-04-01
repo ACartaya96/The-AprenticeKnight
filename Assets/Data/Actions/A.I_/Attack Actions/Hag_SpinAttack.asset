@@ -15,6 +15,6 @@ MonoBehaviour:
   actionAnimation: SpinAttack_01
   attackScore: 2
   recoveryTime: 3
-  angle: 180
+  angle: 360
   minimumDistanceToAttack: 0
   maximumDistanceToAttack: 3

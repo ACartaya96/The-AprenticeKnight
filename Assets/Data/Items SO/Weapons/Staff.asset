@@ -18,8 +18,11 @@ MonoBehaviour:
   isUnarmed: 0
   baseDamage: 10
   physicalDamageAbsorption: 0
-  OH_Light_Attack_1: OH_Light_Attack_01
-  OH_Light_Attack_2: OH_Light_Attack_02
+  Right_Attack_1: OH_Light_Attack_01
+  Right_Attack_2: OH_Light_Attack_02
+  Left_Attack_1: OH_Light_Attack_01_Mirrored
+  Left_Attack_2: OH_Light_Attack_02_Mirrored
   OH_Heavy_Attack_1: OH_Heavy_Attack_01
   OH_Heavy_Attack_2: OH_Heavy_Attack_02
+  LT_Special_Attack: 
   weaponType: 2
