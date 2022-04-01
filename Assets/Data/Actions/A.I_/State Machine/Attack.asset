@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatStance: {fileID: 11400000, guid: d05a6721fe7f99e4189ba8a79a89fbec, type: 2}
   enemyAttacks:
-  - {fileID: 11400000, guid: 71831ecd5a0626143aedbfd2e00f1ad6, type: 2}
-  - {fileID: 11400000, guid: 710cebd392e472744bc6fcf174e92189, type: 2}
+  - {fileID: 11400000, guid: e5e82c4492ce7724da2e5564226cfaf8, type: 2}
+  - {fileID: 11400000, guid: 34c7336538a5a514a956bea26b67bb58, type: 2}
   currentAttack: {fileID: 0}
