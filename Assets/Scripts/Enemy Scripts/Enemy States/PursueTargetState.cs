@@ -14,7 +14,11 @@ namespace TAK
         {
             //Chase the target
             if (enemyManager.isPerformingAction)
-               return this;
+            {
+                enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+
+                return this;
+            }
 
             enemyManager.navMeshAgent.speed = 8;
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;

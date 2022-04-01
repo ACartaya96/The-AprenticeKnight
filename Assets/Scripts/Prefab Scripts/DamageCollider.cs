@@ -7,6 +7,7 @@ namespace TAK
     public class DamageCollider : MonoBehaviour
     {
         Collider damageCollider;
+        public CharacterManager characterManager;
        
         [SerializeField] WeaponItem weaponItem;
 
@@ -18,6 +19,7 @@ namespace TAK
         private void Awake()
         {
             damageCollider = GetComponent<Collider>();
+            characterManager = GetComponentInParent<CharacterManager>();
             damageCollider.gameObject.SetActive(true);
             damageCollider.isTrigger = true;
             damageCollider.enabled = enableOnStartUp;
@@ -49,14 +51,14 @@ namespace TAK
                         {
                             Debug.Log(character.name.ToString() + " Blocked");
                             float physicalDamageAfterBlock = weaponItem.baseDamage - (weaponItem.baseDamage * block.blockingPhysicalDamageAbsorption) / 100;
-                            if (damageable != null)
+                            if (damageable != null && character.teamId != characterManager.teamId)
                                 damageable.TakeDamage(physicalDamageAfterBlock, "Blocked");
                         }
                     }
                     else
                     {
                         Debug.Log(character.name.ToString() + " Got Hit");
-                        if (damageable != null)
+                        if (damageable != null && character.teamId != characterManager.teamId)
                             damageable.TakeDamage(weaponItem.baseDamage, "Damage");
                     }
                     

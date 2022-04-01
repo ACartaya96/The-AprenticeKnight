@@ -13,6 +13,7 @@ namespace TAK
         EnemyAnimationHandler enemyAnimationHandler;
         EnemyStats enemyStats;
         public CharacterManager currentTarget;
+        EnemyEffectManager enemyEffectManager;
 
         [InlineEditor]
         public NavMeshAgent navMeshAgent;
@@ -26,6 +27,8 @@ namespace TAK
 
         [InlineEditor]
         [SerializeField] public EnemyBaseState currentState;
+
+        public Transform[] wayPoints;
 
         public float distanceFromTarget;
         public float stoppingDistance = 1;
@@ -45,6 +48,7 @@ namespace TAK
             enemyAnimationHandler = GetComponentInChildren<EnemyAnimationHandler>();
             enemyStats = GetComponent<EnemyStats>();
             navMeshAgent= GetComponentInChildren<NavMeshAgent>();
+            enemyEffectManager = GetComponentInChildren<EnemyEffectManager>();
             rb = GetComponent<Rigidbody>();
             WayPointIndex = 0;
             
@@ -56,11 +60,14 @@ namespace TAK
         void Update()
         {
             HandleRecoveryTimer();
+
+            isInteracting = enemyAnimationHandler.anim.GetBool("isInteracting");
         }
 
         private void FixedUpdate()
         {
             HandleCurrentActionBehavior();
+            enemyEffectManager.HandleAllBuildUpEffects();
             
         }
 

@@ -19,6 +19,7 @@ namespace TAK
         public bool isFiringSpell;
         public bool isBlocking;
         public bool isInteracting;
+        public bool isInvincible;
 
         // Start is called before the first frame update
         void Start()

@@ -14120,22 +14120,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4825133672401557887, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: currentSpell
-      value: 
-      objectReference: {fileID: 11400000, guid: f4614df9a627a51409861118a5a1077a, type: 2}
-    - target: {fileID: 5072061383813905794, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072061383813905794, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3742b1fb6424583439e93c6fa6b2acd1, type: 2}
-    - target: {fileID: 5072061383813905794, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2059959e4046ac34cb1f6917f7ed8238, type: 2}
     - target: {fileID: 7895330105454119041, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -14183,18 +14167,6 @@ PrefabInstance:
     - target: {fileID: 7895330105454119044, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7895330105454119103, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: fallSpeed
-      value: 850
-      objectReference: {fileID: 0}
-    - target: {fileID: 7895330105454119103, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: jumpUpwardVelocity
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7895330105454119103, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: jumpForwardVelocity
-      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}

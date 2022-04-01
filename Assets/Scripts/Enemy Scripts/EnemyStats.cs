@@ -24,6 +24,8 @@ namespace TAK
         EnemyAnimationHandler enemyAnimationHandler;
         EnemyMovement enemyMovement;
 
+        public EnemyHealthBar enemyHealthBar;
+
         private void Start()
         {
             enemyMovement = GetComponent<EnemyMovement>();
@@ -33,7 +35,7 @@ namespace TAK
            // maxMana = SetMaxManafromManaLevel();
             currentHealth = maxHealth;
            // currentMana = maxMana;
-            //healthBar.setMaxHealth(maxHealth);
+            enemyHealthBar.SetMaxHealth(maxHealth);
            // manaBar.setMaxMana(maxMana);
         }
 
@@ -51,17 +53,22 @@ namespace TAK
 
         public void TakeDamage(float damage, string damageAnimation)
         {
-           
-                Debug.Log("Xander Takes " + damage.ToString() + " Damage");
+           if(!enemyManager.isInvincible)
+            {
+                Debug.Log("Hag Takes " + damage.ToString() + " Damage");
                 currentHealth -= damage;
-                //healthBar.SetCurrentHealth(currentHealth);
-                Debug.Log("Xander HP: " + currentHealth.ToString());
+                enemyHealthBar.SetCurrentHealth(currentHealth);
+                Debug.Log("Hag HP: " + currentHealth.ToString());
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
                 enemyAnimationHandler.PlayTargetAnimation(damageAnimation, true);
-            
+
+            }
+
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
+                isDead = true;
+                enemyManager.isInvincible = true;
                 enemyAnimationHandler.PlayTargetAnimation("Dying", true);
                 Destroy(gameObject, 3f);
             }

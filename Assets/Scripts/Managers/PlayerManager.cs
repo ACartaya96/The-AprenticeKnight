@@ -11,6 +11,7 @@ namespace TAK
         Animator anim;
         AnimationHandler animationHandler;
         PlayerTargetDetection playerTarget;
+        PlayerEffectManager playerEffectManager;
 
         [Header("References")]
         public Transform cameraTarget;
@@ -22,7 +23,7 @@ namespace TAK
         public bool canDoCombo;
  
 
-        public bool isInvincible;
+       
 
 
         // Start is called before the first frame update
@@ -32,6 +33,7 @@ namespace TAK
             playerController = GetComponent<PlayerController>();
             playerTarget = GetComponent<PlayerTargetDetection>();
             anim = GetComponentInChildren<Animator>();
+            playerEffectManager = GetComponentInChildren<PlayerEffectManager>();
             animationHandler = GetComponentInChildren<AnimationHandler>();
 
 
@@ -71,6 +73,8 @@ namespace TAK
             playerController.HandleMovement();
             playerController.HandleRotation();
             playerController.HandleFalling(playerController.moveDirection);
+            playerEffectManager.HandleAllBuildUpEffects();
+
         }
 
         private void LateUpdate()

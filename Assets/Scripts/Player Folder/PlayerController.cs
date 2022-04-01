@@ -57,6 +57,10 @@ namespace TAK
         public bool jumpForceApplied;
         public bool rollForceApplied;
 
+
+        public CapsuleCollider characterCollider;
+        public CapsuleCollider characterCollisionBlockeCollider;
+
         void Start()
         {
             rb = GetComponent<Rigidbody>();
@@ -68,6 +72,8 @@ namespace TAK
             myTransform = transform;
             ignoreforGrounCheck = ~ignoreforGrounCheck;
             animationHandler.Initialize();
+
+            Physics.IgnoreCollision(characterCollider,characterCollisionBlockeCollider, true);
 
             playerManager.isGrounded = true;
         }

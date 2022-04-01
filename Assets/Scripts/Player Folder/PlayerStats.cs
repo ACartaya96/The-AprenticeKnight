@@ -53,11 +53,14 @@ namespace TAK
                 healthBar.SetCurrentHealth(currentHealth);
                 Debug.Log("Xander HP: " + currentHealth.ToString());
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
-                animationHandler.PlayTargetAnimation(damageAnimation, true);
+                if(damageAnimation != null)
+                    animationHandler.PlayTargetAnimation(damageAnimation, true);
             }
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
+                isDead = true;
+                playerManager.isInvincible = true;
                 animationHandler.PlayTargetAnimation("Dying", true);
             }
         }

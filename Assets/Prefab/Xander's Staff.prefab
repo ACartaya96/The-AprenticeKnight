@@ -93,7 +93,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4125471728267972529, guid: 6262530f70266d445b507b9f407e952e, type: 3}
+  - {fileID: 2100000, guid: f4eafd08fd7bfe1499b5e03ebfdf7c9b, type: 2}
+  - {fileID: 2100000, guid: 2059959e4046ac34cb1f6917f7ed8238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,7 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edd6618c41f87b4fa5eb6132cabea20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 767570999, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
   weaponItem: {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
+  projectileLastPos: {x: 0, y: 0, z: 0}
+  enableOnStartUp: 0
 --- !u!1 &4184256260896462084
 GameObject:
   m_ObjectHideFlags: 0

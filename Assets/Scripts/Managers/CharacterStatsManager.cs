@@ -11,5 +11,7 @@ namespace TAK
         public int healthLevel = 10;
         public float maxHealth; 
         public float currentHealth;
+
+        public bool isDead = false;
     }
 }

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edd6618c41f87b4fa5eb6132cabea20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 767570999, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
   weaponItem: {fileID: 11400000, guid: 08e90e346d1e3004cbccc17f4314cc88, type: 2}
   projectileLastPos: {x: 0, y: 0, z: 0}
   enableOnStartUp: 0

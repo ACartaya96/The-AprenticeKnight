@@ -14,7 +14,9 @@ namespace TAK
 
         public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
         {
-
+            Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
+            enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+            float viewableAngle = Vector3.Angle(enemyManager.transform.forward, (enemyManager.currentTarget.transform.position - enemyManager.transform.position));
             if (enemyManager.isPerformingAction)
             {
                 return combatStance;
@@ -31,7 +33,7 @@ namespace TAK
                     //if we are close enough to attack proceed to attack
                     else if (enemyManager.distanceFromTarget < currentAttack.maximumDistanceToAttack)
                     {
-                        float viewableAngle = Vector3.Angle(enemyManager.transform.forward, (enemyManager.currentTarget.transform.position - enemyManager.transform.position));
+                        
                         //if our enemy is within our attacks viewable angle, we attack
                         if (viewableAngle < currentAttack.angle / 2)
                         {

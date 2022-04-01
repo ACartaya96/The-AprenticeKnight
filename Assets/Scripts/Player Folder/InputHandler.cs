@@ -211,7 +211,7 @@ namespace TAK
 
                 playerAttack.HandleRBAction();
             }
-            else if(!lb_Input && playerManager.isBlocking )
+            else if(playerManager.isBlocking )
             {
                 playerManager.isBlocking = false;
                 playerEquipment.CloseBlockingCollider();
@@ -230,7 +230,7 @@ namespace TAK
                
                 playerAttack.HandleLBAction();
             }
-            else if(!rb_Input && playerManager.isBlocking)
+            else if(playerManager.isBlocking)
             {
                 playerManager.isBlocking = false;
                 playerEquipment.CloseBlockingCollider();  
