@@ -139,6 +139,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Start Button",
+                    "type": "Button",
+                    "id": "b0d4b9d4-f870-40a3-bdd5-44e5770ab84e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -513,6 +522,87 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "D-Pad Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9ace98eb-f418-4398-92ea-4855cb172753",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "Start Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a5563f6-2fd9-4d79-aee2-5bafd873cc72",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Start Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menus",
+            "id": "c4b16da2-0099-42a2-9f38-0eb6cf62119b",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "92ad9ed0-0f4a-4800-ab45-2ec5c176d666",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Go Back",
+                    "type": "Button",
+                    "id": "9ac3d0ca-0b36-4ec2-a14b-61f65d8f9394",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2e76218b-85d9-4762-8620-880e8d095980",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "342a05b0-cb02-483d-8805-0553e29e19fb",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e688e890-afa9-424a-a7e6-97fb4ae5f011",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Go Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

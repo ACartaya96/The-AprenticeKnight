@@ -21,6 +21,7 @@ namespace TAK
         public bool d_Pad_Down;
         public bool d_Pad_Left;
         public bool d_Pad_Right;
+        public bool start_button;
 
 
         [Header("Trigger & Shoulders")]
@@ -83,6 +84,8 @@ namespace TAK
         [HideInInspector]
         public InputAction dRightAction;
 
+        public InputAction StartButton;
+
 
 
         Vector2 movementInput;
@@ -114,6 +117,7 @@ namespace TAK
             dDownAction = playerInput.actions["D-Pad Down"];
             dLeftAction = playerInput.actions["D-Pad Left"];
             dRightAction = playerInput.actions["D-Pad Right"];
+            StartButton = playerInput.actions["Start Button"];
         }
         private void OnEnable()
         {
@@ -123,9 +127,11 @@ namespace TAK
             rollAction.started += _ => b_Input = true;
             jumpAction.started += _ => a_Input = true;
             rbAction.performed += _ => rb_Input = true;
+            rbAction.canceled += _ => rt_Input = false;
             lbAction.performed += _ => lb_Input = true;
             lbAction.canceled += _ => lb_Input = false;
             rtAction.performed += _ => rt_Input = true;
+       
             ltAction.performed += _ => lt_Input = true;
             aimAction.performed += _ => rj_Input = true;
             lLockOnAction.performed += _ => right_Stick_Left = true;
@@ -134,6 +140,7 @@ namespace TAK
             dDownAction.performed += _ => d_Pad_Down = true;
             dLeftAction.performed += _ => d_Pad_Left = true;
             dRightAction.performed += _ => d_Pad_Right = true;
+            StartButton.performed += _ => start_button = true;
 
 
 
@@ -146,6 +153,7 @@ namespace TAK
             rollAction.started -= _ => b_Input = true;
             jumpAction.started -= _ => a_Input = true;
             rbAction.performed -= _ => rb_Input = true;
+            rbAction.canceled -= _ => rb_Input = false;
             lbAction.performed -= _ => lb_Input = true;
             lbAction.canceled -= _ => lb_Input = false;
             rtAction.performed -= _ => rt_Input = true;
@@ -157,6 +165,7 @@ namespace TAK
             dDownAction.performed -= _ => d_Pad_Down = true;
             dLeftAction.performed -= _ => d_Pad_Left = true;
             dRightAction.performed -= _ => d_Pad_Right = true;
+            StartButton.performed -= _ => start_button = true;
 
         }
         #endregion
@@ -202,6 +211,11 @@ namespace TAK
 
                 playerAttack.HandleRBAction();
             }
+            else if(!lb_Input && playerManager.isBlocking )
+            {
+                playerManager.isBlocking = false;
+                playerEquipment.CloseBlockingCollider();
+            }
             if (rt_Input)
             {
                 if (lockedOnflag)
@@ -216,11 +230,16 @@ namespace TAK
                
                 playerAttack.HandleLBAction();
             }
-            else
+            else if(!rb_Input && playerManager.isBlocking)
             {
                 playerManager.isBlocking = false;
                 playerEquipment.CloseBlockingCollider();  
             }
+            if(lt_Input)
+            {
+                playerAttack.HandleLTAction();
+            }
+
 
 
 

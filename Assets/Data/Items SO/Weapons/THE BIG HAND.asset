@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5bb72348ef06b7438271ec3a6084540, type: 3}
-  m_Name: Staff
+  m_Name: THE BIG HAND
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Xander's Staff
-  modelPrefab: {fileID: 4184256260896462084, guid: 35429db8427fc47419676f406b07d86c, type: 3}
+  itemName: THE BIG HAND
+  modelPrefab: {fileID: 8943960096321276138, guid: 78c441961cb550147ade313d7d627074, type: 3}
   isUnarmed: 0
-  baseDamage: 10
-  physicalDamageAbsorption: 0
+  baseDamage: 80
+  physicalDamageAbsorption: 12
   Right_Attack_1: OH_Light_Attack_01
   Right_Attack_2: OH_Light_Attack_02
   Left_Attack_1: OH_Light_Attack_01_Mirrored
   Left_Attack_2: OH_Light_Attack_02_Mirrored
   OH_Heavy_Attack_1: OH_Heavy_Attack_01
   OH_Heavy_Attack_2: OH_Heavy_Attack_02
-  LT_Special_Attack: 
-  weaponType: 2
+  LT_Special_Attack: THEBIGHAND_WA
+  weaponType: 0

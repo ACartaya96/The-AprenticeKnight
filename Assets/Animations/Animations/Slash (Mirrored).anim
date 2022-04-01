@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword And Shield Slash
+  m_Name: Slash (Mirrored)
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20309,7 +20309,7 @@ AnimationClip:
     m_KeepOriginalPositionY: 1
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
-    m_Mirror: 0
+    m_Mirror: 1
   m_EditorCurves:
   - curve:
       serializedVersion: 2
@@ -39677,7 +39677,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.2
-    functionName: OpenRightDamageCollider
+    functionName: OpenLeftDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -39705,7 +39705,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.6
-    functionName: CloseRightDamageCollider
+    functionName: CloseLeftDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
