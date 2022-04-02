@@ -19,6 +19,11 @@ namespace TAK
         Application.Quit();
         //Debug.Log("Quit Game");
     }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     
     
 }
