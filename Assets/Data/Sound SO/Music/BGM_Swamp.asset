@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a0c745c49aaa3498e090cf93d10b8e, type: 3}
   m_Name: BGM_Swamp
   m_EditorClassIdentifier: 
-  musicLayers: []
+  musicLayers:
+  - {fileID: 8300000, guid: 61a88d483bf91d948a4e7d505711c164, type: 3}
+  blendingType: 0
+  mixer: {fileID: 0}
