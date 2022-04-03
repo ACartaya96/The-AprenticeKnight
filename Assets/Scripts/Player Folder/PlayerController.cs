@@ -83,9 +83,10 @@ namespace TAK
 
             if (jumpForceApplied)
             {
-                StartCoroutine(JumpCo());
-                rb.AddForce(0, jumpUpwardVelocity, 0);
-                rb.AddForce(0, 0, jumpForwardVelocity);
+               StartCoroutine(JumpCo());
+                rb.AddForce(Vector3.up * jumpUpwardVelocity);
+                //jumpForceApplied = false;
+                
             }
             else if (rollForceApplied)
             {
@@ -97,7 +98,7 @@ namespace TAK
         }
         private IEnumerator JumpCo()
         {
-            yield return new WaitForSeconds(0.65f);
+            yield return new WaitForSeconds(0.55f);
             jumpForceApplied = false;
 
         }
@@ -245,16 +246,15 @@ namespace TAK
 
             if (inputHandler.a_Input)
             {
-                if (inputHandler.moveAmount > 0)
-                {
+               
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject.right * inputHandler.horizontal;
-                    animationHandler.PlayTargetAnimation("Jump", true);
+                    animationHandler.PlayTargetAnimation("Jump_Start", false) ;
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = jumpRotation;
                     jumpForceApplied = true;
-                }
+                
             }
         }
 
@@ -299,7 +299,7 @@ namespace TAK
 
                 if (playerManager.isInAir)
                 {
-                    if (InAirTimer > 0.5f)
+                    if (InAirTimer > 0.75f)
                     {
                         animationHandler.PlayTargetAnimation("Land", true);
                     }

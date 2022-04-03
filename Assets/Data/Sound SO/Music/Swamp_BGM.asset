@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a0c745c49aaa3498e090cf93d10b8e, type: 3}
-  m_Name: BGM_Swamp
+  m_Name: Swamp_BGM
   m_EditorClassIdentifier: 
   musicLayers:
-  - {fileID: 8300000, guid: 61a88d483bf91d948a4e7d505711c164, type: 3}
+  - {fileID: 8300000, guid: 0643908ea2a90c341a1f488fb302af76, type: 3}
+  - {fileID: 8300000, guid: 68db71da3f965874fbf8c6646524d4e9, type: 3}
   blendingType: 0
-  mixer: {fileID: 0}
+  mixer: {fileID: 5908694213061575794, guid: c79436fd66b1efb478975e518ecb36ad, type: 2}
