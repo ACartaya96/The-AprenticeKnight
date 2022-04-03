@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3582711380417533431}
   - component: {fileID: 3914961432709265772}
   - component: {fileID: 5563183960754652628}
-  - component: {fileID: 4340553487618168912}
+  - component: {fileID: 5174294193954764128}
   m_Layer: 6
   m_Name: bridge2
   m_TagString: Untagged
@@ -114,8 +114,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4340553487618168912
-BoxCollider:
+--- !u!64 &5174294193954764128
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -124,9 +124,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 87.990906, y: 47.115696, z: 297.32086}
-  m_Center: {x: -0.000014352664, y: -9.02301, z: 0.00010525287}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1632333799363484786, guid: 948588917e4c3fb4b990eb118de58a99, type: 3}
 --- !u!1 &6442032915196462020
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +137,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5921497260509141374}
-  - component: {fileID: 6402576524317422374}
   m_Layer: 0
   m_Name: bridge_steps
   m_TagString: Untagged
@@ -163,20 +163,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!64 &6402576524317422374
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6442032915196462020}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &474579718233070884
 PrefabInstance:
   m_ObjectHideFlags: 0

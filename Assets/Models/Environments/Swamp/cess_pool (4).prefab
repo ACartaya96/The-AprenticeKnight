@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3290391566221655995}
   - component: {fileID: 1875197459523317790}
   - component: {fileID: 4459405232363455700}
+  - component: {fileID: 8771370183161436800}
   m_Layer: 0
   m_Name: cess_pool (4)
   m_TagString: Untagged
@@ -82,6 +83,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8771370183161436800
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2801803149325985025}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4776340989507128501, guid: 60269d18351e9f54aaa1bcb56169440f, type: 3}
 --- !u!1001 &1933354792351150160
 PrefabInstance:
   m_ObjectHideFlags: 0
