@@ -32,17 +32,22 @@ namespace TAK
             HandlePoisonedEffect();
         }
 
-        protected virtual void HandlePoisonBuildUp()
+        public virtual void HandlePoisonBuildUp()
         {
-            if (isPoisoned)
+            if (isPoisoned == true)
+            {
                 return;
-
+            }
+                
             if (characterStatsManager.isDead)
+            {
                 return;
+            }
+              
 
             if (poisonBuildup > 0 && poisonBuildup < 100)
             {
-                poisonBuildup = poisonBuildup - 1 * Time.deltaTime;
+                poisonBuildup = poisonBuildup - 1 * Time.deltaTime/8;
             }
             else if (poisonBuildup >= 100)
             {
@@ -52,9 +57,9 @@ namespace TAK
         }
 
      
-        protected virtual void HandlePoisonedEffect()
+        public virtual void HandlePoisonedEffect()
         {
-            if (isPoisoned)
+            if (isPoisoned == true)
             {
                 if (poisonAmount > 0)
                 {
@@ -66,7 +71,7 @@ namespace TAK
                 else
                 {
                     isPoisoned = false;
-                    poisonAmount = defaultPoisonAmount;
+                    poisonBuildup = defaultPoisonAmount;
                 }
             }
         }

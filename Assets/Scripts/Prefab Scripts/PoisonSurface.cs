@@ -36,7 +36,10 @@ namespace TAK
         {
             foreach(CharacterEffectManager character in charactersInsideSurface)
             {
-                character.poisonBuildup = character.poisonBuildup + poisonBuildUpAmount * Time.deltaTime;
+                if(!character.isPoisoned)
+                {
+                    character.poisonBuildup = character.poisonBuildup + poisonBuildUpAmount * Time.deltaTime; 
+                }
             }
         }
     }

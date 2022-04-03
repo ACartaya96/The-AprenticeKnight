@@ -58,8 +58,11 @@ namespace TAK
                 Debug.Log("Xander HP: " + currentHealth.ToString());
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
                 if(damageAnimation != null)
+                {
                     animationHandler.PlayTargetAnimation(damageAnimation, true);
-                playerAudioManager.PlayTargetSoundEffect(impactClip);
+                    playerAudioManager.PlayTargetSoundEffect(impactClip);
+                }
+                    
             }
             if (currentHealth <= 0)
             {
