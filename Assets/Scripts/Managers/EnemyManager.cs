@@ -31,6 +31,7 @@ namespace TAK
         public Transform castPoint;
 
         public Transform[] wayPoints;
+        public Transform currentWayPoint;
 
         public float distanceFromTarget;
         public float stoppingDistance = 1;

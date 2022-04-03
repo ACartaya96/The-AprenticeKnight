@@ -11,8 +11,8 @@ namespace TAK
         public PursueTargetState pursueTargetState;
         
         public float speedWalk = 4.5f;
-        public Transform[] wayPoints;
-        public Transform currentWayPoint;
+       
+        
         
         public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
         {
@@ -27,8 +27,8 @@ namespace TAK
 
             fov.FieldOFViewCheck();
 
-            Vector3 targetDirection = wayPoints[enemyManager.WayPointIndex].position - enemyManager.transform.position;
-            enemyManager.distanceFromTarget = Vector3.Distance(wayPoints[enemyManager.WayPointIndex].position, enemyManager.transform.position);
+            Vector3 targetDirection = enemyManager.wayPoints[enemyManager.WayPointIndex].position - enemyManager.transform.position;
+            enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.wayPoints[enemyManager.WayPointIndex].position, enemyManager.transform.position);
             float viewAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
 
             //If we are performing action(ex. Attack,Dodge,Spell,etc.) we turn of navmesh so that
@@ -61,8 +61,8 @@ namespace TAK
             {
                 if(enemyManager.WaitTime <= 0)
                 {
-                    enemyManager.WayPointIndex = (enemyManager.WayPointIndex + 1) % wayPoints.Length;
-                    currentWayPoint = wayPoints[enemyManager.WayPointIndex];
+                    enemyManager.WayPointIndex = (enemyManager.WayPointIndex + 1) % enemyManager.wayPoints.Length;
+                    enemyManager.currentWayPoint = enemyManager.wayPoints[enemyManager.WayPointIndex];
                     enemyManager.navMeshAgent.isStopped = false;
                     enemyManager.navMeshAgent.speed = speedWalk;
                     enemyManager.WaitTime = enemyManager.startWaitTime;
@@ -93,7 +93,7 @@ namespace TAK
             //Rotate Manually
             if (enemyManager.isPerformingAction)
             {
-                Vector3 direction = wayPoints[enemyManager.WayPointIndex].position - enemyManager.transform.position;
+                Vector3 direction = enemyManager.wayPoints[enemyManager.WayPointIndex].position - enemyManager.transform.position;
                 direction.y = 0;
                 direction.Normalize();
 
@@ -111,7 +111,7 @@ namespace TAK
                 Vector3 targetVelocity = enemyManager.rb.velocity;
 
                 enemyManager.navMeshAgent.enabled = true;
-                enemyManager.navMeshAgent.SetDestination(currentWayPoint.position);
+                enemyManager.navMeshAgent.SetDestination(enemyManager.currentWayPoint.position);
                 enemyManager.rb.velocity = targetVelocity;
                 enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
             }
