@@ -2,32 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-public enum SpellClassType
-{
-  
-    Physical,
-    Magical,
-    Fire,
-    Ice,
-    Lightning,
-    Air,
-    Poison,
-    Light,
-    Dark,
-    Blood
-}
-
-public enum SpellEffectType
-{
-    Damage,
-    Healing
-}
-
 
 namespace TAK
 {
-    public class SpellItem : Item
+    public class EnemySpellItem : Item
     {
+
         [VerticalGroup("Game Data", 75)]
         [PreviewField(75)]
         public GameObject spellWarmUpFX;
@@ -75,13 +55,12 @@ namespace TAK
         [HideInInspector]
         public Vector3 spellLastPos;
 
-        public virtual void AttemptToCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot, PlayerAudioManager audioManager)
+        public virtual void AttemptToCastSpell(EnemyAnimationHandler animationHandler, EnemyStats enemyStats, EnemyAudioManager audioManager, EnemyManager enemyManager)
         {
             Debug.Log("You attemp to cast a spell!");
         }
 
-        public virtual void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats,
-            WeaponSlotManager weaponSlot, PlayerManager playerManager, PlayerTargetDetection playerTarget, PlayerAudioManager audioManager)
+        public virtual void SuccessfullyCastSpell(EnemyAnimationHandler animationHandler, EnemyStats enemyStats, EnemyAudioManager audioManager, EnemyManager enemyManager, CharacterEffectManager effectManager)
         {
             Debug.Log("You successfully cast a spell!");
         }

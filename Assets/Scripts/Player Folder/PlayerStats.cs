@@ -17,13 +17,17 @@ namespace TAK
         public int playerLevel;
         PlayerManager playerManager;
         AnimationHandler animationHandler;
+        PlayerAudioManager playerAudioManager;
         public PlayerController playerController;
+
+        [SerializeField] AudioClip impactClip;
 
         private void Start()
         {
             playerController = GetComponent<PlayerController>();
             playerManager = GetComponent<PlayerManager>();
             animationHandler = GetComponentInChildren<AnimationHandler>();
+            playerAudioManager = GetComponentInChildren<PlayerAudioManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             maxMana = SetMaxManafromManaLevel();
             currentHealth = maxHealth;
@@ -55,6 +59,7 @@ namespace TAK
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
                 if(damageAnimation != null)
                     animationHandler.PlayTargetAnimation(damageAnimation, true);
+                playerAudioManager.PlayTargetSoundEffect(impactClip);
             }
             if (currentHealth <= 0)
             {

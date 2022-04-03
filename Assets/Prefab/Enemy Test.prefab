@@ -93,6 +93,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &3169302117569513704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6365824357004275918}
+  m_Layer: 0
+  m_Name: Cast Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6365824357004275918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3169302117569513704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.18, y: 1.4, z: 0.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8183718909403420597}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8183718909403420552
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +137,6 @@ GameObject:
   - component: {fileID: 8183718909403420598}
   - component: {fileID: 8183718909403420599}
   - component: {fileID: 964118046}
-  - component: {fileID: 4735254138175384693}
   m_Layer: 0
   m_Name: Enemy Test
   m_TagString: Untagged
@@ -130,6 +159,7 @@ Transform:
   - {fileID: 8183718910049645970}
   - {fileID: 8183718909712149165}
   - {fileID: 7064468835160082118}
+  - {fileID: 6365824357004275918}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -150,6 +180,7 @@ MonoBehaviour:
   isFiringSpell: 0
   isBlocking: 0
   isInteracting: 0
+  isInvincible: 0
   currentTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
   WayPointIndex: 0
@@ -157,6 +188,8 @@ MonoBehaviour:
   startWaitTime: 4
   rb: {fileID: 0}
   currentState: {fileID: 11400000, guid: fc3dfdcb409ef7d4ba061b0c8d2b2a71, type: 2}
+  castPoint: {fileID: 6365824357004275918}
+  wayPoints: []
   distanceFromTarget: 0
   stoppingDistance: 1.5
   rotationSpeed: 25
@@ -234,23 +267,9 @@ MonoBehaviour:
   healthLevel: 10
   maxHealth: 0
   currentHealth: 0
+  isDead: 0
   enemyLevel: 0
---- !u!114 &4735254138175384693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8183718909403420552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e73074ad43467b142b8deeadb8dd3b4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthLevel: 5
-  maxHealth: 0
-  currentHealth: 0
-  enemyLevel: 0
+  enemyHealthBar: {fileID: 0}
 --- !u!1 &8183718909712149154
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +542,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 6c98403474e8fb74a9acd857d3708fd7, type: 3}
   m_PrefabInstance: {fileID: 4160072634053563226}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1097547887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853645133834300939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009a47bebf177f64db259c1030ff1b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageCollider: {fileID: 2807564680207131514}
 --- !u!114 &849270324334911493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,16 +569,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 7552846280684646091}
   canRotate: 0
---- !u!114 &1097547887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3853645133834300939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009a47bebf177f64db259c1030ff1b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageCollider: {fileID: 2807564680207131514}

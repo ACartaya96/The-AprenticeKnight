@@ -16,7 +16,10 @@ namespace TAK
         }
         public void PlayTargetSoundEffect(AudioClip targetSFX)
         {
-
+            audioSource.pitch = Random.Range(0.5f, 1);
+            audioSource.volume = Random.Range(0.75f, 1);
+            audioSource.PlayOneShot(targetSFX);
+            
         }
     }
 }

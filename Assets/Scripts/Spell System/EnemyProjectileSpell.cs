@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-
 
 namespace TAK
 {
-    [CreateAssetMenu(fileName = "Projectile Spell", menuName = "Spells/Projectile Spell")]
-    public class ProjectileSpell : SpellItem
+    [CreateAssetMenu(menuName = "A.I./Item/Spell/Projectile")]
+    public class EnemyProjectileSpell : EnemySpellItem
     {
         [Header("Pojectile Damage")]
         public float baseDamage;
+        public float buildUp;
 
         [Header("Pojectile Physics")]
         public float projectileForwardVelocity;
@@ -25,29 +24,26 @@ namespace TAK
 
         Camera cam;
 
-
-
         private void OnEnable()
         {
 
-            cam = Camera.main;
+           
             baseValue = baseDamage;
+            //effectBuildUp = buildUp;
 
         }
 
-
-        public override void AttemptToCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot, PlayerAudioManager audioManager)
+        public override void AttemptToCastSpell(EnemyAnimationHandler animationHandler, EnemyStats enemyStats, EnemyAudioManager audioManager, EnemyManager enemyManager)
         {
-            GameObject istantiateWarmUpSpellFX = Instantiate(spellWarmUpFX, weaponSlot.rightHandSlot.transform);
+            GameObject istantiateWarmUpSpellFX = Instantiate(spellWarmUpFX, enemyManager.castPoint.transform);
             //istantiateWarmUpSpellFX.gameObject.transform.localScale = new Vector3(100, 100, 100);
             animationHandler.PlayTargetAnimation(spellAnimation, true);
             audioManager.PlayTargetSoundEffect(startUpSFX);
         }
 
-        public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot,
-            PlayerManager playerManager, PlayerTargetDetection playerTarget, PlayerAudioManager audioManager)
+        public override void SuccessfullyCastSpell(EnemyAnimationHandler animationHandler, EnemyStats enemyStats, EnemyAudioManager audioManager, EnemyManager enemyManager, CharacterEffectManager effectManager)
         {
-            GameObject instantiateSpellFX = Instantiate(spellCastFx, weaponSlot.rightHandSlot.transform.position, weaponSlot.rightHandSlot.transform.rotation);
+            GameObject instantiateSpellFX = Instantiate(spellCastFx, enemyManager.castPoint.transform.position, enemyManager.castPoint.transform.rotation);
             Destroy(instantiateSpellFX, 8f);
             Debug.Log(instantiateSpellFX.transform.position.ToString());
             //spelldamageCollider
@@ -62,7 +58,7 @@ namespace TAK
 
 
 
-            if (playerTarget.currentLockedOnTarget != null)
+            if (enemyManager.currentTarget != null)
             {
                 /*Vector3 dir = playerTarget.currentLockedOnTarget.position - instantiateSpellFX.transform.position;
 
@@ -72,7 +68,7 @@ namespace TAK
                 Quaternion targetRotation = Quaternion.Slerp(instantiateSpellFX.transform.rotation, tr, projectileForwardVelocity * Time.deltaTime);
                 instantiateSpellFX.transform.rotation = targetRotation;
                 instantiateSpellFX.transform.position = Vector3.MoveTowards(instantiateSpellFX.transform.position, playerTarget.currentLockedOnTarget.transform.position, projectileForwardVelocity * Time.deltaTime/5f);*/
-                instantiateSpellFX.transform.LookAt(playerTarget.currentLockedOnTarget);
+                instantiateSpellFX.transform.LookAt(enemyManager.currentTarget.transform.position);
 
             }
             else
@@ -81,7 +77,7 @@ namespace TAK
                  aimSpot += cam.transform.forward * 50;
                  instantiateSpellFX.transform.LookAt(aimSpot);*/
 
-                instantiateSpellFX.transform.rotation = Quaternion.Euler(cam.transform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
+                instantiateSpellFX.transform.rotation = Quaternion.Euler(enemyManager.transform.eulerAngles.x, enemyManager.transform.eulerAngles.y, 0);
 
             }
 
@@ -95,18 +91,14 @@ namespace TAK
             instantiateSpellFX.transform.parent = null;
 
             //Damage and Cost
-            playerStats.UseMana(cost);
-
-
-            /*if (instantiateSpellFX.gameObject == null)
-            {
-                foreach (SpellBehaviors behavior in spellEffects)
-                {
-                    Debug.Log(behavior.name.ToString());
-                    behavior.PerformSpellBehavior(this);
-                }
-            }*/
+            //playerStats.UseMana(cost);
         }
 
-    }
+      
+
+        public override void ApplySpellEffects()
+        {
+            Debug.Log("Applying Spell Effects");
+        }
+    }   
 }

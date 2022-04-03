@@ -17,6 +17,7 @@ namespace TAK
         PlayerInventory playerInventory;
         PlayerEquipmentManager playerEquipment;
         PlayerTargetDetection playerTarget;
+        PlayerAudioManager playerAudioManager;
         public string lastAttack;
 
 
@@ -28,6 +29,7 @@ namespace TAK
             playerInventory = GetComponentInParent<PlayerInventory>();
             playerEquipment = GetComponent<PlayerEquipmentManager>();
             playerTarget = GetComponentInParent<PlayerTargetDetection>();
+            playerAudioManager = GetComponent<PlayerAudioManager>();
             weaponSlotManager = GetComponentInParent<WeaponSlotManager>();
             inputHandler = GetComponentInParent<InputHandler>();
 
@@ -141,13 +143,13 @@ namespace TAK
                 if (playerStats.currentMana < playerInventory.currentSpell.cost)
                     animationHandler.PlayTargetAnimation("Out Of Mana", true);
                 else
-                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager);
+                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
             }
             inputHandler.rb_Input = false;
         }
         private void SuccessfullyCastSpell()
         {
-            playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget);
+            playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget, playerAudioManager);
             animationHandler.anim.SetBool("isFiringSpell", true);
 
         }
@@ -216,7 +218,7 @@ namespace TAK
                 if (playerStats.currentMana < playerInventory.currentSpell.cost)
                     animationHandler.PlayTargetAnimation("Out Of Mana", true);
                 else
-                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager);
+                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
             }
         }
         private void PerformLBBlockAction()

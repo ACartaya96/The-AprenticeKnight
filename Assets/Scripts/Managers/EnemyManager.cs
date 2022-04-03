@@ -28,6 +28,8 @@ namespace TAK
         [InlineEditor]
         [SerializeField] public EnemyBaseState currentState;
 
+        public Transform castPoint;
+
         public Transform[] wayPoints;
 
         public float distanceFromTarget;
