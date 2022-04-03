@@ -866,7 +866,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7895330105454119041}
   - component: {fileID: 8118605286248003101}
-  - component: {fileID: 4580283511252826165}
   - component: {fileID: 7895330105454119098}
   - component: {fileID: 216941866}
   - component: {fileID: 5621488566775531059}
@@ -874,6 +873,7 @@ GameObject:
   - component: {fileID: 6691331601999871824}
   - component: {fileID: 1709380465902666690}
   - component: {fileID: 767570999}
+  - component: {fileID: 3089153574969368517}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -915,20 +915,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &4580283511252826165
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7895330105454119044}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.24
-  m_Height: 1.1595268
-  m_Direction: 1
-  m_Center: {x: 0.07, y: 0.9160298, z: 0}
 --- !u!114 &7895330105454119098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,7 +979,7 @@ MonoBehaviour:
   rollForwardVelocity: 200
   jumpForceApplied: 0
   rollForceApplied: 0
-  characterCollider: {fileID: 4580283511252826165}
+  characterCollider: {fileID: 0}
   characterCollisionBlockeCollider: {fileID: 319524994}
 --- !u!114 &5621488566775531059
 MonoBehaviour:
@@ -1271,6 +1257,20 @@ MonoBehaviour:
   isInAir: 0
   isGrounded: 0
   canDoCombo: 0
+--- !u!136 &3089153574969368517
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895330105454119044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.24
+  m_Height: 1.1595268
+  m_Direction: 1
+  m_Center: {x: 0.07, y: 0.9160298, z: 0}
 --- !u!1001 &4772079461517723509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1409,6 +1409,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &176000181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690506132095679012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6636cdc9df3dde64b977dd7c8f282648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPoisoned: 0
+  poisonBuildup: 0
+  poisonAmount: 100
+  defaultPoisonAmount: 0
+  poisonDamage: 1
 --- !u!114 &1326031737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,23 +1479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastAttack: 
---- !u!114 &176000181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5690506132095679012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6636cdc9df3dde64b977dd7c8f282648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPoisoned: 0
-  poisonBuildup: 0
-  poisonAmount: 100
-  defaultPoisonAmount: 0
-  poisonDamage: 1
 --- !u!114 &1007965942160655407
 MonoBehaviour:
   m_ObjectHideFlags: 0
