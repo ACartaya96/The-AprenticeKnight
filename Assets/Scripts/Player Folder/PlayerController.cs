@@ -84,8 +84,8 @@ namespace TAK
             if (jumpForceApplied)
             {
                 StartCoroutine(JumpCo());
-                rb.AddForce(myTransform.up * jumpUpwardVelocity);
-                rb.AddForce(myTransform.forward * jumpForwardVelocity);
+                rb.AddForce(0, jumpUpwardVelocity, 0);
+                rb.AddForce(0, 0, jumpForwardVelocity);
             }
             else if (rollForceApplied)
             {
@@ -97,7 +97,7 @@ namespace TAK
         }
         private IEnumerator JumpCo()
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.65f);
             jumpForceApplied = false;
 
         }

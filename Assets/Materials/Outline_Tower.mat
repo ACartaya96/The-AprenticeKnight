@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Oultline_02
+  m_Name: Outline_Tower
   m_Shader: {fileID: 4800000, guid: c5d863f514235404985d0d2c0ec3b8a5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -95,7 +95,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Size: 3.19
+    - _Size: 82.36
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

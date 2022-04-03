@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 308738556750790997}
+  - component: {fileID: 2433739846809063648}
   m_Layer: 0
   m_Name: maple_3
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2433739846809063648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081722321945320431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54.640034, y: 440.0612, z: 29.785141}
+  m_Center: {x: 278.69385, y: 227.6228, z: -55.566944}
 --- !u!1 &1652280530090989648
 GameObject:
   m_ObjectHideFlags: 0
