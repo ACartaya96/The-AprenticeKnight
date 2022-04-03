@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1541770345423108705
 Transform:
@@ -116,6 +116,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.7
       objectReference: {fileID: 0}
+    - target: {fileID: -5702867076575826324, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3912653630010173683, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -2953077351666053486, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
       propertyPath: m_LocalPosition.y
       value: 4.8
@@ -123,6 +131,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
       propertyPath: m_Name
       value: burial_mound_flowers
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1943960532032085176, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
       propertyPath: m_LocalPosition.x
@@ -135,6 +147,14 @@ PrefabInstance:
     - target: {fileID: 1943960532032085176, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
       propertyPath: m_LocalPosition.z
       value: 8.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162234351228297933, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2683748182719029046, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3787050158732230799, guid: e6f9758ae496d574688c27cfa7c3ac84, type: 3}
       propertyPath: m_Materials.Array.size
@@ -250,9 +270,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5931897892944523843, guid: b275d802f16c7b44bbc8f2dfb8c6e1a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3803521234784471997, guid: b275d802f16c7b44bbc8f2dfb8c6e1a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -2855649327019546818, guid: b275d802f16c7b44bbc8f2dfb8c6e1a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b275d802f16c7b44bbc8f2dfb8c6e1a0, type: 3}
       propertyPath: m_Name
       value: burial_mound_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b275d802f16c7b44bbc8f2dfb8c6e1a0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2471833304041942521, guid: b275d802f16c7b44bbc8f2dfb8c6e1a0, type: 3}
       propertyPath: m_Materials.Array.size
@@ -388,6 +424,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5298666734155112035, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4806825260493730448, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.12
@@ -400,6 +440,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 8.71
       objectReference: {fileID: 0}
+    - target: {fileID: -2377401182737355514, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 289766241731334633, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
       propertyPath: m_LocalScale.y
       value: 2.8121476
@@ -411,6 +455,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
       propertyPath: m_Name
       value: burial_mound_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 986540904820768249, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
       propertyPath: m_Materials.Array.size
@@ -436,6 +484,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: a4269f3a6f7e7ac43a0e696a347ecd4e, type: 2}
+    - target: {fileID: 4095144318477784365, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 090de1322382ba842a1c43e20c95a516, type: 3}
 --- !u!4 &6099217203363292163 stripped

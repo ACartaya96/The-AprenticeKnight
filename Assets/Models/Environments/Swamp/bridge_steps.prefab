@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8431897982955156766
 Transform:
@@ -48,7 +48,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3582711380417533431
 Transform:
@@ -142,7 +142,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5921497260509141374
 Transform:
@@ -226,9 +226,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1326500360061625975, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -710532670234356185, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
       propertyPath: m_Name
       value: bridge_ornamental_pieces
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1927801098807167806, guid: f1b046a4b181f8d4f8c025d5fb1913ae, type: 3}
       propertyPath: m_Materials.Array.size
@@ -312,9 +324,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -710532670234356185, guid: e3fa9ae6a954eb34caf3f83b0e5da2c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3fa9ae6a954eb34caf3f83b0e5da2c9, type: 3}
       propertyPath: m_Name
       value: bridge_top_flowers
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3fa9ae6a954eb34caf3f83b0e5da2c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352088794269479878, guid: e3fa9ae6a954eb34caf3f83b0e5da2c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3fa9ae6a954eb34caf3f83b0e5da2c9, type: 3}
@@ -386,6 +410,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2090693731519998360, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -710532670234356185, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -253549563165404974, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
       propertyPath: m_Materials.Array.size
       value: 25
@@ -397,6 +429,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
       propertyPath: m_Name
       value: bridge_flowers_under
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2838fb1d4ad8fd44a6f279a8dd5b351, type: 3}
@@ -468,9 +504,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4229779317997882482, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -710532670234356185, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
       propertyPath: m_Name
       value: bridge_tunnel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7596578969185963176, guid: 7ac2c1f85e36087428196e22355bf1ce, type: 3}
       propertyPath: m_Materials.Array.size
