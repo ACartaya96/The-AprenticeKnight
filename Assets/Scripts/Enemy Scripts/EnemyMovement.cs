@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +9,8 @@ namespace TAK
         FieldofView fov;
         EnemyAnimationHandler enemyAnimationHandler;
         public NavMeshAgent navMeshAgent;
+
+        public Vector3 moveDirection;
 
         Transform myTransform;
 
@@ -39,6 +39,7 @@ namespace TAK
         {
             enemyManager = GetComponent<EnemyManager>();
             enemyAnimationHandler = GetComponentInChildren<EnemyAnimationHandler>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
             myTransform = transform;
         }
 
@@ -65,7 +66,7 @@ namespace TAK
             }
             if (enemyManager.isInAir)
             {
-
+                navMeshAgent.enabled = false;
                 rb.AddForce(-Vector3.up * fallSpeed);
                 rb.AddForce(moveDirection * fallSpeed / 10f);
             }
@@ -90,15 +91,16 @@ namespace TAK
                 {
                     if (InAirTimer > 0.75f)
                     {
-                        enemyAnimationHandler.PlayTargetAnimation("Land", true);
+                        //enemyAnimationHandler.PlayTargetAnimation("Land", true);
                     }
                     else
                     {
-                        enemyAnimationHandler.PlayTargetAnimation("Empty", false);
+                        //enemyAnimationHandler.PlayTargetAnimation("Empty", false);
                         InAirTimer = 0;
                     }
 
                     enemyManager.isInAir = false;
+                    navMeshAgent.enabled = true;
 
                 }
             }
