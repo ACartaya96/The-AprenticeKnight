@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using Cinemachine;
 
 
@@ -23,14 +24,14 @@ namespace TAK
 
         Rigidbody rb;
 
-        Camera cam;
+        public Camera cam;
 
 
 
         private void OnEnable()
         {
 
-            cam = Camera.main;
+            cam = Camera.main
             baseValue = baseDamage;
 
         }

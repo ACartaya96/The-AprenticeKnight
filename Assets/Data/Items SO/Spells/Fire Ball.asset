@@ -32,3 +32,4 @@ MonoBehaviour:
   projectileUpwardVelocity: 150
   isEffecteByGravity: 1
   projectileMass: 1
+  cam: {fileID: 0}

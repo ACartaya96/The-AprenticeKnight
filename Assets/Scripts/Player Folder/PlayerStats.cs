@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TAK
 {
@@ -70,6 +71,8 @@ namespace TAK
                 isDead = true;
                 playerManager.isInvincible = true;
                 animationHandler.PlayTargetAnimation("Dying", true);
+                
+                SceneManager.LoadScene("LoseScene");
             }
         }
 
