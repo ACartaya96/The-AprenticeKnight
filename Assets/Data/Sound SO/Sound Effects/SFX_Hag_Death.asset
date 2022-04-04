@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c46fec88e01d5e74583169425daa63e7, type: 3}
-  m_Name: SFX_Hag_Spin_Attack
+  m_Name: SFX_Hag_Death
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: bca27e08eb777044c9d973520d48cc32, type: 3}
-  volume: {x: 0.5, y: 0.5}
-  pitch: {x: 2, y: 2}
+  - {fileID: 8300000, guid: afbe628bf0fcf6244aace7abb89ae9b9, type: 3}
+  volume: {x: 1, y: 1}
+  pitch: {x: 1, y: 1}
   playOrder: 0
