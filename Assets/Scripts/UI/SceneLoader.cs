@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace TAK
     public class SceneLoader : MonoBehaviour
     {
         public static SceneLoader instance;
-
+        public string currentLevel;
         public Camera camera;
         private void Awake()
         {
@@ -27,11 +28,15 @@ namespace TAK
             DontDestroyOnLoad(camera);
         }
 
-        public void LoadWinState()
+        public void LoadWinScene()
         {
             SceneManager.LoadScene("WinScene");
         }
+        internal void LoadLoseScene()
+        {
 
+            SceneManager.LoadScene("LoseScene");
+        }
         public void LoadHubScene()
         {
             SceneManager.LoadScene("Hub");
@@ -60,8 +65,10 @@ namespace TAK
 
         public void RestartLevel()
         {
-          
+            SceneManager.LoadScene(currentLevel); 
         }
+
+
     }
 }
 

@@ -12,7 +12,7 @@ namespace TAK
         {
             if (other.CompareTag("Player"))
             {
-                SceneLoader.instance.LoadWinState();
+                SceneLoader.instance.LoadWinScene();
             }
         }
     }

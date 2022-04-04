@@ -71,8 +71,12 @@ namespace TAK
                 isDead = true;
                 playerManager.isInvincible = true;
                 animationHandler.PlayTargetAnimation("Dying", true);
+
+
+                SceneLoader.instance.currentLevel = SceneManager.GetActiveScene().name;
+                Debug.Log(SceneLoader.instance.currentLevel.ToString());
+                SceneLoader.instance.LoadLoseScene();
                 
-                SceneManager.LoadScene("LoseScene");
             }
         }
 

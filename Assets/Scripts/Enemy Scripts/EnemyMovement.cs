@@ -39,7 +39,8 @@ namespace TAK
         {
             enemyManager = GetComponent<EnemyManager>();
             enemyAnimationHandler = GetComponentInChildren<EnemyAnimationHandler>();
-            navMeshAgent = GetComponent<NavMeshAgent>();
+            navMeshAgent = GetComponentInChildren<NavMeshAgent>();
+            rb = GetComponent<Rigidbody>();
             myTransform = transform;
         }
 
@@ -66,7 +67,7 @@ namespace TAK
             }
             if (enemyManager.isInAir)
             {
-                navMeshAgent.enabled = false;
+                //navMeshAgent.enabled = false;
                 rb.AddForce(-Vector3.up * fallSpeed);
                 rb.AddForce(moveDirection * fallSpeed / 10f);
             }
@@ -115,7 +116,7 @@ namespace TAK
                 {
                     if (enemyManager.isInteracting == false)
                     {
-                        enemyAnimationHandler.PlayTargetAnimation("Falling", true);
+                        //enemyAnimationHandler.PlayTargetAnimation("Falling", true);
                     }
 
                     Vector3 vel = rb.velocity;
@@ -125,7 +126,7 @@ namespace TAK
                 }
 
             }
-            if (enemyManager.isInteracting)
+            if (enemyManager.isInteracting || rb.velocity.magnitude > -1)
             {
                 myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
             }

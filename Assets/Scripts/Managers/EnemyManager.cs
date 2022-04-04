@@ -71,6 +71,7 @@ namespace TAK
             isInteracting = anim.GetBool("isInteracting");
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isBlocking", isBlocking);
+            isPerformingAction = anim.GetBool("isPerformingAction"); 
             enemyAnimationHandler.canRotate = anim.GetBool("canRotate");
         }
 
