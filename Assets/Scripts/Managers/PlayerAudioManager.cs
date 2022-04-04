@@ -9,6 +9,10 @@ namespace TAK
     {
         public SFXEvent footStepSFX;
         public SFXEvent SwingSFX;
+        public SFXEvent RollSFX;
+        public SFXEvent JumpSFX;
+        //public SFXEvent HurtSFX;Hurt sound effect that Alex already hardcoded. Commented in case we want to make it animator based.
+        
 
         public void PlayFootStepAudio()
         {
@@ -21,7 +25,25 @@ namespace TAK
             SwingSFX.Play();
         }
 
+        public void PlayRollAudio()
+        {
+            RollSFX.Play();
+        }
+        
+        public void PlayJumpAudio()
+        { 
+            JumpSFX.Play();
+        }
+
+
+       // public void PlayHurtAudio()
+        //{
+          //  HurtSFX.Play();
+        //}
+
+
 
     }
+
 }
 

@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c46fec88e01d5e74583169425daa63e7, type: 3}
-  m_Name: SFX_Swing
+  m_Name: SFX_Jump
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 89adb4c6243cb8140b0998e971d1b1f9, type: 3}
-  - {fileID: 8300000, guid: b19b34ee992cec6469e6396138917ead, type: 3}
-  volume: {x: 1, y: 1}
+  - {fileID: 8300000, guid: fa78969a448a225429e2b41af4b3fb29, type: 3}
+  volume: {x: 0.5, y: 0.5}
   pitch: {x: 1, y: 1}
-  playOrder: 0
+  playOrder: 1
