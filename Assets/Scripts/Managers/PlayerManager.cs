@@ -18,8 +18,8 @@ namespace TAK
 
 
         [Header("Player Flags")]
-        public bool isInAir;
-        public bool isGrounded;
+       
+        
         public bool canDoCombo;
  
 
@@ -87,9 +87,9 @@ namespace TAK
             inputHandler.a_Input = false;
             //inputHandler.rb_Input = false;
             inputHandler.rt_Input = false;
-            inputHandler.rbflag = false;
-            inputHandler.rtflag = false;
-            inputHandler.lt_Input = false;
+            //inputHandler.rbflag = false;
+            //inputHandler.rtflag = false;
+            //inputHandler.lt_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Right = false;

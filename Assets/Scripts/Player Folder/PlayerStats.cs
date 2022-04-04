@@ -53,7 +53,7 @@ namespace TAK
             if (!playerManager.isInvincible)
             {
                 Debug.Log("Xander Takes " + damage.ToString() + " Damage");
-                currentHealth -= (int)damage * Time.deltaTime/8;
+                currentHealth -= damage;
                 healthBar.SetCurrentHealth(currentHealth);
                 Debug.Log("Xander HP: " + currentHealth.ToString());
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);

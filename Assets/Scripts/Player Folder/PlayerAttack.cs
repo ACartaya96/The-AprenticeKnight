@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -256,19 +257,54 @@ namespace TAK
 
         public void HandleLTAction()
         {
-            /*if (playerManager.canDoCombo)
-            {
+            
+            WeaponType type = playerInventory.leftWeapon.weaponType;
 
-                inputHandler.comboflag = true;
-                HeavyHandleWeaponCombo(playerInventory.rightWeapon);
-                inputHandler.comboflag = false;
-            }*/
+            switch (type)
+            {
+                case WeaponType.Weapon:
+                    PerformLTMeleeAction();
+                    break;
+
+                case WeaponType.Staff:
+                    PerformLTSpellAction();
+                    break;
+
+                case WeaponType.Shield:
+                    PerformLTBlockAction();
+                    break;
+
+            }
+
             
             
-                if (animationHandler.anim.GetBool("isInteracting"))
-                    return;
-                HandleSpecialAttack(playerInventory.leftWeapon);
-            
+        }
+
+        private void PerformLTBlockAction()
+        {
+            if (playerManager.isInteracting)
+                return;
+
+            if (playerManager.isBlocking)
+                return;
+
+            animationHandler.PlayTargetAnimation("Block Start", false);
+            playerEquipment.OpenBlockingCollider();
+            playerManager.isBlocking = true;
+        }
+
+        private void PerformLTSpellAction()
+        {
+            if (animationHandler.anim.GetBool("isInteracting"))
+                return;
+            HandleHeavyAttack(playerInventory.leftWeapon);
+        }
+
+        private void PerformLTMeleeAction()
+        {
+            if (animationHandler.anim.GetBool("isInteracting"))
+                return;
+            HandleSpecialAttack(playerInventory.leftWeapon);
         }
     }
 }

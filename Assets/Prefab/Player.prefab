@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 7638043526766026583}
+  timeUntilBarIsHidden: 0
 --- !u!1 &821933044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,11 +1376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da03c52c5600c34cbd26950b5ef45fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthLevel: 40
+  healthLevel: 20
   maxHealth: 0
   currentHealth: 0
   isDead: 0
-  manaLevel: 50
+  manaLevel: 40
   currentMana: 0
   healthBar: {fileID: 1572765729}
   manaBar: {fileID: 622696161}
@@ -1483,7 +1484,6 @@ GameObject:
   m_Component:
   - component: {fileID: 886141466103371653}
   - component: {fileID: 7638043526766026583}
-  - component: {fileID: 8852435121529598966}
   m_Layer: 5
   m_Name: Poison Status Bar
   m_TagString: Untagged
@@ -1563,19 +1563,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8852435121529598966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196114590088617889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd51528de1f34dc4daec883bb2768684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 7638043526766026583}
 --- !u!1001 &4772079461517723509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1669,14 +1656,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
---- !u!1 &5690506132095679012 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
-  m_PrefabInstance: {fileID: 4772079461517723509}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5022478414176510110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
+  m_PrefabInstance: {fileID: 4772079461517723509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5690506132095679012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
   m_PrefabInstance: {fileID: 4772079461517723509}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6596779731253229757 stripped
@@ -1708,7 +1695,7 @@ AudioSource:
   m_GameObject: {fileID: 5690506132095679012}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5557178143769077348, guid: c79436fd66b1efb478975e518ecb36ad, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

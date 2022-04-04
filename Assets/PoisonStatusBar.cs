@@ -9,7 +9,7 @@ namespace TAK
     public class PoisonStatusBar : MonoBehaviour
     {
         public Slider slider;
-        float timeUntilBarIsHidden = 0;
+        public float timeUntilBarIsHidden = 0;
 
 
         private void Awake()

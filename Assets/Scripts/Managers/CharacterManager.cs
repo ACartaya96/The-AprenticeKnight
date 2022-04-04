@@ -20,6 +20,8 @@ namespace TAK
         public bool isBlocking;
         public bool isInteracting;
         public bool isInvincible;
+        public bool isGrounded;
+        public bool isInAir;
 
         // Start is called before the first frame update
         void Start()

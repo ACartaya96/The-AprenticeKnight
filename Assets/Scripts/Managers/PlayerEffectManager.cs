@@ -24,9 +24,12 @@ namespace TAK
         public override void HandlePoisonBuildUp()
         {
             base.HandlePoisonBuildUp();
-            if(isPoisoned == false)
+            if(isPoisoned == false )
             {
-                poisonStatus.SetCurrentPoisonBuildUp(poisonBuildup);
+                if (poisonBuildup > 0 && poisonBuildup < 100)
+                {
+                    poisonStatus.SetCurrentPoisonBuildUp(poisonBuildup);
+                }
             }
            
         }

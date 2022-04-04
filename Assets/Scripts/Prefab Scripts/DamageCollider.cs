@@ -45,7 +45,7 @@ namespace TAK
             {   
                 if (weaponItem != null)
                 {
-                    if(character.isBlocking )
+                    if(character.isBlocking)
                     {
                         if (block != null)
                         {

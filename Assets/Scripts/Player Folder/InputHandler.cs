@@ -133,6 +133,7 @@ namespace TAK
             rtAction.performed += _ => rt_Input = true;
        
             ltAction.performed += _ => lt_Input = true;
+            ltAction.canceled += _ => lt_Input = true;
             aimAction.performed += _ => rj_Input = true;
             lLockOnAction.performed += _ => right_Stick_Left = true;
             rLockOnAction.performed += _ => right_Stick_Right = true;
@@ -211,11 +212,7 @@ namespace TAK
 
                 playerAttack.HandleRBAction();
             }
-            else if(playerManager.isBlocking )
-            {
-                playerManager.isBlocking = false;
-                playerEquipment.CloseBlockingCollider();
-            }
+        
             if (rt_Input)
             {
                 if (lockedOnflag)
@@ -230,16 +227,19 @@ namespace TAK
                
                 playerAttack.HandleLBAction();
             }
-            else if(playerManager.isBlocking)
-            {
-                playerManager.isBlocking = false;
-                playerEquipment.CloseBlockingCollider();  
-            }
-            if(lt_Input)
+
+            if (lt_Input)
             {
                 playerAttack.HandleLTAction();
             }
 
+            if (playerManager.isBlocking && !lt_Input && !lb_Input && !rb_Input && !rt_Input)
+            {
+                playerManager.isBlocking = false;
+                Debug.Log("Blocking is now false;");
+                playerEquipment.CloseBlockingCollider();  
+            }
+        
 
 
 

@@ -70,7 +70,7 @@ namespace TAK
         private void FixedUpdate()
         {
             HandleCurrentActionBehavior();
-            enemyEffectManager.HandleAllBuildUpEffects();
+            //enemyEffectManager.HandleAllBuildUpEffects();
             
         }
 
