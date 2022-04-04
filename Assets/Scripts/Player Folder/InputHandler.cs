@@ -133,6 +133,7 @@ namespace TAK
             rtAction.performed += _ => rt_Input = true;
        
             ltAction.performed += _ => lt_Input = true;
+            ltAction.canceled += _ => lt_Input = false;
             aimAction.performed += _ => rj_Input = true;
             lLockOnAction.performed += _ => right_Stick_Left = true;
             rLockOnAction.performed += _ => right_Stick_Right = true;
@@ -158,6 +159,7 @@ namespace TAK
             lbAction.canceled -= _ => lb_Input = false;
             rtAction.performed -= _ => rt_Input = true;
             ltAction.performed -= _ => lt_Input = true;
+            ltAction.canceled -= _ => lt_Input = false;
             aimAction.performed -= _ => rj_Input = true;
             lLockOnAction.performed -= _ => right_Stick_Left = true;
             rLockOnAction.performed -= _ => right_Stick_Right = true;
@@ -211,12 +213,7 @@ namespace TAK
 
                 playerAttack.HandleRBAction();
             }
-            else if(playerManager.isBlocking )
-            {
-                playerManager.isBlocking = false;
-                playerEquipment.CloseBlockingCollider();
-            }
-            if (rt_Input)
+            else if (rt_Input)
             {
                 if (lockedOnflag)
                 {
@@ -225,20 +222,21 @@ namespace TAK
                 playerAttack.HandleRTAction();
 
             }
-            if (lb_Input)
+            else if (lb_Input)
             {
                
                 playerAttack.HandleLBAction();
             }
-            else if(playerManager.isBlocking)
+            else if (lt_Input)
+            {
+                playerAttack.HandleLTAction();
+            }
+            else if(playerManager.isBlocking && !lb_Input && !lt_Input && !rb_Input)
             {
                 playerManager.isBlocking = false;
                 playerEquipment.CloseBlockingCollider();  
             }
-            if(lt_Input)
-            {
-                playerAttack.HandleLTAction();
-            }
+            
 
 
 
