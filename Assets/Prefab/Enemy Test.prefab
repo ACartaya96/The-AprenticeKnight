@@ -1107,3 +1107,4 @@ MonoBehaviour:
   swipeAttackSFX: {fileID: 11400000, guid: f12d612fbebabdb4ab0b4ea3a8380bbc, type: 2}
   bigSlamAttackSFX: {fileID: 11400000, guid: 1cf3fc497ddc39447870b86bd66e7a4c, type: 2}
   spinAttackSFX: {fileID: 11400000, guid: 412cbd2d063a5cb488ef7871e7717a60, type: 2}
+  deathSFX: {fileID: 11400000, guid: e566cb65e10bff74a8bd877877101476, type: 2}

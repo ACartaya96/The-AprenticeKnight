@@ -135,6 +135,8 @@ MonoBehaviour:
   rollForwardVelocity: 200
   jumpForceApplied: 0
   rollForceApplied: 0
+  characterCollider: {fileID: 0}
+  characterCollisionBlockeCollider: {fileID: 0}
 --- !u!114 &1080474190400565578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +160,7 @@ MonoBehaviour:
   d_Pad_Down: 0
   d_Pad_Left: 0
   d_Pad_Right: 0
+  start_button: 0
   rb_Input: 0
   rt_Input: 0
   lb_Input: 0
@@ -306,6 +309,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  StartButton:
+    m_Name: Start Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2cbd41ad-740e-41d3-9dc1-e865d3bca92c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &4937689050012626560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,12 +333,14 @@ MonoBehaviour:
   healthLevel: 20
   maxHealth: 0
   currentHealth: 0
+  isDead: 0
   manaLevel: 50
   currentMana: 0
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   playerLevel: 5
   playerController: {fileID: 0}
+  impactClip: {fileID: 0}
 --- !u!114 &2027030223753758761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,11 +410,11 @@ MonoBehaviour:
   isFiringSpell: 0
   isBlocking: 0
   isInteracting: 0
-  cameraTarget: {fileID: 0}
-  isInAir: 0
-  isGrounded: 0
-  canDoCombo: 0
   isInvincible: 0
+  isGrounded: 0
+  isInAir: 0
+  cameraTarget: {fileID: 0}
+  canDoCombo: 0
 --- !u!1 &3273219153723929659
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,22 +672,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 6a420f0220190d34a91a129ed111d9d7, type: 3}
   m_PrefabInstance: {fileID: 199499104620736524}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7907977228793101791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4370042315915917760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4924c9c79c18340bff3c0cf505f570, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentOverride: {fileID: 8399660002021973485}
-  isLeftHandSlot: 1
-  isRightHandSlot: 0
-  currentWeapon: {fileID: 0}
 --- !u!95 &6446158980803744773
 Animator:
   serializedVersion: 3
@@ -693,7 +691,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4682925147245990912
+--- !u!114 &3480980361065702555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -702,23 +700,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1010401368799726941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f66b5c697fb2f27409023c0aec3e3ad4, type: 3}
+  m_Script: {fileID: 11500000, guid: e4d5177cf2c149e40b399361eb26cac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4682925146836588986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010401368799726941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62dc9555f8098e348b255ae02d425ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandSlot: {fileID: 0}
-  rightHandSlot: {fileID: 0}
+  lastAttack: 
 --- !u!114 &4671544241285974385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,7 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 6446158980803744773}
   canRotate: 1
---- !u!114 &3480980361065702555
+--- !u!114 &4682925146836588986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -742,10 +727,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1010401368799726941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d5177cf2c149e40b399361eb26cac2, type: 3}
+  m_Script: {fileID: 11500000, guid: 62dc9555f8098e348b255ae02d425ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastAttack: 
+  leftHandSlot: {fileID: 0}
+  rightHandSlot: {fileID: 0}
+--- !u!114 &4682925147245990912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010401368799726941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66b5c697fb2f27409023c0aec3e3ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5548456951814517590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,4 +759,20 @@ MonoBehaviour:
   parentOverride: {fileID: 1977484490121318340}
   isLeftHandSlot: 0
   isRightHandSlot: 1
+  currentWeapon: {fileID: 0}
+--- !u!114 &7907977228793101791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370042315915917760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4924c9c79c18340bff3c0cf505f570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentOverride: {fileID: 8399660002021973485}
+  isLeftHandSlot: 1
+  isRightHandSlot: 0
   currentWeapon: {fileID: 0}

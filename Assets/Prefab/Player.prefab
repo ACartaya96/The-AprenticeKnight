@@ -1456,9 +1456,9 @@ MonoBehaviour:
   isBlocking: 0
   isInteracting: 0
   isInvincible: 0
-  cameraTarget: {fileID: 0}
-  isInAir: 0
   isGrounded: 0
+  isInAir: 0
+  cameraTarget: {fileID: 0}
   canDoCombo: 0
 --- !u!136 &3089153574969368517
 CapsuleCollider:
@@ -1874,6 +1874,10 @@ MonoBehaviour:
   musciClips: []
   audioSource: {fileID: 4785091346168074254}
   footStepSFX: {fileID: 11400000, guid: e2c3b8c21a614ce419ed07dda40819ac, type: 2}
+  SwingSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
+  RollSFX: {fileID: 11400000, guid: c5f66b88b0cd1dc489c72bc82b2345a9, type: 2}
+  JumpSFX: {fileID: 11400000, guid: 393924a7b11675747b4b32e59cb54f53, type: 2}
+  deathSFX: {fileID: 11400000, guid: e566cb65e10bff74a8bd877877101476, type: 2}
 --- !u!114 &8121110180377154530
 MonoBehaviour:
   m_ObjectHideFlags: 0
