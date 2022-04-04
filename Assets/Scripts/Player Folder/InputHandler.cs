@@ -45,7 +45,7 @@ namespace TAK
 
 
 
-        PlayerInput playerInput;
+        public PlayerInput playerInput;
         PlayerAttack playerAttack;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
