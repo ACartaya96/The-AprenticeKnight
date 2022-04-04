@@ -102,6 +102,7 @@ namespace TAK
             playerController = GetComponent<PlayerController>();
             playerEquipment = GetComponentInChildren<PlayerEquipmentManager>();
 
+           
             moveAction = playerInput.actions["Movement"];
             lookAction = playerInput.actions["Look"];
             jumpAction = playerInput.actions["Jump"];
@@ -133,7 +134,7 @@ namespace TAK
             rtAction.performed += _ => rt_Input = true;
        
             ltAction.performed += _ => lt_Input = true;
-            ltAction.canceled += _ => lt_Input = true;
+            ltAction.canceled += _ => lt_Input = false;
             aimAction.performed += _ => rj_Input = true;
             lLockOnAction.performed += _ => right_Stick_Left = true;
             rLockOnAction.performed += _ => right_Stick_Right = true;
@@ -159,6 +160,7 @@ namespace TAK
             lbAction.canceled -= _ => lb_Input = false;
             rtAction.performed -= _ => rt_Input = true;
             ltAction.performed -= _ => lt_Input = true;
+            ltAction.canceled -= _ => lt_Input = false;
             aimAction.performed -= _ => rj_Input = true;
             lLockOnAction.performed -= _ => right_Stick_Left = true;
             rLockOnAction.performed -= _ => right_Stick_Right = true;
@@ -167,7 +169,7 @@ namespace TAK
             dLeftAction.performed -= _ => d_Pad_Left = true;
             dRightAction.performed -= _ => d_Pad_Right = true;
             StartButton.performed -= _ => start_button = true;
-
+            
         }
         #endregion
         public void TickInput()
@@ -212,7 +214,8 @@ namespace TAK
 
                 playerAttack.HandleRBAction();
             }
-        
+       
+
             if (rt_Input)
             {
                 if (lockedOnflag)
@@ -222,24 +225,27 @@ namespace TAK
                 playerAttack.HandleRTAction();
 
             }
+
             if (lb_Input)
             {
                
                 playerAttack.HandleLBAction();
             }
+           
 
             if (lt_Input)
             {
                 playerAttack.HandleLTAction();
             }
-
-            if (playerManager.isBlocking && !lt_Input && !lb_Input && !rb_Input && !rt_Input)
+            
+            
+            if (playerManager.isBlocking && !lt_Input && !lb_Input && !rb_Input)
             {
                 playerManager.isBlocking = false;
                 Debug.Log("Blocking is now false;");
-                playerEquipment.CloseBlockingCollider();  
+                playerEquipment.CloseBlockingCollider();
             }
-        
+
 
 
 

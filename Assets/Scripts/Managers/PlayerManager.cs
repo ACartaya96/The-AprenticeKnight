@@ -75,6 +75,8 @@ namespace TAK
             playerController.HandleFalling(playerController.moveDirection);
             playerEffectManager.HandleAllBuildUpEffects();
 
+            Debug.Log(inputHandler.lt_Input.ToString());
+
         }
 
         private void LateUpdate()

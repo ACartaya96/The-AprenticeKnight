@@ -6,13 +6,14 @@ namespace TAK
 {
     public class PlayerEquipmentManager : MonoBehaviour
     {
+        InputHandler inputHandler;
         BlockingColllider blockingColllider;
         PlayerInventory playerInventory;
         
 
         private void Awake()
         {
-            
+            inputHandler = GetComponentInParent<InputHandler>();
             blockingColllider = GetComponentInChildren<BlockingColllider>();
             playerInventory = GetComponentInParent<PlayerInventory>();
         }

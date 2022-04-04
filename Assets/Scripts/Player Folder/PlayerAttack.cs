@@ -161,10 +161,10 @@ namespace TAK
 
             if (playerManager.isBlocking)
                 return;
-
+            playerManager.isBlocking = true;
             animationHandler.PlayTargetAnimation("Block Start 2", false);
             playerEquipment.OpenBlockingCollider();
-            playerManager.isBlocking = true;
+          
         }
         #endregion
         #region LB Actions
@@ -230,9 +230,10 @@ namespace TAK
             if (playerManager.isBlocking)
                 return;
 
+            playerManager.isBlocking = true;
             animationHandler.PlayTargetAnimation("Block Start", false);
             playerEquipment.OpenBlockingCollider();
-            playerManager.isBlocking = true;
+           
         }
         #endregion
 
@@ -288,9 +289,10 @@ namespace TAK
             if (playerManager.isBlocking)
                 return;
 
+            playerManager.isBlocking = true;
             animationHandler.PlayTargetAnimation("Block Start", false);
             playerEquipment.OpenBlockingCollider();
-            playerManager.isBlocking = true;
+          
         }
 
         private void PerformLTSpellAction()
