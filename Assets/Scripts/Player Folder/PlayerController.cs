@@ -95,6 +95,7 @@ namespace TAK
                 rb.AddForce(myTransform.forward * rollForwardVelocity);
 
             }
+
         }
         private IEnumerator JumpCo()
         {
@@ -141,7 +142,6 @@ namespace TAK
             {
                 animationHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0);
             }
-
 
           
         }
@@ -205,6 +205,7 @@ namespace TAK
 
 
             }
+
            
            
         }
@@ -256,6 +257,7 @@ namespace TAK
                     jumpForceApplied = true;
                 
             }
+
         }
 
 
@@ -342,6 +344,7 @@ namespace TAK
             {
                 myTransform.position = targetPosition;
             }
+
 
         }
 
