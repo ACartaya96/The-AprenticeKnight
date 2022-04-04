@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9d318bb11d75d43b939fcf604d8121, type: 3}
+  m_Name: Poison Throw
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Poison Throw
+  spellWarmUpFX: {fileID: 0}
+  spellCastFx: {fileID: 0}
+  startUpSFX: {fileID: 0}
+  castSFX: {fileID: 0}
+  spellAnimation: 
+  cost: 0
+  baseValue: 20
+  element: 6
+  type: 0
+  spellDescription: Hag spits out a poison projectile that does slight damage and
+    causes massive buildup.
+  spellEffects: []
+  spellLastPos: {x: 0, y: 0, z: 0}
+  baseDamage: 20
+  buildUp: 40
+  projectileForwardVelocity: 300
+  projectileUpwardVelocity: 300
+  isEffecteByGravity: 1
+  projectileMass: 1

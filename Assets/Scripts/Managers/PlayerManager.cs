@@ -9,21 +9,21 @@ namespace TAK
         InputHandler inputHandler;
         PlayerController playerController;
         Animator anim;
+        AnimationHandler animationHandler;
         PlayerTargetDetection playerTarget;
+        PlayerEffectManager playerEffectManager;
 
         [Header("References")]
         public Transform cameraTarget;
 
 
         [Header("Player Flags")]
-        public bool isInteracting;
-        [Space]
-        public bool isInAir;
-        public bool isGrounded;
+       
+        
         public bool canDoCombo;
  
 
-        public bool isInvincible;
+       
 
 
         // Start is called before the first frame update
@@ -33,6 +33,8 @@ namespace TAK
             playerController = GetComponent<PlayerController>();
             playerTarget = GetComponent<PlayerTargetDetection>();
             anim = GetComponentInChildren<Animator>();
+            playerEffectManager = GetComponentInChildren<PlayerEffectManager>();
+            animationHandler = GetComponentInChildren<AnimationHandler>();
 
 
         }
@@ -48,6 +50,7 @@ namespace TAK
             anim.SetBool("isLockedOn", inputHandler.lockedOnflag);
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isBlocking", isBlocking);
+            animationHandler.canRotate = anim.GetBool("canRotate");
             inputHandler.TickInput();
 
             playerController.HandleRollingandSprinting();
@@ -68,7 +71,12 @@ namespace TAK
         private void FixedUpdate()
         {
             playerController.HandleMovement();
+            playerController.HandleRotation();
             playerController.HandleFalling(playerController.moveDirection);
+            playerEffectManager.HandleAllBuildUpEffects();
+
+            Debug.Log(inputHandler.lt_Input.ToString());
+
         }
 
         private void LateUpdate()
@@ -79,10 +87,11 @@ namespace TAK
             inputHandler.rollflag = false;
             inputHandler.b_Input = false;
             inputHandler.a_Input = false;
-            inputHandler.rb_Input = false;
+            //inputHandler.rb_Input = false;
             inputHandler.rt_Input = false;
-            inputHandler.rbflag = false;
-            inputHandler.rtflag = false;
+            //inputHandler.rbflag = false;
+            //inputHandler.rtflag = false;
+            //inputHandler.lt_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Right = false;

@@ -82,6 +82,7 @@ namespace TAK
             if(source == null)
             {
                 var obj = new GameObject("Sound", typeof(AudioSource));
+                source = obj.GetComponent<AudioSource>();
             }
 
             source.clip = clips[0];
@@ -100,6 +101,7 @@ namespace TAK
 
             return source;
         }
+
 
         enum SoundClipPlayOrder
         {

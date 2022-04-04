@@ -16,11 +16,16 @@ MonoBehaviour:
   itemName: Heal Player
   spellWarmUpFX: {fileID: 6785968062366250733, guid: dacde2aa4b44cd34c95db82c71fc6949, type: 3}
   spellCastFx: {fileID: 7173159929070329326, guid: 86c702afc3414f047bdd8559239442ed, type: 3}
+  startUpSFX: {fileID: 8300000, guid: a384c45148166ea4c9f7ef5dfc36055d, type: 3}
+  castSFX: {fileID: 0}
   spellAnimation: Heal_Start
   cost: 12
+  baseValue: 0
+  element: 0
   type: 7
   spellDescription: 'A temporary fix till we get working healing poitions.
 
 '
-  spellBehaviors: []
-  healAmount: 30
+  spellEffects: []
+  spellLastPos: {x: 0, y: 0, z: 0}
+  healAmount: 130

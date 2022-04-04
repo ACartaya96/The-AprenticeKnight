@@ -16,6 +16,8 @@ MonoBehaviour:
   itemName: Fire Ball
   spellWarmUpFX: {fileID: 2921885721892408272, guid: c8e8c085de92a6e41b631dbf70d277b3, type: 3}
   spellCastFx: {fileID: 2793912979628174686, guid: 863019b0ff0c2064488b63a8e42c7055, type: 3}
+  startUpSFX: {fileID: 8300000, guid: bdb376e01ed0fb54b8fbcbc06154e1f3, type: 3}
+  castSFX: {fileID: 0}
   spellAnimation: Projectile_Start
   cost: 12
   baseValue: 50
@@ -30,3 +32,4 @@ MonoBehaviour:
   projectileUpwardVelocity: 150
   isEffecteByGravity: 1
   projectileMass: 1
+  cam: {fileID: 0}

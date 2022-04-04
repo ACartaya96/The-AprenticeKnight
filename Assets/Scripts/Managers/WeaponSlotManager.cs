@@ -45,11 +45,13 @@ namespace TAK
         private void LoadLeftWeaponDamageCollider()
         {
             leftDamageCollider = leftHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
+            leftDamageCollider.characterManager = GetComponentInParent<PlayerManager>();
         }
 
         private void LoadRightWeaponDamageCollider()
         {
             rightDamageCollider = rightHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
+            rightDamageCollider.characterManager = GetComponentInParent<PlayerManager>();
         }
 
         public void OpenRightDamageCollider()

@@ -36,6 +36,15 @@ namespace TAK
         [PreviewField(75)]
         public GameObject spellCastFx;
 
+        [VerticalGroup("Game Data", 75)]
+        [PreviewField(75)]
+        public AudioClip startUpSFX;
+
+
+        [VerticalGroup("Game Data", 75)]
+        [PreviewField(75)]
+        public AudioClip castSFX;
+
         public string spellAnimation;
 
 
@@ -66,13 +75,13 @@ namespace TAK
         [HideInInspector]
         public Vector3 spellLastPos;
 
-        public virtual void AttemptToCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot)
+        public virtual void AttemptToCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot, PlayerAudioManager audioManager)
         {
             Debug.Log("You attemp to cast a spell!");
         }
 
         public virtual void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats,
-            WeaponSlotManager weaponSlot, PlayerManager playerManager, PlayerTargetDetection playerTarget)
+            WeaponSlotManager weaponSlot, PlayerManager playerManager, PlayerTargetDetection playerTarget, PlayerAudioManager audioManager)
         {
             Debug.Log("You successfully cast a spell!");
         }

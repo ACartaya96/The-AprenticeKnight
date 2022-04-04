@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TAK
 {
-    public class PlayerStats : MonoBehaviour, IDamage
+    public class PlayerStats : CharacterStatsManager, IDamage
     {
-        [SerializeField] private int healthLevel = 10;
+ 
         [SerializeField] private int manaLevel = 10;
-        public float maxHealth { get; private set; }
-        public float currentHealth;
+ 
         public float maxMana { get; private set; }
         public float currentMana;
 
@@ -18,13 +18,17 @@ namespace TAK
         public int playerLevel;
         PlayerManager playerManager;
         AnimationHandler animationHandler;
+        PlayerAudioManager playerAudioManager;
         public PlayerController playerController;
+
+        [SerializeField] AudioClip impactClip;
 
         private void Start()
         {
             playerController = GetComponent<PlayerController>();
             playerManager = GetComponent<PlayerManager>();
             animationHandler = GetComponentInChildren<AnimationHandler>();
+            playerAudioManager = GetComponentInChildren<PlayerAudioManager>();
             maxHealth = SetMaxHealthFromHealthLevel();
             maxMana = SetMaxManafromManaLevel();
             currentHealth = maxHealth;
@@ -54,12 +58,21 @@ namespace TAK
                 healthBar.SetCurrentHealth(currentHealth);
                 Debug.Log("Xander HP: " + currentHealth.ToString());
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
-                animationHandler.PlayTargetAnimation(damageAnimation, true);
+                if(damageAnimation != null)
+                {
+                    animationHandler.PlayTargetAnimation(damageAnimation, true);
+                    playerAudioManager.PlayTargetSoundEffect(impactClip);
+                }
+                    
             }
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
+                isDead = true;
+                playerManager.isInvincible = true;
                 animationHandler.PlayTargetAnimation("Dying", true);
+                
+                SceneManager.LoadScene("LoseScene");
             }
         }
 

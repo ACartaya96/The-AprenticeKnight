@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using Cinemachine;
 
 
@@ -23,28 +24,30 @@ namespace TAK
 
         Rigidbody rb;
 
-        Camera cam;
+        public Camera cam;
 
 
 
         private void OnEnable()
         {
-
+            
             cam = Camera.main;
             baseValue = baseDamage;
+      
 
         }
 
 
-        public override void AttemptToCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot)
+        public override void AttemptToCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot, PlayerAudioManager audioManager)
         {
             GameObject istantiateWarmUpSpellFX = Instantiate(spellWarmUpFX, weaponSlot.rightHandSlot.transform);
             //istantiateWarmUpSpellFX.gameObject.transform.localScale = new Vector3(100, 100, 100);
             animationHandler.PlayTargetAnimation(spellAnimation, true);
+            audioManager.PlayTargetSoundEffect(startUpSFX);
         }
 
         public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot,
-            PlayerManager playerManager, PlayerTargetDetection playerTarget)
+            PlayerManager playerManager, PlayerTargetDetection playerTarget, PlayerAudioManager audioManager)
         {
             GameObject instantiateSpellFX = Instantiate(spellCastFx, weaponSlot.rightHandSlot.transform.position, weaponSlot.rightHandSlot.transform.rotation);
             Destroy(instantiateSpellFX, 8f);

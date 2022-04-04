@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace TAK
         PlayerInventory playerInventory;
         PlayerEquipmentManager playerEquipment;
         PlayerTargetDetection playerTarget;
+        PlayerAudioManager playerAudioManager;
         public string lastAttack;
 
 
@@ -28,6 +30,7 @@ namespace TAK
             playerInventory = GetComponentInParent<PlayerInventory>();
             playerEquipment = GetComponent<PlayerEquipmentManager>();
             playerTarget = GetComponentInParent<PlayerTargetDetection>();
+            playerAudioManager = GetComponent<PlayerAudioManager>();
             weaponSlotManager = GetComponentInParent<WeaponSlotManager>();
             inputHandler = GetComponentInParent<InputHandler>();
 
@@ -39,9 +42,13 @@ namespace TAK
             {
                 animationHandler.anim.SetBool("canDoCombo", false);
 
-                if (lastAttack == weapon.OH_Light_Attack_1)
+                if (lastAttack == weapon.Right_Attack_1)
                 {
-                    animationHandler.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+                    animationHandler.PlayTargetAnimation(weapon.Right_Attack_2, true);
+                }
+                else if(lastAttack == weapon.Left_Attack_1)
+                {
+                    animationHandler.PlayTargetAnimation(weapon.Left_Attack_2, true);
                 }
             }
         }
@@ -57,10 +64,19 @@ namespace TAK
                 }
             }
         }
-        public void HandleLightAttack(WeaponItem weapon)
+        public void HandleRightAttack(WeaponItem weapon)
         {
-            animationHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
-            lastAttack = weapon.OH_Light_Attack_1;
+           animationHandler.PlayTargetAnimation(weapon.Right_Attack_1, true);
+                lastAttack = weapon.Right_Attack_1;
+            
+
+        }
+
+        public void HandleLeftAttack(WeaponItem weapon)
+        {
+            
+                animationHandler.PlayTargetAnimation(weapon.Left_Attack_1, true);
+                lastAttack = weapon.Left_Attack_1;
 
         }
 
@@ -68,6 +84,12 @@ namespace TAK
         {
             animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
             lastAttack = weapon.OH_Heavy_Attack_1;
+        }
+
+        public void HandleSpecialAttack(WeaponItem weapon)
+        {
+            animationHandler.PlayTargetAnimation(weapon.LT_Special_Attack, true);
+            //lastAttack = weapon.OH_Heavy_Attack_1;
         }
 
         #region Input Actions
@@ -107,8 +129,9 @@ namespace TAK
                 if (animationHandler.anim.GetBool("isInteracting"))
                     return;
 
-                HandleLightAttack(playerInventory.rightWeapon);
+                HandleRightAttack(playerInventory.rightWeapon);
             }
+            inputHandler.rb_Input = false;
         }
 
         private void PerformRBSpellAction()
@@ -121,18 +144,27 @@ namespace TAK
                 if (playerStats.currentMana < playerInventory.currentSpell.cost)
                     animationHandler.PlayTargetAnimation("Out Of Mana", true);
                 else
-                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager);
+                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
             }
+            inputHandler.rb_Input = false;
         }
         private void SuccessfullyCastSpell()
         {
-            playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget);
+            playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget, playerAudioManager);
             animationHandler.anim.SetBool("isFiringSpell", true);
 
         }
         private void PerformRBBlockAction()
         {
+            if (playerManager.isInteracting)
+                return;
 
+            if (playerManager.isBlocking)
+                return;
+            playerManager.isBlocking = true;
+            animationHandler.PlayTargetAnimation("Block Start 2", false);
+            playerEquipment.OpenBlockingCollider();
+          
         }
         #endregion
         #region LB Actions
@@ -171,7 +203,9 @@ namespace TAK
                 if (animationHandler.anim.GetBool("isInteracting"))
                     return;
 
-                HandleLightAttack(playerInventory.leftWeapon);
+                HandleLeftAttack(playerInventory.leftWeapon);
+
+                inputHandler.lb_Input = false;
             }
         }
 
@@ -185,7 +219,7 @@ namespace TAK
                 if (playerStats.currentMana < playerInventory.currentSpell.cost)
                     animationHandler.PlayTargetAnimation("Out Of Mana", true);
                 else
-                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager);
+                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
             }
         }
         private void PerformLBBlockAction()
@@ -196,9 +230,10 @@ namespace TAK
             if (playerManager.isBlocking)
                 return;
 
+            playerManager.isBlocking = true;
             animationHandler.PlayTargetAnimation("Block Start", false);
             playerEquipment.OpenBlockingCollider();
-            playerManager.isBlocking = true;
+           
         }
         #endregion
 
@@ -221,5 +256,57 @@ namespace TAK
             }
         }
 
+        public void HandleLTAction()
+        {
+            
+            WeaponType type = playerInventory.leftWeapon.weaponType;
+
+            switch (type)
+            {
+                case WeaponType.Weapon:
+                    PerformLTMeleeAction();
+                    break;
+
+                case WeaponType.Staff:
+                    PerformLTSpellAction();
+                    break;
+
+                case WeaponType.Shield:
+                    PerformLTBlockAction();
+                    break;
+
+            }
+
+            
+            
+        }
+
+        private void PerformLTBlockAction()
+        {
+            if (playerManager.isInteracting)
+                return;
+
+            if (playerManager.isBlocking)
+                return;
+
+            playerManager.isBlocking = true;
+            animationHandler.PlayTargetAnimation("Block Start", false);
+            playerEquipment.OpenBlockingCollider();
+          
+        }
+
+        private void PerformLTSpellAction()
+        {
+            if (animationHandler.anim.GetBool("isInteracting"))
+                return;
+            HandleHeavyAttack(playerInventory.leftWeapon);
+        }
+
+        private void PerformLTMeleeAction()
+        {
+            if (animationHandler.anim.GetBool("isInteracting"))
+                return;
+            HandleSpecialAttack(playerInventory.leftWeapon);
+        }
     }
 }

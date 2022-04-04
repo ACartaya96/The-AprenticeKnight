@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46fec88e01d5e74583169425daa63e7, type: 3}
   m_Name: SFX_Footsteps_Xander
   m_EditorClassIdentifier: 
-  clips: []
-  volume: {x: 0.5, y: 0.5}
-  pitch: {x: 1, y: 1}
+  clips:
+  - {fileID: 8300000, guid: 103086286a8e9944aa8a4d1774087d78, type: 3}
+  - {fileID: 8300000, guid: 36476b0d798d4b142b702b56bc1b6ca2, type: 3}
+  - {fileID: 8300000, guid: 9e000b1abbfe7bf43adcafca47932615, type: 3}
+  - {fileID: 8300000, guid: dd501f9d74f3ca24ba85240663c44738, type: 3}
+  volume: {x: 0.1, y: 0.2}
+  pitch: {x: 0.5, y: 1}
   playOrder: 0

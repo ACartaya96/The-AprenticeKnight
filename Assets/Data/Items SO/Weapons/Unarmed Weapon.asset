@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Unarmed
-  modelPrefab: {fileID: 0}
+  modelPrefab: {fileID: 2216831427998615359, guid: b486b833f2e357746a2b0e8654d5c8fc, type: 3}
   isUnarmed: 1
   baseDamage: 5
   physicalDamageAbsorption: 0
