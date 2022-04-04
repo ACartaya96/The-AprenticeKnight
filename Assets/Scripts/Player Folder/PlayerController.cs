@@ -142,6 +142,7 @@ namespace TAK
                 animationHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0);
             }
 
+            if (PauseManager.paused) return;
 
           
         }
