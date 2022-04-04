@@ -30,9 +30,10 @@ namespace TAK
 
         private void OnEnable()
         {
-
-            cam = Camera.main
+            
+            cam = Camera.main;
             baseValue = baseDamage;
+      
 
         }
 

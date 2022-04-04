@@ -11,7 +11,7 @@ namespace TAK
 { 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Swamp");
+        
         //Debug.Log("Start Game");
     }
     public void QuitGame()
@@ -22,7 +22,7 @@ namespace TAK
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        //SceneLoader.LoadScene("MainMenu");
     }
     
     

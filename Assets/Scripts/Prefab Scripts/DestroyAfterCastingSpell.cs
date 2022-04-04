@@ -19,6 +19,10 @@ namespace TAK
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                Destroy(gameObject, 5f);
+            }
         }
 
     }

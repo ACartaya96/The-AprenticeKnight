@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hag_Ambush
   m_EditorClassIdentifier: 
   isSleeping: 0
-  detectionRadius: 2
+  detectionRadius: 10
   sleepAnimation: 
   awakeAnimation: 
   pursueTargetState: {fileID: 11400000, guid: bc37c570b5c95e346abab7b240c8b1f2, type: 2}
