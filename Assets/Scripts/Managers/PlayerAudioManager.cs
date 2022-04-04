@@ -8,6 +8,7 @@ namespace TAK
     public class PlayerAudioManager : AudioManager
     {
         public SFXEvent footStepSFX;
+        public SFXEvent SwingSFX;
 
         public void PlayFootStepAudio()
         {
@@ -17,7 +18,7 @@ namespace TAK
 
         public void PlaySwingAudio()
         {
-            
+            SwingSFX.Play();
         }
 
 
