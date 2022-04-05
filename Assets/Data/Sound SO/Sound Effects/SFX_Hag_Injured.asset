@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_Hag_Injured
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 8d8711302e43e914092a12e6192263db, type: 3}
+  - {fileID: 8300000, guid: 17c55ef7f4243d343874daa2b7211bce, type: 3}
   volume: {x: 0.5, y: 0.5}
   pitch: {x: 1, y: 1}
   playOrder: 0

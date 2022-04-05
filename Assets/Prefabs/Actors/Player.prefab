@@ -536,7 +536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.30875, y: 0}
   m_AnchorMax: {x: 0.64375, y: 0.37100002}
-  m_AnchoredPosition: {x: -0.46731567, y: 0}
+  m_AnchoredPosition: {x: -0.46728516, y: 0}
   m_SizeDelta: {x: 1.6796875, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1236948009
@@ -1120,7 +1120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.86}
   m_AnchorMax: {x: 1, y: 0.96000004}
-  m_AnchoredPosition: {x: 0, y: -0.80000305}
+  m_AnchoredPosition: {x: 0, y: -0.7999878}
   m_SizeDelta: {x: 0, y: 0.91960144}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627261800
@@ -2505,6 +2505,8 @@ MonoBehaviour:
   SwingSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
   RollSFX: {fileID: 11400000, guid: c5f66b88b0cd1dc489c72bc82b2345a9, type: 2}
   JumpSFX: {fileID: 11400000, guid: 393924a7b11675747b4b32e59cb54f53, type: 2}
+  deathSFX: {fileID: 11400000, guid: a839fa199a896784ca6f90d934153d29, type: 2}
+  outOfManaSFX: {fileID: 11400000, guid: 222cce8da607e8a45adefb08c9efd175, type: 2}
 --- !u!114 &1326031737
 MonoBehaviour:
   m_ObjectHideFlags: 0
