@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c46fec88e01d5e74583169425daa63e7, type: 3}
-  m_Name: SFX_Swing
+  m_Name: SFX_Mana_Depleted
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: b19b34ee992cec6469e6396138917ead, type: 3}
-  volume: {x: 1, y: 1}
-  pitch: {x: 1, y: 1}
-  playOrder: 1
+  - {fileID: 8300000, guid: 28b387afd6ddc304fa64e4dbe328039f, type: 3}
+  volume: {x: 0.61, y: 0.43}
+  pitch: {x: 1.2, y: 1.2}
+  playOrder: 0

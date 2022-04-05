@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_Hag_Swipe
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 233bee3a3b68f4544b6f1dbd43646530, type: 3}
-  volume: {x: 0.7, y: 0.7}
+  - {fileID: 8300000, guid: c1b3aa7411648264485710bf34eea24a, type: 3}
+  volume: {x: 0.6, y: 0.6}
   pitch: {x: 1, y: 1}
-  playOrder: 0
+  playOrder: 1

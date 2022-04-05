@@ -13,6 +13,7 @@ namespace TAK
         public SFXEvent swipeAttackSFX;
         public SFXEvent bigSlamAttackSFX;
         public SFXEvent spinAttackSFX;
+        public SFXEvent deathSFX;
 
         public void PlayFootStepAudio()
         {
@@ -37,6 +38,11 @@ namespace TAK
         public void PlaySpinAttackAudio()
         {
             spinAttackSFX.Play();
+        }
+
+        public void PlayDeathAudio()
+        {
+            deathSFX.Play();
         }
     }
 }

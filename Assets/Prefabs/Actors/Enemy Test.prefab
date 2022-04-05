@@ -912,7 +912,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1034,12 +1034,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musciClips: []
   audioSource: {fileID: 3652731281074845835}
-  footStepSFX: {fileID: 11400000, guid: e2c3b8c21a614ce419ed07dda40819ac, type: 2}
+  footStepSFX: {fileID: 0}
   weaponSwingSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
   injuredScreamSFX: {fileID: 11400000, guid: 116e39270cea0d544ada5d16be644607, type: 2}
   swipeAttackSFX: {fileID: 11400000, guid: f12d612fbebabdb4ab0b4ea3a8380bbc, type: 2}
   bigSlamAttackSFX: {fileID: 11400000, guid: 1cf3fc497ddc39447870b86bd66e7a4c, type: 2}
   spinAttackSFX: {fileID: 11400000, guid: 412cbd2d063a5cb488ef7871e7717a60, type: 2}
+  deathSFX: {fileID: 11400000, guid: a839fa199a896784ca6f90d934153d29, type: 2}
 --- !u!114 &6688942158368520725
 MonoBehaviour:
   m_ObjectHideFlags: 0
