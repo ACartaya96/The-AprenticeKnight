@@ -12,36 +12,37 @@ namespace TAK
         EnemyMovement enemyMovement;
         EnemyAnimationHandler enemyAnimationHandler;
         EnemyStats enemyStats;
-        public CharacterManager currentTarget;
-        EnemyEffectManager enemyEffectManager;
-
-        [InlineEditor]
-        public NavMeshAgent navMeshAgent;
-        public int WayPointIndex;
-        public float WaitTime;
-        public float startWaitTime = 4f;
-
         Animator anim;
-
-        
-        
-        public Rigidbody rb;
-
+        EnemyEffectManager enemyEffectManager;
+       
+        public bool isPerformingAction;
+ 
+        [Header("State Machine")]
         [InlineEditor]
         [SerializeField] public EnemyBaseState currentState;
 
+        [Header("Transform Targets")]
         public Transform castPoint;
+        public CharacterManager currentTarget;
 
+        [Header("Waypoint Navigation")]
         public Transform[] wayPoints;
+        public int WayPointIndex;
+        public float WaitTime;
         public Transform currentWayPoint;
 
-        public float distanceFromTarget;
+        [Header("Movement Modifiers & Stats")]
+        public NavMeshAgent navMeshAgent;
+        public Rigidbody rb;
         public float stoppingDistance = 1;
         public float rotationSpeed = 25;
 
-        public bool isPerformingAction;
-
+        [Header("Timers")]
+        public float startWaitTime = 4f;
         public float currentRecoveryTime = 0;
+
+        [Header("Entities Range")]
+        public float distanceFromTarget;
         public float maximumAttackRange = 3;
         public float minimumAttackRange = 0;
 

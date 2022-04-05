@@ -584,7 +584,7 @@ MonoBehaviour:
   startWaitTime: 4
   rb: {fileID: 0}
   currentState: {fileID: 11400000, guid: fc3dfdcb409ef7d4ba061b0c8d2b2a71, type: 2}
-  castPoint: {fileID: 0}
+  castPoint: {fileID: 6365824357004275918}
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
