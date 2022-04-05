@@ -21,9 +21,8 @@ namespace TAK
        
         
         public bool canDoCombo;
- 
 
-       
+
 
 
         // Start is called before the first frame update
@@ -50,6 +49,7 @@ namespace TAK
             anim.SetBool("isLockedOn", inputHandler.lockedOnflag);
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isBlocking", isBlocking);
+            
             animationHandler.canRotate = anim.GetBool("canRotate");
             inputHandler.TickInput();
 
@@ -75,7 +75,7 @@ namespace TAK
             playerController.HandleFalling(playerController.moveDirection);
             playerEffectManager.HandleAllBuildUpEffects();
 
-            Debug.Log(inputHandler.lt_Input.ToString());
+            //Debug.Log(inputHandler.lt_Input.ToString());
 
         }
 

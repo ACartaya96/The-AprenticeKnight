@@ -42,6 +42,7 @@ namespace TAK
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             rb = GetComponent<Rigidbody>();
             myTransform = transform;
+            ignoreforGrounCheck = ~ignoreforGrounCheck;
         }
 
         private void Start()
@@ -81,6 +82,7 @@ namespace TAK
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededTobeginFall, Color.red, 0.1f, false);
             if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededTobeginFall, ignoreforGrounCheck))
             {
+                Debug.Log("Hit: " + hit.transform.position.ToString());
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
                 enemyManager.isGrounded = true;
@@ -96,7 +98,7 @@ namespace TAK
                     }
                     else
                     {
-                        //enemyAnimationHandler.PlayTargetAnimation("Empty", false);
+                        enemyAnimationHandler.PlayTargetAnimation("Empty", false);
                         InAirTimer = 0;
                     }
 
@@ -126,7 +128,7 @@ namespace TAK
                 }
 
             }
-            if (enemyManager.isInteracting || rb.velocity.magnitude > -1)
+            if (enemyManager.isInteracting || rb.velocity.sqrMagnitude > -1)
             {
                 myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
             }
