@@ -20,8 +20,11 @@ namespace TAK
         public bool isBlocking;
         public bool isInteracting;
         public bool isInvincible;
+
+        [Header("Movement Flags")]
         public bool isGrounded;
         public bool isInAir;
+        public bool isRotatingWithRootMotion;
 
         // Start is called before the first frame update
         void Start()

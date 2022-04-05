@@ -46,16 +46,17 @@ namespace TAK
             if (enemyManager.currentRecoveryTime <= 0 && attackState.currentAttack != null)
             {
                 randomDestinationSet = false;
+                
                 return attackState;
             }
             //if weare in a cooldown after attacking, return this state so that we continue to circle the player
             else
             {
                 GetNewAttack(enemyManager);
-               
+
+                return this;
             }
 
-            return this;
 
             //circle player or walk around them until ready to attack player(WIP)
 

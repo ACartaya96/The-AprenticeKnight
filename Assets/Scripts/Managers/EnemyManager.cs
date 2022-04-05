@@ -21,6 +21,8 @@ namespace TAK
         public float WaitTime;
         public float startWaitTime = 4f;
 
+        Animator anim;
+
         
         
         public Rigidbody rb;
@@ -51,6 +53,7 @@ namespace TAK
             enemyAnimationHandler = GetComponentInChildren<EnemyAnimationHandler>();
             enemyStats = GetComponent<EnemyStats>();
             navMeshAgent= GetComponentInChildren<NavMeshAgent>();
+            anim = GetComponentInChildren<Animator>();
             enemyEffectManager = GetComponentInChildren<EnemyEffectManager>();
             rb = GetComponent<Rigidbody>();
             WayPointIndex = 0;
@@ -64,14 +67,28 @@ namespace TAK
         {
             HandleRecoveryTimer();
 
-            isInteracting = enemyAnimationHandler.anim.GetBool("isInteracting");
+            isRotatingWithRootMotion = enemyAnimationHandler.anim.GetBool("isRotatingWithRootMotion");
+            isInteracting = anim.GetBool("isInteracting");
+            anim.SetBool("isInAir", isInAir);
+            anim.SetBool("isBlocking", isBlocking);
+            isPerformingAction = anim.GetBool("isPerformingAction"); 
+            enemyAnimationHandler.canRotate = anim.GetBool("canRotate");
         }
 
         private void FixedUpdate()
         {
             HandleCurrentActionBehavior();
+            enemyMovement.HandleFalling(enemyMovement.moveDirection);
             //enemyEffectManager.HandleAllBuildUpEffects();
             
+        }
+
+        private void LateUpdate()
+        {
+            if (isInAir)
+            {
+                enemyMovement.InAirTimer = enemyMovement.InAirTimer + Time.deltaTime;
+            }
         }
 
         private void HandleCurrentActionBehavior()
@@ -102,11 +119,11 @@ namespace TAK
             {
                 currentRecoveryTime -= Time.deltaTime;
             }
-            if(isPerformingAction)
+            if(isInteracting)
             {
                 if(currentRecoveryTime <= 0)
                 {
-                    isPerformingAction = false;
+                    isInteracting = false;
                 }
             }
         }

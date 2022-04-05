@@ -523,14 +523,15 @@ GameObject:
   m_Component:
   - component: {fileID: 8183718909403420597}
   - component: {fileID: 8183718909403420554}
+  - component: {fileID: 1194674485}
   - component: {fileID: 8183718909403420596}
   - component: {fileID: 8183718909403420598}
   - component: {fileID: 8183718909403420599}
   - component: {fileID: 964118046}
-  - component: {fileID: 1194674485}
-  m_Layer: 0
+  - component: {fileID: 1388994519}
+  m_Layer: 7
   m_Name: Enemy Test
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,7 +545,7 @@ Transform:
   m_GameObject: {fileID: 8183718909403420552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.06269343, y: 0.121, z: 11.1}
-  m_LocalScale: {x: 0.86, y: 0.86, z: 0.86}
+  m_LocalScale: {x: 0.6859102, y: 0.6859102, z: 0.6859102}
   m_Children:
   - {fileID: 3350246922499119575}
   - {fileID: 8183718910049645970}
@@ -575,6 +576,7 @@ MonoBehaviour:
   isInvincible: 0
   isGrounded: 0
   isInAir: 0
+  isRotatingWithRootMotion: 0
   currentTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
   WayPointIndex: 0
@@ -586,6 +588,7 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   currentWayPoint: {fileID: 0}
   distanceFromTarget: 0
   stoppingDistance: 1.5
@@ -594,6 +597,31 @@ MonoBehaviour:
   currentRecoveryTime: 0
   maximumAttackRange: 1.5
   minimumAttackRange: 0
+--- !u!114 &1194674485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183718909403420552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62755a55e79b04943af4169de773a2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  rb: {fileID: 8183718909403420598}
+  characterCollider: {fileID: 8183718909403420599}
+  characterCollisionBlockeCollider: {fileID: 8181782471120531746}
+  groundDetectionRayStartPoint: 0.5
+  minimumDistanceNeededTobeginFall: 1
+  groundDirectionRayDistance: 0.2
+  ignoreforGrounCheck:
+    serializedVersion: 2
+    m_Bits: 1471
+  InAirTimer: 0
+  fallSpeed: 45
 --- !u!114 &8183718909403420596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,9 +674,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.53
-  m_Height: 3.1870165
+  m_Height: 3.1002922
   m_Direction: 1
-  m_Center: {x: 4.0734083e-10, y: 1.4946513, z: 0.05270052}
+  m_Center: {x: 0.000000013691368, y: 1.5380135, z: 0.052700516}
 --- !u!114 &964118046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,7 +695,7 @@ MonoBehaviour:
   isDead: 0
   enemyLevel: 0
   enemyHealthBar: {fileID: 54474427}
---- !u!114 &1194674485
+--- !u!114 &1388994519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -680,6 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   characterCollider: {fileID: 8183718909403420599}
   characterCollisionBlockeCollider: {fileID: 8181782471120531746}
@@ -688,9 +717,9 @@ MonoBehaviour:
   groundDirectionRayDistance: 0.2
   ignoreforGrounCheck:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1471
   InAirTimer: 0
-  fallSpeed: 45
+  fallSpeed: 600
 --- !u!1 &8183718909712149154
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8183718909712149154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.086, z: 0}
+  m_LocalPosition: {x: 0, y: -0.172, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8183718909403420597}
@@ -803,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d82f006a42c18844b583d211751cd4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d82f006a42c18844b583d211751cd4e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1126,6 +1155,26 @@ PrefabInstance:
     - target: {fileID: 4480277634241549559, guid: dc40b7d7bbce9704394b928949951513, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 139.281
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Size.x
+      value: 0.011315824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Size.y
+      value: 0.010462635
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0012918157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Center.y
+      value: 0.017440008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Center.z
+      value: 0.00024310318
       objectReference: {fileID: 0}
     - target: {fileID: 8943960096321276138, guid: dc40b7d7bbce9704394b928949951513, type: 3}
       propertyPath: m_Name

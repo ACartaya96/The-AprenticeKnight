@@ -20,6 +20,11 @@ namespace TAK
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition /Time.deltaTime;
             enemyManager.rb.velocity = velocity;
+
+            if(enemyManager.isRotatingWithRootMotion)
+            {
+                enemyManager.transform.rotation *= anim.deltaRotation;
+            }
         }
 
     }    
