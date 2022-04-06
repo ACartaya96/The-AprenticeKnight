@@ -1362,9 +1362,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1042611224}
-        m_TargetAssemblyTypeName: TAK.MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 867343792886183168, guid: 8d1b25b44cac6d74ea9382ba1867ecbf, type: 3}
+        m_TargetAssemblyTypeName: TAK.SceneLoader, Assembly-CSharp
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

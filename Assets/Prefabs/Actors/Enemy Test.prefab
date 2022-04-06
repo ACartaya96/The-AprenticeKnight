@@ -317,7 +317,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496889296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 54474428}
@@ -326,7 +326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.29}
   m_SizeDelta: {x: 724, y: 669.3333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1496889300
@@ -527,10 +527,11 @@ GameObject:
   - component: {fileID: 8183718909403420598}
   - component: {fileID: 8183718909403420599}
   - component: {fileID: 964118046}
-  - component: {fileID: 1194674485}
-  m_Layer: 0
+  - component: {fileID: 1388994519}
+  - component: {fileID: 1388994520}
+  m_Layer: 7
   m_Name: Enemy Test
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -544,7 +545,7 @@ Transform:
   m_GameObject: {fileID: 8183718909403420552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.06269343, y: 0.121, z: 11.1}
-  m_LocalScale: {x: 0.86, y: 0.86, z: 0.86}
+  m_LocalScale: {x: 0.6859102, y: 0.6859102, z: 0.6859102}
   m_Children:
   - {fileID: 3350246922499119575}
   - {fileID: 8183718910049645970}
@@ -575,6 +576,7 @@ MonoBehaviour:
   isInvincible: 0
   isGrounded: 0
   isInAir: 0
+  isRotatingWithRootMotion: 0
   currentTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
   WayPointIndex: 0
@@ -582,8 +584,9 @@ MonoBehaviour:
   startWaitTime: 4
   rb: {fileID: 0}
   currentState: {fileID: 11400000, guid: fc3dfdcb409ef7d4ba061b0c8d2b2a71, type: 2}
-  castPoint: {fileID: 0}
+  castPoint: {fileID: 6365824357004275918}
   wayPoints:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   currentWayPoint: {fileID: 0}
@@ -646,9 +649,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.53
-  m_Height: 3.1870165
+  m_Height: 2.5266316
   m_Direction: 1
-  m_Center: {x: 4.0734083e-10, y: 1.4946513, z: 0.05270052}
+  m_Center: {x: 0.2, y: 2.3033142, z: 0.05270053}
 --- !u!114 &964118046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,7 +670,7 @@ MonoBehaviour:
   isDead: 0
   enemyLevel: 0
   enemyHealthBar: {fileID: 54474427}
---- !u!114 &1194674485
+--- !u!114 &1388994519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -680,6 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   characterCollider: {fileID: 8183718909403420599}
   characterCollisionBlockeCollider: {fileID: 8181782471120531746}
@@ -688,9 +692,22 @@ MonoBehaviour:
   groundDirectionRayDistance: 0.2
   ignoreforGrounCheck:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1471
   InAirTimer: 0
-  fallSpeed: 45
+  fallSpeed: 600
+--- !u!114 &1388994520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183718909403420552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009a47bebf177f64db259c1030ff1b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageCollider: {fileID: 8296468418708267716}
 --- !u!1 &8183718909712149154
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8183718909712149154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.086, z: 0}
+  m_LocalPosition: {x: 0, y: -0.172, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8183718909403420597}
@@ -803,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d82f006a42c18844b583d211751cd4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d82f006a42c18844b583d211751cd4e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -883,7 +900,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1005,12 +1022,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musciClips: []
   audioSource: {fileID: 3652731281074845835}
-  footStepSFX: {fileID: 11400000, guid: e2c3b8c21a614ce419ed07dda40819ac, type: 2}
+  footStepSFX: {fileID: 0}
   weaponSwingSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
   injuredScreamSFX: {fileID: 11400000, guid: 116e39270cea0d544ada5d16be644607, type: 2}
   swipeAttackSFX: {fileID: 11400000, guid: f12d612fbebabdb4ab0b4ea3a8380bbc, type: 2}
   bigSlamAttackSFX: {fileID: 11400000, guid: 1cf3fc497ddc39447870b86bd66e7a4c, type: 2}
   spinAttackSFX: {fileID: 11400000, guid: 412cbd2d063a5cb488ef7871e7717a60, type: 2}
+  deathSFX: {fileID: 11400000, guid: a839fa199a896784ca6f90d934153d29, type: 2}
 --- !u!114 &6688942158368520725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,9 +1145,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 139.281
       objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Size.x
+      value: 0.011315824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Size.y
+      value: 0.010462635
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0012918157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Center.y
+      value: 0.017440008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225510369570493540, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+      propertyPath: m_Center.z
+      value: 0.00024310318
+      objectReference: {fileID: 0}
     - target: {fileID: 8943960096321276138, guid: dc40b7d7bbce9704394b928949951513, type: 3}
       propertyPath: m_Name
       value: THE BIG HAND 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+--- !u!114 &8296468418708267716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 533763973879826589, guid: dc40b7d7bbce9704394b928949951513, type: 3}
+  m_PrefabInstance: {fileID: 8379709688406108761}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edd6618c41f87b4fa5eb6132cabea20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

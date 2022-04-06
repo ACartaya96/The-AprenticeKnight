@@ -9,7 +9,7 @@ namespace TAK
     public class AttackState : EnemyBaseState
     {
         public CombatStanceState combatStance;
-        public EnemyAttackAction[] enemyAttacks;
+        
         public EnemyAttackAction currentAttack;
 
         public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
@@ -68,8 +68,8 @@ namespace TAK
                 }
                 else
                 {
-                    GetNewAttack(enemyManager);
-                    return this;
+                    
+                    return combatStance;
                 }
 
             }
@@ -77,67 +77,6 @@ namespace TAK
     
         }
 
-   
-     
-        //Select One of our many Attack based on a randomness
-        private void GetNewAttack(EnemyManager enemyManager)
-        {
-            Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
-            float viewableAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
-            enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position,
-                enemyManager.transform.position);
 
-            int maxScore = 0;
-
-            foreach (EnemyAttackAction enemyAttack in enemyAttacks)
-            {
-                EnemyAttackAction enemyAttackAction = enemyAttack;
-
-                //if the selected attack is not able to be use, for example: the attack selected doesn't have the range or the angle to the player. Get a new attack.
-                if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumDistanceToAttack
-                    && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceToAttack)
-                {
-                   
-                    if (viewableAngle < enemyAttackAction.angle / 2)
-                    {
-                       
-                        maxScore += enemyAttackAction.attackScore;
-                    }
-
-
-                }
-            }
-
-
-            int randomValue = Random.Range(0, maxScore);
-            int tempScore = 0;
-
-            foreach (EnemyAttackAction enemyAttack in enemyAttacks)
-            {
-                EnemyAttackAction enemyAttackAction = enemyAttack;
-
-                if (enemyManager.distanceFromTarget <= enemyAttackAction.maximumDistanceToAttack
-                    && enemyManager.distanceFromTarget >= enemyAttackAction.minimumDistanceToAttack)
-                {
-                    if (viewableAngle < enemyAttackAction.angle / 2)
-                    {
-                        
-                        if (currentAttack != null)
-                            return;
-              
-                        tempScore += enemyAttackAction.attackScore;
-
-                        if (tempScore > randomValue)
-                        {
-                          
-                            currentAttack = enemyAttackAction;
-                        }
-                    }
-
-
-                }
-            }
-
-        }
     }
 }

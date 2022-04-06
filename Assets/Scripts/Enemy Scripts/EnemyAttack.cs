@@ -9,6 +9,11 @@ namespace TAK
     public class EnemyAttack : MonoBehaviour
     {
         public DamageCollider damageCollider;
+
+        private void Awake()
+        {
+            damageCollider = GetComponentInChildren<DamageCollider>();
+        }
         public void OpenRightDamageCollider()
         {
             damageCollider.EnableDamageCollider();

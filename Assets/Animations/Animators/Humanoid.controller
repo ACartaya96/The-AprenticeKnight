@@ -437,6 +437,7 @@ AnimatorState:
   - {fileID: 1454299690706653153}
   - {fileID: -595368093132635174}
   - {fileID: -5466776322839606154}
+  - {fileID: 1886321484351272391}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -770,12 +771,12 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.14438462
+  m_TransitionDuration: 0.24609733
   m_TransitionOffset: 0
-  m_ExitTime: 0.8446368
+  m_ExitTime: 0.35503018
   m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &-1774159049069076015
@@ -1567,6 +1568,20 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: Blend
+--- !u!114 &1886321484351272391
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf4c98f92614a545af2c1eef6d1254c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetbool: isRotatingWithRootMotion
+  status: 0
 --- !u!1102 &2269139286529917552
 AnimatorState:
   serializedVersion: 6
@@ -1941,7 +1956,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: c9fc01f4658a21746a19d14e3433ab18, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: Blend
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -2299,9 +2314,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.21201599
+  m_TransitionDuration: 0.50064
   m_TransitionOffset: 0
-  m_ExitTime: 0.6335217
+  m_ExitTime: 0.60549146
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
