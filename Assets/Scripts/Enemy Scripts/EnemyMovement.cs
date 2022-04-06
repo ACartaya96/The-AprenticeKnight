@@ -82,7 +82,7 @@ namespace TAK
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededTobeginFall, Color.red, 0.1f, false);
             if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededTobeginFall, ignoreforGrounCheck))
             {
-                Debug.Log("Hit: " + hit.transform.position.ToString());
+                //Debug.Log("Hit: " + hit.transform.position.ToString());
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
                 enemyManager.isGrounded = true;

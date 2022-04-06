@@ -42,9 +42,9 @@ namespace TAK
                     resetDps = false;
                     StopAllCoroutines();
                 }
-
+                /*
                 if(!check)
-                    StartCoroutine(DOT(spell.dotDamage, spell.dotTick, spell.dotSeconds, spell.dotEffect, character))
+                    StartCoroutine(DOT(spell.dotDamage, spell.dotTick, spell.dotSeconds, spell.dotEffect, character)); */
             }
         }
         #region Build Up Effects
