@@ -84,7 +84,8 @@ namespace TAK
             if (jumpForceApplied)
             {
                StartCoroutine(JumpCo());
-                rb.AddForce(Vector3.up * jumpUpwardVelocity);
+                rb.AddForce(myTransform.up * jumpUpwardVelocity, ForceMode.Impulse);
+                 
                 //jumpForceApplied = false;
                 
             }
@@ -95,10 +96,11 @@ namespace TAK
                 rb.AddForce(myTransform.forward * rollForwardVelocity);
 
             }
+
         }
         private IEnumerator JumpCo()
         {
-            yield return new WaitForSeconds(0.55f);
+            yield return new WaitForSeconds(0.3f);
             jumpForceApplied = false;
 
         }
@@ -141,7 +143,6 @@ namespace TAK
             {
                 animationHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0);
             }
-
 
           
         }
@@ -205,6 +206,7 @@ namespace TAK
 
 
             }
+
            
            
         }
@@ -256,6 +258,7 @@ namespace TAK
                     jumpForceApplied = true;
                 
             }
+
         }
 
 
@@ -342,6 +345,7 @@ namespace TAK
             {
                 myTransform.position = targetPosition;
             }
+
 
         }
 

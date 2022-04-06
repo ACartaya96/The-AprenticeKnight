@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +9,8 @@ namespace TAK
         FieldofView fov;
         EnemyAnimationHandler enemyAnimationHandler;
         public NavMeshAgent navMeshAgent;
+
+        public Vector3 moveDirection;
 
         Transform myTransform;
 
@@ -39,7 +39,10 @@ namespace TAK
         {
             enemyManager = GetComponent<EnemyManager>();
             enemyAnimationHandler = GetComponentInChildren<EnemyAnimationHandler>();
+            navMeshAgent = GetComponentInChildren<NavMeshAgent>();
+            rb = GetComponent<Rigidbody>();
             myTransform = transform;
+            ignoreforGrounCheck = ~ignoreforGrounCheck;
         }
 
         private void Start()
@@ -65,7 +68,7 @@ namespace TAK
             }
             if (enemyManager.isInAir)
             {
-
+                //navMeshAgent.enabled = false;
                 rb.AddForce(-Vector3.up * fallSpeed);
                 rb.AddForce(moveDirection * fallSpeed / 10f);
             }
@@ -79,6 +82,7 @@ namespace TAK
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededTobeginFall, Color.red, 0.1f, false);
             if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededTobeginFall, ignoreforGrounCheck))
             {
+                Debug.Log("Hit: " + hit.transform.position.ToString());
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
                 enemyManager.isGrounded = true;
@@ -90,7 +94,7 @@ namespace TAK
                 {
                     if (InAirTimer > 0.75f)
                     {
-                        enemyAnimationHandler.PlayTargetAnimation("Land", true);
+                        //enemyAnimationHandler.PlayTargetAnimation("Land", true);
                     }
                     else
                     {
@@ -99,6 +103,7 @@ namespace TAK
                     }
 
                     enemyManager.isInAir = false;
+                    navMeshAgent.enabled = true;
 
                 }
             }
@@ -113,7 +118,7 @@ namespace TAK
                 {
                     if (enemyManager.isInteracting == false)
                     {
-                        enemyAnimationHandler.PlayTargetAnimation("Falling", true);
+                        //enemyAnimationHandler.PlayTargetAnimation("Falling", true);
                     }
 
                     Vector3 vel = rb.velocity;
@@ -123,7 +128,7 @@ namespace TAK
                 }
 
             }
-            if (enemyManager.isInteracting)
+            if (enemyManager.isInteracting || rb.velocity.sqrMagnitude > -1)
             {
                 myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
             }

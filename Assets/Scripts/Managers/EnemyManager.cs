@@ -12,34 +12,37 @@ namespace TAK
         EnemyMovement enemyMovement;
         EnemyAnimationHandler enemyAnimationHandler;
         EnemyStats enemyStats;
-        public CharacterManager currentTarget;
+        Animator anim;
         EnemyEffectManager enemyEffectManager;
-
-        [InlineEditor]
-        public NavMeshAgent navMeshAgent;
-        public int WayPointIndex;
-        public float WaitTime;
-        public float startWaitTime = 4f;
-
-        
-        
-        public Rigidbody rb;
-
+       
+        public bool isPerformingAction;
+ 
+        [Header("State Machine")]
         [InlineEditor]
         [SerializeField] public EnemyBaseState currentState;
 
+        [Header("Transform Targets")]
         public Transform castPoint;
+        public CharacterManager currentTarget;
 
+        [Header("Waypoint Navigation")]
         public Transform[] wayPoints;
+        public int WayPointIndex;
+        public float WaitTime;
         public Transform currentWayPoint;
 
-        public float distanceFromTarget;
+        [Header("Movement Modifiers & Stats")]
+        public NavMeshAgent navMeshAgent;
+        public Rigidbody rb;
         public float stoppingDistance = 1;
         public float rotationSpeed = 25;
 
-        public bool isPerformingAction;
-
+        [Header("Timers")]
+        public float startWaitTime = 4f;
         public float currentRecoveryTime = 0;
+
+        [Header("Entities Range")]
+        public float distanceFromTarget;
         public float maximumAttackRange = 3;
         public float minimumAttackRange = 0;
 
@@ -51,6 +54,7 @@ namespace TAK
             enemyAnimationHandler = GetComponentInChildren<EnemyAnimationHandler>();
             enemyStats = GetComponent<EnemyStats>();
             navMeshAgent= GetComponentInChildren<NavMeshAgent>();
+            anim = GetComponentInChildren<Animator>();
             enemyEffectManager = GetComponentInChildren<EnemyEffectManager>();
             rb = GetComponent<Rigidbody>();
             WayPointIndex = 0;
@@ -64,14 +68,28 @@ namespace TAK
         {
             HandleRecoveryTimer();
 
-            isInteracting = enemyAnimationHandler.anim.GetBool("isInteracting");
+            isRotatingWithRootMotion = enemyAnimationHandler.anim.GetBool("isRotatingWithRootMotion");
+            isInteracting = anim.GetBool("isInteracting");
+            anim.SetBool("isInAir", isInAir);
+            anim.SetBool("isBlocking", isBlocking);
+            isPerformingAction = anim.GetBool("isPerformingAction"); 
+            enemyAnimationHandler.canRotate = anim.GetBool("canRotate");
         }
 
         private void FixedUpdate()
         {
             HandleCurrentActionBehavior();
+            enemyMovement.HandleFalling(enemyMovement.moveDirection);
             //enemyEffectManager.HandleAllBuildUpEffects();
             
+        }
+
+        private void LateUpdate()
+        {
+            if (isInAir)
+            {
+                enemyMovement.InAirTimer = enemyMovement.InAirTimer + Time.deltaTime;
+            }
         }
 
         private void HandleCurrentActionBehavior()
@@ -102,11 +120,11 @@ namespace TAK
             {
                 currentRecoveryTime -= Time.deltaTime;
             }
-            if(isPerformingAction)
+            if(isInteracting)
             {
                 if(currentRecoveryTime <= 0)
                 {
-                    isPerformingAction = false;
+                    isInteracting = false;
                 }
             }
         }

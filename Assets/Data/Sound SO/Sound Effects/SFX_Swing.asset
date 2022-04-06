@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: SFX_Swing
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 89adb4c6243cb8140b0998e971d1b1f9, type: 3}
   - {fileID: 8300000, guid: b19b34ee992cec6469e6396138917ead, type: 3}
   volume: {x: 1, y: 1}
   pitch: {x: 1, y: 1}
-  playOrder: 0
+  playOrder: 1

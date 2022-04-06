@@ -28,7 +28,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9ed81eac13e83c449c2bdfe70cfd6a5, type: 2}
   spellLastPos: {x: 0, y: 0, z: 0}
   baseDamage: 50
-  projectileForwardVelocity: 900
+  projectileForwardVelocity: 1000
   projectileUpwardVelocity: 150
   isEffecteByGravity: 1
   projectileMass: 1
+  cam: {fileID: 0}
