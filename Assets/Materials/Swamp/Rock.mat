@@ -76,12 +76,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - HardEdgeAlpha: 0
-    - HardEdgeFalloff: 0
+    - HardEdgeAlpha: 0.037
+    - HardEdgeFalloff: 0.243
     - HardEdgeSize: 0.4
-    - SoftEdgeAlpha: 0
-    - SoftEdgeFalloff: 0
-    - SoftEdgeSize: 28
+    - SoftEdgeAlpha: 0.042
+    - SoftEdgeFalloff: 0.537
+    - SoftEdgeSize: 12.7
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -93,7 +93,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HighIntensity: 2.76
-    - _LightScalar: 1
+    - _LightScalar: 2
     - _LowIntensity: 0.3
     - _Metallic: 0
     - _Mode: 0
@@ -116,8 +116,8 @@ Material:
     - _EmissColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
-    - _LowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+    - _LowColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
