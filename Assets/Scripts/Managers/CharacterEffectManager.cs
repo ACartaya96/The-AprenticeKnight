@@ -16,12 +16,74 @@ namespace TAK
         public float defaultPoisonAmount;
         public float poisonDamage = 1;
 
+        public bool check = false;
+        public bool resetDps = false;
+        public bool stunned = false;
+
 
         protected virtual void Awake()
         {
             characterStatsManager = GetComponentInParent<CharacterStatsManager>();
         }
 
+        #region Damage By Effect
+        //public IEnumerator TakeDamageByFlagType(Spell spell, Transform target)
+        //{
+        //    if (spell.spellFlag == Spell.SpellFlag.Slow)
+        //    {
+
+        //        Debug.Log("Slowed");
+
+        //    }
+
+        //    else if (spell.spellFlag == Spell.SpellFlag.DamagePerSecond)
+        //    {
+        //        if (resetDps && check)
+        //        {
+        //            check = false;
+        //            resetDps = false;
+        //            StopAllCoroutines();
+        //        }
+
+        //        if (!check)
+        //            StartCoroutine(DOT(spell.dotDamage, spell.dotTick, spell.dotSeconds, spell.dotEffect, target));
+
+        //    }
+
+        //    else
+        //    {
+        //        Debug.Log("don't have spell flag.");
+        //        yield break;
+        //    }
+
+
+        //}
+
+        public IEnumerator DOT(int damage, int over, int time, GameObject dotEffect, Transform target)
+        {
+
+            int count = 0;
+
+            check = true;
+
+
+            while (count < over)
+            {
+                yield return new WaitForSeconds(time);
+                //Do (damage over time)damage
+                //target.GetComponent<HealthScript>().health -= damage;
+                //target.gameObject.GetComponent<Enemy>().GetHit(damage);
+                Instantiate(dotEffect, target.position, Quaternion.identity);
+                count++;
+
+            }
+
+            check = false;
+        }
+        #endregion
+
+
+        #region Build Up Effects
         public virtual void HandleAllBuildUpEffects()
         {
             if (characterStatsManager.isDead)
@@ -75,6 +137,7 @@ namespace TAK
                 }
             }
         }
+        #endregion
     }
 
 }
