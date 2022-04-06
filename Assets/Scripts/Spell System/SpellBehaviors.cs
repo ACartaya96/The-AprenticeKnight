@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public enum BehaviorStartTimes
+public enum SpellState
 {
     Beggining,
     Middle,
@@ -14,32 +14,33 @@ namespace TAK
 {
     public class SpellBehaviors : ScriptableObject
     {
-        private BasicObjectInformation objectInfo;
-        public BehaviorStartTimes startTime;
-
-        [HorizontalGroup("Game Data", 75)]
+        [VerticalGroup("Game Data", 75)]
         [PreviewField(75)]
-        public GameObject AOECastFx;
+        public GameObject spellCastFx;
 
-        /*public SpellBehaviors(BasicObjectInformation basicInfo, BehaviorStartTimes sTime)
-        {
-            objectInfo = basicInfo;
-            startTime = sTime;
-        }*/
+        public SpellBehaviors baseReference;
+        public SpellItem spell;
 
-        //Object not position
-        public virtual void PerformSpellBehavior(SpellItem spellBase)
+        SpellCollider spellCollider;
+        
+        public virtual void OnActivateEffect(SpellBehaviors spellBase, WeaponSlotManager weaponSlots)
         {
-            Debug.LogWarning("NEEDS A BEHAVIOR");
-        }
-        public BasicObjectInformation SpellBehaviorInfo
-        {
-            get { return objectInfo; }
+            
         }
 
-        public BehaviorStartTimes SpellBehaviorStartTime
+        private void OnTriggerEnter(Collider other)
         {
-            get { return startTime; }
+            
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            
         }
 
     }

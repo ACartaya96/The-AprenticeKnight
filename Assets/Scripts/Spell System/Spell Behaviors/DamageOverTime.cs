@@ -9,7 +9,7 @@ namespace TAK
     {
         private const string spName = "Damage Over Time";
         private const string spDescription = "Take damage over time.";
-        private const BehaviorStartTimes startTime = BehaviorStartTimes.Beggining; //on impact
+        private const SpellState startTime = SpellState.Beggining; //on impact
                                                                                    //private const Sprite icon = Resources.Load();
 
 
@@ -26,7 +26,7 @@ namespace TAK
             dotTick = dtd;
         }*/
 
-        public override void PerformSpellBehavior(SpellItem spellBase)
+        public override void OnActivateEffect(SpellBehaviors spellBase, WeaponSlotManager weaponSlot)
         {
             //StartCoroutine(DoT());
         }

@@ -17,11 +17,37 @@ namespace TAK
         public float poisonDamage = 1;
 
 
+        public bool check = false;
+        public bool resetDps = false;
+        public bool stunned = false;
+
+
         protected virtual void Awake()
         {
             characterStatsManager = GetComponentInParent<CharacterStatsManager>();
         }
 
+        public IEnumerator TakeDamageByEffectType(Spell spell, CharacterManager character)
+        {
+            if(spell.spellEffect == Spell.SpellEffect.Slow)
+            {
+                //character.moveSpeed = character.moveSpeed / 2;
+                yield return new WaitForSeconds(spell.slowDuration);
+            }
+            else if(spell.spellEffect == Spell.SpellEffect.DamagePerSecond)
+            {
+                if(resetDps && check)
+                {
+                    check = false;
+                    resetDps = false;
+                    StopAllCoroutines();
+                }
+
+                if(!check)
+                    StartCoroutine(DOT(spell.dotDamage, spell.dotTick, spell.dotSeconds, spell.dotEffect, character))
+            }
+        }
+        #region Build Up Effects
         public virtual void HandleAllBuildUpEffects()
         {
             if (characterStatsManager.isDead)
@@ -75,6 +101,7 @@ namespace TAK
                 }
             }
         }
+        #endregion
     }
 
 }

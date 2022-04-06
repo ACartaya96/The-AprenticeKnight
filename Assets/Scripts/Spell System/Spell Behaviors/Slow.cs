@@ -9,7 +9,7 @@ namespace TAK
     {
         private const string spName = "Slow";
         private const string spDescription = "Slow objects down.";
-        private const BehaviorStartTimes startTime = BehaviorStartTimes.End; //on impact
+        private const SpellState startTime = SpellState.End; //on impact
                                                                              //private const Sprite icon = Resources.Load();
 
 
@@ -26,7 +26,7 @@ namespace TAK
             slowPercent = sp;
         }*/
 
-        public override void PerformSpellBehavior(SpellItem spellBases)
+        public override void OnActivateEffect(SpellBehaviors spellBase, WeaponSlotManager weaponSlot)
         {
 
 

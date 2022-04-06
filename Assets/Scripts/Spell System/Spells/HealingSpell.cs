@@ -20,7 +20,7 @@ namespace TAK
 
         public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot, PlayerManager playerManager, PlayerTargetDetection playerTarget,PlayerAudioManager audioManager)
         {
-            GameObject istantiatedSpellFX = Instantiate(spellCastFx, weaponSlot.rightHandSlot.transform.root);
+            //GameObject istantiatedSpellFX = Instantiate(spellCastFx, weaponSlot.rightHandSlot.transform.root);
             playerStats.HealPlayer(healAmount);
             playerStats.UseMana(cost);
             Debug.Log("Spellcast Successful!");

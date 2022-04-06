@@ -36,79 +36,79 @@ namespace TAK
 
 
 
-        public override void PerformSpellBehavior(SpellItem spellBase)
-        {
-            Instantiate(AOECastFx, spellBase.spellLastPos, Quaternion.identity);
+        //public override void OnActivateEffect(SpellBehaviors spellBase)
+        //{
+        //    Instantiate(AOECastFx, spellBase.spellLastPos, Quaternion.identity);
 
-            AoE(spellBase);
-        }
-        private void AoE(SpellItem spellBase)
-        {
-            durationTimer.Start();
+        //    AoE(spellBase);
+        //}
+        //private void AoE(SpellItem spellBase)
+        //{
+        //    durationTimer.Start();
 
-            while (durationTimer.Elapsed.TotalSeconds <= effectDuration)
-            {
-                Collider[] colliders = Physics.OverlapSphere(spellBase.spellLastPos, areaRadius);
+        //    while (durationTimer.Elapsed.TotalSeconds <= effectDuration)
+        //    {
+        //        Collider[] colliders = Physics.OverlapSphere(spellBase.spellLastPos, areaRadius);
 
-                foreach (Collider collider in colliders)
-                {
-                    CharacterManager character = collider.GetComponent<CharacterManager>();
+        //        foreach (Collider collider in colliders)
+        //        {
+        //            CharacterManager character = collider.GetComponent<CharacterManager>();
 
-                    if (character != null)
-                    {
+        //            if (character != null)
+        //            {
 
-                        float distanceFromTarget = Vector3.Distance(spellBase.spellLastPos, character.transform.position);
+        //                float distanceFromTarget = Vector3.Distance(spellBase.spellLastPos, character.transform.position);
 
-                        RaycastHit hit;
+        //                RaycastHit hit;
 
-                        if (distanceFromTarget <= areaRadius)
-                        {
+        //                if (distanceFromTarget <= areaRadius)
+        //                {
 
-                            UnityEngine.Debug.DrawLine(spellBase.spellLastPos, character.LockOnTransform.position);
-                            if (Physics.Linecast(spellBase.spellLastPos, character.LockOnTransform.position, out hit, obstructionMask))
-                            {
+        //                    UnityEngine.Debug.DrawLine(spellBase.spellLastPos, character.LockOnTransform.position);
+        //                    if (Physics.Linecast(spellBase.spellLastPos, character.LockOnTransform.position, out hit, obstructionMask))
+        //                    {
 
-                            }
-                            else
-                            {
-                                availableTargets.Add(character);
-                            }
-                        }
-                    }
-                }
+        //                    }
+        //                    else
+        //                    {
+        //                        availableTargets.Add(character);
+        //                    }
+        //                }
+        //            }
+        //        }
 
 
-                SpellEffectType type = spellBase.type;
+//                SpellEffectType type = spellBase.type;
 
-                if (tick == 0)
-                {
-                    foreach (CharacterManager availableTarget in availableTargets)
-                    {
-                        switch (type)
-                        {
-                            case SpellEffectType.Damage:
-                                IDamage damageable = availableTarget.GetComponent<IDamage>();
-                                if (damageable != null)
-                                {
-                                    damageable.TakeDamage(spellBase.baseValue / 2, "Damage");
-                                }
-                                break;
-                        }
-                    }
+//                if (tick == 0)
+//                {
+//                    foreach (CharacterManager availableTarget in availableTargets)
+//                    {
+//                        switch (type)
+//                        {
+//                            case SpellEffectType.Damage:
+//                                IDamage damageable = availableTarget.GetComponent<IDamage>();
+//                                if (damageable != null)
+//                                {
+//                                    damageable.TakeDamage(spellBase.baseValue / 2, "Damage");
+//                                }
+//                                break;
+//                        }
+//                    }
 
-                    tick = dotTick;
-                }
-                else
-                {
-                    dotTick -= 1 * Time.deltaTime;
-                }
+//                    tick = dotTick;
+//                }
+//                else
+//                {
+//                    dotTick -= 1 * Time.deltaTime;
+//                }
 
-            }
-            durationTimer.Reset();
+//            }
+//            durationTimer.Reset();
 
-            Destroy(this);
+//            Destroy(this);
 
-        }
+//        }
     }
 }
 

@@ -49,9 +49,9 @@ namespace TAK
         public override void SuccessfullyCastSpell(AnimationHandler animationHandler, PlayerStats playerStats, WeaponSlotManager weaponSlot,
             PlayerManager playerManager, PlayerTargetDetection playerTarget, PlayerAudioManager audioManager)
         {
-            GameObject instantiateSpellFX = Instantiate(spellCastFx, weaponSlot.rightHandSlot.transform.position, weaponSlot.rightHandSlot.transform.rotation);
-            Destroy(instantiateSpellFX, 8f);
-            Debug.Log(instantiateSpellFX.transform.position.ToString());
+           // GameObject instantiateSpellFX = Instantiate(spellCastFx, weaponSlot.rightHandSlot.transform.position, weaponSlot.rightHandSlot.transform.rotation);
+            //Destroy(instantiateSpellFX, 8f);
+            //Debug.Log(instantiateSpellFX.transform.position.ToString());
             //spelldamageCollider
 
 
@@ -59,7 +59,7 @@ namespace TAK
             // spellCollider.EnableDamageCollider();
             //spellLastPos = spellCollider.projectileLastPos;
             //Set Physics
-            rb = instantiateSpellFX.GetComponent<Rigidbody>();
+            //rb = instantiateSpellFX.GetComponent<Rigidbody>();
 
 
 
@@ -74,7 +74,7 @@ namespace TAK
                 Quaternion targetRotation = Quaternion.Slerp(instantiateSpellFX.transform.rotation, tr, projectileForwardVelocity * Time.deltaTime);
                 instantiateSpellFX.transform.rotation = targetRotation;
                 instantiateSpellFX.transform.position = Vector3.MoveTowards(instantiateSpellFX.transform.position, playerTarget.currentLockedOnTarget.transform.position, projectileForwardVelocity * Time.deltaTime/5f);*/
-                instantiateSpellFX.transform.LookAt(playerTarget.currentLockedOnTarget);
+                //instantiateSpellFX.transform.LookAt(playerTarget.currentLockedOnTarget);
 
             }
             else
@@ -83,18 +83,18 @@ namespace TAK
                  aimSpot += cam.transform.forward * 50;
                  instantiateSpellFX.transform.LookAt(aimSpot);*/
 
-                instantiateSpellFX.transform.rotation = Quaternion.Euler(cam.transform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
+                //instantiateSpellFX.transform.rotation = Quaternion.Euler(cam.transform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
 
             }
 
-            rb.AddForce(instantiateSpellFX.transform.forward * projectileForwardVelocity);
-            rb.AddForce(instantiateSpellFX.transform.up * projectileUpwardVelocity);
+           // rb.AddForce(instantiateSpellFX.transform.forward * projectileForwardVelocity);
+            //rb.AddForce(instantiateSpellFX.transform.up * projectileUpwardVelocity);
 
 
-            Debug.Log(instantiateSpellFX.transform.position.ToString());
+           // Debug.Log(instantiateSpellFX.transform.position.ToString());
             rb.useGravity = isEffecteByGravity;
             rb.mass = projectileMass;
-            instantiateSpellFX.transform.parent = null;
+            //instantiateSpellFX.transform.parent = null;
 
             //Damage and Cost
             playerStats.UseMana(cost);
