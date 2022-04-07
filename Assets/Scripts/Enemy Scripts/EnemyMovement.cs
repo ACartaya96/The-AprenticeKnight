@@ -48,9 +48,6 @@ namespace TAK
         private void Start()
         {
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockeCollider, true);
-
-
-
         }
 
         Vector3 targetPosition;

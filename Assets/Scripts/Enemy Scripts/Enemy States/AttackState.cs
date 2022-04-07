@@ -10,6 +10,8 @@ namespace TAK
     {
         public CombatStanceState combatStance;
         
+        public rangedAttackState rangedAttack;
+
         public EnemyAttackAction currentAttack;
 
         public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
@@ -61,6 +63,11 @@ namespace TAK
                             return combatStance;
                         }
                     }
+                    /*else if (enemyManager.distanceFromTarget >= 15f)
+                    {
+                        return rangedAttack;
+                    }
+                    */
                     else
                     {
                         return combatStance;

@@ -25,7 +25,7 @@ namespace TAK
             enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
             float viewAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
 
-            //If we are performing action(ex. Attack,Dodge,Spell,etc.) we turn of navmesh so that
+            //If we are performing action(ex. Attack,Dodge,Spell,etc.) we turn off navmesh so that
             //the enemy can rotate towards its target with out worry of pathfinding.
             if (enemyManager.isPerformingAction)
             {
