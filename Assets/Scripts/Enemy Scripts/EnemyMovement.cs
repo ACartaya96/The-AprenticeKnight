@@ -19,7 +19,6 @@ namespace TAK
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockeCollider;
 
-        float movementSpeed = 8;
         [Header("Ground & Air Stats")]
         [SerializeField]
         float groundDetectionRayStartPoint = 0.5f;
@@ -43,6 +42,7 @@ namespace TAK
             rb = GetComponent<Rigidbody>();
             myTransform = transform;
             ignoreforGrounCheck = ~ignoreforGrounCheck;
+            
         }
 
         private void Start()
@@ -66,8 +66,10 @@ namespace TAK
             if (enemyManager.isInAir)
             {
                 //navMeshAgent.enabled = false;
+               
                 rb.AddForce(-Vector3.up * fallSpeed);
                 rb.AddForce(moveDirection * fallSpeed / 10f);
+                rb.transform.position = navMeshAgent.transform.position;
             }
 
             Vector3 dir = moveDirection;
@@ -118,9 +120,9 @@ namespace TAK
                         //enemyAnimationHandler.PlayTargetAnimation("Falling", true);
                     }
 
-                    Vector3 vel = rb.velocity;
-                    vel.Normalize();
-                    rb.velocity = vel * (movementSpeed / 2);
+                    //Vector3 vel = rb.velocity;
+                    //vel.Normalize();
+                    //rb.velocity = vel * (movementSpeed / 2);
                     enemyManager.isInAir = true;
                 }
 

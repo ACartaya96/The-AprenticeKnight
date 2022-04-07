@@ -528,7 +528,7 @@
                 {
                     "name": "",
                     "id": "bd10b57f-17fb-4478-82fc-30dbe9fbec27",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",
                     "groups": "KBM",
@@ -539,7 +539,7 @@
                 {
                     "name": "",
                     "id": "c5a5e55d-e26e-4e4d-bd12-0fe54af1347f",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
