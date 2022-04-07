@@ -10,30 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d23d390219a40348a2641d4fe6cb8f9, type: 3}
-  m_Name: Fireball (NEW)
+  m_Name: Heal Spell
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: 
+  itemName: Heal Spell
   spellInfo: 
-  spellPrefab: {fileID: 0}
+  spellWarmUpPrefab: {fileID: 6785968062366250733, guid: dacde2aa4b44cd34c95db82c71fc6949, type: 3}
+  spellCastPrefab: {fileID: 7173159929070329326, guid: 86c702afc3414f047bdd8559239442ed, type: 3}
   spellCollisionParticle: {fileID: 0}
   dotEffect: {fileID: 0}
   spellIcon: {fileID: 0}
-  spellManaCost: 0
+  startSpellAnimation: Heal_Start
+  startUpSFX: {fileID: 8300000, guid: a384c45148166ea4c9f7ef5dfc36055d, type: 3}
+  spellManaCost: 50
   spellMinDamage: 0
   spellMaxDamage: 0
   projectileForwardVelocity: 0
   projectileUpwardVelocity: 0
+  spellRadius: 0
   dotDamage: 0
-  dotSeconds: 0
+  dotDuration: 0
   dotTick: 0
-  minBuffAmount: 0
-  maxBuffAmount: 0
-  spellCastTime: 0
+  minBuffAmount: 150
+  maxBuffAmount: 200
   slowDuration: 0
-  spellType: 0
+  spellType: 1
   spellDirection: 0
   buffType: 0
-  spellFlag: 2
+  spellEffect: 3
   spellPosition: 0
   spellCategory: 0

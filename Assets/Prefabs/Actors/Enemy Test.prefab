@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 964118046}
   - component: {fileID: 1388994519}
   - component: {fileID: 1388994520}
+  - component: {fileID: 1126957846}
   m_Layer: 7
   m_Name: Enemy Test
   m_TagString: Enemy
@@ -577,24 +578,24 @@ MonoBehaviour:
   isGrounded: 0
   isInAir: 0
   isRotatingWithRootMotion: 0
-  currentTarget: {fileID: 0}
-  navMeshAgent: {fileID: 0}
-  WayPointIndex: 0
-  WaitTime: 0
-  startWaitTime: 4
-  rb: {fileID: 0}
+  isPerformingAction: 0
   currentState: {fileID: 11400000, guid: fc3dfdcb409ef7d4ba061b0c8d2b2a71, type: 2}
   castPoint: {fileID: 6365824357004275918}
+  currentTarget: {fileID: 0}
   wayPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  WayPointIndex: 0
+  WaitTime: 0
   currentWayPoint: {fileID: 0}
-  distanceFromTarget: 0
+  navMeshAgent: {fileID: 0}
+  rb: {fileID: 0}
   stoppingDistance: 1.5
   rotationSpeed: 25
-  isPerformingAction: 0
+  startWaitTime: 4
   currentRecoveryTime: 0
+  distanceFromTarget: 0
   maximumAttackRange: 1.5
   minimumAttackRange: 0
 --- !u!114 &8183718909403420596
@@ -609,8 +610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3968c2edaceee3e4d8cb6952f3e8b004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 40
-  angle: 85
+  radius: 19.38
+  angle: 71.1
   heightCap: 4
   playerRef: {fileID: 0}
   targetMask:
@@ -708,6 +709,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageCollider: {fileID: 8296468418708267716}
+--- !u!114 &1126957846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183718909403420552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62df47e2cddbeb3418949273ece5e961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Method: 3
+  m_Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.0831178
+      value: 0.73750204
+      inSlope: 4.0248885
+      outSlope: 4.0248885
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9904785
+      value: -0.009433746
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8183718909712149154
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1041,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &826268978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681233320424473453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b659a4d1781ce043ac911f917c5fd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPoisoned: 0
+  poisonBuildup: 0
+  poisonAmount: 100
+  defaultPoisonAmount: 0
+  poisonDamage: 1
+  immuneToPoison: 1
+  check: 0
+  resetDps: 0
+  stunned: 0
 --- !u!114 &2514757223673608872
 MonoBehaviour:
   m_ObjectHideFlags: 0

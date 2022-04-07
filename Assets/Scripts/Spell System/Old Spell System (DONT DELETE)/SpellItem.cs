@@ -25,7 +25,7 @@ public enum SpellEffectType
 
 namespace TAK
 {
-    [CreateAssetMenu(fileName = "New Modular Spell", menuName = "Spells/New Spell")]
+    //[CreateAssetMenu(fileName = "New Modular Spell", menuName = "Spells/New Spell")]
     public class SpellItem : Item
     {
         [VerticalGroup("Game Data", 75)]

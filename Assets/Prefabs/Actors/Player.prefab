@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightWeapon: {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
   leftWeapon: {fileID: 11400000, guid: e926b540e4bdd9942b2d38649c5de9bf, type: 2}
-  currentSpell: {fileID: 11400000, guid: f4614df9a627a51409861118a5a1077a, type: 2}
+  currentSpell: {fileID: 11400000, guid: ca2b736f7f8298844aba6e1028e35106, type: 2}
   unarmedWeapon: {fileID: 11400000, guid: 77b1f64933efbc546a19e3ca2c3a95a0, type: 2}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
@@ -2247,8 +2247,8 @@ MonoBehaviour:
   currentSpellIndex: 0
   slotAmounts: 0
   spellSlots:
-  - {fileID: 11400000, guid: f4614df9a627a51409861118a5a1077a, type: 2}
-  - {fileID: 11400000, guid: 1077d5d4f3bf12c46bca7c3d2b942bc3, type: 2}
+  - {fileID: 11400000, guid: ca2b736f7f8298844aba6e1028e35106, type: 2}
+  - {fileID: 11400000, guid: 22086bc80d15ac74d94b38de2d5f6758, type: 2}
 --- !u!114 &1709380465902666690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2562,6 +2562,7 @@ MonoBehaviour:
   poisonAmount: 100
   defaultPoisonAmount: 100
   poisonDamage: 0.5
+  immuneToPoison: 0
   check: 0
   resetDps: 0
   stunned: 0

@@ -16,6 +16,9 @@ namespace TAK
         public float defaultPoisonAmount;
         public float poisonDamage = 1;
 
+        [Header("Immunities")]
+        public bool immuneToPoison;
+
         public bool check = false;
         public bool resetDps = false;
         public bool stunned = false;
@@ -27,39 +30,39 @@ namespace TAK
         }
 
         #region Damage By Effect
-        //public IEnumerator TakeDamageByFlagType(Spell spell, Transform target)
-        //{
-        //    if (spell.spellFlag == Spell.SpellFlag.Slow)
-        //    {
+        public IEnumerator TakeDamageByFlagType(Spell spell, Transform target)
+        {
+            if (spell.spellEffect == Spell.SpellEffect.Slow)
+            {
 
-        //        Debug.Log("Slowed");
+                Debug.Log("Slowed");
 
-        //    }
+            }
 
-        //    else if (spell.spellFlag == Spell.SpellFlag.DamagePerSecond)
-        //    {
-        //        if (resetDps && check)
-        //        {
-        //            check = false;
-        //            resetDps = false;
-        //            StopAllCoroutines();
-        //        }
+            else if (spell.spellEffect == Spell.SpellEffect.DamagePerSecond)
+            {
+                if (resetDps && check)
+                {
+                    check = false;
+                    resetDps = false;
+                    StopAllCoroutines();
+                }
 
-        //        if (!check)
-        //            StartCoroutine(DOT(spell.dotDamage, spell.dotTick, spell.dotSeconds, spell.dotEffect, target));
+                if (!check)
+                    StartCoroutine(DOT(spell.dotDamage, spell.dotTick, spell.dotDuration, spell.dotEffect, target));
 
-        //    }
+            }
 
-        //    else
-        //    {
-        //        Debug.Log("don't have spell flag.");
-        //        yield break;
-        //    }
+            else
+            {
+                Debug.Log("don't have spell effect.");
+                yield break;
+            }
 
 
-        //}
+        }
 
-        public IEnumerator DOT(int damage, int over, int time, GameObject dotEffect, Transform target)
+        public IEnumerator DOT(int damage, int tick, int time, GameObject dotEffect, Transform target)
         {
 
             int count = 0;
@@ -67,12 +70,10 @@ namespace TAK
             check = true;
 
 
-            while (count < over)
+            while (count < tick)
             {
                 yield return new WaitForSeconds(time);
-                //Do (damage over time)damage
-                //target.GetComponent<HealthScript>().health -= damage;
-                //target.gameObject.GetComponent<Enemy>().GetHit(damage);
+                target.gameObject.GetComponent<IDamage>().TakeDamage(damage, null);
                 Instantiate(dotEffect, target.position, Quaternion.identity);
                 count++;
 
@@ -90,8 +91,11 @@ namespace TAK
             {
                 return;
             }
-            HandlePoisonBuildUp();
-            HandlePoisonedEffect();
+            if (!immuneToPoison)
+            {
+                HandlePoisonBuildUp();
+                HandlePoisonedEffect();
+            }
         }
 
         public virtual void HandlePoisonBuildUp()

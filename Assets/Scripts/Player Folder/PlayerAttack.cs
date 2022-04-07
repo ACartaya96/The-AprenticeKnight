@@ -19,11 +19,15 @@ namespace TAK
         PlayerEquipmentManager playerEquipment;
         PlayerTargetDetection playerTarget;
         PlayerAudioManager playerAudioManager;
+        Camera cam;
+
+        Rigidbody spellRb;
         public string lastAttack;
 
 
         private void Awake()
         {
+            cam = Camera.main;
             animationHandler = GetComponent<AnimationHandler>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
@@ -46,7 +50,7 @@ namespace TAK
                 {
                     animationHandler.PlayTargetAnimation(weapon.Right_Attack_2, true);
                 }
-                else if(lastAttack == weapon.Left_Attack_1)
+                else if (lastAttack == weapon.Left_Attack_1)
                 {
                     animationHandler.PlayTargetAnimation(weapon.Left_Attack_2, true);
                 }
@@ -66,17 +70,17 @@ namespace TAK
         }
         public void HandleRightAttack(WeaponItem weapon)
         {
-           animationHandler.PlayTargetAnimation(weapon.Right_Attack_1, true);
-                lastAttack = weapon.Right_Attack_1;
-            
+            animationHandler.PlayTargetAnimation(weapon.Right_Attack_1, true);
+            lastAttack = weapon.Right_Attack_1;
+
 
         }
 
         public void HandleLeftAttack(WeaponItem weapon)
         {
-            
-                animationHandler.PlayTargetAnimation(weapon.Left_Attack_1, true);
-                lastAttack = weapon.Left_Attack_1;
+
+            animationHandler.PlayTargetAnimation(weapon.Left_Attack_1, true);
+            lastAttack = weapon.Left_Attack_1;
 
         }
 
@@ -141,19 +145,20 @@ namespace TAK
                 if (animationHandler.anim.GetBool("isInteracting"))
                     return;
 
-                if (playerStats.currentMana < playerInventory.currentSpell.cost)
+                if (playerStats.currentMana < playerInventory.currentSpell.spellManaCost)
                     animationHandler.PlayTargetAnimation("Out Of Mana", true);
                 else
-                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
+                    //playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
+                    AttemptToCastSpell(playerInventory.currentSpell);
             }
             inputHandler.rb_Input = false;
         }
-        private void SuccessfullyCastSpell()
-        {
-            playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget, playerAudioManager);
-            animationHandler.anim.SetBool("isFiringSpell", true);
+        //private void SuccessfullyCastSpell()
+        //{
+        //    playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget, playerAudioManager);
+        //    animationHandler.anim.SetBool("isFiringSpell", true);
 
-        }
+        //}
         private void PerformRBBlockAction()
         {
             if (playerManager.isInteracting)
@@ -164,7 +169,7 @@ namespace TAK
             playerManager.isBlocking = true;
             animationHandler.PlayTargetAnimation("Block Start 2", false);
             playerEquipment.OpenBlockingCollider();
-          
+
         }
         #endregion
         #region LB Actions
@@ -216,10 +221,11 @@ namespace TAK
                 if (animationHandler.anim.GetBool("isInteracting"))
                     return;
 
-                if (playerStats.currentMana < playerInventory.currentSpell.cost)
+                if (playerStats.currentMana < playerInventory.currentSpell.spellManaCost)
                     animationHandler.PlayTargetAnimation("Out Of Mana", true);
                 else
-                    playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
+                    AttemptToCastSpell(playerInventory.currentSpell);
+                    
             }
         }
         private void PerformLBBlockAction()
@@ -233,7 +239,7 @@ namespace TAK
             playerManager.isBlocking = true;
             animationHandler.PlayTargetAnimation("Block Start", false);
             playerEquipment.OpenBlockingCollider();
-           
+
         }
         #endregion
 
@@ -258,7 +264,7 @@ namespace TAK
 
         public void HandleLTAction()
         {
-            
+
             WeaponType type = playerInventory.leftWeapon.weaponType;
 
             switch (type)
@@ -277,8 +283,8 @@ namespace TAK
 
             }
 
-            
-            
+
+
         }
 
         private void PerformLTBlockAction()
@@ -292,7 +298,7 @@ namespace TAK
             playerManager.isBlocking = true;
             animationHandler.PlayTargetAnimation("Block Start", false);
             playerEquipment.OpenBlockingCollider();
-          
+
         }
 
         private void PerformLTSpellAction()
@@ -308,5 +314,147 @@ namespace TAK
                 return;
             HandleSpecialAttack(playerInventory.leftWeapon);
         }
+
+        #region New Spell System Set Up
+
+        void AttemptToCastSpell(Spell spell)
+        {
+            GameObject istantiateWarmUpSpellFX = Instantiate(spell.spellWarmUpPrefab, weaponSlotManager.rightHandSlot.transform);
+            //istantiateWarmUpSpellFX.gameObject.transform.localScale = new Vector3(100, 100, 100);
+            animationHandler.PlayTargetAnimation(spell.startSpellAnimation, true);
+            playerAudioManager.PlayTargetSoundEffect(spell.startUpSFX);
+        }
+        public void SuccessfullyCastSpell()
+        {
+
+            if (playerInventory.currentSpell.spellCastPrefab == null)
+            {
+                Debug.LogWarning("Spell prefab is null.Assign a spell prefab.");
+                return;
+
+            }
+
+            GameObject spellObject = null;
+            animationHandler.anim.SetBool("isFiringSpell", true);
+
+            //We will find what type of spell we are using
+            //
+            //********************************SINGLE*********************************************
+            if (playerInventory.currentSpell.spellType == Spell.SpellType.Single)
+            {
+                //Instantiated object will move straight forward.
+                if (playerInventory.currentSpell.spellDirection == Spell.SpellDirection.Directional)
+                {
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, weaponSlotManager.rightHandSlot.transform.position, weaponSlotManager.rightHandSlot.transform.rotation);
+                    spellRb = spellObject.GetComponent<Rigidbody>();
+                    
+                    spellObject.name = playerInventory.currentSpell.name;
+                    spellObject.GetComponent<SpellObjectConfiguration>().spell = playerInventory.currentSpell;
+                    if (playerTarget.currentLockedOnTarget != null)
+                    {
+                        Vector3 dir = playerTarget.currentLockedOnTarget.position - spellObject.transform.position;
+
+                        dir.Normalize();
+
+                        Quaternion tr = Quaternion.LookRotation(dir);
+                        Quaternion targetRotation = Quaternion.Slerp(spellObject.transform.rotation, tr, playerInventory.currentSpell.projectileForwardVelocity * Time.deltaTime);
+                        spellObject.transform.rotation = targetRotation;
+                        spellObject.transform.position = Vector3.MoveTowards(spellObject.transform.position, playerTarget.currentLockedOnTarget.transform.position, playerInventory.currentSpell.projectileForwardVelocity * Time.deltaTime/5f);
+                  
+
+                    }
+                    else
+                    {
+                     
+
+                        spellObject.transform.rotation = Quaternion.Euler(cam.transform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
+
+                    }
+
+                     spellRb.AddForce(spellObject.transform.forward * playerInventory.currentSpell.projectileForwardVelocity);
+                     spellRb.AddForce(spellObject.transform.up * playerInventory.currentSpell.projectileUpwardVelocity);
+                     spellObject.transform.parent = null;
+
+                }
+
+                //Instantiated object will follow target.
+                if (playerInventory.currentSpell.spellDirection == Spell.SpellDirection.Follow)
+                {
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, weaponSlotManager.rightHandSlot.transform.position, weaponSlotManager.rightHandSlot.transform.rotation);
+                    spellObject.name = playerInventory.currentSpell.itemName;
+                 
+                    if (playerTarget.currentLockedOnTarget != null)
+                    { 
+                        spellObject.GetComponent<SpellObjectConfiguration>().myTarget = playerTarget.currentLockedOnTarget;
+                        transform.TransformDirection(Vector3.forward);
+                        transform.Translate(new Vector3(0, 0, playerInventory.currentSpell.projectileForwardVelocity * Time.deltaTime));
+                        transform.rotation = Quaternion.Slerp(transform.rotation,
+                                                                Quaternion.LookRotation(playerTarget.currentLockedOnTarget.position - transform.position),
+                                                                5 * Time.deltaTime);
+                    }
+                   
+                }
+
+                //Instantiating to target's position.
+                if (playerInventory.currentSpell.spellDirection == Spell.SpellDirection.Point)
+                {
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, weaponSlotManager.rightHandSlot.transform.position, weaponSlotManager.rightHandSlot.transform.rotation);
+                   
+                    spellObject.name = playerInventory.currentSpell.itemName;
+                    if (playerTarget.currentLockedOnTarget != null)
+                    {
+                        spellObject.GetComponent<SpellObjectConfiguration>().myTarget = playerTarget.currentLockedOnTarget;
+                    }
+                }
+
+
+            }
+
+            //********************************AOE*********************************************
+            else if (playerInventory.currentSpell.spellType == Spell.SpellType.Aoe)
+            {
+                if (playerInventory.currentSpell.spellPosition == Spell.SpellPosition.TargetTransform)
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, playerTarget.currentLockedOnTarget.position, Quaternion.identity);
+                else
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, transform.position, Quaternion.identity);
+
+                spellObject.name = playerInventory.currentSpell.itemName;
+
+
+            }
+
+            //********************************BUFF*********************************************
+            else
+            {
+                //Spell type is a buff.And we are checking what type of buff spell is used.
+                if (playerInventory.currentSpell.buffType == Spell.BuffType.Heal)
+                {
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, transform.position, Quaternion.identity);
+                    spellObject.name = playerInventory.currentSpell.itemName;
+                    playerStats.HealPlayer(UnityEngine.Random.Range(playerInventory.currentSpell.minBuffAmount, playerInventory.currentSpell.maxBuffAmount));
+                  
+
+                }
+                else if (playerInventory.currentSpell.buffType == Spell.BuffType.MagicalDefense)
+                {
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab,transform.position, Quaternion.identity);
+                    spellObject.name = playerInventory.currentSpell.itemName;
+                    //magicalDefense += (Random.Range(spell.minBuffAmount,spell.maxBuffAmount));	
+
+                }
+                else
+                {
+                    //Physical Defense
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, transform.position, Quaternion.identity);
+                    spellObject.name = playerInventory.currentSpell.itemName;
+                    //physicalDefense += (Random.Range(spell.minBuffAmount,spell.maxBuffAmount));	
+                }
+
+                playerStats.UseMana(playerInventory.currentSpell.spellManaCost);
+            }
+        }
+
     }
+    #endregion
 }
+
