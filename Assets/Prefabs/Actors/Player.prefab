@@ -586,6 +586,7 @@ RectTransform:
   m_Children:
   - {fileID: 2081034784}
   - {fileID: 1386602521}
+  - {fileID: 1352168137}
   m_Father: {fileID: 7895330105454119041}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -681,11 +682,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352168136}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -876.5122, y: -383.58392, z: 369.6983}
+  m_LocalPosition: {x: -765.5, y: -403, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2081034784}
-  m_RootOrder: 3
+  m_Father: {fileID: 1331717636}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1352168139
 MonoBehaviour:
@@ -1759,7 +1760,6 @@ Transform:
   - {fileID: 7270222}
   - {fileID: 2048413499}
   - {fileID: 1608567159}
-  - {fileID: 1352168137}
   m_Father: {fileID: 1331717636}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightWeapon: {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
   leftWeapon: {fileID: 11400000, guid: e926b540e4bdd9942b2d38649c5de9bf, type: 2}
-  currentSpell: {fileID: 11400000, guid: f4614df9a627a51409861118a5a1077a, type: 2}
+  currentSpell: {fileID: 0}
   unarmedWeapon: {fileID: 11400000, guid: 77b1f64933efbc546a19e3ca2c3a95a0, type: 2}
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
@@ -2247,8 +2247,8 @@ MonoBehaviour:
   currentSpellIndex: 0
   slotAmounts: 0
   spellSlots:
-  - {fileID: 11400000, guid: f4614df9a627a51409861118a5a1077a, type: 2}
-  - {fileID: 11400000, guid: 1077d5d4f3bf12c46bca7c3d2b942bc3, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1709380465902666690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2562,6 +2562,7 @@ MonoBehaviour:
   poisonAmount: 100
   defaultPoisonAmount: 100
   poisonDamage: 0.5
+  immuneToPoison: 0
   check: 0
   resetDps: 0
   stunned: 0
