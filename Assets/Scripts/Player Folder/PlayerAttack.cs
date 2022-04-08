@@ -398,7 +398,7 @@ namespace TAK
                 //Instantiating to target's position.
                 if (playerInventory.currentSpell.spellDirection == Spell.SpellDirection.Point)
                 {
-                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, weaponSlotManager.rightHandSlot.transform.position, weaponSlotManager.rightHandSlot.transform.rotation);
+                    spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, transform.position, transform.rotation);
                    
                     spellObject.name = playerInventory.currentSpell.itemName;
                     if (playerTarget.currentLockedOnTarget != null)
@@ -450,8 +450,9 @@ namespace TAK
                     //physicalDefense += (Random.Range(spell.minBuffAmount,spell.maxBuffAmount));	
                 }
 
-                playerStats.UseMana(playerInventory.currentSpell.spellManaCost);
+              
             }
+            playerStats.UseMana(playerInventory.currentSpell.spellManaCost);
         }
 
     }

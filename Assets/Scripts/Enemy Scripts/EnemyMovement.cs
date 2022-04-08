@@ -69,7 +69,7 @@ namespace TAK
                
                 rb.AddForce(-Vector3.up * fallSpeed);
                 rb.AddForce(moveDirection * fallSpeed / 10f);
-                rb.transform.position = navMeshAgent.transform.position;
+                navMeshAgent.velocity = rb.velocity;
             }
 
             Vector3 dir = moveDirection;

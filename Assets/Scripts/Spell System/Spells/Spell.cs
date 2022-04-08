@@ -30,7 +30,7 @@ namespace TAK
 		{
 			Slow,
 			DamagePerSecond,
-			AreaOfEffect,
+			Launch,
 			None
 		}
 
@@ -38,7 +38,9 @@ namespace TAK
 		{
 			Fire,
 			Frost,
-			Poison
+			Air,
+			Poison,
+			Physical
 		}
 
 		public enum SpellDirection
@@ -72,6 +74,8 @@ namespace TAK
 		public int spellMaxDamage = 0;
 		public int projectileForwardVelocity = 0;
 		public int projectileUpwardVelocity = 0;
+		public float knockBack = 0;
+		public float knockUp = 0;
 		public float spellRadius = 0;
 		public int dotDamage = 0;
 		public int dotDuration = 0;

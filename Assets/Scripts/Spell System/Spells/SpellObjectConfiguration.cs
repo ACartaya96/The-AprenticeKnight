@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace TAK
 {
@@ -24,7 +25,9 @@ namespace TAK
 				{
 					if (spell.spellDirection == Spell.SpellDirection.Point)
 					{
-						CharacterEffectManager damageByEffect = myTarget.gameObject.GetComponent<CharacterEffectManager>();
+					
+							CharacterEffectManager damageByEffect = myTarget.gameObject.GetComponent<CharacterEffectManager>();
+						
 
 						if (spell.spellEffect == Spell.SpellEffect.DamagePerSecond)
 						{
@@ -40,6 +43,15 @@ namespace TAK
 								damageByEffect.StartCoroutine(damageByEffect.TakeDamageByFlagType(spell, myTarget));
 							}
 						}
+						else if(spell.spellEffect == Spell.SpellEffect.Launch)
+                        {
+							
+								damageByEffect.StartCoroutine(damageByEffect.TakeDamageByFlagType(spell, myTarget));
+								Vector3 direction = myTarget.position - transform.position;
+								myTarget.GetComponent<Rigidbody>().AddForce(direction.normalized * spell.knockBack, ForceMode.Impulse);
+							
+						}
+						
 						else
 						{
 							damageByEffect.StartCoroutine(damageByEffect.TakeDamageByFlagType(spell, myTarget));
@@ -50,9 +62,11 @@ namespace TAK
 				else if (spell.spellType == Spell.SpellType.Aoe)
 				{
 					Collider[] collisions = Physics.OverlapSphere(mySelf.transform.position, spell.spellRadius);
+					
 
 					foreach (Collider collider in collisions)
 					{
+						Debug.Log(collider.name.ToString());
 						CharacterManager character = collider.GetComponent<CharacterManager>();
 						IDamage damageable = collider.GetComponent<IDamage>();
 
@@ -104,6 +118,29 @@ namespace TAK
 							}
 						}
 					}
+					else if(spell.spellEffect == Spell.SpellEffect.Launch)
+                    {
+						foreach(Collider collider in collisions)
+                        {
+							CharacterManager character = collider.GetComponent<CharacterManager>();
+							Rigidbody rb = collider.GetComponent<Rigidbody>();
+							NavMeshAgent nav = collider.GetComponent<NavMeshAgent>();
+							CharacterEffectManager damageByEffect = collider.GetComponent<CharacterEffectManager>();
+							if (character != null && character.teamId != mySelf.teamId)
+							{
+								if (rb != null)
+								{
+									if (nav != null)
+									{
+										Debug.Log(character.name.ToString() + "Launched Away.");
+										rb.AddExplosionForce(spell.knockBack, transform.position, spell.spellRadius);
+										nav.velocity = rb.velocity;
+									}
+								}
+
+							}
+						}
+                    }
 				}
 			}
 
@@ -123,26 +160,40 @@ namespace TAK
 
 				ContactPoint cp = collision.contacts[0];
 				CharacterManager character = collision.gameObject.GetComponent<CharacterManager>();
+				AnimationManager animationManager = collision.gameObject.GetComponentInChildren<AnimationManager>();
 				CharacterEffectManager damageByEffect = collision.gameObject.GetComponentInChildren<CharacterEffectManager>();
-
+				Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
 				Instantiate(spell.spellCollisionParticle, cp.point, Quaternion.identity);
 
-				if (character != null && character.teamId != mySelf.teamId)
-				{
+				
 					if (spell.spellEffect == Spell.SpellEffect.DamagePerSecond)
 					{
-						
-						character.GetComponent<IDamage>().TakeDamage(Random.Range(spell.spellMinDamage, spell.spellMaxDamage), "Damage");
-
-						//This is for dot only.
-						if (damageByEffect && damageByEffect.check == false)
-							damageByEffect.StartCoroutine(damageByEffect.TakeDamageByFlagType(spell, character.transform));
-						else
+						if (character != null && character.teamId != mySelf.teamId)
 						{
-							//damageByEffect.resetDps = true;
-							damageByEffect.StartCoroutine(damageByEffect.TakeDamageByFlagType(spell, character.transform));
+
+							character.GetComponent<IDamage>().TakeDamage(Random.Range(spell.spellMinDamage, spell.spellMaxDamage), "Damage");
+
+							//This is for dot only.
+							if (damageByEffect && damageByEffect.check == false)
+								damageByEffect.StartCoroutine(damageByEffect.TakeDamageByFlagType(spell, character.transform));
+							else
+							{
+								//damageByEffect.resetDps = true;
+								damageByEffect.StartCoroutine(damageByEffect.TakeDamageByFlagType(spell, character.transform));
+							}
 						}
 					}
+					else if(spell.spellEffect == Spell.SpellEffect.Launch)
+                    {
+						if (character != null && character.teamId != mySelf.teamId)
+						{
+							collision.gameObject.GetComponent<IDamage>().TakeDamage(Random.Range(spell.spellMinDamage, spell.spellMaxDamage), "Damage");
+						}
+						Vector3 direction = cp.point - transform.position;
+						animationManager.PlayTargetAnimation("Empty", false);
+;						rb.AddForce(collision.transform.forward * spell.knockBack, ForceMode.Impulse);
+						rb.AddForce(collision.transform.up * spell.knockUp, ForceMode.Impulse);
+                    }
 					else
 					{
 						
@@ -151,7 +202,7 @@ namespace TAK
 					}
 			
 	
-				}
+				
 
 				Destroy(gameObject);
 

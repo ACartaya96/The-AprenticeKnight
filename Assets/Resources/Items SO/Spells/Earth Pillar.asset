@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d23d390219a40348a2641d4fe6cb8f9, type: 3}
+  m_Name: Earth Pillar
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Earth Pillar
+  spellInfo: EARTH PILLAR!!!!
+  spellWarmUpPrefab: {fileID: 6785968062366250733, guid: dacde2aa4b44cd34c95db82c71fc6949, type: 3}
+  spellCastPrefab: {fileID: 6065460476319666971, guid: 62cefa8ab2a34754d992b4116decc896, type: 3}
+  spellCollisionParticle: {fileID: 1876081050882714, guid: e5df5caad603c8349ba3481b8ded0927, type: 3}
+  dotEffect: {fileID: 0}
+  spellIcon: {fileID: 0}
+  startSpellAnimation: Heal_Start
+  startUpSFX: {fileID: 8300000, guid: c6ad3e3d493e3754ea5e3e5b557ee3e3, type: 3}
+  spellManaCost: 25
+  spellMinDamage: 0
+  spellMaxDamage: 0
+  projectileForwardVelocity: 0
+  projectileUpwardVelocity: 0
+  knockBack: 600
+  knockUp: 1200
+  spellRadius: 0
+  dotDamage: 0
+  dotDuration: 0
+  dotTick: 0
+  minBuffAmount: 0
+  maxBuffAmount: 0
+  slowDuration: 0
+  spellType: 0
+  spellDirection: 0
+  buffType: 0
+  spellEffect: 2
+  spellPosition: 0
+  spellCategory: 4
