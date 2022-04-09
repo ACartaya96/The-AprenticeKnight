@@ -10,9 +10,30 @@ namespace TAK
     public class PursueTargetState : EnemyBaseState
     {
         public CombatStanceState combatStance;
+        public RotateTowardsTargetState rotateTowardsTarget;
         public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
         {
             //Chase the target
+       
+
+            enemyManager.navMeshAgent.speed = 8;
+            Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
+            enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
+            float viewAngle = Vector3.SignedAngle(targetDirection, enemyManager.transform.forward, Vector3.up);
+
+            HandleRotateTowardsTarget(enemyManager);
+            enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;
+            enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
+
+            if (viewAngle >= 85 || viewAngle <= -85)
+            {
+                return rotateTowardsTarget;
+            }
+            
+
+            if (enemyManager.isInteracting)
+                return this;
+
             if (enemyManager.isPerformingAction)
             {
                 enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
@@ -20,39 +41,12 @@ namespace TAK
                 return this;
             }
 
-            enemyManager.navMeshAgent.speed = 8;
-            Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
-            enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
-            float viewAngle = Vector3.Angle(targetDirection, enemyManager.transform.forward);
-
-            //If we are performing action(ex. Attack,Dodge,Spell,etc.) we turn off navmesh so that
-            //the enemy can rotate towards its target with out worry of pathfinding.
-            if (enemyManager.isPerformingAction)
+            if(enemyManager.distanceFromTarget > enemyManager.maximumAttackRange)
             {
-                enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
-                enemyManager.navMeshAgent.enabled = false;
-               
-            }
-            else
-            {
-                if (enemyManager.distanceFromTarget > enemyManager.stoppingDistance)
-                {
-                    enemyAnimationHandler.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
-                   
-                }
-                else if (enemyManager.distanceFromTarget <= enemyManager.stoppingDistance)
-                {
-                    enemyAnimationHandler.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
-                  
-                }
+                enemyAnimationHandler.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
 
             }
-
-            HandleRotateTowardsTarget(enemyManager);
-            enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;
-            enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
-            //If we are in attack range (must be created), switch to Combat State
-            if(enemyManager.distanceFromTarget <= enemyManager.maximumAttackRange)
+            if (enemyManager.distanceFromTarget <= enemyManager.maximumAttackRange)
             {
                 return combatStance;
             }
@@ -60,6 +54,10 @@ namespace TAK
             {
                 return this;
             }
+
+           
+         
+       
             
         }
 

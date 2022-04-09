@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Hag_Attack
   m_EditorClassIdentifier: 
   combatStance: {fileID: 11400000, guid: d05a6721fe7f99e4189ba8a79a89fbec, type: 2}
-  enemyAttacks:
-  - {fileID: 11400000, guid: e5e82c4492ce7724da2e5564226cfaf8, type: 2}
-  - {fileID: 11400000, guid: 34c7336538a5a514a956bea26b67bb58, type: 2}
+  pursueTarget: {fileID: 11400000, guid: bc37c570b5c95e346abab7b240c8b1f2, type: 2}
+  rotateTowardsTarget: {fileID: 11400000, guid: 1903f0731018bd742b620ff6f25a89b5, type: 2}
+  rangedAttack: {fileID: 0}
   currentAttack: {fileID: 0}
+  hasPerformedAttack: 1

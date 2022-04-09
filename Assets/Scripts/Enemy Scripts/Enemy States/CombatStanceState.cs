@@ -8,8 +8,10 @@ namespace TAK
     public class CombatStanceState : EnemyBaseState
     {
         public AttackState attackState;
-        public EnemyAttackAction[] enemyAttacks;
+        
         public PursueTargetState pursueTarget;
+
+        public EnemyAttackAction[] enemyAttacks;
 
         bool randomDestinationSet = false;
         float verticalMovementValue = 0;
@@ -20,17 +22,19 @@ namespace TAK
             enemyManager.distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
             enemyAnimationHandler.anim.SetFloat("Vertical", verticalMovementValue, 0.2f, Time.deltaTime);
             enemyAnimationHandler.anim.SetFloat("Horizontal", horizontalMovementValue, 0.2f, Time.deltaTime);
-            if(enemyManager.isInteracting)
+            attackState.hasPerformedAttack = false;
+
+
+            HandleRotateTowardsTarget(enemyManager);
+
+            if (enemyManager.isInteracting)
             {
                 enemyAnimationHandler.anim.SetFloat("Vertical", 0);
                 enemyAnimationHandler.anim.SetFloat("Horizontal", 0);
                 return this;
             }
-            //Check for attack range
-            //if in attack range switch to attack State
-    
-            //is the player runs out of ranger switch to the Pursue Target State
-            else if (enemyManager.distanceFromTarget > enemyManager.maximumAttackRange)
+          
+            if (enemyManager.distanceFromTarget > enemyManager.maximumAttackRange)
             {
                 return pursueTarget;
             }
@@ -39,9 +43,9 @@ namespace TAK
             {
                 randomDestinationSet = true;
                 //Decide How to walk around target
+                DecicedCirclingTarget(enemyAnimationHandler);
             }
 
-            HandleRotateTowardsTarget(enemyManager);
 
             if (enemyManager.currentRecoveryTime <= 0 && attackState.currentAttack != null)
             {
@@ -53,10 +57,9 @@ namespace TAK
             else
             {
                 GetNewAttack(enemyManager);
-
-                return this;
             }
 
+            return this;
 
             //circle player or walk around them until ready to attack player(WIP)
 
@@ -98,30 +101,22 @@ namespace TAK
         }
 
         private void DecicedCirclingTarget(EnemyAnimationHandler enemyAnimationHandler)
-        { 
+        {
+            WalkAroundTarget(enemyAnimationHandler);
         }
 
         private void WalkAroundTarget(EnemyAnimationHandler enemyAnimationHandler)
         {
-            verticalMovementValue = Random.Range(0, 1);//alwats walking toward the player
-
-            if(verticalMovementValue <=1 && verticalMovementValue > 0)
-            {
-                verticalMovementValue = 0.5f;
-            }
-            else if(verticalMovementValue >= -1 && verticalMovementValue < 0)
-            {
-                verticalMovementValue = -0.5f;
-            }
+            verticalMovementValue = 1.0f;
 
             horizontalMovementValue = Random.Range(-1, 1);
             if(horizontalMovementValue <=1 && horizontalMovementValue >= 0)
             {
-                horizontalMovementValue = 0.5f;
+                horizontalMovementValue = 1f;
             }
             if(horizontalMovementValue >= -1 && horizontalMovementValue <= 0)
             {
-                horizontalMovementValue = -0.5f;
+                horizontalMovementValue = -1f;
             }
         }
 

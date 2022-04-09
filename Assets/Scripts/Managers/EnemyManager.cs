@@ -70,6 +70,7 @@ namespace TAK
 
             isRotatingWithRootMotion = enemyAnimationHandler.anim.GetBool("isRotatingWithRootMotion");
             isInteracting = anim.GetBool("isInteracting");
+            canRotate = enemyAnimationHandler.anim.GetBool("canRotate");
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isBlocking", isBlocking);
             isPerformingAction = anim.GetBool("isPerformingAction"); 

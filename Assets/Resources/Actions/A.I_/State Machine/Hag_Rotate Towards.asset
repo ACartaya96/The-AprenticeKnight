@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8ffe810412f274e9e2b94769aed68d, type: 3}
   m_Name: Hag_Rotate Towards
   m_EditorClassIdentifier: 
+  combatStance: {fileID: 11400000, guid: d05a6721fe7f99e4189ba8a79a89fbec, type: 2}
+  pursueTarget: {fileID: 11400000, guid: bc37c570b5c95e346abab7b240c8b1f2, type: 2}
+  minAngle: 100
+  maxAngle: 360
