@@ -7,7 +7,6 @@ namespace TAK
 {
 public enum OffMeshLinkMoveMethod
 {
-    Teleport,
     NormalSpeed,
     Parabola,
     Curve
@@ -18,6 +17,9 @@ public class NavLinkMover : MonoBehaviour
 {
     public OffMeshLinkMoveMethod m_Method = OffMeshLinkMoveMethod.Parabola;
     public AnimationCurve m_Curve = new AnimationCurve();
+    public float myHeight = 2.0f;
+    public float myDuration = 0.5f;
+
     EnemyManager enemyManager;
     NavMeshAgent agent;
 
@@ -33,9 +35,9 @@ public class NavLinkMover : MonoBehaviour
                 if (m_Method == OffMeshLinkMoveMethod.NormalSpeed)
                     yield return StartCoroutine(NormalSpeed(agent));
                 else if (m_Method == OffMeshLinkMoveMethod.Parabola)
-                    yield return StartCoroutine(Parabola(agent, 2.0f, 0.5f));
+                    yield return StartCoroutine(Parabola(agent, myHeight, myDuration));
                 else if (m_Method == OffMeshLinkMoveMethod.Curve)
-                    yield return StartCoroutine(Curve(agent, 0.5f));
+                    yield return StartCoroutine(Curve(agent, myDuration));
                 agent.CompleteOffMeshLink();
             }
             yield return null;

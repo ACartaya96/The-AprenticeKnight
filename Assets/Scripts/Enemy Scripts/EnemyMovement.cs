@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 namespace TAK
 {
@@ -34,6 +35,8 @@ namespace TAK
         [SerializeField]
         float fallSpeed = 45f;
 
+        //OffMeshLinkData data = navMeshAgent.currentOffMeshLinkData;
+
         private void Awake()
         {
             enemyManager = GetComponent<EnemyManager>();
@@ -65,11 +68,17 @@ namespace TAK
             }
             if (enemyManager.isInAir)
             {
-                //navMeshAgent.enabled = false;
-               
+                
+                rb.transform.position = navMeshAgent.nextPosition;
+                StartCoroutine(WaitForSecondsCoroutine());
+                
+                
                 rb.AddForce(-Vector3.up * fallSpeed);
                 rb.AddForce(moveDirection * fallSpeed / 10f);
-                navMeshAgent.velocity = rb.velocity;
+                //navMeshAgent.velocity = rb.velocity;
+                
+
+                
             }
 
             Vector3 dir = moveDirection;
@@ -86,9 +95,7 @@ namespace TAK
                 Vector3 tp = hit.point;
                 enemyManager.isGrounded = true;
                 targetPosition.y = tp.y;
-
-
-
+                
                 if (enemyManager.isInAir)
                 {
                     if (InAirTimer > 0.75f)
@@ -136,6 +143,10 @@ namespace TAK
                 myTransform.position = targetPosition;
             }
 
+        }
+        IEnumerator WaitForSecondsCoroutine()
+        {
+            yield return new WaitForSeconds(10);
         }
     }
 }
