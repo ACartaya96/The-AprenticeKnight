@@ -6,16 +6,19 @@ namespace TAK
 {
 
 
-    public class Destroy_Bramble : MonoBehaviour, IDamage
+    public class Destroy_Bramble : MonoBehaviour
     {
         private void Awake()
         {
 
         }
 
-        public void TakeDamage(float damage, string damageAnimation)
+        private void OnTriggerEnter(Collider other)
         {
-            Destroy(gameObject);
+            SpellObjectConfiguration spellObject = other.GetComponent<SpellObjectConfiguration>();
+            if(spellObject != null && spellObject.spell.spellCategory == Spell.SpellCategory.Fire)
+                Destroy(gameObject);
+
         }
 
     }

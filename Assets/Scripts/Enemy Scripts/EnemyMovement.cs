@@ -19,7 +19,6 @@ namespace TAK
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockeCollider;
 
-        float movementSpeed = 8;
         [Header("Ground & Air Stats")]
         [SerializeField]
         float groundDetectionRayStartPoint = 0.5f;
@@ -43,14 +42,12 @@ namespace TAK
             rb = GetComponent<Rigidbody>();
             myTransform = transform;
             ignoreforGrounCheck = ~ignoreforGrounCheck;
+            
         }
 
         private void Start()
         {
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockeCollider, true);
-
-
-
         }
 
         Vector3 targetPosition;
@@ -69,8 +66,10 @@ namespace TAK
             if (enemyManager.isInAir)
             {
                 //navMeshAgent.enabled = false;
+               
                 rb.AddForce(-Vector3.up * fallSpeed);
                 rb.AddForce(moveDirection * fallSpeed / 10f);
+                navMeshAgent.velocity = rb.velocity;
             }
 
             Vector3 dir = moveDirection;
@@ -82,7 +81,7 @@ namespace TAK
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededTobeginFall, Color.red, 0.1f, false);
             if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededTobeginFall, ignoreforGrounCheck))
             {
-                Debug.Log("Hit: " + hit.transform.position.ToString());
+                //Debug.Log("Hit: " + hit.transform.position.ToString());
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
                 enemyManager.isGrounded = true;
@@ -121,9 +120,9 @@ namespace TAK
                         //enemyAnimationHandler.PlayTargetAnimation("Falling", true);
                     }
 
-                    Vector3 vel = rb.velocity;
-                    vel.Normalize();
-                    rb.velocity = vel * (movementSpeed / 2);
+                    //Vector3 vel = rb.velocity;
+                    //vel.Normalize();
+                    //rb.velocity = vel * (movementSpeed / 2);
                     enemyManager.isInAir = true;
                 }
 

@@ -12,7 +12,7 @@ namespace TAK
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
         [InlineEditor]
-        public SpellItem currentSpell;
+        public Spell currentSpell;
 
         public WeaponItem unarmedWeapon;
 
@@ -26,7 +26,7 @@ namespace TAK
 
 
         [InlineEditor]
-        public List<SpellItem> spellSlots = new List<SpellItem>();
+        public List<Spell> spellSlots = new List<Spell>();
 
         private void Awake()
         {

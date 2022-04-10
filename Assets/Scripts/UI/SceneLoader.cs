@@ -40,6 +40,7 @@ namespace TAK
         public void LoadHubScene()
         {
             SceneManager.LoadScene("Hub");
+            camera.GetComponent<AudioListener> ().enabled  =  false;
         }
 
         public void LoadSwampScene()
@@ -50,6 +51,7 @@ namespace TAK
         public void LoadMainMenu()
         {
             SceneManager.LoadScene("MainMenu");
+            camera.GetComponent<AudioListener> ().enabled  =  false;
         }
 
 

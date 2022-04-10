@@ -25,6 +25,7 @@ namespace TAK
         public bool isGrounded;
         public bool isInAir;
         public bool isRotatingWithRootMotion;
+        public bool canRotate;
 
         // Start is called before the first frame update
         void Start()

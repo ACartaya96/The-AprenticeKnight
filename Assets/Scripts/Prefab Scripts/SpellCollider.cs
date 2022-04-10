@@ -20,7 +20,7 @@ namespace TAK
             rb = GetComponent<Rigidbody>();
         }
 
-        private void OnTriggerEnter(Collider other)
+        public  void OnTriggerEnter(Collider other)
         {
             IDamage damageable = other.GetComponent<IDamage>();
 
