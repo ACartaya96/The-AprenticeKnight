@@ -139,6 +139,7 @@ namespace TAK
                     isPoisoned = false;
                     poisonBuildup = defaultPoisonAmount;
                 }
+                
             }
         }
         #endregion

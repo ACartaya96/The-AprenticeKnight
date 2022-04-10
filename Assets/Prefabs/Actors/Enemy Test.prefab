@@ -580,7 +580,7 @@ MonoBehaviour:
   isRotatingWithRootMotion: 0
   canRotate: 0
   isPerformingAction: 0
-  currentState: {fileID: 11400000, guid: 9a7b529df8ed47b48b9d929a505e9f32, type: 2}
+  currentState: {fileID: 11400000, guid: fc3dfdcb409ef7d4ba061b0c8d2b2a71, type: 2}
   castPoint: {fileID: 6365824357004275918}
   currentTarget: {fileID: 0}
   wayPoints:
@@ -637,7 +637,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
