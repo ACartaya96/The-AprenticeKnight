@@ -9,7 +9,7 @@ namespace TAK
     public class SceneLoader : MonoBehaviour
     {
         public static SceneLoader instance;
-        public string currentLevel;
+        public int currentLevel;
         public Camera camera;
         private void Awake()
         {

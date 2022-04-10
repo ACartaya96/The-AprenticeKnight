@@ -73,9 +73,9 @@ namespace TAK
                 animationHandler.PlayTargetAnimation("Dying", true);
 
 
-                SceneLoader.instance.currentLevel = SceneManager.GetActiveScene().name;
+                SceneLoader.instance.currentLevel = SceneManager.GetActiveScene().buildIndex;
                 Debug.Log(SceneLoader.instance.currentLevel.ToString());
-                SceneLoader.instance.LoadLoseScene();
+                SceneLoader.instance.Invoke("LoadLoseScene", 3f);
                 
             }
         }

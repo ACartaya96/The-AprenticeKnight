@@ -24,7 +24,11 @@ namespace TAK
         //Making the Start Button the first selected button
         EventSystem.current.SetSelectedGameObject(strBtn);
     }
-
+    
+    public void StartGame()
+     {
+            SceneLoader.instance.LoadHubScene();
+     }
     public void OpenHTPMenu()
     {
         mainMenu.SetActive(false);
