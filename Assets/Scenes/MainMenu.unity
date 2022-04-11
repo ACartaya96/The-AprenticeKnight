@@ -2207,6 +2207,7 @@ GameObject:
   - component: {fileID: 500439454}
   - component: {fileID: 500439453}
   - component: {fileID: 500439457}
+  - component: {fileID: 500439458}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2243,12 +2244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2330,6 +2331,14 @@ MonoBehaviour:
   optbackBtn: {fileID: 1451978335}
   ctrlbackBtn: {fileID: 264430506}
   credbackBtn: {fileID: 290819027}
+--- !u!81 &500439458
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500439452}
+  m_Enabled: 1
 --- !u!1 &572211237
 GameObject:
   m_ObjectHideFlags: 0
@@ -4723,7 +4732,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8748380372649469919, guid: 7befefef4012dcd44885f9f990d12e2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7befefef4012dcd44885f9f990d12e2b, type: 3}
 --- !u!20 &1921948976 stripped
 Camera:

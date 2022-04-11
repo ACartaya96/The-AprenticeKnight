@@ -41,6 +41,11 @@ namespace TAK
         EventSystem.current.SetSelectedGameObject(credBtn);
     }
 
+    public void QuitGame()
+        {
+            Application.Quit();
+        }
+
     
 
 
