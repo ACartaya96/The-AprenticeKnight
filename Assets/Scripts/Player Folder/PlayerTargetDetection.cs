@@ -72,6 +72,7 @@ namespace TAK
 
                 if (character != null)
                 {
+                    Debug.Log(character.name.ToString());
                     Vector3 lockTargetDirection = character.transform.position - targetTransform.transform.position;
                     float distanceFromTarget = Vector3.Distance(targetTransform.transform.position, character.transform.position);
                     float viewableAngle = Vector3.Angle(lockTargetDirection, cam.transform.forward);

@@ -10,7 +10,7 @@ namespace TAK
     {
         public static SceneLoader instance;
         public int currentLevel;
-        public Camera camera;
+        Camera cam;
         private void Awake()
         {
             if (instance != null && instance != this)
@@ -22,10 +22,10 @@ namespace TAK
                 instance = this;
             }
 
-            camera = Camera.main;
+            cam = Camera.main;
 
             DontDestroyOnLoad(instance);
-            DontDestroyOnLoad(camera);
+            DontDestroyOnLoad(cam);
         }
 
         public void LoadWinScene()
@@ -40,7 +40,7 @@ namespace TAK
         public void LoadHubScene()
         {
             SceneManager.LoadScene("Hub");
-            camera.GetComponent<AudioListener> ().enabled  =  false;
+            cam.GetComponent<AudioListener> ().enabled  =  false;
         }
 
         public void LoadSwampScene()
@@ -51,7 +51,7 @@ namespace TAK
         public void LoadMainMenu()
         {
             SceneManager.LoadScene("MainMenu");
-            camera.GetComponent<AudioListener> ().enabled  =  false;
+            cam.GetComponent<AudioListener> ().enabled  =  false;
         }
 
 
