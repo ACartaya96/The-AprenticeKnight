@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8682905212970528791}
   - component: {fileID: 5751162543509995442}
   - component: {fileID: 7508851419749878648}
+  - component: {fileID: 8472999207426673292}
   m_Layer: 0
   m_Name: bush_dry_1
   m_TagString: Untagged
@@ -83,3 +84,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!205 &8472999207426673292
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301313773789948589}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0.0000076293945}
+  m_Size: 227.2442
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.35207707
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7508851419749878648}
+  - screenRelativeHeight: 0.23977003
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7508851419749878648}
+  - screenRelativeHeight: 0.14570644
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7508851419749878648}
+  m_Enabled: 1

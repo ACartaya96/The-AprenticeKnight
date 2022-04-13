@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8335694512646240127}
   - component: {fileID: 4900354463668943066}
   - component: {fileID: 7198292766398106640}
+  - component: {fileID: 3081792698730038146}
   m_Layer: 0
   m_Name: ground_rocks
   m_TagString: Untagged
@@ -26,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8711515642337160645}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: 0.065133, y: 0.010079, z: -0.023267}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7eca01340e842e47987f6d635c84b97, type: 2}
+  - {fileID: 2100000, guid: 1a6d12358dd5a11439603c29b486c1fd, type: 2}
   - {fileID: 2100000, guid: f04f700317223ad4083a93bdde07b728, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -82,3 +83,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!205 &3081792698730038146
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711515642337160645}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 6.5420914, y: 1.0123315, z: -2.336979}
+  m_Size: 63.513954
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.2562989
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7198292766398106640}
+  - screenRelativeHeight: 0.13634466
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7198292766398106640}
+  - screenRelativeHeight: 0.06923049
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7198292766398106640}
+  m_Enabled: 1

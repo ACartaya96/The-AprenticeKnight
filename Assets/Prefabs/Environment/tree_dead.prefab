@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4486087852249402732}
   - component: {fileID: 185041630398261184}
   - component: {fileID: 112840604065536170}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: treeBare1Main 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6778393897859725426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,8 @@ GameObject:
   - component: {fileID: 2599405070866012145}
   - component: {fileID: 5531521455763839581}
   - component: {fileID: 6555242274376072008}
-  m_Layer: 0
+  - component: {fileID: 7444393088498640530}
+  m_Layer: 9
   m_Name: treeBare1Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,6 +195,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7444393088498640530
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619264049048436931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 160.25478, y: 992.0937, z: 178.28156}
+  m_Center: {x: 9.087271, y: 491.84436, z: -5.6115317}
 --- !u!1 &4656863700952092478
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1056965303446353622}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6610645826672178129}
   - component: {fileID: 8980858867683148385}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tree_dead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,11 +287,11 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.4517646
+  - screenRelativeHeight: 0.2977539
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 6555242274376072008}
-  - screenRelativeHeight: 0.1880359
+  - screenRelativeHeight: 0.16032778
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8978789637059143080}
@@ -297,7 +311,7 @@ GameObject:
   - component: {fileID: 705932344580266472}
   - component: {fileID: 1885587866812799082}
   - component: {fileID: 8978789637059143080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: treeBare1Main 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2663589559455399916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
