@@ -70,6 +70,11 @@ namespace TAK
             SceneManager.LoadScene(currentLevel); 
         }
 
+        public void LoadSaved()
+        {
+            Debug.Log("This button will either load last saved game");
+        }
+
 
     }
 }
