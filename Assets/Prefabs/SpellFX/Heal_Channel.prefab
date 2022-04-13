@@ -115,11 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-<<<<<<< Updated upstream
       scalar: 1
-=======
-      scalar: 3.28
->>>>>>> Stashed changes
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -172,11 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-<<<<<<< Updated upstream
       scalar: 0
-=======
-      scalar: -0.01
->>>>>>> Stashed changes
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -292,11 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-<<<<<<< Updated upstream
       scalar: 3
-=======
-      scalar: 1
->>>>>>> Stashed changes
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -671,11 +659,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 0
-<<<<<<< Updated upstream
     type: 0
-=======
-    type: 10
->>>>>>> Stashed changes
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -881,11 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-<<<<<<< Updated upstream
       scalar: 3
-=======
-      scalar: 1
->>>>>>> Stashed changes
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4778,11 +4758,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-<<<<<<< Updated upstream
   - {fileID: 2100000, guid: a0dc9d90df970144da389d17155e8ab8, type: 2}
-=======
-  - {fileID: 2100000, guid: 455932e4c3e62eb479f4111071baea15, type: 2}
->>>>>>> Stashed changes
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4823,7 +4799,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
