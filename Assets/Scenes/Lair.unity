@@ -488,11 +488,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7895330105454119041, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.34
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 7895330105454119041, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.403
       objectReference: {fileID: 0}
     - target: {fileID: 7895330105454119041, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2213,11 +2213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5485937719917960034, guid: 24ec9e86edc339f4daeab2aaec01c7dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.825
+      value: 5.035
       objectReference: {fileID: 0}
     - target: {fileID: 5485937719917960034, guid: 24ec9e86edc339f4daeab2aaec01c7dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6
+      value: -6.403
       objectReference: {fileID: 0}
     - target: {fileID: 5485937719917960034, guid: 24ec9e86edc339f4daeab2aaec01c7dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4256,7 +4256,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36614
+  m_Name: pb_Mesh25630
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5878,7 +5878,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36642
+  m_Name: pb_Mesh25658
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7205,7 +7205,7 @@ GameObject:
   - component: {fileID: 493348789}
   - component: {fileID: 493348788}
   - component: {fileID: 493348787}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12916,11 +12916,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876094026723042805, guid: 501b030671f8c43409c804fb4da9ed2a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.07050812
+      value: 0.07050811
       objectReference: {fileID: 0}
     - target: {fileID: 7876094026723042805, guid: 501b030671f8c43409c804fb4da9ed2a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.02515403
+      value: -0.025154022
       objectReference: {fileID: 0}
     - target: {fileID: 7876094026899455943, guid: 501b030671f8c43409c804fb4da9ed2a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12948,11 +12948,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7876094027103268730, guid: 501b030671f8c43409c804fb4da9ed2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.746279
+      value: 4.956279
       objectReference: {fileID: 0}
     - target: {fileID: 7876094027103268730, guid: 501b030671f8c43409c804fb4da9ed2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.184739
+      value: -4.587739
       objectReference: {fileID: 0}
     - target: {fileID: 7876094027103268730, guid: 501b030671f8c43409c804fb4da9ed2a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13009,7 +13009,7 @@ GameObject:
   - component: {fileID: 783167956}
   - component: {fileID: 783167955}
   - component: {fileID: 783167954}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30302,7 +30302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217595841}
   m_LocalRotation: {x: 0.32411167, y: 0.07079618, z: -0.024331486, w: 0.94305223}
-  m_LocalPosition: {x: 30, y: 4.746279, z: -4.184739}
+  m_LocalPosition: {x: 30, y: 4.956279, z: -4.587739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -32098,7 +32098,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36496
+  m_Name: pb_Mesh25510
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
