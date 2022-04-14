@@ -86,6 +86,8 @@ namespace TAK
 
         public InputAction PauseAction;
 
+        public InputAction UnpauseAction;
+
 
 
         Vector2 movementInput;
@@ -117,7 +119,8 @@ namespace TAK
             dDownAction = playerInput.actions["D-Pad Down"];
             dLeftAction = playerInput.actions["D-Pad Left"];
             dRightAction = playerInput.actions["D-Pad Right"];
-            //PauseAction = playerInput.actions["Pause"];
+            PauseAction = playerInput.actions["Pause"];
+            UnpauseAction = playerInput.actions["Unpause"];
         }
         private void OnEnable()
         {
@@ -143,7 +146,9 @@ namespace TAK
             dRightAction.performed += _ => d_Pad_Right = true;
             
 
-            //playerInput.actions["Pause"].performed += SwitchActionMap;
+            playerInput.actions["Pause"].performed += SwitchActionMap;
+
+            playerInput.actions["Unpause"].performed += SwitchBackActionMap;
 
         }
 
@@ -169,14 +174,21 @@ namespace TAK
             dRightAction.performed -= _ => d_Pad_Right = true;
 
 
-           //playerInput.actions["Pause"].performed -= SwitchActionMap;
+           playerInput.actions["Pause"].performed -= SwitchActionMap;
+
+           playerInput.actions["Unpause"].performed -= SwitchBackActionMap;
 
         }
 
-        //private void SwitchActionMap(InputAction.CallbackContext context)
-        //{
-            //playerInput.SwitchCurrentActionMap("UI");
-        //}
+        public void SwitchActionMap(InputAction.CallbackContext context)
+        {
+            playerInput.SwitchCurrentActionMap("UI");
+        }
+
+        public void SwitchBackActionMap(InputAction.CallbackContext context)
+        {
+            playerInput.SwitchCurrentActionMap("Player");
+        }
         #endregion
         public void TickInput()
         {

@@ -1572,7 +1572,16 @@ MonoBehaviour:
     m_Name: Pause
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: ace17bcc-4354-4a83-a7b0-84aef3321595
+    m_Id: e7a222a0-1ad3-46bf-b903-5d8d8f2ffcf4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  UnpauseAction:
+    m_Name: Unpause
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4f233b85-3682-4daa-b916-55e56ab953f9
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

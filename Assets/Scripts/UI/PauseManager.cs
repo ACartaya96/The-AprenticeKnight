@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 namespace TAK
 {
@@ -10,20 +11,20 @@ public class PauseManager : MonoBehaviour
     
     public static bool paused = false;
 
-    public GameObject pauseMenu;
+    public GameObject pauseMenu, htpMenu, ctrlMenu;
+
+    public GameObject htpBtn, ctrlBtn, htpbackBtn, ctrlbackBtn;
+
     PauseAction action;
 
     InputHandler inputHandler;
 
-    //PlayerInput playerInput;
+    PlayerInput playerInput;
 
-    //InputAction pauseAction;
 
     private void Awake()
     {
         action = new PauseAction();
-        //inputHandler = GetComponentInParent<InputHandler>();
-        //pauseAction = playerInput.actions["Pause"];
     }
 
     private void OnEnable()
@@ -40,6 +41,7 @@ public class PauseManager : MonoBehaviour
     private void Start()
     {
         action.Pause.PauseGame.performed += _ => DeterminePause();
+        
     }
 
     private void DeterminePause()
@@ -57,19 +59,55 @@ public class PauseManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        AudioListener.pause = true;
+        //AudioListener.pause = true;
         paused = true;
         pauseMenu.SetActive(true);
-        //inputHandler.playerInput.actions.Disable();
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(htpBtn);
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        AudioListener.pause = false;
+        //AudioListener.pause = false;
         paused = false;
         pauseMenu.SetActive(false);
-        //inputHandler.playerInput.actions["Pause"]
+        htpMenu.SetActive(false);
+        ctrlMenu.SetActive(false);
+    }
+
+
+    public void OpenHTPMenu()
+    {
+        pauseMenu.SetActive(false);
+        htpMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(ctrlBtn);
+    }
+
+    public void CloseHTPMenu()
+    {
+        pauseMenu.SetActive(true);
+        htpMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(htpBtn);
+    }
+
+
+    public void OpenCTRLMenu()
+    {
+        htpMenu.SetActive(false);
+        ctrlMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(ctrlbackBtn);
+    }
+
+    public void CloseCTRLMenu()
+    {
+        htpMenu.SetActive(true);
+        ctrlMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(ctrlBtn);
     }
 
 
