@@ -84,7 +84,7 @@ namespace TAK
         [HideInInspector]
         public InputAction dRightAction;
 
-        //public InputAction StartButton;
+        public InputAction PauseAction;
 
 
 
@@ -117,7 +117,7 @@ namespace TAK
             dDownAction = playerInput.actions["D-Pad Down"];
             dLeftAction = playerInput.actions["D-Pad Left"];
             dRightAction = playerInput.actions["D-Pad Right"];
-            //StartButton = playerInput.actions["Start Button"];
+            //PauseAction = playerInput.actions["Pause"];
         }
         private void OnEnable()
         {
@@ -141,9 +141,9 @@ namespace TAK
             dDownAction.performed += _ => d_Pad_Down = true;
             dLeftAction.performed += _ => d_Pad_Left = true;
             dRightAction.performed += _ => d_Pad_Right = true;
-            //StartButton.performed += _ => start_button = true;
+            
 
-
+            //playerInput.actions["Pause"].performed += SwitchActionMap;
 
         }
 
@@ -167,9 +167,16 @@ namespace TAK
             dDownAction.performed -= _ => d_Pad_Down = true;
             dLeftAction.performed -= _ => d_Pad_Left = true;
             dRightAction.performed -= _ => d_Pad_Right = true;
-            //StartButton.performed -= _ => start_button = true;
+
+
+           //playerInput.actions["Pause"].performed -= SwitchActionMap;
 
         }
+
+        //private void SwitchActionMap(InputAction.CallbackContext context)
+        //{
+            //playerInput.SwitchCurrentActionMap("UI");
+        //}
         #endregion
         public void TickInput()
         {

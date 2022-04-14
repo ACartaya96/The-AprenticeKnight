@@ -22,14 +22,13 @@ public class PauseManager : MonoBehaviour
     private void Awake()
     {
         action = new PauseAction();
-        inputHandler = GetComponentInParent<InputHandler>();
+        //inputHandler = GetComponentInParent<InputHandler>();
         //pauseAction = playerInput.actions["Pause"];
     }
 
     private void OnEnable()
     {
         action.Enable();
-        //pauseAction.started += _ => paused = true;
     }
 
     private void OnDisable()
@@ -46,7 +45,6 @@ public class PauseManager : MonoBehaviour
     private void DeterminePause()
     {
         if (paused)
-            //playerInput.SwitchCurrentActionMap("UI");
             ResumeGame();
         else    
             PauseGame();    
@@ -62,7 +60,7 @@ public class PauseManager : MonoBehaviour
         AudioListener.pause = true;
         paused = true;
         pauseMenu.SetActive(true);
-        inputHandler.playerInput.actions.Disable();
+        //inputHandler.playerInput.actions.Disable();
     }
 
     public void ResumeGame()
@@ -71,7 +69,7 @@ public class PauseManager : MonoBehaviour
         AudioListener.pause = false;
         paused = false;
         pauseMenu.SetActive(false);
-        inputHandler.playerInput.actions.Enable();
+        //inputHandler.playerInput.actions["Pause"]
     }
 
 
