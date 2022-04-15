@@ -14,6 +14,7 @@ namespace TAK
         public enum SpellType
 		{
 			Single,
+			Multi,
 			Buff,
 			Aoe
 		}
@@ -69,6 +70,7 @@ namespace TAK
 		public string startSpellAnimation;
 		public AudioClip startUpSFX;
 		[Header("Spell Stats")]
+		public int multiSpawner = 0;
 		public int spellManaCost = 0;
 		public int spellMinDamage = 0;
 		public int spellMaxDamage = 0;

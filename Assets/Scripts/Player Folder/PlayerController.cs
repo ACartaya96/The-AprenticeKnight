@@ -14,6 +14,7 @@ namespace TAK
         InputHandler inputHandler;
         PlayerManager playerManager;
         PlayerTargetDetection playerTarget;
+        PlayerStats playerStats;
         public Vector3 moveDirection;
 
         [HideInInspector]
@@ -68,6 +69,7 @@ namespace TAK
             animationHandler = GetComponentInChildren<AnimationHandler>();
             playerManager = GetComponentInChildren<PlayerManager>();
             playerTarget = GetComponentInChildren<PlayerTargetDetection>();
+            playerStats = GetComponent<PlayerStats>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
             ignoreforGrounCheck = ~ignoreforGrounCheck;
@@ -306,6 +308,14 @@ namespace TAK
                     if (InAirTimer > 0.75f)
                     {
                         animationHandler.PlayTargetAnimation("Land", true);
+                        //Fall Damage
+                        if(InAirTimer > 5f)
+                        {
+                            float damage = 200 * InAirTimer;
+                            playerStats.TakeDamage(damage, "Damage");
+                          
+                        }
+                        InAirTimer = 0;
                     }
                     else
                     {

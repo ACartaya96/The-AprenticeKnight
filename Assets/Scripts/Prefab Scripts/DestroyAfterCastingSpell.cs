@@ -10,7 +10,7 @@ namespace TAK
 
         private void Awake()
         {
-            playerManager = GetComponentInParent<PlayerManager>();
+            playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
 
         }
         private void Update()
@@ -21,7 +21,7 @@ namespace TAK
             }
             else
             {
-                Destroy(gameObject, 5f);
+                Destroy(gameObject, 3f);
             }
         }
 

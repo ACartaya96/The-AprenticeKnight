@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d23d390219a40348a2641d4fe6cb8f9, type: 3}
+  m_Name: Magic Missile
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Magic Missile
+  spellInfo: A homing attack and a wizards bread and butter
+  spellWarmUpPrefab: {fileID: 2793912979628174686, guid: baad8083934fc6143a057c06ddc5bb1c, type: 3}
+  spellCastPrefab: {fileID: 2793912979628174686, guid: 4a2cef739abce1843841cc8d1ee43b86, type: 3}
+  spellCollisionParticle: {fileID: 1150934714579380, guid: 779aa8c25fbd0e1488637639c9fff976, type: 3}
+  dotEffect: {fileID: 0}
+  spellIcon: {fileID: 0}
+  startSpellAnimation: Projectile_Start
+  startUpSFX: {fileID: 8300000, guid: a384c45148166ea4c9f7ef5dfc36055d, type: 3}
+  multiSpawner: 3
+  spellManaCost: 10
+  spellMinDamage: 10
+  spellMaxDamage: 10
+  projectileForwardVelocity: 300
+  projectileUpwardVelocity: 0
+  knockBack: 0
+  knockUp: 0
+  spellRadius: 1
+  dotDamage: 0
+  dotDuration: 0
+  dotTick: 0
+  minBuffAmount: 0
+  maxBuffAmount: 0
+  slowDuration: 0
+  spellType: 1
+  spellDirection: 1
+  buffType: 0
+  spellEffect: 3
+  spellPosition: 0
+  spellCategory: 2

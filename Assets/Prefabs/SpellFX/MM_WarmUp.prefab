@@ -4874,8 +4874,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0fd54814aaaf7174699b27846bbdb5f1, type: 2}
-  - {fileID: 2100000, guid: 0fd54814aaaf7174699b27846bbdb5f1, type: 2}
+  - {fileID: 2100000, guid: 8764e26efc3afff4db4bfbabc8fd2043, type: 2}
+  - {fileID: 2100000, guid: 8350849aae5998e4ca0f12fcd3e9c157, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4932,11 +4932,9 @@ GameObject:
   - component: {fileID: 2793912979628174660}
   - component: {fileID: 2793912979628174661}
   - component: {fileID: 2793912979628174658}
-  - component: {fileID: 2793912979628174659}
-  - component: {fileID: 8271301309049300516}
-  - component: {fileID: -3319456256113520112}
+  - component: {fileID: 4309418026919264598}
   m_Layer: 0
-  m_Name: Fireball_Projectile
+  m_Name: MM_WarmUp
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4949,9 +4947,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2793912979628174686}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0457, y: -0.0025, z: -0.0004}
-  m_LocalScale: {x: 0.027822299, y: 0.027822299, z: 0.027822299}
+  m_LocalRotation: {x: 0, y: 0, z: -0.8660254, w: -0.50000006}
+  m_LocalPosition: {x: 310.85223, y: 0.883, z: 129.41379}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 1038641423}
   - {fileID: 628494190433539464}
@@ -4985,7 +4983,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0fd54814aaaf7174699b27846bbdb5f1, type: 2}
+  - {fileID: 2100000, guid: e239aacce5384cc42af2e271110787de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5007,36 +5005,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2793912979628174659
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2793912979628174686}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.25
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8271301309049300516
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2793912979628174686}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &-3319456256113520112
+--- !u!114 &4309418026919264598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5045,13 +5014,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2793912979628174686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d74e69be44718e49a741be23ee1cb99, type: 3}
+  m_Script: {fileID: 11500000, guid: 7885e368609814344bd339fd9262793a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySelf: {fileID: 0}
-  selfReference: Player
-  spell: {fileID: 11400000, guid: ca2b736f7f8298844aba6e1028e35106, type: 2}
-  myTarget: {fileID: 0}
 --- !u!1 &8058679040116278792
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,7 +5059,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8892143, b: 0.7421383, a: 1}
+  m_Color: {r: 0.7960785, g: 0.28627452, b: 0.9921569, a: 1}
   m_Intensity: 0.97
   m_Range: 10
   m_SpotAngle: 30

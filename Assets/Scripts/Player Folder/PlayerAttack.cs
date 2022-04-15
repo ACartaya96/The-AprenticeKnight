@@ -319,10 +319,28 @@ namespace TAK
 
         void AttemptToCastSpell(Spell spell)
         {
-            GameObject istantiateWarmUpSpellFX = Instantiate(spell.spellWarmUpPrefab, weaponSlotManager.rightHandSlot.transform);
-            //istantiateWarmUpSpellFX.gameObject.transform.localScale = new Vector3(100, 100, 100);
-            animationHandler.PlayTargetAnimation(spell.startSpellAnimation, true);
-            playerAudioManager.PlayTargetSoundEffect(spell.startUpSFX);
+            if (spell.spellType == Spell.SpellType.Single || spell.spellType == Spell.SpellType.Aoe || spell.spellType == Spell.SpellType.Buff)
+            {
+                GameObject istantiateWarmUpSpellFX = Instantiate(spell.spellWarmUpPrefab, weaponSlotManager.rightHandSlot.transform);
+                //istantiateWarmUpSpellFX.gameObject.transform.localScale = new Vector3(100, 100, 100);
+                animationHandler.PlayTargetAnimation(spell.startSpellAnimation, true);
+                playerAudioManager.PlayTargetSoundEffect(spell.startUpSFX);
+            }
+            else if (spell.spellType == Spell.SpellType.Multi)
+            {
+                for (int i = 0; i < playerInventory.currentSpell.multiSpawner; i++)
+                {
+                    float angle = i * Mathf.PI * 2 / playerInventory.currentSpell.multiSpawner;
+                    float x = Mathf.Cos(angle) * playerInventory.currentSpell.spellRadius;
+                    float y = Mathf.Sin(angle) * playerInventory.currentSpell.spellRadius;
+                    Vector3 pos = new Vector3(x, y, 0);
+                    float angleDegrees = -angle * Mathf.Rad2Deg;
+                    Quaternion rot = Quaternion.Euler(0, 0, angleDegrees);
+                    GameObject istantiateWarmUpSpellFX = Instantiate(spell.spellWarmUpPrefab, weaponSlotManager.rightHandSlot.transform.position + pos, rot);
+                }
+                animationHandler.PlayTargetAnimation(spell.startSpellAnimation, true);
+                playerAudioManager.PlayTargetSoundEffect(spell.startUpSFX);
+            }
         }
         public void SuccessfullyCastSpell()
         {
@@ -346,34 +364,11 @@ namespace TAK
                 if (playerInventory.currentSpell.spellDirection == Spell.SpellDirection.Directional)
                 {
                     spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, weaponSlotManager.rightHandSlot.transform.position, weaponSlotManager.rightHandSlot.transform.rotation);
-                    spellRb = spellObject.GetComponent<Rigidbody>();
+               
                     
                     spellObject.name = playerInventory.currentSpell.name;
                     spellObject.GetComponent<SpellObjectConfiguration>().spell = playerInventory.currentSpell;
-                    if (playerTarget.currentLockedOnTarget != null)
-                    {
-                        Vector3 dir = playerTarget.currentLockedOnTarget.position - spellObject.transform.position;
-
-                        dir.Normalize();
-
-                        Quaternion tr = Quaternion.LookRotation(dir);
-                        Quaternion targetRotation = Quaternion.Slerp(spellObject.transform.rotation, tr, playerInventory.currentSpell.projectileForwardVelocity * Time.deltaTime);
-                        spellObject.transform.rotation = targetRotation;
-                        spellObject.transform.position = Vector3.MoveTowards(spellObject.transform.position, playerTarget.currentLockedOnTarget.transform.position, playerInventory.currentSpell.projectileForwardVelocity * Time.deltaTime/5f);
-                  
-
-                    }
-                    else
-                    {
-                     
-
-                        spellObject.transform.rotation = Quaternion.Euler(cam.transform.eulerAngles.x, playerStats.transform.eulerAngles.y, 0);
-
-                    }
-
-                     spellRb.AddForce(spellObject.transform.forward * playerInventory.currentSpell.projectileForwardVelocity);
-                     spellRb.AddForce(spellObject.transform.up * playerInventory.currentSpell.projectileUpwardVelocity);
-                     spellObject.transform.parent = null;
+                 
 
                 }
 
@@ -382,17 +377,14 @@ namespace TAK
                 {
                     spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, weaponSlotManager.rightHandSlot.transform.position, weaponSlotManager.rightHandSlot.transform.rotation);
                     spellObject.name = playerInventory.currentSpell.itemName;
-                 
-                    if (playerTarget.currentLockedOnTarget != null)
-                    { 
-                        spellObject.GetComponent<SpellObjectConfiguration>().myTarget = playerTarget.currentLockedOnTarget;
-                        transform.TransformDirection(Vector3.forward);
-                        transform.Translate(new Vector3(0, 0, playerInventory.currentSpell.projectileForwardVelocity * Time.deltaTime));
-                        transform.rotation = Quaternion.Slerp(transform.rotation,
-                                                                Quaternion.LookRotation(playerTarget.currentLockedOnTarget.position - transform.position),
-                                                                5 * Time.deltaTime);
+                    spellObject.GetComponent<SpellObjectConfiguration>().spell = playerInventory.currentSpell;
+
+                    if(playerTarget.currentLockedOnTarget == null)
+                    {
+                        Destroy(spellObject);
+                        
                     }
-                   
+
                 }
 
                 //Instantiating to target's position.
@@ -408,6 +400,52 @@ namespace TAK
                 }
 
 
+            }
+            //*******************************MULTI********************************************
+            else if(playerInventory.currentSpell.spellType == Spell.SpellType.Multi)
+            {
+                for (int i = 0; i < playerInventory.currentSpell.multiSpawner; i++)
+                {
+                    float angle = i * Mathf.PI * 2 / playerInventory.currentSpell.multiSpawner;
+                    float x = Mathf.Cos(angle) * playerInventory.currentSpell.spellRadius;
+                    float y = Mathf.Sin(angle) * playerInventory.currentSpell.spellRadius;
+                    Vector3 pos = weaponSlotManager.rightHandSlot.transform.position + new Vector3(x, y, 0);
+                    float angleDegrees = -angle * Mathf.Rad2Deg;
+                    Quaternion rot = Quaternion.Euler(0, 0, angleDegrees);
+
+                    //Instantiated object will move straight forward.
+                    if (playerInventory.currentSpell.spellDirection == Spell.SpellDirection.Directional)
+                    {
+                        spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, pos, rot);
+
+                        spellObject.name = playerInventory.currentSpell.name;
+                        spellObject.GetComponent<SpellObjectConfiguration>().spell = playerInventory.currentSpell;
+                       
+
+                    }
+
+                    //Instantiated object will follow target.
+                    if (playerInventory.currentSpell.spellDirection == Spell.SpellDirection.Follow)
+                    {
+                        spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, pos, rot);
+                        spellObject.name = playerInventory.currentSpell.itemName;
+                        spellObject.GetComponent<SpellObjectConfiguration>().spell = playerInventory.currentSpell;
+
+
+                    }
+
+                    //Instantiating to target's position.
+                    if (playerInventory.currentSpell.spellDirection == Spell.SpellDirection.Point)
+                    {
+                        spellObject = (GameObject)Instantiate(playerInventory.currentSpell.spellCastPrefab, pos, rot);
+
+                        spellObject.name = playerInventory.currentSpell.itemName;
+                        if (playerTarget.currentLockedOnTarget != null)
+                        {
+                            spellObject.GetComponent<SpellObjectConfiguration>().myTarget = playerTarget.currentLockedOnTarget;
+                        }
+                    }
+                }
             }
 
             //********************************AOE*********************************************
