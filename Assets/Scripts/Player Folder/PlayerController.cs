@@ -227,7 +227,7 @@ namespace TAK
                 rollForceApplied = true;
                 if (inputHandler.moveAmount > 0)
                 {
-                    animationHandler.PlayTargetAnimation("Rolling", true);
+                    animationHandler.PlayTargetAnimation("Rolling", true, false);
                     moveDirection.y = 0;
                     Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = rollRotation;
@@ -254,7 +254,7 @@ namespace TAK
                
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject.right * inputHandler.horizontal;
-                    animationHandler.PlayTargetAnimation("Jump_Start", false) ;
+                    animationHandler.PlayTargetAnimation("Jump_Start", false, false) ;
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = jumpRotation;
@@ -307,7 +307,7 @@ namespace TAK
                 {
                     if (InAirTimer > 0.75f)
                     {
-                        animationHandler.PlayTargetAnimation("Land", true);
+                        animationHandler.PlayTargetAnimation("Land", true, false);
                         //Fall Damage
                         if(InAirTimer > 5f)
                         {
@@ -319,7 +319,7 @@ namespace TAK
                     }
                     else
                     {
-                        animationHandler.PlayTargetAnimation("Empty", false);
+                        animationHandler.PlayTargetAnimation("Empty", false, false);
                         InAirTimer = 0;
                     }
 
@@ -338,7 +338,7 @@ namespace TAK
                 {
                     if (playerManager.isInteracting == false)
                     {
-                        animationHandler.PlayTargetAnimation("Falling", true);
+                        animationHandler.PlayTargetAnimation("Falling", true, false);
                     }
 
                     Vector3 vel = rb.velocity;

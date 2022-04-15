@@ -104,7 +104,7 @@ namespace TAK
                     }
                     else
                     {
-                        enemyAnimationHandler.PlayTargetAnimation("Empty", false);
+                        enemyAnimationHandler.PlayTargetAnimation("Empty", false, false);
                         InAirTimer = 0;
                     }
 

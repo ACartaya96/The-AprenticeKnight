@@ -311,7 +311,7 @@ namespace TAK
 						collision.gameObject.GetComponent<IDamage>().TakeDamage(Random.Range(spell.spellMinDamage, spell.spellMaxDamage), "Damage");
 					}
 					Vector3 direction = cp.point - transform.position;
-					animationManager.PlayTargetAnimation("Empty", false);
+					animationManager.PlayTargetAnimation("Empty", false, false);
 					rb.AddForce(collision.transform.forward * spell.knockBack, ForceMode.Impulse);
 					rb.AddForce(collision.transform.up * spell.knockUp, ForceMode.Impulse);
 

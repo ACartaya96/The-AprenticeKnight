@@ -107,7 +107,7 @@ namespace TAK
 
         private void AttackTarget(EnemyAnimationHandler enemyAnimationHandler,EnemyManager enemyManager)
         {
-            enemyAnimationHandler.PlayTargetAnimation(currentAttack.actionAnimation, true);
+            enemyAnimationHandler.PlayTargetAnimation(currentAttack.actionAnimation, true, false);
             enemyManager.currentRecoveryTime = currentAttack.recoveryTime;
             hasPerformedAttack = true;
             currentAttack = null;

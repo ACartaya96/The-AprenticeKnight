@@ -13,7 +13,7 @@ namespace TAK
         {
 
             GameObject instatiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, weaponSlot.rightHandSlot.transform);
-            animationHandler.PlayTargetAnimation(spellAnimation, true);
+            animationHandler.PlayTargetAnimation(spellAnimation, true, false);
             Debug.Log("Attempt to Cast Spell");
             audioManager.PlayTargetSoundEffect(startUpSFX);
         }

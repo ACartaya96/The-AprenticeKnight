@@ -12,21 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d23d390219a40348a2641d4fe6cb8f9, type: 3}
   m_Name: Heal Spell
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: c9bba46f9294034458a2ae2206f81bd1, type: 3}
   itemName: Heal Spell
   spellInfo: 
   spellWarmUpPrefab: {fileID: 6785968062366250733, guid: dacde2aa4b44cd34c95db82c71fc6949, type: 3}
   spellCastPrefab: {fileID: 7173159929070329326, guid: 86c702afc3414f047bdd8559239442ed, type: 3}
   spellCollisionParticle: {fileID: 0}
   dotEffect: {fileID: 0}
-  spellIcon: {fileID: 0}
   startSpellAnimation: Heal_Start
   startUpSFX: {fileID: 8300000, guid: a384c45148166ea4c9f7ef5dfc36055d, type: 3}
+  multiSpawner: 0
   spellManaCost: 50
   spellMinDamage: 0
   spellMaxDamage: 0
   projectileForwardVelocity: 0
   projectileUpwardVelocity: 0
+  knockBack: 0
+  knockUp: 0
   spellRadius: 0
   dotDamage: 0
   dotDuration: 0

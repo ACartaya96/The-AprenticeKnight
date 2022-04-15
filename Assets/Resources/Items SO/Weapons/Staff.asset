@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bb72348ef06b7438271ec3a6084540, type: 3}
   m_Name: Staff
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: c594c9c76db46b345a874d312454cae3, type: 3}
   itemName: Xander's Staff
   modelPrefab: {fileID: 4184256260896462084, guid: 35429db8427fc47419676f406b07d86c, type: 3}
   isUnarmed: 0

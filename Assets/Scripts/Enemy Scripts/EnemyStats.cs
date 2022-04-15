@@ -60,7 +60,7 @@ namespace TAK
                 enemyHealthBar.SetCurrentHealth(currentHealth);
                 Debug.Log("Hag HP: " + currentHealth.ToString());
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
-                enemyAnimationHandler.PlayTargetAnimation(damageAnimation, true);
+                enemyAnimationHandler.PlayTargetAnimation(damageAnimation, true,false);
 
             }
 
@@ -69,7 +69,7 @@ namespace TAK
                 currentHealth = 0;
                 isDead = true;
                 enemyManager.isInvincible = true;
-                enemyAnimationHandler.PlayTargetAnimation("Dying", true);
+                enemyAnimationHandler.PlayTargetAnimation("Dying", true,false);
                 Destroy(gameObject, 3f);
             }
         }

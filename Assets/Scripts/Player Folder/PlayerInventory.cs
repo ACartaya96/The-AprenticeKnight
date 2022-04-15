@@ -13,6 +13,8 @@ namespace TAK
         public WeaponItem leftWeapon;
         [InlineEditor]
         public Spell currentSpell;
+        [InlineEditor]
+        public ConsumableItem currentConsumable;
 
         public WeaponItem unarmedWeapon;
 
@@ -22,17 +24,27 @@ namespace TAK
         public int currentRightWeaponIndex = -1;
         public int currentLeftWeaponIndex = -1;
         public int currentSpellIndex = 0;
+        public int consumableIndex = 0;
         public int slotAmounts = 0;
+        public int itemAmounts = 0;
+
+        QuickSlotsUI quickSlots;
 
 
         [InlineEditor]
         public List<Spell> spellSlots = new List<Spell>();
 
+        [InlineEditor]
+        public List<ConsumableItem> consumableItems = new List<ConsumableItem>();
+
         private void Awake()
         {
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            quickSlots = FindObjectOfType<QuickSlotsUI>();
             currentSpell = spellSlots[currentSpellIndex];
+            quickSlots.UpdateSpellSlotUI(currentSpell);
             slotAmounts = spellSlots.Count;
+            itemAmounts = consumableItems.Count;
         }
 
         private void Start()
@@ -165,6 +177,7 @@ namespace TAK
             if (spellSlots[currentSpellIndex] != null)
             {
                 currentSpell = spellSlots[currentSpellIndex];
+                quickSlots.UpdateSpellSlotUI(currentSpell);
             }
             //true:move to the next Index
             else if (spellSlots[currentSpellIndex] == null)
@@ -177,6 +190,29 @@ namespace TAK
          
             //true:move back to First Index
             //False:Do nothing
+        }
+        public void ChangeConsumables()
+        {
+            consumableIndex += 1;
+            //Check if currentSpellIndex > spellSlots max array
+            if (consumableIndex > itemAmounts - 1)
+            {
+                consumableIndex = 0;
+            }
+            //Check if currentSpellIndex is not null
+            //false:make currentSpellIndex currentSpell
+            if (consumableItems[consumableIndex] != null)
+            {
+                currentConsumable = consumableItems[consumableIndex];
+                quickSlots.UpdateConsumableSlotUI(currentConsumable);
+            }
+            //true:move to the next Index
+            else if (consumableItems[consumableIndex] == null)
+            {
+                consumableItems.RemoveAt(consumableIndex);
+                consumableIndex += 1;
+            }
+
         }
     }
 }

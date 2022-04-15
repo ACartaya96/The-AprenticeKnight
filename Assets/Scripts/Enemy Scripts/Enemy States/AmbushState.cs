@@ -19,7 +19,7 @@ namespace TAK
             if(isSleeping && enemyManager.isPerformingAction == false)
             {
                 if(sleepAnimation != null)
-                    enemyAnimationHandler.PlayTargetAnimation(sleepAnimation, true);
+                    enemyAnimationHandler.PlayTargetAnimation(sleepAnimation, true, false);
             }
             #region Handle Target Detection
             if (isSleeping)
@@ -32,7 +32,7 @@ namespace TAK
             {
                 isSleeping = false;
                 if(awakeAnimation != null)
-                    enemyAnimationHandler.PlayTargetAnimation(awakeAnimation, true);
+                    enemyAnimationHandler.PlayTargetAnimation(awakeAnimation, true, false);
                 return pursueTargetState;
                 
             }

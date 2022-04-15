@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bb72348ef06b7438271ec3a6084540, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 213c287d74800fb4b8a80ea468646cc8, type: 3}
   itemName: Shield
   modelPrefab: {fileID: 9173215582850424224, guid: 1636062309a6e524082b113511cd8eae, type: 3}
   isUnarmed: 0
   baseDamage: 0
   physicalDamageAbsorption: 25
-  OH_Light_Attack_1: 
-  OH_Light_Attack_2: 
+  Right_Attack_1: 
+  Right_Attack_2: 
+  Left_Attack_1: 
+  Left_Attack_2: 
   OH_Heavy_Attack_1: 
   OH_Heavy_Attack_2: 
+  LT_Special_Attack: 
   weaponType: 1

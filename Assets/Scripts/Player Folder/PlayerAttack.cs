@@ -48,11 +48,11 @@ namespace TAK
 
                 if (lastAttack == weapon.Right_Attack_1)
                 {
-                    animationHandler.PlayTargetAnimation(weapon.Right_Attack_2, true);
+                    animationHandler.PlayTargetAnimation(weapon.Right_Attack_2, true, false);
                 }
                 else if (lastAttack == weapon.Left_Attack_1)
                 {
-                    animationHandler.PlayTargetAnimation(weapon.Left_Attack_2, true);
+                    animationHandler.PlayTargetAnimation(weapon.Left_Attack_2, true, false);
                 }
             }
         }
@@ -64,13 +64,13 @@ namespace TAK
                 animationHandler.anim.SetBool("canDoCombo", false);
                 if (lastAttack == weapon.OH_Heavy_Attack_1)
                 {
-                    animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_2, true);
+                    animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_2, true, false);
                 }
             }
         }
         public void HandleRightAttack(WeaponItem weapon)
         {
-            animationHandler.PlayTargetAnimation(weapon.Right_Attack_1, true);
+            animationHandler.PlayTargetAnimation(weapon.Right_Attack_1, true, false);
             lastAttack = weapon.Right_Attack_1;
 
 
@@ -79,20 +79,20 @@ namespace TAK
         public void HandleLeftAttack(WeaponItem weapon)
         {
 
-            animationHandler.PlayTargetAnimation(weapon.Left_Attack_1, true);
+            animationHandler.PlayTargetAnimation(weapon.Left_Attack_1, true, false);
             lastAttack = weapon.Left_Attack_1;
 
         }
 
         public void HandleHeavyAttack(WeaponItem weapon)
         {
-            animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
+            animationHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true, false);
             lastAttack = weapon.OH_Heavy_Attack_1;
         }
 
         public void HandleSpecialAttack(WeaponItem weapon)
         {
-            animationHandler.PlayTargetAnimation(weapon.LT_Special_Attack, true);
+            animationHandler.PlayTargetAnimation(weapon.LT_Special_Attack, true, false);
             //lastAttack = weapon.OH_Heavy_Attack_1;
         }
 
@@ -146,7 +146,7 @@ namespace TAK
                     return;
 
                 if (playerStats.currentMana < playerInventory.currentSpell.spellManaCost)
-                    animationHandler.PlayTargetAnimation("Out Of Mana", true);
+                    animationHandler.PlayTargetAnimation("Out Of Mana", true, false);
                 else
                     //playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
                     AttemptToCastSpell(playerInventory.currentSpell);
@@ -167,7 +167,7 @@ namespace TAK
             if (playerManager.isBlocking)
                 return;
             playerManager.isBlocking = true;
-            animationHandler.PlayTargetAnimation("Block Start 2", false);
+            animationHandler.PlayTargetAnimation("Block Start 2", false, false);
             playerEquipment.OpenBlockingCollider();
 
         }
@@ -222,7 +222,7 @@ namespace TAK
                     return;
 
                 if (playerStats.currentMana < playerInventory.currentSpell.spellManaCost)
-                    animationHandler.PlayTargetAnimation("Out Of Mana", true);
+                    animationHandler.PlayTargetAnimation("Out Of Mana", true, false);
                 else
                     AttemptToCastSpell(playerInventory.currentSpell);
                     
@@ -237,7 +237,7 @@ namespace TAK
                 return;
 
             playerManager.isBlocking = true;
-            animationHandler.PlayTargetAnimation("Block Start", false);
+            animationHandler.PlayTargetAnimation("Block Start", false, false);
             playerEquipment.OpenBlockingCollider();
 
         }
@@ -296,7 +296,7 @@ namespace TAK
                 return;
 
             playerManager.isBlocking = true;
-            animationHandler.PlayTargetAnimation("Block Start", false);
+            animationHandler.PlayTargetAnimation("Block Start", false, true);
             playerEquipment.OpenBlockingCollider();
 
         }
@@ -323,7 +323,7 @@ namespace TAK
             {
                 GameObject istantiateWarmUpSpellFX = Instantiate(spell.spellWarmUpPrefab, weaponSlotManager.rightHandSlot.transform);
                 //istantiateWarmUpSpellFX.gameObject.transform.localScale = new Vector3(100, 100, 100);
-                animationHandler.PlayTargetAnimation(spell.startSpellAnimation, true);
+                animationHandler.PlayTargetAnimation(spell.startSpellAnimation, true, false);
                 playerAudioManager.PlayTargetSoundEffect(spell.startUpSFX);
             }
             else if (spell.spellType == Spell.SpellType.Multi)
@@ -338,7 +338,7 @@ namespace TAK
                     Quaternion rot = Quaternion.Euler(0, 0, angleDegrees);
                     GameObject istantiateWarmUpSpellFX = Instantiate(spell.spellWarmUpPrefab, weaponSlotManager.rightHandSlot.transform.position + pos, rot);
                 }
-                animationHandler.PlayTargetAnimation(spell.startSpellAnimation, true);
+                animationHandler.PlayTargetAnimation(spell.startSpellAnimation, true, false);
                 playerAudioManager.PlayTargetSoundEffect(spell.startUpSFX);
             }
         }

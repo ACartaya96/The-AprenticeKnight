@@ -65,7 +65,6 @@ namespace TAK
 		public GameObject spellCastPrefab = null;
 		public GameObject spellCollisionParticle = null;
 		public GameObject dotEffect = null;
-		public Texture2D spellIcon = null;
 		[Header("Animations and SFX")]
 		public string startSpellAnimation;
 		public AudioClip startUpSFX;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bb72348ef06b7438271ec3a6084540, type: 3}
   m_Name: THE BIG HAND
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: a9f6a9fe3df403549aaf824dcabeb4c9, type: 3}
   itemName: THE BIG HAND
   modelPrefab: {fileID: 8943960096321276138, guid: 78c441961cb550147ade313d7d627074, type: 3}
   isUnarmed: 0

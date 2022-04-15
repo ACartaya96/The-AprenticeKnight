@@ -15,6 +15,7 @@ namespace TAK
         public float mouseY;
 
         [Header("Face Buttons")]
+        public bool x_Input;
         public bool b_Input;
         public bool a_Input;
         public bool d_Pad_Up;
@@ -52,6 +53,9 @@ namespace TAK
         PlayerTargetDetection playerTarget;
         PlayerController playerController;
         PlayerEquipmentManager playerEquipment;
+        AnimationHandler animationHandler;
+        WeaponSlotManager weaponSlotManager;
+        PlayerEffectManager playerEffectManager;
 
         [HideInInspector]
         public InputAction moveAction;
@@ -83,6 +87,8 @@ namespace TAK
         public InputAction dLeftAction;
         [HideInInspector]
         public InputAction dRightAction;
+        [HideInInspector]
+        public InputAction itemAction;
 
         public InputAction PauseAction;
 
@@ -103,6 +109,9 @@ namespace TAK
             playerTarget = GetComponent<PlayerTargetDetection>();
             playerController = GetComponent<PlayerController>();
             playerEquipment = GetComponentInChildren<PlayerEquipmentManager>();
+            playerEffectManager = GetComponentInChildren<PlayerEffectManager>();
+            weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            animationHandler = GetComponentInChildren<AnimationHandler>();
 
             moveAction = playerInput.actions["Movement"];
             lookAction = playerInput.actions["Look"];
@@ -121,6 +130,7 @@ namespace TAK
             dRightAction = playerInput.actions["D-Pad Right"];
             PauseAction = playerInput.actions["Pause"];
             UnpauseAction = playerInput.actions["Unpause"];
+            itemAction = playerInput.actions["Item Interaction"];
         }
         private void OnEnable()
         {
@@ -144,6 +154,8 @@ namespace TAK
             dDownAction.performed += _ => d_Pad_Down = true;
             dLeftAction.performed += _ => d_Pad_Left = true;
             dRightAction.performed += _ => d_Pad_Right = true;
+
+            itemAction.performed += _ => x_Input = true;
             
 
             playerInput.actions["Pause"].performed += SwitchActionMap;
@@ -172,9 +184,10 @@ namespace TAK
             dDownAction.performed -= _ => d_Pad_Down = true;
             dLeftAction.performed -= _ => d_Pad_Left = true;
             dRightAction.performed -= _ => d_Pad_Right = true;
+            itemAction.performed -= _ => x_Input = true;
 
 
-           playerInput.actions["Pause"].performed -= SwitchActionMap;
+            playerInput.actions["Pause"].performed -= SwitchActionMap;
 
            playerInput.actions["Unpause"].performed -= SwitchBackActionMap;
 
@@ -197,6 +210,7 @@ namespace TAK
             HandleCombatInput();
             HandleLockOnInput();
             HandleQuickSlotInput();
+            HandleUseConsumableInput();
         }
         #region HandleInputs
         private void HandleMoveInput()
@@ -315,7 +329,7 @@ namespace TAK
             }
             if(d_Pad_Down)
             {
-
+                playerInventory.ChangeConsumables();
             }
             if(d_Pad_Left)
             {
@@ -324,6 +338,15 @@ namespace TAK
             if(d_Pad_Right)
             {
                 playerInventory.ChangeRightWeapon();
+            }
+        }
+
+        private void HandleUseConsumableInput()
+        {
+            if(x_Input)
+            {
+                x_Input = false;
+                playerInventory.currentConsumable.AttemptToConsumeItem(animationHandler, weaponSlotManager, playerEffectManager);
             }
         }
         #endregion

@@ -42,7 +42,7 @@ namespace TAK
         {
             GameObject istantiateWarmUpSpellFX = Instantiate(spellWarmUpFX, weaponSlot.rightHandSlot.transform);
             //istantiateWarmUpSpellFX.gameObject.transform.localScale = new Vector3(100, 100, 100);
-            animationHandler.PlayTargetAnimation(spellAnimation, true);
+            animationHandler.PlayTargetAnimation(spellAnimation, true, false);
             audioManager.PlayTargetSoundEffect(startUpSFX);
         }
 

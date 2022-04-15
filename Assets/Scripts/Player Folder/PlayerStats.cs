@@ -60,7 +60,7 @@ namespace TAK
                 //playerController.rb.AddForce(-playerController.myTransform.forward * 20, ForceMode.Force);
                 if(damageAnimation != null)
                 {
-                    animationHandler.PlayTargetAnimation(damageAnimation, true);
+                    animationHandler.PlayTargetAnimation(damageAnimation, true, false);
                     playerAudioManager.PlayTargetSoundEffect(impactClip);
                 }
                     
@@ -70,7 +70,7 @@ namespace TAK
                 currentHealth = 0;
                 isDead = true;
                 playerManager.isInvincible = true;
-                animationHandler.PlayTargetAnimation("Dying", true);
+                animationHandler.PlayTargetAnimation("Dying", true, false);
 
 
                 SceneLoader.instance.currentLevel = SceneManager.GetActiveScene().buildIndex;
@@ -102,6 +102,17 @@ namespace TAK
             }
             Debug.Log("CurrentMana: " + currentMana.ToString());
 
+        }
+
+        public void RecoverMana(float manaCost)
+        {
+            currentMana += manaCost;
+            manaBar.SetCurrentMana(currentMana);
+
+            if (currentMana > maxMana)
+            {
+                currentMana = maxMana;
+            }
         }
     }
 }

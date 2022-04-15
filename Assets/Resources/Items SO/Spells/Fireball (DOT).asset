@@ -12,21 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d23d390219a40348a2641d4fe6cb8f9, type: 3}
   m_Name: Fireball (DOT)
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 1c21cd60b3ca2ce40b3bee75af72c2e1, type: 3}
   itemName: Fire Ball DOT
   spellInfo: 
   spellWarmUpPrefab: {fileID: 2921885721892408272, guid: c8e8c085de92a6e41b631dbf70d277b3, type: 3}
   spellCastPrefab: {fileID: 2793912979628174686, guid: 863019b0ff0c2064488b63a8e42c7055, type: 3}
   spellCollisionParticle: {fileID: 1150934714579380, guid: 779aa8c25fbd0e1488637639c9fff976, type: 3}
   dotEffect: {fileID: 7173159929070329326, guid: 86c702afc3414f047bdd8559239442ed, type: 3}
-  spellIcon: {fileID: 0}
   startSpellAnimation: Projectile_Start
   startUpSFX: {fileID: 8300000, guid: bdb376e01ed0fb54b8fbcbc06154e1f3, type: 3}
+  multiSpawner: 0
   spellManaCost: 50
   spellMinDamage: 100
   spellMaxDamage: 100
   projectileForwardVelocity: 900
   projectileUpwardVelocity: 150
+  knockBack: 0
+  knockUp: 0
   spellRadius: 0
   dotDamage: 50
   dotDuration: 2

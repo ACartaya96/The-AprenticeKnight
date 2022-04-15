@@ -6,15 +6,21 @@ namespace TAK
 {
     public class WeaponSlotManager : MonoBehaviour
     {
+        PlayerInventory playerInventory;
+
         public WeaponHolderSlot leftHandSlot;
         public WeaponHolderSlot rightHandSlot;
 
         DamageCollider leftDamageCollider;
         DamageCollider rightDamageCollider;
 
+        QuickSlotsUI quickSlots;
+
         private void Awake()
         {
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
+            quickSlots = FindObjectOfType<QuickSlotsUI>();
+            playerInventory = GetComponentInParent<PlayerInventory>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
             {
                 if (weaponSlot.isLeftHandSlot)
@@ -28,23 +34,32 @@ namespace TAK
             }
         }
 
+        public void LoadBothWeaponOnSlots()
+        {
+            LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+            LoadWeaponOnSlot(playerInventory.leftWeapon, true);
+        }
         public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
         {
             if (isLeft)
             {
                 leftHandSlot.LoadWeaponModel(weaponItem);
-                LoadLeftWeaponDamageCollider();
+                if(weaponItem.weaponType != WeaponType.Shield)
+                    LoadLeftWeaponDamageCollider();
+                quickSlots.UpdateWeaponQuickSlotsUI(true, weaponItem);
             }
             else
             {
                 rightHandSlot.LoadWeaponModel(weaponItem);
-                LoadRightWeaponDamageCollider();
+                if (weaponItem.weaponType != WeaponType.Shield)
+                    LoadRightWeaponDamageCollider();
+                quickSlots.UpdateWeaponQuickSlotsUI(false, weaponItem);
             }
         }
         #region Weapon's Damage Collider
         private void LoadLeftWeaponDamageCollider()
         {
-            leftDamageCollider = leftHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>();
+            leftDamageCollider = leftHandSlot.currentWeapon.GetComponentInChildren<DamageCollider>(); 
             leftDamageCollider.characterManager = GetComponentInParent<PlayerManager>();
         }
 
