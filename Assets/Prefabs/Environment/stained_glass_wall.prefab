@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 740192506657314132}
   - component: {fileID: 4337721913692141084}
   - component: {fileID: 5879836294631858257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 5759270619606868753}
   - component: {fileID: 785836688670622500}
   - component: {fileID: 2886569547991452988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 04f120a5fbc25c64eb9b38b07532d797, type: 2}
+  - {fileID: 2100000, guid: 05e32ccb475d70f458eebf26007007df, type: 2}
   - {fileID: 2100000, guid: 77e664c762451644aafe1d19bd12b1d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -173,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8248706686114736973}
   - component: {fileID: 2346549912439941133}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: stained_glass_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

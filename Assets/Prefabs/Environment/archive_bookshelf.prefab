@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6298134186744605407}
   - component: {fileID: 4555565889041593466}
   - component: {fileID: 7786642130939896422}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pot 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 5130667115698623041}
   - component: {fileID: 3916351754139472998}
   - component: {fileID: 1363235464694455291}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5155959696055074706}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 1707000514814924970}
   - component: {fileID: 5630735977770160151}
   - component: {fileID: 3270228441305682849}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Magic_bottles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 975656380637973372}
   - component: {fileID: 2661231231693794537}
   - component: {fileID: 249054012537542248}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7b63c35c76599524e8803645df5d2fcf, type: 2}
-  - {fileID: 2100000, guid: f04f700317223ad4083a93bdde07b728, type: 2}
+  - {fileID: 2100000, guid: 77e664c762451644aafe1d19bd12b1d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 6674880097046948458}
   - component: {fileID: 5203083611237378805}
   - component: {fileID: 8681950645304425961}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Magic_bottles 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 1426255221759212302}
   - component: {fileID: 7077703893794909840}
   - component: {fileID: 1096849996673422015}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shelf 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 3242225395753203653}
   - component: {fileID: 3125623392207809837}
   - component: {fileID: 1555806305007807065}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shelf 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 2135193987694200925}
   - component: {fileID: 5879634361520901434}
   - component: {fileID: 35909534793130219}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Books_2 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 5279484600450051347}
   - component: {fileID: 9144842494451800153}
   - component: {fileID: 5242071269742192252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: plant 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 6723448601193237554}
   - component: {fileID: 9116850529220940051}
   - component: {fileID: 4817439675168346067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Books_2 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 4765279040904623153}
   - component: {fileID: 7436240409823407325}
   - component: {fileID: 3000708253343098122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: archive_bookshelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,7 +910,7 @@ LODGroup:
     - renderer: {fileID: 2947960159514152775}
     - renderer: {fileID: 1363235464694455291}
     - renderer: {fileID: 249054012537542248}
-  - screenRelativeHeight: 0.19530587
+  - screenRelativeHeight: 0.08498564
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8780305528563484048}
@@ -919,7 +919,7 @@ LODGroup:
     - renderer: {fileID: 5242071269742192252}
     - renderer: {fileID: 7786642130939896422}
     - renderer: {fileID: 1555806305007807065}
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.02890559
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2252869967796767119}
@@ -940,8 +940,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.039883, y: 56.64398, z: 93.09002}
-  m_Center: {x: -4.519941, y: 27.821983, z: 0.09948883}
+  m_Size: {x: 18.643702, y: 56.64398, z: 93.09002}
+  m_Center: {x: -0.21800902, y: 27.821983, z: 0.09948883}
 --- !u!1 &5593153346993112379
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 5911077721510033142}
   - component: {fileID: 7110445200370366794}
   - component: {fileID: 8037191412883218018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Books_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1002,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7ecd80dd030383e46baacaa728f380ea, type: 2}
-  - {fileID: 2100000, guid: a3533f38a4f3f5047bbd1e9a4dd24a79, type: 2}
+  - {fileID: 2100000, guid: f04f700317223ad4083a93bdde07b728, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 5350514883716121480}
   - component: {fileID: 7936200295780343748}
   - component: {fileID: 2947960159514152775}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 874095338276171259}
   - component: {fileID: 4109564140069652222}
   - component: {fileID: 8683557119789644345}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pot 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1199,7 +1199,7 @@ GameObject:
   - component: {fileID: 4735808719432336131}
   - component: {fileID: 2708438089657682614}
   - component: {fileID: 6789098380530109592}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: plant 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1281,7 +1281,7 @@ GameObject:
   - component: {fileID: 7950034953815525231}
   - component: {fileID: 1247146105695885576}
   - component: {fileID: 8780305528563484048}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Books_1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1360,7 +1360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1672822311106408758}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,7 +1398,7 @@ GameObject:
   - component: {fileID: 9034753036192994850}
   - component: {fileID: 7440989620508206168}
   - component: {fileID: 7072077716839952406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Books_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1447,7 +1447,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c65521c6b1aee1643bdc718b4a9c85d0, type: 2}
-  - {fileID: 2100000, guid: a3533f38a4f3f5047bbd1e9a4dd24a79, type: 2}
+  - {fileID: 2100000, guid: f04f700317223ad4083a93bdde07b728, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1478,7 +1478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4425613222037059596}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1516,7 +1516,7 @@ GameObject:
   - component: {fileID: 3489636297679681551}
   - component: {fileID: 7919283986469572787}
   - component: {fileID: 2252869967796767119}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Books_1 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1597,7 +1597,7 @@ GameObject:
   - component: {fileID: 977722389444686926}
   - component: {fileID: 8690800398597764459}
   - component: {fileID: 722727029927395952}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Magic_bottles 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
