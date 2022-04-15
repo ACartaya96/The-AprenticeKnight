@@ -11,9 +11,9 @@ public class PauseManager : MonoBehaviour
     
     public static bool paused = false;
 
-    public GameObject pauseMenu, htpMenu, ctrlMenu;
+    public GameObject pauseMenu, htpMenu, optMenu, ctrlMenu;
 
-    public GameObject htpBtn, ctrlBtn, htpbackBtn, ctrlbackBtn;
+    public GameObject htpBtn, optBtn, ctrlBtn, htpbackBtn, optbackBtn, ctrlbackBtn, menuBtn, quitBtn;
 
     PauseAction action;
 
@@ -91,6 +91,22 @@ public class PauseManager : MonoBehaviour
         htpMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(htpBtn);
+    }
+
+    public void OpenOPTMenu()
+    {
+        pauseMenu.SetActive(false);
+        optMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optbackBtn);
+    }
+
+    public void CloseOPTMenu()
+    {
+        pauseMenu.SetActive(true);
+        optMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(optBtn);
     }
 
 
