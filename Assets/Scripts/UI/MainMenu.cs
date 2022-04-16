@@ -14,7 +14,7 @@ namespace TAK
     public GameObject mainMenu, htpMenu, optMenu, ctrlMenu, credMenu;
 
     //The Buttons in each of the menus
-    public GameObject strBtn, htpBtn, optBtn, ctrlBtn, credBtn, optbackBtn, ctrlbackBtn, credbackBtn;
+    public GameObject strBtn, htpBtn, optBtn, masterSld, ctrlBtn, credBtn, ctrlbackBtn, credbackBtn;
     
     
     void Start()
@@ -50,7 +50,7 @@ namespace TAK
         mainMenu.SetActive(false);
         optMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(optbackBtn);
+        EventSystem.current.SetSelectedGameObject(masterSld);
     }
 
     public void CloseOPTMenu()
