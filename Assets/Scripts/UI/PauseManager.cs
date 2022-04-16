@@ -13,7 +13,7 @@ public class PauseManager : MonoBehaviour
 
     public GameObject pauseMenu, htpMenu, optMenu, ctrlMenu;
 
-    public GameObject htpBtn, optBtn, ctrlBtn, htpbackBtn, optbackBtn, ctrlbackBtn, menuBtn, quitBtn;
+    public GameObject saveBtn, htpBtn, optBtn, ctrlBtn, htpbackBtn, optbackBtn, ctrlbackBtn, menuBtn, quitBtn;
 
     PauseAction action;
 
@@ -63,7 +63,7 @@ public class PauseManager : MonoBehaviour
         paused = true;
         pauseMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(htpBtn);
+        EventSystem.current.SetSelectedGameObject(saveBtn);
     }
 
     public void ResumeGame()
@@ -124,6 +124,11 @@ public class PauseManager : MonoBehaviour
         ctrlMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(ctrlBtn);
+    }
+
+    public void SaveGame()
+    {
+        Debug.Log("Clicking this button will save the Game!");
     }
 
 
