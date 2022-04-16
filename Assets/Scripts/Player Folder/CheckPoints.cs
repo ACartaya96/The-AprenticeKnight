@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class CheckPoints : MonoBehaviour
 {
-    private GameMaster gm;
+    //private GameMaster gm;
     void Start()
     {
-        gm = FindObjectOfType<GameMaster>();
+        //gm = FindObjectOfType<GameMaster>();
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            gm.lastCheckPointPos = transform.position;
+            //gm.lastCheckPointPos = transform.position;
         }
     }
 }

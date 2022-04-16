@@ -35,6 +35,7 @@ namespace TAK
             currentMana = maxMana;
             healthBar.setMaxHealth(maxHealth);
             manaBar.setMaxMana(maxMana);
+            SceneLoader.currentLevel = SceneManager.GetActiveScene().buildIndex;
         }
 
         private float SetMaxHealthFromHealthLevel()
@@ -73,10 +74,8 @@ namespace TAK
                 animationHandler.PlayTargetAnimation("Dying", true, false);
 
 
-                SceneLoader.instance.currentLevel = SceneManager.GetActiveScene().buildIndex;
-                Debug.Log(SceneLoader.instance.currentLevel.ToString());
+                SceneLoader.currentLevel = SceneManager.GetActiveScene().buildIndex;
                 SceneLoader.instance.Invoke("LoadLoseScene", 3f);
-                
             }
         }
 

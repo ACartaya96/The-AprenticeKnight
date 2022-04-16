@@ -8,9 +8,10 @@ namespace TAK
 {
     public class SceneLoader : MonoBehaviour
     {
+        public static int currentLevel;
         public static SceneLoader instance;
-        public int currentLevel;
         Camera cam;
+
         private void Awake()
         {
             if (instance != null && instance != this)
@@ -67,7 +68,28 @@ namespace TAK
 
         public void RestartLevel()
         {
-            SceneManager.LoadScene(currentLevel); 
+           
+            if(currentLevel == 1)
+            {   
+                SceneLoader.instance.TriggerLoadLevel("Hub");
+            }
+            else if (currentLevel == 2)
+            {
+                SceneLoader.instance.TriggerLoadLevel("Swamp");
+            }
+            else if (currentLevel == 3)
+            {
+                SceneLoader.instance.TriggerLoadLevel("Mountain");
+            } 
+            else if (currentLevel == 4)
+            {
+                SceneLoader.instance.TriggerLoadLevel("Lair");
+            }
+            else
+            {
+                print ("The Restart is not Working!!! dummy  BAKA");
+            }
+
         }
 
         public void LoadSaved()

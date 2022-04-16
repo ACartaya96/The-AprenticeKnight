@@ -9,7 +9,7 @@ namespace TAK
     public class PlayerController : MonoBehaviour
     {
 
-        private GameMaster gm;
+        
         Transform cameraObject;
         InputHandler inputHandler;
         PlayerManager playerManager;
@@ -74,8 +74,8 @@ namespace TAK
             myTransform = transform;
             ignoreforGrounCheck = ~ignoreforGrounCheck;
             animationHandler.Initialize();
-            gm = FindObjectOfType<GameMaster>();
-            transform.position = gm.lastCheckPointPos;
+            //gm = FindObjectOfType<GameMaster>();
+            //transform.position = gm.lastCheckPointPos;
             Physics.IgnoreCollision(characterCollider,characterCollisionBlockeCollider, true);
 
             playerManager.isGrounded = true;
