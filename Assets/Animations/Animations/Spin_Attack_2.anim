@@ -55653,8 +55653,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.1
+    functionName: PlayFootStepAudio
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.4
-    functionName: PlaySwingAudio
+    functionName: PlaySwipeAttackAudio
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -55662,6 +55669,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.56666666
     functionName: CanRotate
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6
+    functionName: PlayFootStepAudio
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -55676,6 +55690,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.7
     functionName: StopRotate
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.0666667
+    functionName: PlayFootStepAudio
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

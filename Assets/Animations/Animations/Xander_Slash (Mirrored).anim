@@ -52871,7 +52871,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.43333334
-    functionName: PlaySwingAudio
+    functionName: PlaySwipeAttackAudio
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
