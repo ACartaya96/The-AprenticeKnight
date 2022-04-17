@@ -43,6 +43,7 @@ namespace TAK
             quickSlots = FindObjectOfType<QuickSlotsUI>();
             currentSpell = spellSlots[currentSpellIndex];
             quickSlots.UpdateSpellSlotUI(currentSpell);
+            quickSlots.UpdateConsumableSlotUI(currentConsumable);
             slotAmounts = spellSlots.Count;
             itemAmounts = consumableItems.Count;
         }
