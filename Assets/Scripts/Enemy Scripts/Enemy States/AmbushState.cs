@@ -9,6 +9,7 @@ namespace TAK
     public class AmbushState : EnemyBaseState
     {
         public bool isSleeping;
+        public bool ForceSwitch;
         public float detectionRadius = 2;
         public string sleepAnimation;
         public string awakeAnimation;
@@ -20,6 +21,12 @@ namespace TAK
             {
                 if(sleepAnimation != null)
                     enemyAnimationHandler.PlayTargetAnimation(sleepAnimation, true, false);
+           
+
+            }
+            if (ForceSwitch)
+            {
+                isSleeping = false;
             }
             #region Handle Target Detection
             if (isSleeping)
@@ -27,12 +34,13 @@ namespace TAK
                 fov.radius = detectionRadius;
             }
             fov.FieldOFViewCheck();
+          
 
-            if(enemyManager.currentTarget != null)
+            if (enemyManager.currentTarget != null)
             {
                 isSleeping = false;
                 if(awakeAnimation != null)
-                    enemyAnimationHandler.PlayTargetAnimation(awakeAnimation, true, false);
+                    enemyAnimationHandler.PlayTargetAnimation(awakeAnimation, false, false);
                 return pursueTargetState;
                 
             }
