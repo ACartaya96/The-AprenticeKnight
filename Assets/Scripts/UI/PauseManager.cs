@@ -65,7 +65,7 @@ public class PauseManager : MonoBehaviour
         paused = true;
         pauseMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(saveBtn);
+        EventSystem.current.SetSelectedGameObject(htpBtn);
     }
 
     public void ResumeGame()

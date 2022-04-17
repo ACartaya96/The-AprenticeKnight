@@ -23,7 +23,7 @@ namespace TAK
         public bool d_Pad_Down;
         public bool d_Pad_Left;
         public bool d_Pad_Right;
-        //public bool start_button;
+        public bool start_button;
 
 
         [Header("Trigger & Shoulders")]
