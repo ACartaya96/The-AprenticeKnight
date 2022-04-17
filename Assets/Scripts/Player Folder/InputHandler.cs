@@ -202,11 +202,13 @@ namespace TAK
         public void SwitchActionMap(InputAction.CallbackContext context)
         {
             playerInput.SwitchCurrentActionMap("UI");
+            Debug.Log("Switch");
         }
 
         public void SwitchBackActionMap(InputAction.CallbackContext context)
         {
             playerInput.SwitchCurrentActionMap("Player");
+            Debug.Log("Switch2");
         }
         #endregion
         public void TickInput()
