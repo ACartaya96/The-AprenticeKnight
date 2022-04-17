@@ -3751,6 +3751,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 395127577}
+  htpMenu: {fileID: 0}
+  optMenu: {fileID: 0}
+  ctrlMenu: {fileID: 0}
+  htpBtn: {fileID: 0}
+  optBtn: {fileID: 0}
+  ctrlBtn: {fileID: 0}
+  htpbackBtn: {fileID: 0}
+  optbackBtn: {fileID: 0}
+  ctrlbackBtn: {fileID: 0}
+  menuBtn: {fileID: 0}
+  quitBtn: {fileID: 0}
 --- !u!4 &944665047
 Transform:
   m_ObjectHideFlags: 0
