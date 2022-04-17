@@ -16,8 +16,14 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 3c150f716d2a4394ca3b0a358492c6b2
+    name: MasterVolume
   - guid: e8af00a0ecb79004da1d8c1b6bad5620
-    name: ActualMasterAudio
+    name: BackgroundVolume
+  - guid: 211dadaf767efc34fb78ceb52bc93dcb
+    name: GameEffectsVolume
+  - guid: f0abb802bcef2434ab34ef6a39b5f57b
+    name: PlayerEffectsVolume
   m_AudioMixerGroupViews:
   - guids:
     - d1a1e53dc2c62724bab55b2c4ab0e5d8

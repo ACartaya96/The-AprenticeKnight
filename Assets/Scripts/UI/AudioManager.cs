@@ -5,17 +5,30 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioMixer actualmasterAudio;
-
-    //public AudioMixer soundeffectAudio;
-
-    //public AudioMixer backgroundAudio;
+    public AudioMixer audioMixer;
 
 
     public void SetMasterAudio (float volume)
     {
-        actualmasterAudio.SetFloat("ActualMasterAudio", volume);
+        audioMixer.SetFloat("MasterVolume", volume);
     }
+
+    public void SetPlayerEffectsAudio (float volume)
+    {
+        audioMixer.SetFloat("PlayerEffectsVolume", volume);
+    }
+
+    public void SetGameEffectsAudio (float volume)
+    {
+        audioMixer.SetFloat("GameEffectsVolume", volume);
+    }
+
+    public void SetBackgroundAudio (float volume)
+    {
+        audioMixer.SetFloat("BackgroundVolume", volume);
+    }
+
+
 
 
 
