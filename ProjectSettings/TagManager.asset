@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - Collide
   - MovingPlatform
+  - Interactable
+  - Barrier
   layers:
   - Default
   - TransparentFX
