@@ -25,6 +25,8 @@ public class PauseManager : MonoBehaviour
     private void Awake()
     {
         action = new PauseAction();
+        if(paused)
+            ResumeGame();
     }
 
     private void OnEnable()

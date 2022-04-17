@@ -79,15 +79,7 @@ namespace TAK
         }
 
       
-        public void CanRotate()
-        {
-            anim.SetBool("canRotate", true);
-        }
-
-        public void StopRotate()
-        {
-            anim.SetBool("canRotate", false);
-        }
+       
 
         public void EnableCombo()
         {
