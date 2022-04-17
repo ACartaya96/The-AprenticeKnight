@@ -16,7 +16,6 @@ namespace TAK
 
         [Header("Face Buttons")]
         public bool x_Input;
-        public bool y_Input;
         public bool b_Input;
         public bool a_Input;
         public bool d_Pad_Up;
@@ -90,8 +89,6 @@ namespace TAK
         public InputAction dRightAction;
         [HideInInspector]
         public InputAction itemAction;
-        [HideInInspector]
-        public InputAction interactAction;
 
         public InputAction PauseAction;
 
@@ -134,7 +131,6 @@ namespace TAK
             PauseAction = playerInput.actions["Pause"];
             UnpauseAction = playerInput.actions["Unpause"];
             itemAction = playerInput.actions["Item Interaction"];
-            interactAction = playerInput.actions["Interact"];
         }
         private void OnEnable()
         {
@@ -160,8 +156,7 @@ namespace TAK
             dRightAction.performed += _ => d_Pad_Right = true;
 
             itemAction.performed += _ => x_Input = true;
-            interactAction.performed += _ => y_Input = true;
-
+            
 
             playerInput.actions["Pause"].performed += SwitchActionMap;
 
@@ -190,7 +185,6 @@ namespace TAK
             dLeftAction.performed -= _ => d_Pad_Left = true;
             dRightAction.performed -= _ => d_Pad_Right = true;
             itemAction.performed -= _ => x_Input = true;
-            interactAction.performed -= _ => y_Input = true;
 
 
             playerInput.actions["Pause"].performed -= SwitchActionMap;
@@ -217,7 +211,6 @@ namespace TAK
             HandleLockOnInput();
             HandleQuickSlotInput();
             HandleUseConsumableInput();
-            HandleInteractableObjectInput();
         }
         #region HandleInputs
         private void HandleMoveInput()
@@ -354,14 +347,6 @@ namespace TAK
             {
                 x_Input = false;
                 playerInventory.currentConsumable.AttemptToConsumeItem(animationHandler, weaponSlotManager, playerEffectManager);
-            }
-        }
-
-        private void HandleInteractableObjectInput()
-        {
-            if(y_Input)
-            {
-                Debug.Log("Player pressed Y");
             }
         }
         #endregion
