@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8ffe810412f274e9e2b94769aed68d, type: 3}
   m_Name: Knight_RotateTowards
   m_EditorClassIdentifier: 
-  combatStance: {fileID: 0}
-  pursueTarget: {fileID: 0}
+  combatStance: {fileID: 11400000, guid: 7d62b5e26a371c6469c5250236ef3578, type: 2}
+  pursueTarget: {fileID: 11400000, guid: 8605e04ea668762428b7d942abf63fe7, type: 2}
   minAngle: 0
   maxAngle: 0

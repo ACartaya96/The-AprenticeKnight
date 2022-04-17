@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c899e7052dce9f7418e9f98093198a53, type: 3}
   m_Name: Knight_Attack
   m_EditorClassIdentifier: 
-  combatStance: {fileID: 0}
-  pursueTarget: {fileID: 0}
-  rotateTowardsTarget: {fileID: 0}
+  combatStance: {fileID: 11400000, guid: 7d62b5e26a371c6469c5250236ef3578, type: 2}
+  pursueTarget: {fileID: 11400000, guid: 8605e04ea668762428b7d942abf63fe7, type: 2}
+  rotateTowardsTarget: {fileID: 11400000, guid: d63c39aa99c96ab448e6f514d729b878, type: 2}
   rangedAttack: {fileID: 0}
   currentAttack: {fileID: 0}
   hasPerformedAttack: 0

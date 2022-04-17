@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3f9cf5b96f36574e9c4ba16efd426f2, type: 3}
-  m_Name: Knight_Pursue
+  m_Script: {fileID: 11500000, guid: 5784102b88e4a634b8f2c7f35f904165, type: 3}
+  m_Name: Knight_TripleSlashCombo
   m_EditorClassIdentifier: 
-  combatStance: {fileID: 11400000, guid: 7d62b5e26a371c6469c5250236ef3578, type: 2}
-  rotateTowardsTarget: {fileID: 11400000, guid: d63c39aa99c96ab448e6f514d729b878, type: 2}
+  actionAnimation: Knight_TripleSlash
+  attackScore: 1
+  recoveryTime: 2.5
+  angle: 50
+  minimumDistanceToAttack: 0
+  maximumDistanceToAttack: 2

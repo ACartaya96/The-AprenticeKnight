@@ -119,8 +119,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ef2e3254ed20e49b0ae61b13753755, type: 3}
+--- !u!1 &6691604549800485210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 92ef2e3254ed20e49b0ae61b13753755, type: 3}
+  m_PrefabInstance: {fileID: 5772545118870690827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6311383999487851488 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92ef2e3254ed20e49b0ae61b13753755, type: 3}
   m_PrefabInstance: {fileID: 5772545118870690827}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &5970529936956089099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691604549800485210}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.118937396, y: 0.38773564, z: 0.024276998}
+  m_Center: {x: -0.0000013096577, y: 0.33080658, z: -0.00000009558931}
+--- !u!114 &8143128593273270818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691604549800485210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edd6618c41f87b4fa5eb6132cabea20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  weaponItem: {fileID: 11400000, guid: c698f262b5523614c9a7aff7f4b42f46, type: 2}
+  projectileLastPos: {x: 0, y: 0, z: 0}
+  enableOnStartUp: 0

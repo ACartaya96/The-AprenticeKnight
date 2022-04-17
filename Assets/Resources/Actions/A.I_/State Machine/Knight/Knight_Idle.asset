@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f2533fc863b434a918c328aa75bbdd, type: 3}
   m_Name: Knight_Idle
   m_EditorClassIdentifier: 
-  pursueTargetState: {fileID: 0}
+  pursueTargetState: {fileID: 11400000, guid: 8605e04ea668762428b7d942abf63fe7, type: 2}
   speedWalk: 4.5

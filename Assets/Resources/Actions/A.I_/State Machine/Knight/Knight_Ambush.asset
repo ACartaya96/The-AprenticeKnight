@@ -15,6 +15,8 @@ MonoBehaviour:
   isSleeping: 0
   ForceSwitch: 0
   detectionRadius: 2
-  sleepAnimation: 
-  awakeAnimation: 
-  pursueTargetState: {fileID: 0}
+  sleepAnimation: T-Pose
+  awakeAnimation: OH_Heavy_Attack_01
+  rightWeapon: {fileID: 0}
+  leftWeapon: {fileID: 0}
+  pursueTargetState: {fileID: 11400000, guid: 8605e04ea668762428b7d942abf63fe7, type: 2}

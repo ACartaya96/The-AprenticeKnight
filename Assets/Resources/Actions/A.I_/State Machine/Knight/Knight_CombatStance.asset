@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b4b07e8f45e8f4eaf0e2d5652145fa, type: 3}
   m_Name: Knight_CombatStance
   m_EditorClassIdentifier: 
-  attackState: {fileID: 0}
-  pursueTarget: {fileID: 0}
-  enemyAttacks: []
+  attackState: {fileID: 11400000, guid: 7ddd407ff8ec70d44a599a56fa99f9dc, type: 2}
+  pursueTarget: {fileID: 11400000, guid: 8605e04ea668762428b7d942abf63fe7, type: 2}
+  enemyAttacks:
+  - {fileID: 11400000, guid: 09f890b63bf4e3b42b3e001acae5798a, type: 2}
+  - {fileID: 11400000, guid: bd615cf7cb0bfee4b9cc1f507a061277, type: 2}
+  - {fileID: 11400000, guid: 70d5fbfc48db8e14c9493bf02ad4be3c, type: 2}
+  - {fileID: 11400000, guid: 51557e00b8d333642b21bbbf6f577579, type: 2}
+  - {fileID: 11400000, guid: 436a5a028496fae4cbb6dfa4c4d709e2, type: 2}

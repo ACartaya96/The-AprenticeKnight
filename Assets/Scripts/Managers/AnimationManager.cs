@@ -9,6 +9,17 @@ namespace TAK
         public Animator anim;
         public bool canRotate;
 
+
+        public void CanRotate()
+        {
+            anim.SetBool("canRotate", true);
+        }
+
+        public void StopRotate()
+        {
+            anim.SetBool("canRotate", false);
+        }
+
         public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate)
         {
             anim.applyRootMotion = isInteracting;

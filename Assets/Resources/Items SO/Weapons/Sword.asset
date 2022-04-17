@@ -16,3 +16,13 @@ MonoBehaviour:
   itemName: Sword
   modelPrefab: {fileID: 0}
   isUnarmed: 0
+  baseDamage: 200
+  physicalDamageAbsorption: 0
+  Right_Attack_1: 
+  Right_Attack_2: 
+  Left_Attack_1: 
+  Left_Attack_2: 
+  OH_Heavy_Attack_1: 
+  OH_Heavy_Attack_2: 
+  LT_Special_Attack: 
+  weaponType: 0
