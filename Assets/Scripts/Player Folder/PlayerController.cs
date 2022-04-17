@@ -74,7 +74,7 @@ namespace TAK
             myTransform = transform;
             ignoreforGrounCheck = ~ignoreforGrounCheck;
             animationHandler.Initialize();
-            gm = FindObjectOfType<GameMaster>();
+            //gm = FindObjectOfType<GameMaster>();
             transform.position = gm.lastCheckPointPos;
             Physics.IgnoreCollision(characterCollider,characterCollisionBlockeCollider, true);
 
