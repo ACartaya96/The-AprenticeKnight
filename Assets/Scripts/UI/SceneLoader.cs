@@ -51,7 +51,7 @@ namespace TAK
 
         public void LoadMainMenu()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneLoader.instance.TriggerLoadLevel("MainMenu");
             cam.GetComponent<AudioListener> ().enabled  =  false;
         }
 

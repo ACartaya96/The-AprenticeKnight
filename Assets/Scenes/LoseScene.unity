@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneManager
       objectReference: {fileID: 0}
+    - target: {fileID: 867343792886183169, guid: 8d1b25b44cac6d74ea9382ba1867ecbf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 867343792886183171, guid: 8d1b25b44cac6d74ea9382ba1867ecbf, type: 3}
       propertyPath: m_RootOrder
       value: 2

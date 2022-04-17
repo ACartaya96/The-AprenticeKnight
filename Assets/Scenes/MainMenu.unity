@@ -7965,9 +7965,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 797782757}
-        m_TargetAssemblyTypeName: TAK.SceneLoader, Assembly-CSharp
-        m_MethodName: LoadHubScene
+      - m_Target: {fileID: 500439457}
+        m_TargetAssemblyTypeName: TAK.MainMenu, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
