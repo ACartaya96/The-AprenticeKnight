@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477bbd8bd2102ec4c848b8ce105dfdc5, type: 3}
   m_Name: Knight_Ambush
   m_EditorClassIdentifier: 
-  isSleeping: 0
+  isSleeping: 1
   ForceSwitch: 0
   detectionRadius: 2
   sleepAnimation: T-Pose
