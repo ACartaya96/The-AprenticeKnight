@@ -14,6 +14,8 @@ namespace TAK
         public string sleepAnimation;
         public string awakeAnimation;
 
+        public GameObject rightWeapon;
+        public GameObject leftWeapon;
         public PursueTargetState pursueTargetState;
         public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
         {
@@ -32,6 +34,12 @@ namespace TAK
             if (isSleeping)
             {
                 fov.radius = detectionRadius;
+
+                if (rightWeapon != null || leftWeapon != null)
+                {
+                    rightWeapon.SetActive(false);
+                    leftWeapon.SetActive(false);
+                }
             }
             fov.FieldOFViewCheck();
           
@@ -41,6 +49,13 @@ namespace TAK
                 isSleeping = false;
                 if(awakeAnimation != null)
                     enemyAnimationHandler.PlayTargetAnimation(awakeAnimation, false, false);
+
+
+                if (rightWeapon != null || leftWeapon != null)
+                {
+                    rightWeapon.SetActive(true);
+                    leftWeapon.SetActive(true);
+                }
                 return pursueTargetState;
                 
             }

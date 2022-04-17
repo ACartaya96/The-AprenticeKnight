@@ -8,27 +8,37 @@ namespace TAK
 
     public class EnemyAttack : MonoBehaviour
     {
-        public DamageCollider damageCollider;
+        public DamageCollider rightDamageCollider;
+        public DamageCollider leftDamageCollider;
+        public DamageCollider bodyDamageCollider;
 
-        private void Awake()
-        {
-            damageCollider = GetComponentInChildren<DamageCollider>();
-        }
+  
         public void OpenRightDamageCollider()
         {
-            damageCollider.EnableDamageCollider();
+            rightDamageCollider.EnableDamageCollider();
         }
         public void OpenLeftDamageCollider()
         {
-            //leftDamageCollider.EnableDamageCollider();
+            leftDamageCollider.EnableDamageCollider();
         }
         public void CloseRightDamageCollider()
         {
-            damageCollider.DisableDamageCollider();
+            rightDamageCollider.DisableDamageCollider();
         }
         public void CloseLeftDamageCollider()
         {
-            //leftDamageCollider.DisableDamageCollider();
+            leftDamageCollider.DisableDamageCollider();
         }
+
+        public void OpenBodyDamageCollider()
+        {
+            bodyDamageCollider.EnableDamageCollider();
+        }
+
+        public void CloseBodyDamageCollider()
+        {
+            bodyDamageCollider.EnableDamageCollider();
+        }
+
     }
 }
