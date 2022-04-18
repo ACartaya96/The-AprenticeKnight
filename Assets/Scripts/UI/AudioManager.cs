@@ -16,6 +16,10 @@ public class AudioManager : MonoBehaviour
     private float MasterFloat, PlayEffectsFloat, GameEffectsFloat, BackgroundFloat;
     public AudioMixer audioMixer;
 
+    public AudioSource BGmusic;
+
+    public AudioSource[] ButtonSounds; 
+
     void Start()
     {
         firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
@@ -86,7 +90,12 @@ public class AudioManager : MonoBehaviour
 
     public void UpdateSound()
     {
-        
+        BGmusic.volume = BackgroundSlider.value;
+
+        for(int i = 0; i < ButtonSounds.Length; i++)
+        {
+            ButtonSounds[i].volume = GameEffectsSlider.value;
+        }
     }
 
 
