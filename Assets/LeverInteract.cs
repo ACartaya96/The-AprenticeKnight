@@ -14,7 +14,7 @@ namespace TAK
         public bool leverPulled = false;
        
 
-        private Animator anim;
+        public Animator anim;
         private AudioSource audioSource;
         private Collider collider;
 
