@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class AudioManager : MonoBehaviour
+public class AudioMixerMaster : MonoBehaviour
 {
     private static readonly string FirstPlay = "FirstPlay";
     private static readonly string MasterPref = "MasterPref";
