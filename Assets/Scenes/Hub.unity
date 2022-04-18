@@ -11859,30 +11859,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5621488566775531059, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: PauseAction.m_Id
-      value: 6d13679e-b0ff-4dd7-a382-85b38274be53
-      objectReference: {fileID: 0}
-    - target: {fileID: 5621488566775531059, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: PauseAction.m_Name
-      value: Pause
-      objectReference: {fileID: 0}
-    - target: {fileID: 5621488566775531059, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: UnpauseAction.m_Id
-      value: 5d5e6a1b-d2d0-4938-9fcb-28aea1de7dca
-      objectReference: {fileID: 0}
-    - target: {fileID: 5621488566775531059, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: UnpauseAction.m_Name
-      value: Unpause
-      objectReference: {fileID: 0}
-    - target: {fileID: 6691331601999871824, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: weaponInRightHandSlots.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6691331601999871824, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-      propertyPath: weaponInRightHandSlots.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2febe576ba4907949bc1b0dc1e4bdd5a, type: 2}
     - target: {fileID: 7895330105454119041, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Sword of Galloway
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: 
-  modelPrefab: {fileID: 0}
+  itemName: Sword of Galloway
+  modelPrefab: {fileID: 4880466138316097218, guid: 394c27c8256442f4ebf4a9ec7ca2101e, type: 3}
   isUnarmed: 0
-  baseDamage: 0
+  baseDamage: 100
   physicalDamageAbsorption: 0
-  Right_Attack_1: 
-  Right_Attack_2: 
+  Right_Attack_1: OH_Light_Attack_01
+  Right_Attack_2: OH_Light_Attack_02
   Left_Attack_1: 
   Left_Attack_2: 
-  OH_Heavy_Attack_1: 
-  OH_Heavy_Attack_2: 
+  OH_Heavy_Attack_1: OH_Heavy_Attack_01
+  OH_Heavy_Attack_2: OH_Heavy_Attack_02
   LT_Special_Attack: 
   weaponType: 0

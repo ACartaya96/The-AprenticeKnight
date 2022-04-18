@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BladePieces_1_FINAL
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d7f379babf905064aa12729028591bcc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7f379babf905064aa12729028591bcc, type: 3}
 --- !u!1 &2298269222741753207 stripped
@@ -274,6 +278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BladePieces_3_FINAL
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c597aa4ae3e10f340b19f756dae3416f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c597aa4ae3e10f340b19f756dae3416f, type: 3}
 --- !u!1 &7910476245105252489 stripped
@@ -344,6 +352,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9eba722356c9f85469f832ad9906fbf2, type: 3}
       propertyPath: m_Name
       value: BladePieces_2_FINAL
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9eba722356c9f85469f832ad9906fbf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eba722356c9f85469f832ad9906fbf2, type: 3}
