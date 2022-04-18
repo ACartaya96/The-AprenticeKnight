@@ -132,16 +132,5 @@ public class PauseManager : MonoBehaviour
     {
         Debug.Log("Clicking this button will save the Game!");
     }
-
-
-
-
-
-
-
-
-
-
-
 }
 }
