@@ -7,8 +7,8 @@ namespace TAK
     public class AudioManager : MonoBehaviour
     {
         public List<AudioClip> musciClips = new List<AudioClip>();
-        //public List<SFXEvent> sfxClips = new List<SFXEvent>();
 
+        //public List<SFXEvent> sfxClips = new List<SFXEvent>();
         public AudioSource audioSource;
         private void Awake()
         {

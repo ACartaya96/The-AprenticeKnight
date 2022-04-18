@@ -22,6 +22,10 @@ namespace TAK
         [Header("Recover FX")]
         public GameObject recoverFX;
 
+        private void Awake()
+        {
+            currentItemAmount = maxAmount;
+        }
         public override void AttemptToConsumeItem(AnimationHandler animationHandler, WeaponSlotManager weaponSlotManager, PlayerEffectManager playerEffectManager)
         {
             base.AttemptToConsumeItem(animationHandler, weaponSlotManager, playerEffectManager);
