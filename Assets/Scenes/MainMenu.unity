@@ -228,7 +228,11 @@ AudioSource:
   m_GameObject: {fileID: 21747040}
   m_Enabled: 1
   serializedVersion: 4
+<<<<<<< HEAD
   OutputAudioMixerGroup: {fileID: 5908694213061575794, guid: c79436fd66b1efb478975e518ecb36ad, type: 2}
+=======
+  OutputAudioMixerGroup: {fileID: 3581762840234714819, guid: c79436fd66b1efb478975e518ecb36ad, type: 2}
+>>>>>>> Code
   m_audioClip: {fileID: 8300000, guid: f7bf2764b031e7145a30431f6497036a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -2730,18 +2734,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 500439459}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: UpdateSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &406562143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3238,10 +3230,6 @@ MonoBehaviour:
   GameEffectsSlider: {fileID: 406562142}
   BackgroundSlider: {fileID: 2056995472}
   audioMixer: {fileID: 24100000, guid: c79436fd66b1efb478975e518ecb36ad, type: 2}
-  BGmusic: {fileID: 21747041}
-  ButtonSounds:
-  - {fileID: 629623022}
-  - {fileID: 572211238}
 --- !u!1 &534375363
 GameObject:
   m_ObjectHideFlags: 0
@@ -9193,18 +9181,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SetBackgroundAudio
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 500439459}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: UpdateSound
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
