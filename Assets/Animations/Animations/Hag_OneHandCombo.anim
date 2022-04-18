@@ -103428,6 +103428,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1
+    functionName: PlaySwipeAttackAudio
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.0333333
     functionName: OpenRightDamageCollider
     data: 
@@ -103444,6 +103451,13 @@ AnimationClip:
     messageOptions: 0
   - time: 1.3333334
     functionName: CloseRightDamageCollider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5666667
+    functionName: PlaySwipeAttackAudio
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -1307,13 +1307,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musciClips: []
   audioSource: {fileID: 3272606323563631094}
-  footStepSFX: {fileID: 0}
+  footStepSFX: {fileID: 11400000, guid: 0ca3d9cd8774be548a8e2241e1bc1bdc, type: 2}
   weaponSwingSFX: {fileID: 0}
   injuredScreamSFX: {fileID: 0}
-  swipeAttackSFX: {fileID: 0}
-  bigSlamAttackSFX: {fileID: 0}
+  swipeAttackSFX: {fileID: 11400000, guid: 45d0da2e1c2759247b497a25ab291ee6, type: 2}
+  bigSlamAttackSFX: {fileID: 11400000, guid: 35b1c651cf16e8e40a923d5d65019e8b, type: 2}
   spinAttackSFX: {fileID: 0}
-  deathSFX: {fileID: 0}
+  deathSFX: {fileID: 11400000, guid: a839fa199a896784ca6f90d934153d29, type: 2}
 --- !u!1001 &7994866869319701317
 PrefabInstance:
   m_ObjectHideFlags: 0
