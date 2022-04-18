@@ -1847,12 +1847,14 @@ MonoBehaviour:
   mouseX: 0
   mouseY: 0
   x_Input: 0
+  y_Input: 0
   b_Input: 0
   a_Input: 0
   d_Pad_Up: 0
   d_Pad_Down: 0
   d_Pad_Left: 0
   d_Pad_Right: 0
+  start_button: 0
   rb_Input: 0
   rt_Input: 0
   lb_Input: 0
@@ -2011,6 +2013,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  interactAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   PauseAction:
     m_Name: Pause
     m_Type: 0
@@ -2072,9 +2083,11 @@ MonoBehaviour:
   weaponInRightHandSlots:
   - {fileID: 11400000, guid: 414d32a35dd0faf40ad274a8a2393958, type: 2}
   - {fileID: 11400000, guid: 08e90e346d1e3004cbccc17f4314cc88, type: 2}
+  - {fileID: 0}
   weaponInLeftHandSlots:
   - {fileID: 11400000, guid: e926b540e4bdd9942b2d38649c5de9bf, type: 2}
   - {fileID: 11400000, guid: 08e90e346d1e3004cbccc17f4314cc88, type: 2}
+  - {fileID: 0}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   currentSpellIndex: 0

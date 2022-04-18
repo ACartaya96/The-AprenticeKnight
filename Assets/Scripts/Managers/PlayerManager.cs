@@ -96,6 +96,7 @@ namespace TAK
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Right = false;
             inputHandler.d_Pad_Left = false;
+            inputHandler.y_Input = false;
 
             if (playerTarget.currentLockedOnTarget == null)
             {

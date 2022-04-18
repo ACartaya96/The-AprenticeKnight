@@ -29,14 +29,14 @@ namespace TAK
             leverInteract1 = leverOne.GetComponent<LeverInteract>();
             leverInteract2 = leverTwo.GetComponent<LeverInteract>();
 
-            if (leverInteract1.leverOnePulled == true && leverInteract2.leverTwoPulled == true)
+            /*if (leverInteract1.leverOnePulled == true && leverInteract2.leverTwoPulled == true)
             {
 
                 // disable particle system emission and disable collider
                 // system.Stop();
                 collider.enabled = false;
                 Destroy(system);
-            }
+            }*/
         }
     }
 }
