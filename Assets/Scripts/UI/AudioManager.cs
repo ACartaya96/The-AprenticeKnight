@@ -50,22 +50,22 @@ public class AudioManager : MonoBehaviour
 
     public void SetMasterAudio (float volume)
     {
-        audioMixer.SetFloat("MasterVolume", volume);
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SetPlayerEffectsAudio (float volume)
     {
-        audioMixer.SetFloat("PlayerEffectsVolume", volume);
+        audioMixer.SetFloat("PlayerEffectsVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SetGameEffectsAudio (float volume)
     {
-        audioMixer.SetFloat("GameEffectsVolume", volume);
+        audioMixer.SetFloat("GameEffectsVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SetBackgroundAudio (float volume)
     {
-        audioMixer.SetFloat("BackgroundVolume", volume);
+        audioMixer.SetFloat("BackgroundVolume", Mathf.Log10(volume) * 20);
     }
 
     public void SaveSoundSettings()
@@ -86,7 +86,7 @@ public class AudioManager : MonoBehaviour
 
     public void UpdateSound()
     {
-    
+        
     }
 
 
