@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEditor;
 
 namespace TAK
 {
@@ -11,7 +13,7 @@ namespace TAK
         public static int currentLevel;
         public static SceneLoader instance;
         Camera cam;
-
+    
         private void Awake()
         {
             if (instance != null && instance != this)
@@ -27,7 +29,10 @@ namespace TAK
 
             DontDestroyOnLoad(instance);
             DontDestroyOnLoad(cam);
+
         }
+
+        
 
         public void LoadWinScene()
         {
@@ -75,13 +80,18 @@ namespace TAK
             }
             else if (currentLevel == 2)
             {
+                SceneLoader.instance.TriggerLoadLevel("Tutorial");
+            }
+
+            else if (currentLevel == 3)
+            {
                 SceneLoader.instance.TriggerLoadLevel("Swamp");
             }
-            else if (currentLevel == 3)
+            else if (currentLevel == 4)
             {
                 SceneLoader.instance.TriggerLoadLevel("Mountain");
             } 
-            else if (currentLevel == 4)
+            else if (currentLevel == 5)
             {
                 SceneLoader.instance.TriggerLoadLevel("Lair");
             }
@@ -89,7 +99,6 @@ namespace TAK
             {
                 print ("The Restart is not Working!!! dummy  BAKA");
             }
-
         }
 
         public void LoadSaved()

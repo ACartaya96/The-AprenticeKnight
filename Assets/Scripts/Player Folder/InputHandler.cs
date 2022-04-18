@@ -243,9 +243,6 @@ namespace TAK
 
         private void HandleCombatInput()
         {
-
-
-
             if (rb_Input)
             {
                 if (lockedOnflag)
@@ -279,11 +276,6 @@ namespace TAK
                 playerEquipment.CloseBlockingCollider();  
             }
             
-
-
-
-
-
         }
 
         private void HandleLockOnInput()
