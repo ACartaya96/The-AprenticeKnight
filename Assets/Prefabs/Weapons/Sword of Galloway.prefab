@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3655436670748813483}
   - component: {fileID: 8848979004637773122}
   - component: {fileID: 6995489428061174073}
+  - component: {fileID: 5424558992721419504}
   m_Layer: 0
   m_Name: FullBlade
   m_TagString: Untagged
@@ -64,6 +65,23 @@ MonoBehaviour:
   weaponItem: {fileID: 11400000, guid: 2febe576ba4907949bc1b0dc1e4bdd5a, type: 2}
   projectileLastPos: {x: 0, y: 0, z: 0}
   enableOnStartUp: 0
+--- !u!114 &5424558992721419504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739116184336268736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6303767546939f6419a8df2dc3513a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectible: {fileID: 11400000, guid: 38882a351b8e72c4eb7864e5b279c24f, type: 2}
+  weaponItem: {fileID: 11400000, guid: 2febe576ba4907949bc1b0dc1e4bdd5a, type: 2}
+  stageOne: {fileID: 7910476245105252489}
+  stageTwo: {fileID: 7135137400979182538}
+  stageThree: {fileID: 2298269222741753207}
 --- !u!1 &4880466138316097218
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,8 +203,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BladePieces_1_FINAL
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d7f379babf905064aa12729028591bcc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7f379babf905064aa12729028591bcc, type: 3}
+--- !u!1 &2298269222741753207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d7f379babf905064aa12729028591bcc, type: 3}
+  m_PrefabInstance: {fileID: 1379366472218902566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1490347342154196941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d7f379babf905064aa12729028591bcc, type: 3}
@@ -251,8 +278,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BladePieces_3_FINAL
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c597aa4ae3e10f340b19f756dae3416f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c597aa4ae3e10f340b19f756dae3416f, type: 3}
+--- !u!1 &7910476245105252489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c597aa4ae3e10f340b19f756dae3416f, type: 3}
+  m_PrefabInstance: {fileID: 6991488682937492952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7389413680071983667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c597aa4ae3e10f340b19f756dae3416f, type: 3}
@@ -316,6 +352,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9eba722356c9f85469f832ad9906fbf2, type: 3}
       propertyPath: m_Name
       value: BladePieces_2_FINAL
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9eba722356c9f85469f832ad9906fbf2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eba722356c9f85469f832ad9906fbf2, type: 3}

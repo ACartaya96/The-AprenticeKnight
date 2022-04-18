@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Elixer of Mana
-  maxAmount: 0
-  currentItemAmount: 0
+  maxAmount: 3
+  currentItemAmount: 3
   itemModel: {fileID: 4170981701214997964, guid: e3233e262e88e744889038ff865dfa16, type: 3}
   consumableAnimation: Drinking_Mana
   isInteracting: 0

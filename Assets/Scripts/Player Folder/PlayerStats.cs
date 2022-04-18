@@ -54,35 +54,36 @@ namespace TAK
             return maxMana;
         }
 
-        public void HealthCheat(bool Toggle)
-        {
-            if(Toggle == true)
-            {
-                InfiniteHealth = true;
-            }
-            else
-            {
-                 InfiniteHealth = false;
-            }
-        }
-        public void ManaCheat(bool Toggle)
-        {
-            if(Toggle == true)
-            {
-                InfiniteMana = true;
-            }
-            else
-            {
-                InfiniteMana = false;
-            }
-        }
+        //public void HealthCheat(bool Toggle)
+        //{
+        //    Debug.Log(Toggle.ToString());
+        //    if(Toggle == true)
+        //    {
+        //        InfiniteHealth = true;
+        //    }
+        //    else
+        //    {
+        //         InfiniteHealth = false;
+        //    }
+        //}
+        //public void ManaCheat(bool Toggle)
+        //{
+        //    if(Toggle == true)
+        //    {
+        //        InfiniteMana = true;
+        //    }
+        //    else
+        //    {
+        //        InfiniteMana = false;
+        //    }
+        //}
 
         public void TakeDamage(float damage, string damageAnimation)
         {
-            if(InfiniteHealth)
-            {
-                playerManager.isInvincible = true;
-            }
+            //if(InfiniteHealth == true)
+            //{
+            //    playerManager.isInvincible = true;
+            //}
             if (!playerManager.isInvincible)
             {
                 Debug.Log("Xander Takes " + damage.ToString() + " Damage");
@@ -121,11 +122,11 @@ namespace TAK
         }
 
         public void UseMana(float manaCost)
-        {
-            if(InfiniteMana)
-            {
-                currentMana = maxMana;
-            }
+       {
+        //    if(InfiniteMana == true)
+        //    {
+        //        currentMana = maxMana;
+        //    }
             Debug.Log("Mana Cost: " + manaCost.ToString());
             currentMana -= manaCost;
             manaBar.SetCurrentMana(currentMana);

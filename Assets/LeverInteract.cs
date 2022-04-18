@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace TAK
 {
-    public class LeverInteract : MonoBehaviour
+    public class LeverInteract : MonoBehaviour, IInteractable
     {
         public GameObject player;
         public GameObject pole1;
         public GameObject pole2;
         public GameObject barrier;
 
-        public bool leverOnePulled = false;
-        public bool leverTwoPulled = false;
+        public bool leverPulled = false;
+       
 
         private Animator anim;
         private AudioSource audioSource;
@@ -27,7 +27,14 @@ namespace TAK
             audioSource = GetComponent<AudioSource>();
         }
 
-        void OnTriggerStay(Collider player)
+        public void Interact()
+        {
+            anim = pole1.GetComponent<Animator>();
+            anim.Play("Base Layer.UseLever");
+            audioSource.Play();
+            leverPulled = true;
+        }
+        /*void OnTriggerStay(Collider player)
         {
             if (InputHandler.y_Input == true && gameObject.name == "lever (1)")
             {
@@ -46,7 +53,7 @@ namespace TAK
                 audioSource.Play();
                 leverTwoPulled = true;
             }
-        }
+        }*/
 
     }
 }

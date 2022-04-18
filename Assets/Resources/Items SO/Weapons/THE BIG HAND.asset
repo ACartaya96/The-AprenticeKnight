@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: THE BIG HAND
   modelPrefab: {fileID: 8943960096321276138, guid: 78c441961cb550147ade313d7d627074, type: 3}
   isUnarmed: 0
-  baseDamage: 80
+  baseDamage: 40
   physicalDamageAbsorption: 12
   Right_Attack_1: OH_Light_Attack_01
   Right_Attack_2: OH_Light_Attack_02

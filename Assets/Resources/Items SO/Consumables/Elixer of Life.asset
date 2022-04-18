@@ -20,5 +20,5 @@ MonoBehaviour:
   consumableAnimation: Drinking_Life
   isInteracting: 0
   elixer: 0
-  RecoveryAmount: 300
+  RecoveryAmount: 500
   recoverFX: {fileID: 7173159929070329326, guid: 86c702afc3414f047bdd8559239442ed, type: 3}

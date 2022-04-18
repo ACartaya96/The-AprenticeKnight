@@ -355,6 +355,16 @@ namespace TAK
         {
             if(y_Input)
             {
+                Collider[] colliders = Physics.OverlapCapsule(transform.position, transform.forward * 0.45f, 4);
+
+                foreach(Collider collider in colliders)
+                {
+                    IInteractable interactable = collider.GetComponent<IInteractable>();
+                    if(interactable != null)
+                    {
+                        interactable.Interact();
+                    }
+                }
                 Debug.Log("Player pressed Y");
             }
         }
