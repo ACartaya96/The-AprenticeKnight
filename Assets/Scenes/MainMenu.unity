@@ -3221,6 +3221,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65e8a1a2696ded42984a2b854c38cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MasterSlider: {fileID: 1026896121}
+  PlayEffectsSlider: {fileID: 2064092069}
+  GameEffectsSlider: {fileID: 406562142}
+  BackgroundSlider: {fileID: 2056995472}
   audioMixer: {fileID: 24100000, guid: c79436fd66b1efb478975e518ecb36ad, type: 2}
 --- !u!1 &534375363
 GameObject:
