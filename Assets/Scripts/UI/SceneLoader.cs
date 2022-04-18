@@ -73,9 +73,9 @@ namespace TAK
 
         public void RestartLevel()
         {
-           
-            if(currentLevel == 1)
-            {   
+
+            if (currentLevel == 1)
+            {
                 SceneLoader.instance.TriggerLoadLevel("Hub");
             }
             else if (currentLevel == 2)
@@ -90,14 +90,14 @@ namespace TAK
             else if (currentLevel == 4)
             {
                 SceneLoader.instance.TriggerLoadLevel("Mountain");
-            } 
+            }
             else if (currentLevel == 5)
             {
                 SceneLoader.instance.TriggerLoadLevel("Lair");
             }
             else
             {
-                print ("The Restart is not Working!!! dummy  BAKA");
+                print("The Restart is not Working!!! dummy  BAKA");
             }
         }
 

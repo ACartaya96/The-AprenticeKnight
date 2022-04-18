@@ -710,7 +710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009a47bebf177f64db259c1030ff1b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageCollider: {fileID: 8296468418708267716}
+  rightDamageCollider: {fileID: 0}
+  leftDamageCollider: {fileID: 0}
+  bodyDamageCollider: {fileID: 0}
 --- !u!114 &1126957846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,6 +759,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  myHeight: 2
+  myDuration: 0.5
 --- !u!1 &8183718909712149154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dddc6e79ccb33f4eaf557b198c81acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1563227084413674264}
   canRotate: 0
 --- !u!114 &5103149251361209833
 MonoBehaviour:
@@ -1092,7 +1096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musciClips: []
   audioSource: {fileID: 3652731281074845835}
-  footStepSFX: {fileID: 0}
+  footStepSFX: {fileID: 11400000, guid: e2c3b8c21a614ce419ed07dda40819ac, type: 2}
   weaponSwingSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
   injuredScreamSFX: {fileID: 11400000, guid: 116e39270cea0d544ada5d16be644607, type: 2}
   swipeAttackSFX: {fileID: 11400000, guid: f12d612fbebabdb4ab0b4ea3a8380bbc, type: 2}
@@ -1111,7 +1115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009a47bebf177f64db259c1030ff1b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageCollider: {fileID: 0}
+  rightDamageCollider: {fileID: 0}
+  leftDamageCollider: {fileID: 0}
+  bodyDamageCollider: {fileID: 0}
 --- !u!1001 &8379709688406108761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1241,14 +1247,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc40b7d7bbce9704394b928949951513, type: 3}
---- !u!114 &8296468418708267716 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 533763973879826589, guid: dc40b7d7bbce9704394b928949951513, type: 3}
-  m_PrefabInstance: {fileID: 8379709688406108761}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0edd6618c41f87b4fa5eb6132cabea20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

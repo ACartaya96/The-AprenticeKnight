@@ -15,4 +15,4 @@ MonoBehaviour:
   itemIcon: {fileID: 0}
   itemName: Sword of Galloway
   maxAmount: 3
-  currentAmount: 1
+  currentAmount: 0
