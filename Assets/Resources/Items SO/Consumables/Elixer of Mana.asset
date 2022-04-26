@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4509940878b14ee4f8ab2e9438516939, type: 3}
   m_Name: Elixer of Mana
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: ef8b394781fd1d94284162ecef8df678, type: 3}
   itemName: Elixer of Mana
   maxAmount: 3
   currentItemAmount: 3
