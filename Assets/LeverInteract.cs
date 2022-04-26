@@ -7,8 +7,8 @@ namespace TAK
     public class LeverInteract : MonoBehaviour, IInteractable
     {
         public GameObject player;
-        public GameObject pole1;
-        public GameObject pole2;
+        public GameObject pole;
+    
         public GameObject barrier;
 
         public bool leverPulled = false;
@@ -29,7 +29,7 @@ namespace TAK
 
         public void Interact()
         {
-            anim = pole1.GetComponent<Animator>();
+            //anim = pole.GetComponentInChildren<Animator>();
             anim.Play("Base Layer.UseLever");
             audioSource.Play();
             leverPulled = true;

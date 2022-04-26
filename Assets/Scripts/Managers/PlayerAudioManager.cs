@@ -13,6 +13,7 @@ namespace TAK
         public SFXEvent JumpSFX;
         public SFXEvent deathSFX;
         public SFXEvent outOfManaSFX;
+        
         //public SFXEvent HurtSFX;Hurt sound effect that Alex already hardcoded. Commented in case we want to make it animator based.
 
 
