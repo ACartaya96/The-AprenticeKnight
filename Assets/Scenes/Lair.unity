@@ -38957,6 +38957,11 @@ MonoBehaviour:
   PlayEffectsSlider: {fileID: 342852710}
   GameEffectsSlider: {fileID: 1445095852}
   BackgroundSlider: {fileID: 284553610}
+  MasterFloat: {fileID: 11400000, guid: a4a6c7faa442b1e478ca950aeafdcc32, type: 2}
+  PlayEffectsFloat: {fileID: 11400000, guid: 788adf85346dd3141b66602b14ae74b7, type: 2}
+  GameEffectsFloat: {fileID: 11400000, guid: 0169462bf80ef62448d8bdaebe113ad2, type: 2}
+  BackgroundFloat: {fileID: 11400000, guid: 2f871e76c5769c04a89ea02d6bfece52, type: 2}
+  firstPlayInt: {fileID: 11400000, guid: fa065ff2677075f4cb363cae1bb12abf, type: 2}
   audioMixer: {fileID: 24100000, guid: c79436fd66b1efb478975e518ecb36ad, type: 2}
 --- !u!114 &1302661603
 MonoBehaviour:
@@ -52020,6 +52025,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2094086275}
         m_TargetAssemblyTypeName: TAK.PauseManager, Assembly-CSharp
         m_MethodName: CloseOPTMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1302661602}
+        m_TargetAssemblyTypeName: TAK.AudioMixerMaster, Assembly-CSharp
+        m_MethodName: SaveSoundSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
