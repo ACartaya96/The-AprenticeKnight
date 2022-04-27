@@ -13,9 +13,12 @@ namespace TAK
 		public Spell spell = null;
 		Rigidbody rb;
 		Camera cam;
+		[SerializeField] PlayerController playerController;
 		public Transform myTarget = null;
 		bool hasFired = false;
+		bool launched;
 
+		private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 		private void Start()
 		{
 			mySelf = GameObject.FindGameObjectWithTag(selfReference).GetComponent<CharacterManager>();
@@ -23,6 +26,8 @@ namespace TAK
 			cam = Camera.main;
 			hasFired = false;
 			myTarget = GameObject.FindGameObjectWithTag(selfReference).GetComponent<PlayerTargetDetection>().currentLockedOnTarget;
+			playerController = GameObject.FindGameObjectWithTag(selfReference).GetComponent<PlayerController>();
+			
 			//spell = (Spell)Resources.Load("Assets/Resources/Items SO/Spells" + mySelf.gameObject.name, typeof(Spell));
 
 			if (spell != null)
@@ -202,7 +207,20 @@ namespace TAK
 					//Instantiated object will move straight forward.
 					if (spell.spellDirection == Spell.SpellDirection.Directional)
 					{
-						MoveStraightForward();
+						if(launched)
+                        {
+							playerController.rb.velocity = Vector3.zero;
+							StartCoroutine(Launch());
+							playerController.rb.AddForce(transform.forward * spell.knockBack);
+							playerController.rb.AddForce(transform.up * spell.knockUp);
+							
+						}
+                        else
+                        {
+							MoveStraightForward();
+						}
+						
+
 					}
 
 					//Instantiated object will follow target.
@@ -269,6 +287,12 @@ namespace TAK
 
 		}
 
+		IEnumerator Launch()
+        {
+			yield return new WaitForSeconds(1f);
+			launched = false;
+		}
+
 
 		void OnCollisionEnter(Collision collision)
 		{
@@ -284,6 +308,7 @@ namespace TAK
 				AnimationManager animationManager = collision.gameObject.GetComponentInChildren<AnimationManager>();
 				CharacterEffectManager damageByEffect = collision.gameObject.GetComponentInChildren<CharacterEffectManager>();
 				Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+				//playerController = collision.gameObject.GetComponent<PlayerController>();
 				Instantiate(spell.spellCollisionParticle, cp.point, Quaternion.identity);
 
 
@@ -303,6 +328,7 @@ namespace TAK
 							damageByEffect.StartCoroutine(damageByEffect.TakeDamageByFlagType(spell, character.transform));
 						}
 					}
+					Destroy(this.gameObject);
 				}
 				else if (spell.spellEffect == Spell.SpellEffect.Launch)
 				{
@@ -312,18 +338,17 @@ namespace TAK
 					}
 					Vector3 direction = cp.point - transform.position;
 					animationManager.PlayTargetAnimation("Empty", false, false);
-					rb.AddForce(collision.transform.forward * spell.knockBack, ForceMode.Impulse);
-					rb.AddForce(collision.transform.up * spell.knockUp, ForceMode.Impulse);
-
+					launched = true;
+					Destroy(this.gameObject, 5f);
 				}
 				else
 				{
 
 					collision.gameObject.GetComponent<IDamage>().TakeDamage(Random.Range(spell.spellMinDamage, spell.spellMaxDamage), "Damage");
-
+					Destroy(this.gameObject);
 				}
 
-				Destroy(this.gameObject);
+				//Destroy(this.gameObject);
 
 			}
 		}

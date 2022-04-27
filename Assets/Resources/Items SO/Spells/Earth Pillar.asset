@@ -27,8 +27,8 @@ MonoBehaviour:
   spellMaxDamage: 0
   projectileForwardVelocity: 0
   projectileUpwardVelocity: 0
-  knockBack: 600
-  knockUp: 1200
+  knockBack: 900
+  knockUp: 1600
   spellRadius: 0
   dotDamage: 0
   dotDuration: 0

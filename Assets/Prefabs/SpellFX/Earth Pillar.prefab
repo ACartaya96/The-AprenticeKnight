@@ -80,6 +80,7 @@ MonoBehaviour:
   mySelf: {fileID: 0}
   selfReference: Player
   spell: {fileID: 11400000, guid: b481c22203d02c846a1097d94f6e9519, type: 2}
+  playerController: {fileID: 0}
   myTarget: {fileID: 0}
 --- !u!54 &6403731143989251754
 Rigidbody:

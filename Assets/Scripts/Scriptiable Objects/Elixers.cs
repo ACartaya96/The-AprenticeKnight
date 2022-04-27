@@ -24,26 +24,30 @@ namespace TAK
 
         private void Awake()
         {
-            currentItemAmount = maxAmount;
+            
         }
         public override void AttemptToConsumeItem(AnimationHandler animationHandler, WeaponSlotManager weaponSlotManager, PlayerEffectManager playerEffectManager)
         {
             base.AttemptToConsumeItem(animationHandler, weaponSlotManager, playerEffectManager);
-            GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
-            if (elixer == ElixerType.Life)
+            if (currentItemAmount >= 0)
             {
-                playerEffectManager.currentParticleFX = recoverFX;
-                playerEffectManager.HealPlayerFromEffect(RecoveryAmount);
+                GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
+
+                if (elixer == ElixerType.Life)
+                {
+                    playerEffectManager.currentParticleFX = recoverFX;
+                    playerEffectManager.HealPlayerFromEffect(RecoveryAmount);
+                }
+                else if (elixer == ElixerType.Mana)
+                {
+                    playerEffectManager.currentParticleFX = recoverFX;
+                    playerEffectManager.RestoreManaFromEffect(RecoveryAmount);
+                }
+                playerEffectManager.instantiatedFXModel = flask;
+
+                weaponSlotManager.rightHandSlot.UnloadWeapon();
+                currentItemAmount -= 1;
             }
-            else if(elixer == ElixerType.Mana)
-            {
-                playerEffectManager.currentParticleFX = recoverFX;
-                playerEffectManager.RestoreManaFromEffect(RecoveryAmount);
-            }
-            playerEffectManager.instantiatedFXModel = flask;
-          
-            weaponSlotManager.rightHandSlot.UnloadWeapon();
-           
             //Play FX when succesfully drank
         }
 

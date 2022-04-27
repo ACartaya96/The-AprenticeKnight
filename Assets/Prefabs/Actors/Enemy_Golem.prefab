@@ -661,7 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 10
-  angle: 80
+  angle: 349.2
   heightCap: 4
   playerRef: {fileID: 0}
   targetMask:

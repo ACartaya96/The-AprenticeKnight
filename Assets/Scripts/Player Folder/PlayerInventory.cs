@@ -46,6 +46,11 @@ namespace TAK
             quickSlots.UpdateConsumableSlotUI(currentConsumable);
             slotAmounts = spellSlots.Count;
             itemAmounts = consumableItems.Count;
+
+            foreach(ConsumableItem item in consumableItems)
+            {
+                item.currentItemAmount = item.maxAmount;
+            }
         }
 
         private void Start()

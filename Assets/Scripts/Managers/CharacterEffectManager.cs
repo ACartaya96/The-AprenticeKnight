@@ -29,6 +29,7 @@ namespace TAK
             characterStatsManager = GetComponentInParent<CharacterStatsManager>();
         }
 
+        
         #region Damage By Effect
         public IEnumerator TakeDamageByFlagType(Spell spell, Transform target)
         {
