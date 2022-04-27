@@ -21,6 +21,7 @@ namespace TAK
        
         
         public bool canDoCombo;
+        public bool InfMana;
 
 
 
@@ -65,6 +66,7 @@ namespace TAK
                 SwitchVCam.instance.vcam.m_RecenterToTargetHeading.m_enabled = true;
 
             }
+            
 
         }
 
@@ -108,9 +110,14 @@ namespace TAK
                 playerController.InAirTimer = playerController.InAirTimer + Time.deltaTime;
             }
 
-
-
-
+            if(SceneLoader.instance.InfiniteHealth == true)
+            {
+               isInvincible = true;
+            }
+            if(SceneLoader.instance.InfiniteMana == true)
+           {
+               InfMana = true;
+           }
 
         }
 

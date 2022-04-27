@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
 namespace TAK
@@ -15,6 +16,9 @@ namespace TAK
 
     //The Buttons in each of the menus
     public GameObject strBtn, htpBtn, optBtn, masterSld, ctrlBtn, credBtn, ctrlbackBtn, credbackBtn;
+
+    public Toggle Healthtog;
+    public Toggle Manatog;
     
     
     void Start()
@@ -23,6 +27,22 @@ namespace TAK
         EventSystem.current.SetSelectedGameObject(null);
         //Making the Start Button the first selected button
         EventSystem.current.SetSelectedGameObject(strBtn);
+        if(SceneLoader.instance.InfiniteMana == true)
+        {
+            Manatog.isOn = true;
+        }
+        else
+        {
+            Manatog.isOn = false;
+        }
+        if(SceneLoader.instance.InfiniteHealth == true)
+        {
+            Healthtog.isOn = true;
+        }
+        else
+        {
+            Healthtog.isOn = false;
+        }
     }
     
     public void StartGame()
@@ -92,29 +112,28 @@ namespace TAK
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(credBtn);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+     public void HealthCheat(bool Toggle)
+        {
+            if(Toggle == true)
+            {
+                SceneLoader.instance.InfiniteHealth = true;
+            }
+           else
+            {
+                SceneLoader.instance.InfiniteHealth = false;
+            }
+        }
+        public void ManaCheat(bool Toggle)
+        {
+          if(Toggle == true)
+           {
+               SceneLoader.instance.InfiniteMana = true;
+           }
+           else
+           {
+               SceneLoader.instance.InfiniteMana = false;
+           }
+        }
 
 }
 }

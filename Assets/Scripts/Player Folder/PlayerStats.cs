@@ -24,9 +24,6 @@ namespace TAK
 
         [SerializeField] AudioClip impactClip;
 
-        public bool InfiniteHealth = false;
-        public bool InfiniteMana = false;
-
         private void Start()
         {
             playerController = GetComponent<PlayerController>();
@@ -54,36 +51,10 @@ namespace TAK
             return maxMana;
         }
 
-        //public void HealthCheat(bool Toggle)
-        //{
-        //    Debug.Log(Toggle.ToString());
-        //    if(Toggle == true)
-        //    {
-        //        InfiniteHealth = true;
-        //    }
-        //    else
-        //    {
-        //         InfiniteHealth = false;
-        //    }
-        //}
-        //public void ManaCheat(bool Toggle)
-        //{
-        //    if(Toggle == true)
-        //    {
-        //        InfiniteMana = true;
-        //    }
-        //    else
-        //    {
-        //        InfiniteMana = false;
-        //    }
-        //}
+        
 
         public void TakeDamage(float damage, string damageAnimation)
         {
-            //if(InfiniteHealth == true)
-            //{
-            //    playerManager.isInvincible = true;
-            //}
             if (!playerManager.isInvincible)
             {
                 Debug.Log("Xander Takes " + damage.ToString() + " Damage");
@@ -123,20 +94,18 @@ namespace TAK
 
         public void UseMana(float manaCost)
        {
-        //    if(InfiniteMana == true)
-        //    {
-        //        currentMana = maxMana;
-        //    }
-            Debug.Log("Mana Cost: " + manaCost.ToString());
-            currentMana -= manaCost;
-            manaBar.SetCurrentMana(currentMana);
+           if(playerManager.InfMana != true)
+           {
+                Debug.Log("Mana Cost: " + manaCost.ToString());
+                currentMana -= manaCost;
+                manaBar.SetCurrentMana(currentMana);
 
-            if (currentMana < 0)
-            {
-                currentMana = 0;
-            }
-            Debug.Log("CurrentMana: " + currentMana.ToString());
-
+                if (currentMana < 0)
+                {
+                    currentMana = 0;
+                }
+                Debug.Log("CurrentMana: " + currentMana.ToString());
+           }
         }
 
         public void RecoverMana(float manaCost)

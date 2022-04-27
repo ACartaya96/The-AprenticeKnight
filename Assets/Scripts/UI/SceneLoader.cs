@@ -12,6 +12,9 @@ namespace TAK
     {
         public static int currentLevel;
         public static SceneLoader instance;
+        public bool InfiniteHealth;
+        public bool InfiniteMana;
+
         Camera cam;
     
         private void Awake()
@@ -26,6 +29,8 @@ namespace TAK
             }
 
             cam = Camera.main;
+            InfiniteHealth = false;
+            InfiniteMana = false;
 
             DontDestroyOnLoad(instance);
             DontDestroyOnLoad(cam);
@@ -105,7 +110,6 @@ namespace TAK
         {
             Debug.Log("This button will either load last saved game");
         }
-
 
     }
 }

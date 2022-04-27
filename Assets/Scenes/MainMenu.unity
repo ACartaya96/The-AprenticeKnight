@@ -1319,8 +1319,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 322893149511375353, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-        m_TargetAssemblyTypeName: TAK.PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 500439457}
+        m_TargetAssemblyTypeName: TAK.MainMenu, Assembly-CSharp
         m_MethodName: ManaCheat
         m_Mode: 0
         m_Arguments:
@@ -2143,8 +2143,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 322893149511375353, guid: 5590cf2ee4ed5a8489a536e09fe46c37, type: 3}
-        m_TargetAssemblyTypeName: TAK.PlayerStats, Assembly-CSharp
+      - m_Target: {fileID: 500439457}
+        m_TargetAssemblyTypeName: TAK.MainMenu, Assembly-CSharp
         m_MethodName: HealthCheat
         m_Mode: 0
         m_Arguments:
@@ -3167,6 +3167,8 @@ MonoBehaviour:
   credBtn: {fileID: 1403766978}
   ctrlbackBtn: {fileID: 264430506}
   credbackBtn: {fileID: 290819027}
+  Healthtog: {fileID: 306243518}
+  Manatog: {fileID: 237050880}
 --- !u!81 &500439458
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8991,12 +8993,12 @@ PrefabInstance:
       objectReference: {fileID: 1921948976}
     - target: {fileID: 867343792886183168, guid: 8d1b25b44cac6d74ea9382ba1867ecbf, type: 3}
       propertyPath: InfiniteMana
-      value: 
-      objectReference: {fileID: 237050880}
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 867343792886183168, guid: 8d1b25b44cac6d74ea9382ba1867ecbf, type: 3}
       propertyPath: InfiniteHealth
-      value: 
-      objectReference: {fileID: 306243518}
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 867343792886183169, guid: 8d1b25b44cac6d74ea9382ba1867ecbf, type: 3}
       propertyPath: m_Name
       value: SceneManager
