@@ -13,7 +13,7 @@ public class PauseManager : MonoBehaviour
 
     public GameObject pauseMenu, htpMenu, optMenu, ctrlMenu;
 
-    public GameObject htpBtn, optBtn, ctrlBtn, htpbackBtn, optbackBtn, ctrlbackBtn, menuBtn, quitBtn;
+    public GameObject htpBtn, optBtn, ctrlBtn, htpbackBtn, optbackBtn, masterSld, menuBtn, quitBtn;
 
     public PauseAction action;
 
@@ -122,7 +122,7 @@ public class PauseManager : MonoBehaviour
         htpMenu.SetActive(false);
         ctrlMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(ctrlbackBtn);
+        EventSystem.current.SetSelectedGameObject(masterSld);
     }
 
     public void CloseCTRLMenu()
