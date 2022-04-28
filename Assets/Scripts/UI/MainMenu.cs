@@ -47,8 +47,13 @@ namespace TAK
     
     public void StartGame()
      {
-            SceneLoader.instance.LoadHubScene();
+       SceneLoader.instance.LoadHubScene();
      }
+
+    public void QuitGame()
+    {
+       SceneLoader.instance.LoadQuit();
+    }
     public void OpenHTPMenu()
     {
         mainMenu.SetActive(false);

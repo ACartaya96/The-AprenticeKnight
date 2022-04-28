@@ -28,7 +28,7 @@ namespace TAK
             {
                 if(sleepAnimation != null)
                 {
-                    enemyAnimationHandler.PlayTargetAnimation("Empty", true, false);
+                
                     enemyAnimationHandler.PlayTargetAnimation(sleepAnimation, true, false);
                 }
                    
