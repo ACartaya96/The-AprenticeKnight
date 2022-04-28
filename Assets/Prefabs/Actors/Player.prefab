@@ -2289,7 +2289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 3777536955505273492}
-  isLeftHandSlot: 0
+  isLeftHandSlot: 1
   isRightHandSlot: 0
   currentWeapon: {fileID: 0}
 --- !u!114 &6445821289971690781
@@ -2306,7 +2306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentOverride: {fileID: 7680516293006672590}
   isLeftHandSlot: 0
-  isRightHandSlot: 0
+  isRightHandSlot: 1
   currentWeapon: {fileID: 0}
 --- !u!82 &1349306322440561969
 AudioSource:

@@ -103234,15 +103234,15 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.43333334
-    functionName: OpenBodyDamageCollider
+  - time: 1.6666666
+    functionName: OpenRightDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.43333334
-    functionName: OpenRightDamageCollider
+  - time: 1.6666666
+    functionName: OpenBodyDamageCollider
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
