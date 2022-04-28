@@ -7,10 +7,11 @@ namespace TAK
     public class PickupItem : MonoBehaviour,IInteractable
     {
         public Collectible collectible;
+        public BooleanContainer pickedUpItem;
 
         private void Awake()
         {
-            if(collectible.currentAmount >= collectible.maxAmount)
+            if(collectible.currentAmount >= collectible.maxAmount || pickedUpItem.check)
             {
                 Destroy(gameObject);
             }
@@ -19,6 +20,7 @@ namespace TAK
         public void Interact()
         {
             collectible.currentAmount += 1;
+            pickedUpItem.check = true;
 
             if (collectible.currentAmount > 3)
             {

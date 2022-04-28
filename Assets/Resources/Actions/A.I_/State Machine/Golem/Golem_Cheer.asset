@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSleeping: 1
   ForceSwitch: 1
-  detectionRadius: 2
+  detectionRadius: 10
   sleepAnimation: Cheering
   awakeAnimation: Empty
   rightWeapon: {fileID: 0}

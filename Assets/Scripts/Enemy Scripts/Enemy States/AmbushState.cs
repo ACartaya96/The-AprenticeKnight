@@ -17,12 +17,21 @@ namespace TAK
         public GameObject rightWeapon;
         public GameObject leftWeapon;
         public PursueTargetState pursueTargetState;
+
+        private void Awake()
+        {
+            isSleeping = true;
+        }
         public override EnemyBaseState Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimationHandler enemyAnimationHandler, FieldofView fov)
         {
             if(isSleeping && enemyManager.isPerformingAction == false)
             {
                 if(sleepAnimation != null)
+                {
+                    enemyAnimationHandler.PlayTargetAnimation("Empty", true, false);
                     enemyAnimationHandler.PlayTargetAnimation(sleepAnimation, true, false);
+                }
+                   
            
 
             }

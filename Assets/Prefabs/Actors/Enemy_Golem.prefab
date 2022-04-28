@@ -117,7 +117,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.64
+  m_Radius: 0.7
   m_Height: 2.55
   m_Direction: 1
   m_Center: {x: 0.09, y: 1.71, z: 0}
@@ -808,6 +808,22 @@ PrefabInstance:
     - target: {fileID: 2216831427998615359, guid: 950711c5c23de914093b8122a87e5f22, type: 3}
       propertyPath: m_Name
       value: Golem_Unarmed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109271663007952367, guid: 950711c5c23de914093b8122a87e5f22, type: 3}
+      propertyPath: m_Size.z
+      value: 0.78438795
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109271663007952367, guid: 950711c5c23de914093b8122a87e5f22, type: 3}
+      propertyPath: m_Center.x
+      value: 1.5470073e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109271663007952367, guid: 950711c5c23de914093b8122a87e5f22, type: 3}
+      propertyPath: m_Center.y
+      value: -6.0761805e-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109271663007952367, guid: 950711c5c23de914093b8122a87e5f22, type: 3}
+      propertyPath: m_Center.z
+      value: 0.42435387
       objectReference: {fileID: 0}
     - target: {fileID: 3109271663007952367, guid: 950711c5c23de914093b8122a87e5f22, type: 3}
       propertyPath: m_IsTrigger

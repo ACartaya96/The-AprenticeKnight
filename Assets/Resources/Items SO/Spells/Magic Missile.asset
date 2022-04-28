@@ -23,8 +23,8 @@ MonoBehaviour:
   startUpSFX: {fileID: 8300000, guid: a384c45148166ea4c9f7ef5dfc36055d, type: 3}
   multiSpawner: 3
   spellManaCost: 10
-  spellMinDamage: 10
-  spellMaxDamage: 10
+  spellMinDamage: 20
+  spellMaxDamage: 20
   projectileForwardVelocity: 300
   projectileUpwardVelocity: 0
   knockBack: 0

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameEffectsVolume
   m_EditorClassIdentifier: 
   MaxFloat: 1
-  currentFloat: 0.056631263
+  currentFloat: 1

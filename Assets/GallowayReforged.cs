@@ -34,14 +34,14 @@ namespace TAK
             {
                 stageOne.SetActive(true);
                 stageTwo.SetActive(true);
-                weaponItem.baseDamage = 50;
+                weaponItem.baseDamage = 100;
             }
             else if(collectible.currentAmount >= 3)
             {
                 stageOne.SetActive(true);
                 stageTwo.SetActive(true);
                 stageThree.SetActive(true);
-                weaponItem.baseDamage = 100;
+                weaponItem.baseDamage = 300;
             }
             else
             {

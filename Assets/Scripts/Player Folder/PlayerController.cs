@@ -48,8 +48,7 @@ namespace TAK
         float fallSpeed = 45f;
         [SerializeField]
         float jumpUpwardVelocity = 50;
-        [SerializeField]
-        float jumpForwardVelocity = 50;
+       
         [SerializeField]
         float rollUpwardVelocity = 50;
         [SerializeField]

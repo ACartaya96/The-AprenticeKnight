@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FirstPlayInt
   m_EditorClassIdentifier: 
   MaxInt: 0
-  currentInt: -1
+  currentInt: 0

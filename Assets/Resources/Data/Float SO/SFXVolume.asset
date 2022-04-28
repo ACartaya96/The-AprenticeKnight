@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SFXVolume
   m_EditorClassIdentifier: 
   MaxFloat: 1
-  currentFloat: 0.083151735
+  currentFloat: 1

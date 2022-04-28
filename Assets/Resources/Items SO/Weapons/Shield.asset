@@ -17,7 +17,7 @@ MonoBehaviour:
   modelPrefab: {fileID: 9173215582850424224, guid: 1636062309a6e524082b113511cd8eae, type: 3}
   isUnarmed: 0
   baseDamage: 300
-  physicalDamageAbsorption: 25
+  physicalDamageAbsorption: 50
   Right_Attack_1: 
   Right_Attack_2: 
   Left_Attack_1: 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BackgroundVolume
   m_EditorClassIdentifier: 
   MaxFloat: 1
-  currentFloat: 0.09830631
+  currentFloat: 1

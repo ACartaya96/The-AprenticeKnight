@@ -2390,77 +2390,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: 79e0c40a28ed1a14188bf3f828238a12, type: 3}
   m_PrefabInstance: {fileID: 2420334259356495220}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &138124973820576147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3267265866016477221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009a47bebf177f64db259c1030ff1b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightDamageCollider: {fileID: 3831054023780095847}
-  leftDamageCollider: {fileID: 2420334257919003588}
-  bodyDamageCollider: {fileID: 2420334258465558647}
---- !u!114 &1126441240435173301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3267265866016477221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b659a4d1781ce043ac911f917c5fd1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPoisoned: 0
-  poisonBuildup: 0
-  poisonAmount: 100
-  defaultPoisonAmount: 0
-  poisonDamage: 1
-  immuneToPoison: 0
-  check: 0
-  resetDps: 0
-  stunned: 0
---- !u!114 &7189783192350258178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3267265866016477221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dddc6e79ccb33f4eaf557b198c81acd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 8141475163253657829}
-  canRotate: 0
---- !u!114 &9064000316089196635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3267265866016477221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22d7ae49e1451b94eb12053fdc12b652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musciClips: []
-  audioSource: {fileID: 3630534202920257661}
-  footStepSFX: {fileID: 11400000, guid: 283229a5192834548990ee0935df49f7, type: 2}
-  weaponSwingSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
-  injuredScreamSFX: {fileID: 11400000, guid: e2cfd2311e277d040baf74f44286b080, type: 2}
-  swipeAttackSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
-  bigSlamAttackSFX: {fileID: 11400000, guid: e36512e91b4ad414d85096a51fb90e1d, type: 2}
-  spinAttackSFX: {fileID: 11400000, guid: 412cbd2d063a5cb488ef7871e7717a60, type: 2}
-  deathSFX: {fileID: 11400000, guid: a839fa199a896784ca6f90d934153d29, type: 2}
 --- !u!82 &3630534202920257661
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2557,6 +2486,77 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &138124973820576147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267265866016477221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009a47bebf177f64db259c1030ff1b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightDamageCollider: {fileID: 3831054023780095847}
+  leftDamageCollider: {fileID: 2420334257919003588}
+  bodyDamageCollider: {fileID: 2420334258465558647}
+--- !u!114 &1126441240435173301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267265866016477221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b659a4d1781ce043ac911f917c5fd1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPoisoned: 0
+  poisonBuildup: 0
+  poisonAmount: 100
+  defaultPoisonAmount: 0
+  poisonDamage: 1
+  immuneToPoison: 0
+  check: 0
+  resetDps: 0
+  stunned: 0
+--- !u!114 &7189783192350258178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267265866016477221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dddc6e79ccb33f4eaf557b198c81acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 8141475163253657829}
+  canRotate: 0
+--- !u!114 &9064000316089196635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267265866016477221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d7ae49e1451b94eb12053fdc12b652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musciClips: []
+  audioSource: {fileID: 3630534202920257661}
+  footStepSFX: {fileID: 11400000, guid: 283229a5192834548990ee0935df49f7, type: 2}
+  weaponSwingSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
+  injuredScreamSFX: {fileID: 11400000, guid: e2cfd2311e277d040baf74f44286b080, type: 2}
+  swipeAttackSFX: {fileID: 11400000, guid: c2d74da366094164fb39e603da452444, type: 2}
+  bigSlamAttackSFX: {fileID: 11400000, guid: e36512e91b4ad414d85096a51fb90e1d, type: 2}
+  spinAttackSFX: {fileID: 11400000, guid: 412cbd2d063a5cb488ef7871e7717a60, type: 2}
+  deathSFX: {fileID: 11400000, guid: a839fa199a896784ca6f90d934153d29, type: 2}
 --- !u!65 &2420334258465558664
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2568,8 +2568,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6527713, y: 0.69772977, z: 0.730589}
-  m_Center: {x: 0.06, y: -0.15113518, z: -0.18054257}
+  m_Size: {x: 0.48135403, y: 0.40960643, z: 0.6099565}
+  m_Center: {x: -0.025709935, y: -0.007074808, z: 0.036333125}
 --- !u!114 &2420334258465558647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,6 +2596,30 @@ PrefabInstance:
     - target: {fileID: 3735686801167703303, guid: 45317ff5a627fe74c8191b36463a10b4, type: 3}
       propertyPath: m_Name
       value: Knight_Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970529936956089099, guid: 45317ff5a627fe74c8191b36463a10b4, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16478075
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970529936956089099, guid: 45317ff5a627fe74c8191b36463a10b4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.38482893
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970529936956089099, guid: 45317ff5a627fe74c8191b36463a10b4, type: 3}
+      propertyPath: m_Size.z
+      value: 0.045210402
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970529936956089099, guid: 45317ff5a627fe74c8191b36463a10b4, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0037960445
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970529936956089099, guid: 45317ff5a627fe74c8191b36463a10b4, type: 3}
+      propertyPath: m_Center.y
+      value: 0.37582365
+      objectReference: {fileID: 0}
+    - target: {fileID: 5970529936956089099, guid: 45317ff5a627fe74c8191b36463a10b4, type: 3}
+      propertyPath: m_Center.z
+      value: -0.002907606
       objectReference: {fileID: 0}
     - target: {fileID: 6197937602293801510, guid: 45317ff5a627fe74c8191b36463a10b4, type: 3}
       propertyPath: m_RootOrder
