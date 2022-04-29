@@ -15,14 +15,16 @@ namespace TAK
 
         private void OnAnimatorMove()
         {
+            if (Mathf.Approximately(Time.deltaTime, 0f)) return;
+
             enemyManager.rb.drag = 0;
             Vector3 deltaPosition = anim.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition /Time.deltaTime;
-            if (Time.timeScale != 0)
-            {
-                enemyManager.rb.velocity = velocity;
-            }
+            
+            enemyManager.rb.velocity = velocity;
+            
+            
 
             if(enemyManager.isRotatingWithRootMotion)
             {
