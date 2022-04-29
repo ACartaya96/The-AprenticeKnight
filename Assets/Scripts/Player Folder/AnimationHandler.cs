@@ -102,6 +102,7 @@ namespace TAK
         }
         private void OnAnimatorMove()
         {
+            if (Mathf.Approximately(Time.deltaTime, 0f)) return;
             if (playerManager.isInteracting == false)
                 return;
 

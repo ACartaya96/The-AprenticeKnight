@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bb72348ef06b7438271ec3a6084540, type: 3}
   m_Name: Sword of Galloway
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 4c5bf3eeab1cc0744bd0dc7958efed32, type: 3}
+  itemIcon: {fileID: 21300000, guid: 199d7019f78b6974aaccfdf581dbd18e, type: 3}
   itemName: Sword of Galloway
   modelPrefab: {fileID: 4880466138316097218, guid: 394c27c8256442f4ebf4a9ec7ca2101e, type: 3}
   isUnarmed: 0

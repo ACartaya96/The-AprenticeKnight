@@ -148,17 +148,11 @@ namespace TAK
                 if (playerStats.currentMana < playerInventory.currentSpell.spellManaCost)
                     animationHandler.PlayTargetAnimation("Out Of Mana", true, false);
                 else
-                    //playerInventory.currentSpell.AttemptToCastSpell(animationHandler, playerStats, weaponSlotManager, playerAudioManager);
                     AttemptToCastSpell(playerInventory.currentSpell);
             }
             inputHandler.rb_Input = false;
         }
-        //private void SuccessfullyCastSpell()
-        //{
-        //    playerInventory.currentSpell.SuccessfullyCastSpell(animationHandler, playerStats, weaponSlotManager, playerManager, playerTarget, playerAudioManager);
-        //    animationHandler.anim.SetBool("isFiringSpell", true);
-
-        //}
+      
         private void PerformRBBlockAction()
         {
             if (playerManager.isInteracting)
