@@ -9,5 +9,6 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
 - [Contributing](#contributing)
 
 ## Installation
-1. Clone repository ```bash git clone 
+1. Clone repository ` ` `bash git clone https://github.com/ACartaya96/The-AprenticeKnight.git
+2. Download at: https://acartaya96.itch.io/the-apprentice-knight
 
