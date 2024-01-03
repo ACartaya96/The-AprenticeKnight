@@ -16,6 +16,7 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
 
 ### Features
 ●	We have implemented our 3 significant mechanics:
+  
   ○	A Modular Spell System that allows art and tech to add spells into the game with little to no additional code. Some spells in the game are as follows:
      
      ■	FireBall plays a significant role in our first level as it will be used to clear brambles from the path and destroy your enemies from range.
