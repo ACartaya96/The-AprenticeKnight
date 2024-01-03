@@ -46,4 +46,4 @@ Kevin
 Manny
 
 ### Badges
-![Build Status]([https://github.com/ACartaya96/The_ApprenticeKnight/workflows/CI/badge.svg?branch=main]
+![Build Status]([https://github.com/ACartaya96/The_ApprenticeKnight/workflows/CI/badge.svg?branch=main])
