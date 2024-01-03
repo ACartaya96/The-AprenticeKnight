@@ -21,7 +21,7 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
      
      ■	The Earth Pillar Spell can be used to launch the player into the air a huge distance. Good for platforming.
      
-     ■	The Magic Missile Spell can be used to target fast-moving or small enemies. It does slightly less damage than the fireball spell, but will track locked-on enemies so           you hit with every cast.
+     ■	The Magic Missile Spell can be used to target fast-moving or small enemies. It does slightly less damage than the fireball spell, but will track locked-on enemies so you hit with every cast.
   
   ○	Inventory/Weapon System that is also modular and implementable by Art and Tech
     
@@ -31,7 +31,7 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
 
   ○	An AI State Machine that allows our player to have combatants, this is also designed for modular design to expand our project with multiple enemies and multiple                behaviors. 
     
-    ■	Are A.I. has a complex State Machine that not only chases the player, but determines the player's angle, and distance and uses this information to choose the best attack       within its attack array to strike the player.
+    ■	Are A.I. has a complex State Machine that not only chases the player, but determines the player's angle, and distance and uses this information to choose the best attack within it's attack array to strike the player.
     
     ■	The Behavior System is modular so that it can be expanded on for further expansions with new behaviors.
 
