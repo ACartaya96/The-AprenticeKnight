@@ -47,3 +47,23 @@ Manny
 
 ### Badges
 ![Build Status]([https://github.com/ACartaya96/The_ApprenticeKnight/workflows/CI/badge.svg?branch=main])
+
+### Debugging
+●	Players sometimes can get stuck on the edge of some objects when jumping, which causes the falling animation to repeat infinitely. Sometimes the character will slowly fix itself when stuck like this, but most times it requires a restart.
+
+●	Fireball spell effect sometimes doesn't destroy itself on impact with a surface A/N: reduced consistency but still somewhat there.(inconsistent minor bug).
+
+●	The fireball spell sometimes does not impact surfaces with colliders as it should. This is also inconsistent. This seems to happen mostly with bramble.
+
+●	When using the fireball spell for the first time on a level, the entire screen will flash blue. As with the other fireball bugs, this happens inconsistently.
+
+●	Player no longer clips through colliders via earth pillars, however, still ignores bramble colliders.
+
+●	Earth Pillar Spell leaves behind a persistent particle effect where the player cast the spell instead of being destroyed. (consistent minor visual bug)
+
+●	Swamp walls are made of many individual wall pieces with their own colliders. Most if not all spots should prevent the player from falling
+
+●	The Magic Missile spell doesn't destroy itself when casting while not locked onto an enemy.(consistent minor visual bug/possible performance issues if too many in the scene)
+
+●	The game causes even high-end GPUs to spike to 99% for the duration of gameplay. This is seemingly not affecting the performance of the game, but it is strange nonetheless.
+
