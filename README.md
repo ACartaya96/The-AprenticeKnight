@@ -6,6 +6,9 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
 - [Installation](#installation)
 - [Features](#features)
 - [Contributing](#contributing)
+- [Acknowldgement](#acknowledgment)
+- [Badges](#badges)
+- [Debugging](#debugging)
 
 ## Installation
 1. Clone repository ` bash git clone https://github.com/ACartaya96/The-AprenticeKnight.git ` 
@@ -35,5 +38,12 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
     
     ■	The Behavior System is modular so that it can be expanded on for further expansions with new behaviors.
 
+### Acknowledgment
+At the moment I am trying to contact the old team to get their last names and links onto this page, but the main contributors as I have now are:
+Alexander Cartaya
+Luis Gonzalez
+Kevin 
+Manny
 
-
+### Badges
+![Build Status](https://github.com/ACartaya96/The_ApprenticeKnight/workflows/CI/badge.svg?branch=main)
