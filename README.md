@@ -25,7 +25,7 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
      
      ■	The Earth Pillar Spell can be used to launch the player into the air a huge distance. Good for platforming.
      
-     ■	The Magic Missile Spell can be used to target fast-moving or small enemies. It does slightly less damage than the fireball spell, but will track locked-on enemies so you hit with every cast.
+     ■	The Magic Missile Spell can be used to target fast-moving or small enemies. It does slightly less damage than the fireball spell but will track locked-on enemies so you hit with every cast.
   
   ○	Inventory/Weapon System that is also modular and implementable by Art and Tech
     
@@ -41,9 +41,11 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
 
 ### Acknowledgment
 * Alexander Cartaya
-* Luis Estadas
+* Luis Estades
 * Kevin Horan
 * Manny Pereira Valecillos
+* Ben Rocheberg
+* Jacob Rolson
 
 ### Badges
 ![Build Status]([https://github.com/ACartaya96/The_ApprenticeKnight/workflows/CI/badge.svg?branch=main])
