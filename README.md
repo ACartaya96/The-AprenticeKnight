@@ -40,10 +40,10 @@ What was meant to be a 3D platformer game turned into a 3D person souls-like pro
     ■	The Behavior System is modular so that it can be expanded on for further expansions with new behaviors.
 
 ### Acknowledgment
-Alexander Cartaya
-Luis Estadas
-Kevin Horan
-Manny Pereira Valecillos
+* Alexander Cartaya
+* Luis Estadas
+* Kevin Horan
+* Manny Pereira Valecillos
 
 ### Badges
 ![Build Status]([https://github.com/ACartaya96/The_ApprenticeKnight/workflows/CI/badge.svg?branch=main])
